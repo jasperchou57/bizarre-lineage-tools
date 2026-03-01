@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -19,6 +20,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable} dark`}>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-M7LZME8PZ6"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M7LZME8PZ6');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased text-white min-h-screen flex flex-col bg-background">
         <Navbar />
         <main className="flex-1 w-full mx-auto flex flex-col">
