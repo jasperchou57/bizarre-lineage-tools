@@ -1,0 +1,108 @@
+[
+    {
+        "id": "hamon",
+        "name": "Hamon",
+        "origin": "Parts 1-2",
+        "moves": [
+            {
+                "name": "Sunlight Yellow Overdrive",
+                "key": "1",
+                "type": "melee"
+            },
+            {
+                "name": "Sendo Ripple Overdrive",
+                "key": "2",
+                "type": "melee"
+            },
+            {
+                "name": "Scarlet Overdrive",
+                "key": "3",
+                "type": "ranged"
+            }
+        ],
+        "passive": "Bonus damage vs Vampires, slight HP regen",
+        "scores": {
+            "pvp": 7,
+            "pve": 8,
+            "survival": 4,
+            "mobility": 2,
+            "cost": 5
+        },
+        "bestWith": [
+            "the-world",
+            "star-platinum",
+            "whitesnake"
+        ],
+        "summary": "High damage, anti-Vampire, beginner-friendly"
+    },
+    {
+        "id": "spin",
+        "name": "Spin",
+        "origin": "Part 7",
+        "moves": [
+            {
+                "name": "Steel Ball Throw",
+                "key": "1",
+                "type": "ranged"
+            },
+            {
+                "name": "Multi-Steel Ball",
+                "key": "2",
+                "type": "aoe"
+            },
+            {
+                "name": "Golden Rectangle",
+                "key": "3",
+                "type": "buff"
+            }
+        ],
+        "passive": "Bypasses block on fully charged attacks",
+        "scores": {
+            "pvp": 9,
+            "pve": 6,
+            "survival": 3,
+            "mobility": 5,
+            "cost": 8
+        },
+        "bestWith": [
+            "the-world-high-voltage",
+            "c-moon"
+        ],
+        "summary": "Ranged pressure and block bypass. Requires skill to aim."
+    },
+    {
+        "id": "cyborg",
+        "name": "Cyborg",
+        "origin": "Part 2",
+        "moves": [
+            {
+                "name": "Machine Gun",
+                "key": "1",
+                "type": "ranged"
+            },
+            {
+                "name": "UV Light",
+                "key": "2",
+                "type": "aoe"
+            },
+            {
+                "name": "Rocket Punch",
+                "key": "3",
+                "type": "ranged"
+            }
+        ],
+        "passive": "Increased base defense, immune to bleed",
+        "scores": {
+            "pvp": 5,
+            "pve": 9,
+            "survival": 9,
+            "mobility": 2,
+            "cost": 7
+        },
+        "bestWith": [
+            "magicians-red",
+            "purple-haze"
+        ],
+        "summary": "Tanky PVE specialist with massive AoE damage."
+    }
+]

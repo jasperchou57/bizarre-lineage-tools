@@ -1,0 +1,102 @@
+[
+  {
+    "id": "boxing",
+    "name": "Boxing",
+    "moves": [
+      {
+        "name": "White Fang",
+        "key": "E",
+        "type": "melee"
+      },
+      {
+        "name": "Liver Crusher",
+        "key": "R",
+        "type": "melee"
+      },
+      {
+        "name": "Haymaker",
+        "key": "Z",
+        "type": "melee"
+      }
+    ],
+    "scores": {
+      "damage": 8,
+      "combo": 9,
+      "range": 3,
+      "utility": 5
+    },
+    "bestWith": [
+      "whitesnake",
+      "the-world",
+      "star-platinum",
+      "crazy-diamond"
+    ],
+    "summary": "Reliable combos, high burst, close-range specialist. Great for extending M1 chains."
+  },
+  {
+    "id": "kendo",
+    "name": "Kendo",
+    "moves": [
+      {
+        "name": "Sword Slash",
+        "key": "E",
+        "type": "melee"
+      },
+      {
+        "name": "Iaijutsu",
+        "key": "R",
+        "type": "dash"
+      },
+      {
+        "name": "Counter Stance",
+        "key": "Z",
+        "type": "counter"
+      }
+    ],
+    "scores": {
+      "damage": 7,
+      "combo": 6,
+      "range": 6,
+      "utility": 8
+    },
+    "bestWith": [
+      "anubis",
+      "made-in-heaven",
+      "c-moon"
+    ],
+    "summary": "Excellent range and counter-attacks. Synergizes with fast or sword-based stands."
+  },
+  {
+    "id": "vampire",
+    "name": "Vampirism",
+    "moves": [
+      {
+        "name": "Blood Suck",
+        "key": "E",
+        "type": "grab"
+      },
+      {
+        "name": "Space Ripper Stingy Eyes",
+        "key": "R",
+        "type": "ranged"
+      },
+      {
+        "name": "Freeze",
+        "key": "Z",
+        "type": "cc"
+      }
+    ],
+    "scores": {
+      "damage": 6,
+      "combo": 7,
+      "range": 8,
+      "utility": 9
+    },
+    "bestWith": [
+      "the-world",
+      "killer-queen",
+      "whitesnake"
+    ],
+    "summary": "Provides high sustain and ranged pressure. Vulnerable to Hamon."
+  }
+]

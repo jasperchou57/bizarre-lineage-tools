@@ -1,0 +1,1239 @@
+[
+    {
+        "id": "whitesnake",
+        "name": "Whitesnake",
+        "part": 6,
+        "rarity": "S",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "S",
+            "pve": "S",
+            "overall": "S"
+        },
+        "scores": {
+            "damage": 8,
+            "combo": 8,
+            "cc": 9,
+            "aoe": 7,
+            "mobility": 5,
+            "sustain": 6
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Sweep Kick",
+                "key": "R",
+                "type": "melee"
+            },
+            {
+                "name": "Revolver",
+                "key": "Z",
+                "type": "ranged"
+            },
+            {
+                "name": "Disc Throw",
+                "key": "X",
+                "type": "ranged"
+            },
+            {
+                "name": "Acid Rupture",
+                "key": "C",
+                "type": "aoe"
+            },
+            {
+                "name": "Disc Extraction",
+                "key": "V",
+                "type": "special",
+                "effect": "Disables enemy Stand"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing",
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "hamon",
+            "vampire"
+        ],
+        "counters": [
+            "made-in-heaven"
+        ],
+        "counteredBy": [
+            "king-crimson"
+        ],
+        "strengths": [
+            "Best CC chain",
+            "Disc Extraction wins 1v1s",
+            "Strong AoE"
+        ],
+        "weaknesses": [
+            "Low mobility",
+            "Struggles vs speed Stands"
+        ],
+        "meta": "Dominant in both PvE and PvP."
+    },
+    {
+        "id": "made-in-heaven",
+        "name": "Made in Heaven",
+        "part": 6,
+        "rarity": "Legendary",
+        "obtainMethod": "Evolve C-Moon",
+        "tier": {
+            "pvp": "S+",
+            "pve": "A",
+            "overall": "S"
+        },
+        "scores": {
+            "damage": 7,
+            "combo": 9,
+            "cc": 4,
+            "aoe": 8,
+            "mobility": 10,
+            "sustain": 5
+        },
+        "moves": [
+            {
+                "name": "Speed Slash",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Double Accel",
+                "key": "Z",
+                "type": "buff",
+                "effect": "Increases speed"
+            },
+            {
+                "name": "Time Acceleration",
+                "key": "V",
+                "type": "special",
+                "effect": "Massive global speedup"
+            }
+        ],
+        "awakening": {
+            "required": 150
+        },
+        "requiem": true,
+        "recommendedStyles": [
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "vampire"
+        ],
+        "counters": [
+            "king-crimson"
+        ],
+        "counteredBy": [
+            "star-platinum"
+        ],
+        "strengths": [
+            "Unmatched mobility",
+            "Impossible to catch when buffed"
+        ],
+        "weaknesses": [
+            "Squishy",
+            "Requires setup"
+        ],
+        "meta": "The ultimate speed Stand. PvP nightmare."
+    },
+    {
+        "id": "star-platinum",
+        "name": "Star Platinum",
+        "part": 3,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "A",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 9,
+            "combo": 7,
+            "cc": 6,
+            "aoe": 4,
+            "mobility": 7,
+            "sustain": 5
+        },
+        "moves": [
+            {
+                "name": "Ora Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Star Finger",
+                "key": "R",
+                "type": "ranged"
+            },
+            {
+                "name": "Inhale",
+                "key": "Z",
+                "type": "grab"
+            },
+            {
+                "name": "Time Stop",
+                "key": "V",
+                "type": "special",
+                "effect": "Stops time for 3s"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "made-in-heaven",
+            "the-world"
+        ],
+        "counteredBy": [
+            "c-moon"
+        ],
+        "strengths": [
+            "High single target burst",
+            "Time stop confirms kills"
+        ],
+        "weaknesses": [
+            "Low AoE",
+            "Predictable neutral game"
+        ],
+        "meta": "Solid all-rounder. Great for beginners."
+    },
+    {
+        "id": "the-world",
+        "name": "The World",
+        "part": 3,
+        "rarity": "S",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "S",
+            "pve": "A",
+            "overall": "S"
+        },
+        "scores": {
+            "damage": 10,
+            "combo": 8,
+            "cc": 5,
+            "aoe": 6,
+            "mobility": 6,
+            "sustain": 4
+        },
+        "moves": [
+            {
+                "name": "Muda Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Knife Throw",
+                "key": "R",
+                "type": "ranged"
+            },
+            {
+                "name": "Road Roller",
+                "key": "C",
+                "type": "aoe"
+            },
+            {
+                "name": "Time Stop",
+                "key": "V",
+                "type": "special",
+                "effect": "Stops time for 5s"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "vampire",
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "vampire"
+        ],
+        "counters": [
+            "star-platinum"
+        ],
+        "counteredBy": [
+            "gold-experience-requiem"
+        ],
+        "strengths": [
+            "Highest base damage",
+            "Longest Time Stop"
+        ],
+        "weaknesses": [
+            "High cooldowns",
+            "Vulnerable after missed TS"
+        ],
+        "meta": "Meta defining burst damage."
+    },
+    {
+        "id": "killer-queen",
+        "name": "Killer Queen",
+        "part": 4,
+        "rarity": "B",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "B",
+            "pve": "S",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 8,
+            "combo": 4,
+            "cc": 7,
+            "aoe": 10,
+            "mobility": 3,
+            "sustain": 4
+        },
+        "moves": [
+            {
+                "name": "Main Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Plant Bomb",
+                "key": "R",
+                "type": "special"
+            },
+            {
+                "name": "Coin Bomb",
+                "key": "Z",
+                "type": "ranged"
+            },
+            {
+                "name": "Detonate",
+                "key": "X",
+                "type": "aoe"
+            }
+        ],
+        "awakening": {
+            "required": 80
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "vampire"
+        ],
+        "recommendedSubs": [
+            "cyborg"
+        ],
+        "counters": [
+            "purple-haze"
+        ],
+        "counteredBy": [
+            "crazy-diamond"
+        ],
+        "strengths": [
+            "Best area denial",
+            "Incredible PvE farming"
+        ],
+        "weaknesses": [
+            "Slow combos",
+            "Gets rushed down easily"
+        ],
+        "meta": "Top tier for farming, struggles in high elo PvP."
+    },
+    {
+        "id": "crazy-diamond",
+        "name": "Crazy Diamond",
+        "part": 4,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "B",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 7,
+            "combo": 9,
+            "cc": 5,
+            "aoe": 3,
+            "mobility": 6,
+            "sustain": 9
+        },
+        "moves": [
+            {
+                "name": "Dora Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Bearing Shot",
+                "key": "R",
+                "type": "ranged"
+            },
+            {
+                "name": "Rock Trap",
+                "key": "Z",
+                "type": "cc"
+            },
+            {
+                "name": "Restore",
+                "key": "V",
+                "type": "heal"
+            }
+        ],
+        "awakening": {
+            "required": 90
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "killer-queen"
+        ],
+        "counteredBy": [
+            "king-crimson"
+        ],
+        "strengths": [
+            "Infinite healing",
+            "Insane combo potential if rock trap hits"
+        ],
+        "weaknesses": [
+            "Low range",
+            "Hard to win neutral"
+        ],
+        "meta": "The best support Stand that can still 1v1."
+    },
+    {
+        "id": "king-crimson",
+        "name": "King Crimson",
+        "part": 5,
+        "rarity": "S",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "S",
+            "pve": "C",
+            "overall": "S"
+        },
+        "scores": {
+            "damage": 9,
+            "combo": 6,
+            "cc": 7,
+            "aoe": 2,
+            "mobility": 8,
+            "sustain": 3
+        },
+        "moves": [
+            {
+                "name": "Heavy Punch",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Epitaph",
+                "key": "R",
+                "type": "counter"
+            },
+            {
+                "name": "Time Erase",
+                "key": "Z",
+                "type": "special",
+                "effect": "Invisibility and invulnerability"
+            },
+            {
+                "name": "Impale",
+                "key": "V",
+                "type": "melee",
+                "effect": "High damage execution"
+            }
+        ],
+        "awakening": {
+            "required": 110
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "vampire"
+        ],
+        "counters": [
+            "crazy-diamond",
+            "whitesnake"
+        ],
+        "counteredBy": [
+            "made-in-heaven"
+        ],
+        "strengths": [
+            "Time Erase allows free engage/disengage",
+            "High burst"
+        ],
+        "weaknesses": [
+            "Terrible for PvE farming",
+            "High skill ceiling"
+        ],
+        "meta": "Pure assassin. The king of 1v1s."
+    },
+    {
+        "id": "gold-experience",
+        "name": "Gold Experience",
+        "part": 5,
+        "rarity": "B",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "C",
+            "pve": "A",
+            "overall": "B"
+        },
+        "scores": {
+            "damage": 5,
+            "combo": 7,
+            "cc": 6,
+            "aoe": 4,
+            "mobility": 5,
+            "sustain": 10
+        },
+        "moves": [
+            {
+                "name": "Muda Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Tree Summon",
+                "key": "R",
+                "type": "utility"
+            },
+            {
+                "name": "Frog Counter",
+                "key": "Z",
+                "type": "counter"
+            },
+            {
+                "name": "Self Heal",
+                "key": "V",
+                "type": "heal"
+            }
+        ],
+        "awakening": {
+            "required": 80
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [],
+        "counteredBy": [
+            "the-world",
+            "star-platinum"
+        ],
+        "strengths": [
+            "Unkillable with constant healing",
+            "Required to access GER"
+        ],
+        "weaknesses": [
+            "Low damage output",
+            "Easily out-ranged"
+        ],
+        "meta": "Mostly a stepping stone to GER."
+    },
+    {
+        "id": "c-moon",
+        "name": "C-Moon",
+        "part": 6,
+        "rarity": "Epic",
+        "obtainMethod": "Evolve Whitesnake",
+        "tier": {
+            "pvp": "A",
+            "pve": "B",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 8,
+            "combo": 8,
+            "cc": 9,
+            "aoe": 6,
+            "mobility": 6,
+            "sustain": 5
+        },
+        "moves": [
+            {
+                "name": "Gravity Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Surface Inversion",
+                "key": "R",
+                "type": "melee",
+                "effect": "Applies bleed"
+            },
+            {
+                "name": "Gravity Shift",
+                "key": "Z",
+                "type": "aoe",
+                "effect": "Throws enemies into air"
+            },
+            {
+                "name": "Uppercut",
+                "key": "X",
+                "type": "melee"
+            }
+        ],
+        "awakening": {
+            "required": 120
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "spin"
+        ],
+        "counters": [
+            "star-platinum"
+        ],
+        "counteredBy": [
+            "made-in-heaven"
+        ],
+        "strengths": [
+            "Auto-combo potential with Gravity Shift",
+            "High bleed damage"
+        ],
+        "weaknesses": [
+            "Awkward hitboxes",
+            "Punishable misses"
+        ],
+        "meta": "Great upgrade from Whitesnake, stepping stone to MiH."
+    },
+    {
+        "id": "weather-report",
+        "name": "Weather Report",
+        "part": 6,
+        "rarity": "Epic",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "S",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 7,
+            "combo": 6,
+            "cc": 8,
+            "aoe": 10,
+            "mobility": 8,
+            "sustain": 4
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Lightning Strike",
+                "key": "R",
+                "type": "ranged"
+            },
+            {
+                "name": "Cloud Suit",
+                "key": "Z",
+                "type": "buff"
+            },
+            {
+                "name": "Heavy Rain",
+                "key": "X",
+                "type": "aoe"
+            },
+            {
+                "name": "Frog Rain",
+                "key": "C",
+                "type": "aoe"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "spin"
+        ],
+        "counters": [
+            "killer-queen"
+        ],
+        "counteredBy": [
+            "king-crimson"
+        ],
+        "strengths": [
+            "Screen-wide AoE",
+            "Incredible farming",
+            "Cloud suit mobility"
+        ],
+        "weaknesses": [
+            "Low single target damage",
+            "Ranged moves have long windups"
+        ],
+        "meta": "One of the best PVE farming stands in the game."
+    },
+    {
+        "id": "anubis",
+        "name": "Anubis",
+        "part": 3,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "B",
+            "overall": "B"
+        },
+        "scores": {
+            "damage": 9,
+            "combo": 7,
+            "cc": 4,
+            "aoe": 3,
+            "mobility": 6,
+            "sustain": 5
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Swift Slash",
+                "key": "R",
+                "type": "melee"
+            },
+            {
+                "name": "Pluck",
+                "key": "Z",
+                "type": "melee"
+            },
+            {
+                "name": "Possession Strike",
+                "key": "X",
+                "type": "melee",
+                "effect": "Bypasses block"
+            },
+            {
+                "name": "Blade Fury",
+                "key": "C",
+                "type": "melee"
+            }
+        ],
+        "awakening": {
+            "required": 80
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "star-platinum"
+        ],
+        "counteredBy": [
+            "whitesnake"
+        ],
+        "strengths": [
+            "Highest raw melee DPS",
+            "Block bypass on X",
+            "Fast combo chains"
+        ],
+        "weaknesses": [
+            "Zero ranged options",
+            "No AoE",
+            "Struggles in group fights"
+        ],
+        "meta": "A pure melee assassin. Dominates 1v1 scrims but struggles in open world."
+    },
+    {
+        "id": "golden-experience",
+        "name": "Golden Experience",
+        "part": 5,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "B",
+            "pve": "A",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 6,
+            "combo": 7,
+            "cc": 6,
+            "aoe": 5,
+            "mobility": 5,
+            "sustain": 8
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Life Punch",
+                "key": "R",
+                "type": "melee",
+                "effect": "Heals self on hit"
+            },
+            {
+                "name": "Tree Trap",
+                "key": "Z",
+                "type": "ranged",
+                "effect": "Creates a tree that stuns"
+            },
+            {
+                "name": "Life Beam",
+                "key": "X",
+                "type": "ranged"
+            },
+            {
+                "name": "Frog Reflect",
+                "key": "C",
+                "type": "special",
+                "effect": "Reflects projectiles"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": true,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "anubis"
+        ],
+        "counteredBy": [
+            "king-crimson"
+        ],
+        "strengths": [
+            "Self-healing sustain",
+            "Versatile kit",
+            "Requiem evolution available"
+        ],
+        "weaknesses": [
+            "Below-average raw damage",
+            "Slow startup on Z"
+        ],
+        "meta": "A balanced utility Stand. GER upgrade makes it S-Tier in late game."
+    },
+    {
+        "id": "magicians-red",
+        "name": "Magician's Red",
+        "part": 3,
+        "rarity": "B",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "B",
+            "pve": "A",
+            "overall": "B"
+        },
+        "scores": {
+            "damage": 8,
+            "combo": 5,
+            "cc": 5,
+            "aoe": 9,
+            "mobility": 4,
+            "sustain": 4
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Red Bind",
+                "key": "R",
+                "type": "ranged",
+                "effect": "Stuns target"
+            },
+            {
+                "name": "Cross Fire Hurricane",
+                "key": "Z",
+                "type": "ranged"
+            },
+            {
+                "name": "Flame Pillar",
+                "key": "X",
+                "type": "aoe"
+            },
+            {
+                "name": "Eruption",
+                "key": "C",
+                "type": "aoe",
+                "effect": "Large AoE burn"
+            }
+        ],
+        "awakening": {
+            "required": 75
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "anubis"
+        ],
+        "counteredBy": [
+            "star-platinum"
+        ],
+        "strengths": [
+            "Massive AoE damage",
+            "Excellent for quest grinding",
+            "Low obtain cost"
+        ],
+        "weaknesses": [
+            "Slow moves",
+            "No mobility tools",
+            "Weak to rushdown"
+        ],
+        "meta": "Budget-friendly PvE king. Best first Stand for new players."
+    },
+    {
+        "id": "purple-haze",
+        "name": "Purple Haze",
+        "part": 5,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "B",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 10,
+            "combo": 4,
+            "cc": 7,
+            "aoe": 8,
+            "mobility": 3,
+            "sustain": 3
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Capsule Throw",
+                "key": "R",
+                "type": "ranged",
+                "effect": "Poison AoE on impact"
+            },
+            {
+                "name": "Poison Cloud",
+                "key": "Z",
+                "type": "aoe",
+                "effect": "Creates DoT zone"
+            },
+            {
+                "name": "Virus Punch",
+                "key": "X",
+                "type": "melee",
+                "effect": "Applies poison"
+            },
+            {
+                "name": "Berserk",
+                "key": "C",
+                "type": "special",
+                "effect": "Damage boost, drains own HP"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "vampire"
+        ],
+        "counters": [
+            "gold-experience"
+        ],
+        "counteredBy": [
+            "made-in-heaven"
+        ],
+        "strengths": [
+            "Highest single-target DPS",
+            "Area denial with poison",
+            "Terrifying in 1v1"
+        ],
+        "weaknesses": [
+            "Self-damage on Berserk",
+            "Extremely slow",
+            "Poison can hit allies"
+        ],
+        "meta": "Glass cannon with the highest raw damage in the game. High risk, high reward."
+    },
+    {
+        "id": "the-hand",
+        "name": "The Hand",
+        "part": 4,
+        "rarity": "B",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "B",
+            "overall": "B"
+        },
+        "scores": {
+            "damage": 9,
+            "combo": 6,
+            "cc": 5,
+            "aoe": 4,
+            "mobility": 7,
+            "sustain": 4
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Erasure Swipe",
+                "key": "R",
+                "type": "melee",
+                "effect": "Ignores defense"
+            },
+            {
+                "name": "Space Pull",
+                "key": "Z",
+                "type": "ranged",
+                "effect": "Pulls enemy to you"
+            },
+            {
+                "name": "Ground Scrape",
+                "key": "X",
+                "type": "melee"
+            },
+            {
+                "name": "Erasure Chop",
+                "key": "C",
+                "type": "melee",
+                "effect": "High damage finisher"
+            }
+        ],
+        "awakening": {
+            "required": 75
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [
+            "crazy-diamond"
+        ],
+        "counteredBy": [
+            "king-crimson"
+        ],
+        "strengths": [
+            "Defense-ignoring attacks",
+            "Space Pull gap-closer",
+            "Easy to obtain"
+        ],
+        "weaknesses": [
+            "Short range on most moves",
+            "No sustain",
+            "Predictable combos"
+        ],
+        "meta": "Budget PvP beast. Space Pull into Erasure combo is devastating."
+    },
+    {
+        "id": "stone-free",
+        "name": "Stone Free",
+        "part": 6,
+        "rarity": "A",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "A",
+            "pve": "A",
+            "overall": "A"
+        },
+        "scores": {
+            "damage": 7,
+            "combo": 8,
+            "cc": 7,
+            "aoe": 5,
+            "mobility": 7,
+            "sustain": 6
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "String Punch",
+                "key": "R",
+                "type": "melee"
+            },
+            {
+                "name": "String Bind",
+                "key": "Z",
+                "type": "ranged",
+                "effect": "Immobilizes enemy"
+            },
+            {
+                "name": "String Ball",
+                "key": "X",
+                "type": "ranged"
+            },
+            {
+                "name": "Mobius Strip",
+                "key": "C",
+                "type": "special",
+                "effect": "Deflects attacks briefly"
+            }
+        ],
+        "awakening": {
+            "required": 100
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "spin"
+        ],
+        "counters": [
+            "the-hand"
+        ],
+        "counteredBy": [
+            "whitesnake"
+        ],
+        "strengths": [
+            "Versatile at all ranges",
+            "String Bind is excellent CC",
+            "Good mobility"
+        ],
+        "weaknesses": [
+            "Jack of all trades, master of none",
+            "No standout burst move"
+        ],
+        "meta": "Extremely well-rounded. Great for players who want flexibility."
+    },
+    {
+        "id": "the-world-high-voltage",
+        "name": "The World: High Voltage",
+        "part": 7,
+        "rarity": "Legendary",
+        "obtainMethod": "Requiem Arrow on The World",
+        "tier": {
+            "pvp": "S+",
+            "pve": "S",
+            "overall": "S+"
+        },
+        "scores": {
+            "damage": 10,
+            "combo": 9,
+            "cc": 9,
+            "aoe": 6,
+            "mobility": 8,
+            "sustain": 5
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Heavy Punch",
+                "key": "R",
+                "type": "melee"
+            },
+            {
+                "name": "Knife Volley",
+                "key": "Z",
+                "type": "ranged"
+            },
+            {
+                "name": "Road Roller",
+                "key": "X",
+                "type": "aoe",
+                "effect": "Massive damage slam"
+            },
+            {
+                "name": "Time Stop",
+                "key": "C",
+                "type": "special",
+                "effect": "Freezes all enemies 5s"
+            },
+            {
+                "name": "Lightning Barrage",
+                "key": "V",
+                "type": "melee",
+                "effect": "Electrified follow-up"
+            }
+        ],
+        "awakening": {
+            "required": 200
+        },
+        "requiem": true,
+        "recommendedStyles": [
+            "boxing",
+            "kendo"
+        ],
+        "recommendedSubs": [
+            "hamon",
+            "vampire"
+        ],
+        "counters": [
+            "king-crimson",
+            "made-in-heaven"
+        ],
+        "counteredBy": [
+            "star-platinum"
+        ],
+        "strengths": [
+            "Time Stop is game-breaking",
+            "Road Roller highest burst",
+            "Top-tier at everything"
+        ],
+        "weaknesses": [
+            "Extremely hard to obtain",
+            "Requiem Arrow required",
+            "High skill ceiling"
+        ],
+        "meta": "The undisputed #1 Stand. If you have it, you win. Period."
+    }
+]
