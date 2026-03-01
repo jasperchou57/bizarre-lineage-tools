@@ -10,7 +10,7 @@ export function Footer() {
                             Bizarre Lineage Tools
                         </span>
                         <p className="text-xs text-muted">
-                            Fan-made tools site. Not affiliated with Roblox Corporation or Bizarre Productions.
+                            Fan-made tools site. Not affiliated with Roblox or the game developers.
                         </p>
                         <p className="text-xs text-muted mt-1">
                             Data compiled from public Trello board and community resources.

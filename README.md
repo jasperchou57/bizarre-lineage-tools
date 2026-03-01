@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bizarre Lineage Tools
 
-## Getting Started
+The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Roblox). Fan-made, not affiliated with Roblox or the game developers.
 
-First, run the development server:
+## Live Pages
+
+| Page | Route | Purpose |
+|------|-------|---------|
+| Homepage | `/` | Search, trending stands, CTA hub |
+| Tier List | `/tier-list` | Filterable S+/S/A/B rankings (Overall / PvP / PvE) |
+| Build Planner | `/build-planner` | Stand + Style + Sub → 5-dimension score |
+| Vault | `/vault` | Save / export / import builds (localStorage) |
+| Compare | `/compare` | Side-by-side build diff with stat highlighting |
+| Stand Pages | `/stands/[slug]` | 17 individual SSG pages with SEO metadata |
+| Fighting Styles | `/fighting-styles/[slug]` | Style details (Boxing, Kendo, Vampire) |
+| Sub-Abilities | `/sub-abilities/[slug]` | Sub details (Hamon, Spin, Cyborg) |
+| Codes | `/codes` | Active game codes tracker |
+| Guides | `/guides/leveling`, `/guides/prestige` | Progression guides |
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router, TypeScript)
+- **Styling**: Tailwind CSS (dark theme, grid background)
+- **Data**: Static JSON (`src/data/`)
+- **Storage**: `localStorage` via custom `useLocalStorage<T>` hook
+- **SEO**: Route-level `generateMetadata`, `sitemap.ts`, `robots.ts`, misspelling redirects
+
+## Data Files
+
+All game data lives in `src/data/`:
+
+- `stands.json` — 17 Stands with scores, tier, moves, counters, FAQ
+- `fighting-styles.json` — 3 Fighting Styles
+- `sub-abilities.json` — 3 Sub-Abilities
+
+**To add a new Stand:** Add an entry to `stands.json` following the existing schema. The SSG pipeline (`generateStaticParams`) will auto-create the page.
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # → http://localhost:3000
+npm run build      # production build + static export
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Optimized for [Vercel](https://vercel.com):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npx vercel --prod
+```
 
-## Learn More
+Or push to `main` with Vercel GitHub integration for auto-deploy.
 
-To learn more about Next.js, take a look at the following resources:
+## SEO Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Misspelling redirects (`bizare` → `bizarre`, `bizzare` → `bizarre`)
+- Comprehensive `sitemap.xml` covering all 37 URLs
+- `robots.txt` with sitemap reference
+- Per-page `<title>` and `<meta description>` via route-level metadata
+- Structured H1/H2 hierarchy on all pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Fan-made project. Game data sourced from public Trello board and community resources.

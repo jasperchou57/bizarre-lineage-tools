@@ -54,17 +54,17 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Codes Banner — Highest Google Trends volume */}
+      {/* Codes Banner — toned down until active codes are available */}
       <div className="w-full max-w-2xl mb-16">
-        <Link href="/codes" className="flex items-center justify-between p-5 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/30 rounded-xl hover:border-yellow-500/50 group transition-all">
+        <Link href="/codes" className="flex items-center justify-between p-5 bg-gradient-to-br from-surface to-[#1a1a1a] border border-border rounded-xl hover:border-yellow-500/40 group transition-all">
           <div className="flex items-center gap-3">
-            <Gift className="h-6 w-6 text-yellow-400" />
+            <Gift className="h-5 w-5 text-yellow-400/70" />
             <div className="flex flex-col">
-              <span className="text-lg font-bold text-white group-hover:text-yellow-400 transition-colors">Bizarre Lineage Codes</span>
+              <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">Bizarre Lineage Codes</span>
               <span className="text-sm text-muted">Check for free Arrows, Rokakakas &amp; Cash</span>
             </div>
           </div>
-          <ArrowRight className="h-5 w-5 text-yellow-400 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+          <ArrowRight className="h-5 w-5 text-muted group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />
         </Link>
       </div>
 
