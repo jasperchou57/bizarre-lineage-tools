@@ -15,7 +15,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     if (!sub) return { title: 'Sub-Ability Not Found' };
 
     return {
-        title: `${sub.name} Sub-Ability Guide | Bizarre Lineage Tools`,
+        title: `${sub.name} Sub-Ability Guide | Bizarre Lineage Wiki`,
         description: `Complete guide for the ${sub.name} Sub-Ability. Analyze its passive bonuses, PvP/PvE scores, and build synergies.`,
     };
 }

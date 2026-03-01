@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "Bizarre Lineage Tools - Best Builds, Tier List & Guides",
-  description: "The ultimate optimization hub for Bizarre Lineage. Find the best Stand builds, PvP tier lists, and progression guides. (Support for bizare lineage / bizzare lineage queries).",
+  title: "Bizarre Lineage Wiki - Tier List, Codes & Best Builds (2026)",
+  description: "The ultimate Bizarre Lineage wiki & tools hub. Tier list, active codes, Stand builds, PvP guides. Updated for the latest meta. (Also: bizare lineage, bizzare lineage).",
 };
 
 export default function RootLayout({

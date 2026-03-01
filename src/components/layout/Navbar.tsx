@@ -6,7 +6,7 @@ export function Navbar() {
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2">
                     <span className="text-xl font-heading font-bold text-white tracking-tight">
-                        Bizarre <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Lineage</span> Tools
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Wiki
                     </span>
                 </Link>
                 <div className="hidden md:flex items-center gap-6">

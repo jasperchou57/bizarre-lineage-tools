@@ -7,7 +7,7 @@ export function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex flex-col gap-1 text-center md:text-left">
                         <span className="text-lg font-heading font-bold text-white tracking-tight">
-                            Bizarre Lineage Tools
+                            Bizarre Lineage Wiki
                         </span>
                         <p className="text-xs text-muted">
                             Fan-made tools site. Not affiliated with Roblox or the game developers.

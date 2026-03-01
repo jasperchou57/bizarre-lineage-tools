@@ -1,4 +1,4 @@
-# Bizarre Lineage Tools
+# Bizarre Lineage Wiki
 
 The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Roblox). Fan-made, not affiliated with Roblox or the game developers.
 

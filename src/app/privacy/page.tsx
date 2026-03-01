@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | Bizarre Lineage Tools",
-    description: "Privacy policy for Bizarre Lineage Tools.",
+    title: "Privacy Policy | Bizarre Lineage Wiki",
+    description: "Privacy policy for Bizarre Lineage Wiki.",
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
             </p>
 
             <p className="text-muted leading-relaxed mb-6">
-                Your privacy is important to us. This Privacy Policy explains how Bizarre Lineage Tools handles data when you use our website.
+                Your privacy is important to us. This Privacy Policy explains how Bizarre Lineage Wiki handles data when you use our website.
             </p>
 
             <h2 className="text-2xl font-bold text-white mt-10 mb-4">1. Local Storage (The Vault)</h2>

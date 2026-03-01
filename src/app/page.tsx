@@ -11,10 +11,10 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-center space-y-6 mb-12 w-full max-w-3xl">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-white text-balance">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Stand Tier List & Best Builds
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Tier List & Codes
         </h1>
         <p className="text-lg md:text-xl text-muted text-balance mx-auto">
-          Don&apos;t waste your Stand Arrow. Find the perfect Stand, Fighting Style, and Sub-Ability combo for PvP and PvE.
+          Find the best Stands, optimal build combos, and active codes for PvP and PvE. Don&apos;t waste your Stand Arrow.
         </p>
       </div>
 
