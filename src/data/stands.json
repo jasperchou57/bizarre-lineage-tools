@@ -27,28 +27,32 @@
             {
                 "name": "Sweep Kick",
                 "key": "R",
-                "type": "melee"
+                "type": "melee",
+                "effect": "Powerful sweep kick, knocks opponent back"
             },
             {
                 "name": "Revolver",
                 "key": "Z",
-                "type": "ranged"
+                "type": "ranged",
+                "effect": "Quick revolver shot"
             },
             {
                 "name": "Disc Throw",
                 "key": "X",
-                "type": "ranged"
+                "type": "ranged",
+                "effect": "Throws 3 flame-filled discs that burn on impact"
             },
             {
                 "name": "Acid Rupture",
                 "key": "C",
-                "type": "aoe"
+                "type": "aoe",
+                "effect": "Acidic liquid makes floor hazardous, sleeps opponent"
             },
             {
                 "name": "Disc Extraction",
                 "key": "V",
                 "type": "special",
-                "effect": "Disables enemy Stand"
+                "effect": "Steals opponent's Stand for ~6 seconds"
             }
         ],
         "awakening": {
@@ -101,21 +105,39 @@
         },
         "moves": [
             {
-                "name": "Speed Slash",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Double Accel",
-                "key": "Z",
-                "type": "buff",
-                "effect": "Increases speed"
+                "name": "Infinite Pursuit",
+                "key": "R",
+                "type": "melee",
+                "effect": "Dash punch into multi-hit teleport combo. Has follow-up."
             },
             {
-                "name": "Time Acceleration",
+                "name": "Heaven's Wrath",
+                "key": "Z",
+                "type": "melee",
+                "effect": "High-speed dash through opponent"
+            },
+            {
+                "name": "Knife Massacre",
+                "key": "X",
+                "type": "ranged",
+                "effect": "Summons knives from above. Press X again to impale and spin combo."
+            },
+            {
+                "name": "Light Speed",
+                "key": "C",
+                "type": "melee",
+                "effect": "High-speed dash toward opponent"
+            },
+            {
+                "name": "Acceleration",
                 "key": "V",
-                "type": "special",
-                "effect": "Massive global speedup"
+                "type": "buff",
+                "effect": "Gradually accelerates time, increasing speed continuously"
             }
         ],
         "awakening": {
@@ -165,25 +187,39 @@
         },
         "moves": [
             {
-                "name": "Ora Barrage",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
                 "name": "Star Finger",
                 "key": "R",
-                "type": "ranged"
+                "type": "melee",
+                "effect": "Circular finger slice, briefly stuns"
             },
             {
                 "name": "Inhale",
                 "key": "Z",
-                "type": "grab"
+                "type": "grab",
+                "effect": "Pulls opponent in with suction and slams them"
+            },
+            {
+                "name": "Skull Crusher",
+                "key": "X",
+                "type": "grab",
+                "effect": "Grab, spin, throw into air, then uppercut"
             },
             {
                 "name": "Time Stop",
-                "key": "V",
+                "key": "C",
                 "type": "special",
-                "effect": "Stops time for 3s"
+                "effect": "Stops time for ~5 seconds"
+            },
+            {
+                "name": "Harpoon",
+                "key": "V",
+                "type": "ranged",
+                "effect": "Throws fishing harpoon, applies bleed for ~3 seconds"
             }
         ],
         "awakening": {
@@ -234,25 +270,39 @@
         },
         "moves": [
             {
-                "name": "Muda Barrage",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Knife Throw",
+                "name": "Hard Fight",
                 "key": "R",
-                "type": "ranged"
+                "type": "melee",
+                "effect": "Powerful punch that knocks opponent back"
             },
             {
-                "name": "Road Roller",
-                "key": "C",
-                "type": "aoe"
-            },
-            {
-                "name": "Time Stop",
-                "key": "V",
+                "name": "Encirclement",
+                "key": "Z",
                 "type": "special",
-                "effect": "Stops time for 5s"
+                "effect": "Teleport to opponent and strike with summoned knives"
+            },
+            {
+                "name": "Knives",
+                "key": "X",
+                "type": "ranged",
+                "effect": "Summons and throws knives with full power"
+            },
+            {
+                "name": "Timestop",
+                "key": "C",
+                "type": "special",
+                "effect": "Stops time for ~6 seconds"
+            },
+            {
+                "name": "Kick Volley",
+                "key": "V",
+                "type": "melee",
+                "effect": "Uppercut into rapid kicks, knocks opponent away"
             }
         ],
         "awakening": {
@@ -303,24 +353,39 @@
         },
         "moves": [
             {
-                "name": "Main Barrage",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Plant Bomb",
+                "name": "Primary Bomb",
                 "key": "R",
-                "type": "special"
+                "type": "special",
+                "effect": "Grab opponent and plant bomb, then detonate. Press R twice."
             },
             {
-                "name": "Coin Bomb",
+                "name": "Sheer Heart Attack",
                 "key": "Z",
-                "type": "ranged"
+                "type": "special",
+                "effect": "Deploy automatic tracking drone that explodes on contact"
             },
             {
-                "name": "Detonate",
+                "name": "Stray Cat",
                 "key": "X",
-                "type": "aoe"
+                "type": "ranged",
+                "effect": "Shoots invisible tracking bubble that explodes on impact"
+            },
+            {
+                "name": "Bomb Bounce",
+                "key": "C",
+                "type": "special",
+                "effect": "Plant bomb on opponent, repeatedly detonates, stuns"
+            },
+            {
+                "name": "Learn To Be Tough",
+                "key": "V",
+                "type": "grab",
+                "effect": "Grab and repeatedly slam opponent's head into ground"
             }
         ],
         "awakening": {
@@ -370,24 +435,39 @@
         },
         "moves": [
             {
-                "name": "Dora Barrage",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Bearing Shot",
+                "name": "Heavy Punch",
                 "key": "R",
-                "type": "ranged"
+                "type": "melee",
+                "effect": "Powerful heavy punch"
             },
             {
-                "name": "Rock Trap",
+                "name": "Bearing Shot",
                 "key": "Z",
-                "type": "cc"
+                "type": "ranged",
+                "effect": "Shoots 2 lethal silver ball bearings"
             },
             {
-                "name": "Restore",
+                "name": "Heal Mode",
+                "key": "X",
+                "type": "heal",
+                "effect": "Activates restoration mode, heals anything hit"
+            },
+            {
+                "name": "Wall Smash",
+                "key": "C",
+                "type": "melee",
+                "effect": "Lifts ground chunk to slam opponent. Heal mode variant creates a wall."
+            },
+            {
+                "name": "Pulverizer",
                 "key": "V",
-                "type": "heal"
+                "type": "melee",
+                "effect": "Ground slam, restores rocks into opponent to immobilize them"
             }
         ],
         "awakening": {
@@ -437,26 +517,39 @@
         },
         "moves": [
             {
-                "name": "Heavy Punch",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Epitaph",
+                "name": "Chop",
                 "key": "R",
-                "type": "counter"
-            },
-            {
-                "name": "Time Erase",
-                "key": "Z",
-                "type": "special",
-                "effect": "Invisibility and invulnerability"
+                "type": "melee",
+                "effect": "Powerful downward chop"
             },
             {
                 "name": "Impale",
+                "key": "Z",
+                "type": "melee",
+                "effect": "Diagonal slash, time erase behind opponent, impale and slam. Press Z twice."
+            },
+            {
+                "name": "Time Erase",
+                "key": "X",
+                "type": "special",
+                "effect": "Become intangible, reposition freely, attack from unexpected angle"
+            },
+            {
+                "name": "Epitaph",
+                "key": "C",
+                "type": "counter",
+                "effect": "See 10s into future, counter from behind with strong punch"
+            },
+            {
+                "name": "Eye Gouge",
                 "key": "V",
                 "type": "melee",
-                "effect": "High damage execution"
+                "effect": "Blinds opponent for ~4 seconds"
             }
         ],
         "awakening": {
@@ -507,26 +600,39 @@
         },
         "moves": [
             {
-                "name": "Gravity Barrage",
+                "name": "Barrage",
                 "key": "E",
                 "type": "melee"
             },
             {
-                "name": "Surface Inversion",
+                "name": "Graviton Reversal",
                 "key": "R",
                 "type": "melee",
-                "effect": "Applies bleed"
+                "effect": "Punch that knocks away, gravity pulls back for second slam"
             },
             {
-                "name": "Gravity Shift",
+                "name": "Rock Barrage",
                 "key": "Z",
-                "type": "aoe",
-                "effect": "Throws enemies into air"
+                "type": "ranged",
+                "effect": "Lifts ground pieces and launches at opponent, stuns"
             },
             {
-                "name": "Uppercut",
+                "name": "Gravity Crusher",
                 "key": "X",
-                "type": "melee"
+                "type": "special",
+                "effect": "Applies heavy gravity to opponent, stuns"
+            },
+            {
+                "name": "Gravity Barrier",
+                "key": "C",
+                "type": "aoe",
+                "effect": "Ground slam, gravity wave lifts and slams opponents"
+            },
+            {
+                "name": "Piercing Blows",
+                "key": "V",
+                "type": "melee",
+                "effect": "Two gravity-enhanced hits, pushes opponent back"
             }
         ],
         "awakening": {
@@ -546,7 +652,7 @@
             "made-in-heaven"
         ],
         "strengths": [
-            "Auto-combo potential with Gravity Shift",
+            "Auto-combo potential with Gravity Barrier",
             "High bleed damage"
         ],
         "weaknesses": [
@@ -581,24 +687,34 @@
                 "type": "melee"
             },
             {
-                "name": "Lightning Strike",
+                "name": "Howling Blitz",
                 "key": "R",
-                "type": "ranged"
+                "type": "ranged",
+                "effect": "Lightning blast that pushes opponent back"
             },
             {
-                "name": "Cloud Suit",
+                "name": "Charged Vault",
                 "key": "Z",
-                "type": "buff"
+                "type": "grab",
+                "effect": "Charge with weather power, grab opponent and slam with lightning"
             },
             {
-                "name": "Heavy Rain",
+                "name": "Frog Downpour",
                 "key": "X",
-                "type": "aoe"
+                "type": "aoe",
+                "effect": "Summons poisonous frogs from sky, damages nearby enemies"
             },
             {
-                "name": "Frog Rain",
+                "name": "Heavy Weather",
                 "key": "C",
-                "type": "aoe"
+                "type": "aoe",
+                "effect": "Rainbow that turns enemies into snails, stuns for ~3s. Can be held."
+            },
+            {
+                "name": "Ice Nova",
+                "key": "V",
+                "type": "aoe",
+                "effect": "Slam ground, ice spreads in 4 directions, stuns opponents"
             }
         ],
         "awakening": {
@@ -620,7 +736,7 @@
         "strengths": [
             "Screen-wide AoE",
             "Incredible farming",
-            "Cloud suit mobility"
+            "Heavy Weather CC"
         ],
         "weaknesses": [
             "Low single target damage",
@@ -654,25 +770,28 @@
                 "type": "melee"
             },
             {
-                "name": "Swift Slash",
+                "name": "Rend",
                 "key": "R",
-                "type": "melee"
+                "type": "melee",
+                "effect": "Spinning slash, hits everyone around"
             },
             {
-                "name": "Pluck",
+                "name": "Dice Out",
                 "key": "Z",
-                "type": "melee"
+                "type": "melee",
+                "effect": "Dash slice into diagonal and slamming slashes, stuns"
             },
             {
-                "name": "Possession Strike",
+                "name": "Cursed Severance",
                 "key": "X",
                 "type": "melee",
-                "effect": "Bypasses block"
+                "effect": "Extra-powered slash, stuns opponent"
             },
             {
-                "name": "Blade Fury",
+                "name": "Flash Strike",
                 "key": "C",
-                "type": "melee"
+                "type": "melee",
+                "effect": "High-speed slashes with multiple invisible follow-up strikes"
             }
         ],
         "awakening": {
@@ -693,8 +812,8 @@
         ],
         "strengths": [
             "Highest raw melee DPS",
-            "Block bypass on X",
-            "Fast combo chains"
+            "Fast combo chains",
+            "Custom M1 attacks"
         ],
         "weaknesses": [
             "Zero ranged options",
@@ -729,27 +848,34 @@
                 "type": "melee"
             },
             {
-                "name": "Life Punch",
+                "name": "Soul Strike",
                 "key": "R",
                 "type": "melee",
-                "effect": "Heals self on hit"
+                "effect": "Charged punch that knocks soul out of body for ~2s"
             },
             {
-                "name": "Tree Trap",
+                "name": "Restoration",
                 "key": "Z",
-                "type": "ranged",
-                "effect": "Creates a tree that stuns"
+                "type": "heal",
+                "effect": "Break floor piece to create healing item"
             },
             {
-                "name": "Life Beam",
+                "name": "Root Strike",
                 "key": "X",
-                "type": "ranged"
+                "type": "melee",
+                "effect": "Uppercut into pursuing roots that stab opponent"
             },
             {
-                "name": "Frog Reflect",
+                "name": "Overgrowth",
                 "key": "C",
+                "type": "heal",
+                "effect": "Summons a tree that heals the user"
+            },
+            {
+                "name": "Frog",
+                "key": "V",
                 "type": "special",
-                "effect": "Reflects projectiles"
+                "effect": "Summons frog that reflects damage to attacker for ~7-8s"
             }
         ],
         "awakening": {
@@ -805,26 +931,33 @@
                 "type": "melee"
             },
             {
-                "name": "Red Bind",
+                "name": "Flame Punch",
                 "key": "R",
-                "type": "ranged",
-                "effect": "Stuns target"
+                "type": "melee"
             },
             {
-                "name": "Cross Fire Hurricane",
+                "name": "Flamethrower",
                 "key": "Z",
-                "type": "ranged"
+                "type": "ranged",
+                "effect": "Flame breath that burns enemies for ~2 seconds"
             },
             {
-                "name": "Flame Pillar",
+                "name": "Life Sensor",
                 "key": "X",
-                "type": "aoe"
+                "type": "ranged",
+                "effect": "Flame compass that reveals nearby entities and shoots flame balls"
             },
             {
-                "name": "Eruption",
+                "name": "Crossfire Hurricane",
                 "key": "C",
                 "type": "aoe",
-                "effect": "Large AoE burn"
+                "effect": "Shoots fire cross that creates AoE flame zone on impact"
+            },
+            {
+                "name": "Ignition Burst",
+                "key": "V",
+                "type": "aoe",
+                "effect": "Slam floor, 4 flame pillars erupt and drag opponent through them"
             }
         ],
         "awakening": {
@@ -881,28 +1014,34 @@
                 "type": "melee"
             },
             {
-                "name": "Capsule Throw",
+                "name": "Bulb Punch",
                 "key": "R",
-                "type": "ranged",
-                "effect": "Poison AoE on impact"
-            },
-            {
-                "name": "Poison Cloud",
-                "key": "Z",
-                "type": "aoe",
-                "effect": "Creates DoT zone"
-            },
-            {
-                "name": "Virus Punch",
-                "key": "X",
                 "type": "melee",
-                "effect": "Applies poison"
+                "effect": "Break poison bulb on fists, auto-tracks nearby opponent"
             },
             {
-                "name": "Berserk",
+                "name": "Fury Strike",
+                "key": "Z",
+                "type": "melee",
+                "effect": "Gut punch into bulb punch, poisons briefly"
+            },
+            {
+                "name": "Infection Frenzy",
+                "key": "X",
+                "type": "grab",
+                "effect": "Grab, slam into ground, pummel with poison punches, kick away"
+            },
+            {
+                "name": "Infectious Bulb",
                 "key": "C",
-                "type": "special",
-                "effect": "Damage boost, drains own HP"
+                "type": "ranged",
+                "effect": "Shoots 3 poison bulbs that spread on impact"
+            },
+            {
+                "name": "Bulb Smash",
+                "key": "V",
+                "type": "aoe",
+                "effect": "Smash ground, poisons surrounding area"
             }
         ],
         "awakening": {
@@ -916,7 +1055,7 @@
             "vampire"
         ],
         "counters": [
-            "gold-experience"
+            "golden-experience"
         ],
         "counteredBy": [
             "made-in-heaven"
@@ -927,7 +1066,7 @@
             "Terrifying in 1v1"
         ],
         "weaknesses": [
-            "Self-damage on Berserk",
+            "Idle Rage can hurt user",
             "Extremely slow",
             "Poison can hit allies"
         ],
@@ -959,27 +1098,28 @@
                 "type": "melee"
             },
             {
-                "name": "Erasure Swipe",
+                "name": "Hard Left",
                 "key": "R",
                 "type": "melee",
-                "effect": "Ignores defense"
+                "effect": "Powerful left punch, knocks opponent back"
             },
             {
-                "name": "Space Pull",
+                "name": "Erasure Swipe",
                 "key": "Z",
-                "type": "ranged",
-                "effect": "Pulls enemy to you"
-            },
-            {
-                "name": "Ground Scrape",
-                "key": "X",
-                "type": "melee"
-            },
-            {
-                "name": "Erasure Chop",
-                "key": "C",
                 "type": "melee",
-                "effect": "High damage finisher"
+                "effect": "Charged swipe that stuns; fully charged can erase from existence"
+            },
+            {
+                "name": "Erasure Pull",
+                "key": "X",
+                "type": "special",
+                "effect": "Erases space between user and opponent, forces them toward you"
+            },
+            {
+                "name": "Erasure Launch",
+                "key": "C",
+                "type": "special",
+                "effect": "Erases space in air, launches user upward like a slingshot"
             }
         ],
         "awakening": {
@@ -1000,7 +1140,7 @@
         ],
         "strengths": [
             "Defense-ignoring attacks",
-            "Space Pull gap-closer",
+            "Erasure Pull gap-closer",
             "Easy to obtain"
         ],
         "weaknesses": [
@@ -1008,7 +1148,7 @@
             "No sustain",
             "Predictable combos"
         ],
-        "meta": "Budget PvP beast. Space Pull into Erasure combo is devastating."
+        "meta": "Budget PvP beast. Erasure Pull into combo is devastating."
     },
     {
         "id": "stone-free",
@@ -1036,26 +1176,34 @@
                 "type": "melee"
             },
             {
-                "name": "String Punch",
+                "name": "Sting Punch",
                 "key": "R",
-                "type": "melee"
+                "type": "melee",
+                "effect": "String-wrapped powerful punch"
             },
             {
-                "name": "String Bind",
+                "name": "Dropkick",
                 "key": "Z",
-                "type": "ranged",
-                "effect": "Immobilizes enemy"
+                "type": "melee",
+                "effect": "Wrap opponent with strings, then dropkick"
             },
             {
-                "name": "String Ball",
+                "name": "String Trap",
                 "key": "X",
-                "type": "ranged"
+                "type": "cc",
+                "effect": "Place string underground, traps enemies for ~2s"
             },
             {
-                "name": "Mobius Strip",
+                "name": "Spiralling Thread",
                 "key": "C",
-                "type": "special",
-                "effect": "Deflects attacks briefly"
+                "type": "grab",
+                "effect": "Grab with strings, spin in air, slam into ground"
+            },
+            {
+                "name": "String Bandage",
+                "key": "V",
+                "type": "heal",
+                "effect": "Sew wounds with strings to heal yourself"
             }
         ],
         "awakening": {
@@ -1076,7 +1224,7 @@
         ],
         "strengths": [
             "Versatile at all ranges",
-            "String Bind is excellent CC",
+            "String Trap is excellent CC",
             "Good mobility"
         ],
         "weaknesses": [
@@ -1111,32 +1259,34 @@
                 "type": "melee"
             },
             {
-                "name": "Heavy Punch",
+                "name": "Spin Kick",
                 "key": "R",
-                "type": "melee"
+                "type": "melee",
+                "effect": "Stand spins and kicks opponent"
             },
             {
-                "name": "Knife Volley",
+                "name": "Revolver Barrage",
                 "key": "Z",
-                "type": "ranged"
+                "type": "ranged",
+                "effect": "Shoots 4 revolver rounds simultaneously, stuns"
             },
             {
-                "name": "Road Roller",
+                "name": "Knives",
                 "key": "X",
-                "type": "aoe",
-                "effect": "Massive damage slam"
+                "type": "ranged",
+                "effect": "Throws lethal knives, stuns opponent"
             },
             {
                 "name": "Time Stop",
                 "key": "C",
                 "type": "special",
-                "effect": "Freezes all enemies 5s"
+                "effect": "Stops time for ~5 seconds"
             },
             {
-                "name": "Lightning Barrage",
+                "name": "Gunpowder Smoke Bomb",
                 "key": "V",
-                "type": "melee",
-                "effect": "Electrified follow-up"
+                "type": "special",
+                "effect": "Throws smoke bomb, user and stand become invisible in smoke"
             }
         ],
         "awakening": {
@@ -1160,8 +1310,8 @@
         ],
         "strengths": [
             "Time Stop is game-breaking",
-            "Road Roller highest burst",
-            "Strong DPS and mobility"
+            "Strong ranged and melee mix",
+            "Smoke bomb for escape and stealth"
         ],
         "weaknesses": [
             "Extremely hard to obtain",
@@ -1196,21 +1346,28 @@
                 "type": "melee"
             },
             {
-                "name": "Heavy Punch",
+                "name": "Thunder God",
                 "key": "R",
-                "type": "melee"
+                "type": "aoe",
+                "effect": "Thunder slam into ground, creates electric AoE zone"
             },
             {
                 "name": "Flash",
                 "key": "Z",
                 "type": "special",
-                "effect": "Short-range teleport"
+                "effect": "Teleport forward with damaging lightning trail"
             },
             {
-                "name": "Electric Shock",
+                "name": "Pinky Slash",
                 "key": "X",
-                "type": "ranged",
-                "effect": "Stuns briefly"
+                "type": "melee",
+                "effect": "Double electric pinky slash, stuns opponent"
+            },
+            {
+                "name": "Electrical Surge",
+                "key": "C",
+                "type": "melee",
+                "effect": "Full-power electric combo barrage, stuns opponent"
             }
         ],
         "awakening": {
