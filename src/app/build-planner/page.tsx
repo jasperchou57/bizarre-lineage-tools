@@ -44,7 +44,7 @@ function BuildPlannerClient() {
         let pve = standObj.scores.aoe * 0.6 + standObj.scores.damage * 0.4;
         let survival = standObj.scores.sustain;
         const mobility = standObj.scores.mobility;
-        const cost = standObj.rarity === 'Legendary' ? 2 : standObj.rarity === 'Epic' ? 5 : 8; // Higher is easier
+        const cost = standObj.rarity === 'Mythical' ? 1 : standObj.rarity === 'Legendary' ? 3 : standObj.rarity === 'Rare' ? 5 : standObj.rarity === 'Uncommon' ? 7 : 9; // Higher = easier to obtain
 
         // Apply modifiers from Style
         if (styleObj) {
