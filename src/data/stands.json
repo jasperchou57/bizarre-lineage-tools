@@ -88,7 +88,7 @@
         "id": "made-in-heaven",
         "name": "Made in Heaven",
         "part": 6,
-        "rarity": "Legendary",
+        "rarity": "Special",
         "obtainMethod": "Evolve C-Moon",
         "tier": {
             "pvp": "S+",
@@ -123,7 +123,7 @@
             },
             {
                 "name": "Knife Massacre",
-                "key": "X",
+                "key": "X+X",
                 "type": "ranged",
                 "effect": "Summons knives from above. Press X again to impale and spin combo."
             },
@@ -319,9 +319,7 @@
         "counters": [
             "star-platinum"
         ],
-        "counteredBy": [
-            "gold-experience-requiem"
-        ],
+        "counteredBy": [],
         "strengths": [
             "Highest base damage",
             "Longest Time Stop"
@@ -359,7 +357,7 @@
             },
             {
                 "name": "Primary Bomb",
-                "key": "R",
+                "key": "R+R",
                 "type": "special",
                 "effect": "Grab opponent and plant bomb, then detonate. Press R twice."
             },
@@ -529,7 +527,7 @@
             },
             {
                 "name": "Impale",
-                "key": "Z",
+                "key": "Z+Z",
                 "type": "melee",
                 "effect": "Diagonal slash, time erase behind opponent, impale and slam. Press Z twice."
             },
@@ -583,7 +581,7 @@
         "id": "c-moon",
         "name": "C-Moon",
         "part": 6,
-        "rarity": "Legendary",
+        "rarity": "Special",
         "obtainMethod": "Evolve Whitesnake",
         "tier": {
             "pvp": "S",
@@ -643,7 +641,7 @@
             "boxing"
         ],
         "recommendedSubs": [
-            "spin"
+            "hamon"
         ],
         "counters": [
             "star-platinum"
@@ -725,7 +723,7 @@
             "kendo"
         ],
         "recommendedSubs": [
-            "spin"
+            "hamon"
         ],
         "counters": [
             "killer-queen"
@@ -881,7 +879,7 @@
         "awakening": {
             "required": 100
         },
-        "requiem": true,
+        "requiem": false,
         "recommendedStyles": [
             "boxing"
         ],
@@ -897,13 +895,13 @@
         "strengths": [
             "Self-healing sustain",
             "Versatile kit",
-            "Requiem evolution available"
+            "Frog reflects damage back to attackers"
         ],
         "weaknesses": [
             "Below-average raw damage",
             "Slow startup on Z"
         ],
-        "meta": "A balanced utility Stand. GER upgrade makes it S-Tier in late game."
+        "meta": "A balanced utility Stand with strong healing and reflect mechanics."
     },
     {
         "id": "magicians-red",
@@ -1214,7 +1212,7 @@
             "boxing"
         ],
         "recommendedSubs": [
-            "spin"
+            "hamon"
         ],
         "counters": [
             "the-hand"

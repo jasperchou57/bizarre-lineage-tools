@@ -1,52 +1,60 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, BarChart3, Heart, Zap, Shield, Wind, Sparkles } from "lucide-react";
+import { ChevronRight, BarChart3, Heart, Zap, Shield, Sword, Flame, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Stats Guide — What Each Stat Does & Best Builds | Bizarre Lineage",
-    description: "Understand every stat in Bizarre Lineage: Vitality, Stand Power, Durability, Speed, and Special. Includes the best stat allocations for PvP, PvE, and beginners.",
+    description: "Understand every stat in Bizarre Lineage: Strength, Health, Power, Weapon, Destructive Power, and Destructive Energy. Includes the best stat allocations for PvP, PvE, and beginners.",
 };
 
 const stats = [
     {
-        name: "Vitality",
-        icon: <Heart className="h-6 w-6 text-red-400" />,
+        name: "Strength",
+        icon: <Zap className="h-6 w-6 text-red-400" />,
         color: "border-red-500/30 bg-red-500/5",
-        description: "Increases your maximum HP and base HP regeneration rate. This is the most universally useful stat because surviving one extra hit often decides an entire fight.",
-        tip: "Vitality scales linearly — every point gives the same flat HP increase. There is no soft cap.",
+        description: "Increases your physical-based attacks — specifically any red damage that is NOT from your Stand. This covers M1 punches, kicks, and other non-Stand melee damage.",
+        tip: "Strength is important for Boxing and Karate users who rely on fighting style M1 chains to extend combos.",
+        priority: "High for Melee / M1 builds",
+    },
+    {
+        name: "Health",
+        icon: <Heart className="h-6 w-6 text-green-400" />,
+        color: "border-green-500/30 bg-green-500/5",
+        description: "Increases your character's maximum health (Base HP + bonus HP). The most universally useful stat because surviving one extra hit often decides an entire fight.",
+        tip: "Health is valuable for every playstyle. Even glass cannon builds need some Health investment to avoid getting one-shot.",
         priority: "High for all playstyles",
     },
     {
-        name: "Stand Power",
-        icon: <Zap className="h-6 w-6 text-accent-blue" />,
+        name: "Power",
+        icon: <Sparkles className="h-6 w-6 text-accent-blue" />,
         color: "border-accent-blue/30 bg-accent-blue/5",
-        description: "Directly increases the damage dealt by all Stand abilities (E, R, Z, X, C, V). This is your primary offensive stat and the single biggest factor in kill speed for PvE grinding.",
-        tip: "Stand Power has diminishing returns past roughly 70% allocation. Avoid dumping 100% here.",
-        priority: "High for PvE, Medium-High for PvP",
+        description: "Increases your Sub-Ability damage and maximum Power meter. This stat directly scales Hamon, Vampire, and Cyborg ability damage.",
+        tip: "If you invested in a Sub-Ability, you need Power to make it hit hard. Without Power, your Sub moves will feel like tickles.",
+        priority: "High for Sub-Ability users",
     },
     {
-        name: "Durability",
-        icon: <Shield className="h-6 w-6 text-green-400" />,
-        color: "border-green-500/30 bg-green-500/5",
-        description: "Reduces incoming damage from all sources — both NPC enemies and other players. Works as a flat damage reduction percentage. Stacks multiplicatively with Vampire sustain and Boxing defense passives.",
-        tip: "Extremely valuable at higher prestige levels where enemy damage spikes. Underrated by new players.",
-        priority: "High for PvP Tanks, Medium for PvE",
-    },
-    {
-        name: "Speed",
-        icon: <Wind className="h-6 w-6 text-purple-400" />,
+        name: "Weapon",
+        icon: <Sword className="h-6 w-6 text-purple-400" />,
         color: "border-purple-500/30 bg-purple-500/5",
-        description: "Increases movement speed and dash distance. Also slightly reduces the startup frames on some Stand abilities. Essential for hit-and-run playstyles and chasing down opponents in open world PvP.",
-        tip: "Speed is the most Stand-dependent stat. Made in Heaven and King Crimson benefit massively; slow Stands like Killer Queen barely notice the difference.",
-        priority: "High for Mobility Stands, Low otherwise",
+        description: "Increases your slash damage and weapon damage. This applies to equippable weapons like the Stop Sign, Shadow Axe, Odachi, Katana, and also to Anubis (a sword-based Stand).",
+        tip: "Only invest in Weapon if you actively use a weapon or Anubis. For most Stand-only builds, these points are better spent elsewhere.",
+        priority: "High for Weapon / Anubis users, Skip otherwise",
     },
     {
-        name: "Special",
-        icon: <Sparkles className="h-6 w-6 text-yellow-400" />,
+        name: "Destructive Power",
+        icon: <Flame className="h-6 w-6 text-orange-400" />,
+        color: "border-orange-500/30 bg-orange-500/5",
+        description: "Increases your Stand's physical-based attacks — specifically the red damage hit markers from Stand moves. This is your primary offensive stat for most Stands and the biggest factor in kill speed.",
+        tip: "Destructive Power is the most important offensive stat for the majority of Stands. Prioritize this unless your Stand relies on special energy moves.",
+        priority: "High for most Stands",
+    },
+    {
+        name: "Destructive Energy",
+        icon: <Shield className="h-6 w-6 text-yellow-400" />,
         color: "border-yellow-500/30 bg-yellow-500/5",
-        description: "Increases the duration and effectiveness of special abilities (V moves). This includes Time Stop duration, Disc Extraction hold time, and buff durations like Cloud Suit. Also increases Sub-Ability damage.",
-        tip: "Special is a \"win-more\" stat — it makes your best abilities better but does nothing for your weak points. Only invest heavily if your Stand has a powerful V move.",
-        priority: "High for The World / Whitesnake, Low for most others",
+        description: "Increases your Stand's special ability damage — specifically the blue damage hit markers from Stand moves. Stands that deal blue damage (energy-based attacks) scale with this stat instead of Destructive Power.",
+        tip: "Check your Stand's hit marker colors: red damage scales with Destructive Power, blue damage scales with Destructive Energy. Some Stands use both.",
+        priority: "High for Energy-based Stands",
     },
 ];
 
@@ -55,40 +63,40 @@ const presets = [
         name: "Balanced PvP",
         tag: "Most Popular",
         tagColor: "bg-accent-blue/20 text-accent-blue",
-        allocation: { vitality: "30%", standPower: "25%", durability: "20%", speed: "15%", special: "10%" },
-        description: "The safest allocation for ranked PvP. Enough HP to survive burst combos, enough damage to threaten kills, and enough speed to not get kited.",
+        allocation: { strength: "10%", health: "25%", power: "10%", weapon: "0%", destrPower: "35%", destrEnergy: "20%" },
+        description: "The safest allocation for ranked PvP. Enough HP to survive burst combos, high Destructive Power to threaten kills, and some Destructive Energy coverage.",
         bestFor: ["Star Platinum", "Stone Free", "C-Moon"],
     },
     {
         name: "Glass Cannon",
         tag: "High Risk",
         tagColor: "bg-red-500/20 text-red-400",
-        allocation: { vitality: "10%", standPower: "45%", durability: "5%", speed: "25%", special: "15%" },
-        description: "Maximum kill speed. You will delete enemies in PvE and two-shot most players in PvP — but you die to a stiff breeze. Only for confident players who never get hit.",
+        allocation: { strength: "5%", health: "10%", power: "5%", weapon: "0%", destrPower: "50%", destrEnergy: "30%" },
+        description: "Maximum kill speed. Dump almost everything into Stand damage stats. You will delete enemies but die to a stiff breeze. Only for confident players.",
         bestFor: ["The World", "King Crimson", "Anubis"],
     },
     {
         name: "PvE Farmer",
         tag: "Best for Grinding",
         tagColor: "bg-green-500/20 text-green-400",
-        allocation: { vitality: "20%", standPower: "40%", durability: "15%", speed: "15%", special: "10%" },
-        description: "Optimized for quest grinding and boss farming. High Stand Power clears mobs fast, moderate Vitality keeps you alive between heals, and Speed reduces travel time between spawns.",
+        allocation: { strength: "5%", health: "20%", power: "10%", weapon: "0%", destrPower: "40%", destrEnergy: "25%" },
+        description: "Optimized for quest grinding and boss farming. High Destructive Power clears mobs fast, moderate Health keeps you alive, and some Power investment for Sub-Ability damage.",
         bestFor: ["Weather Report", "Killer Queen", "Magician's Red"],
     },
     {
-        name: "Unkillable Tank",
+        name: "Sub-Ability Focus",
         tag: "Sustain",
         tagColor: "bg-green-500/20 text-green-400",
-        allocation: { vitality: "35%", standPower: "10%", durability: "35%", speed: "10%", special: "10%" },
-        description: "You will never die. Pair this with Vampire sub-ability and Crazy Diamond or Golden Experience for infinite sustain. Your damage is low, but you win by outlasting everyone.",
+        allocation: { strength: "10%", health: "25%", power: "30%", weapon: "0%", destrPower: "20%", destrEnergy: "15%" },
+        description: "Heavy investment in Power for maximum Sub-Ability damage and meter. Pair with Vampire or Hamon for powerful sub moves. Health keeps you alive in extended fights.",
         bestFor: ["Crazy Diamond", "Golden Experience", "Stone Free"],
     },
     {
         name: "Beginner Safe",
         tag: "Recommended",
         tagColor: "bg-accent-indigo/20 text-accent-indigo",
-        allocation: { vitality: "30%", standPower: "30%", durability: "20%", speed: "10%", special: "10%" },
-        description: "The most forgiving allocation for new players. Balanced enough to handle any content without feeling squishy or dealing no damage. Respec later once you understand your Stand.",
+        allocation: { strength: "10%", health: "25%", power: "10%", weapon: "0%", destrPower: "35%", destrEnergy: "20%" },
+        description: "A forgiving allocation for new players. Balanced enough to handle any content without feeling squishy or dealing no damage. Respec later once you understand your Stand.",
         bestFor: ["Star Platinum", "Magician's Red", "Golden Experience"],
     },
 ];
@@ -96,23 +104,27 @@ const presets = [
 const faqItems = [
     {
         question: "What is the best stat build in Bizarre Lineage?",
-        answer: "There is no single best build — it depends on your Stand, playstyle, and whether you focus on PvP or PvE. For most players, the Balanced PvP preset (30% Vitality, 25% Stand Power, 20% Durability, 15% Speed, 10% Special) is the safest starting point.",
+        answer: "There is no single best build — it depends on your Stand, playstyle, and whether you focus on PvP or PvE. For most players, a balanced allocation with high Health and Destructive Power is the safest starting point.",
     },
     {
-        question: "What does the Special stat do in Bizarre Lineage?",
-        answer: "Special increases the duration and power of your Stand's V ability (like Time Stop, Disc Extraction) and also boosts Sub-Ability damage. It's most valuable on Stands with strong special moves like The World or Whitesnake.",
+        question: "What is the difference between Destructive Power and Destructive Energy?",
+        answer: "Destructive Power increases your Stand's physical attacks (red damage hit markers). Destructive Energy increases your Stand's special ability damage (blue damage hit markers). Check your Stand's hit colors to know which stat to invest in.",
+    },
+    {
+        question: "What does the Power stat do in Bizarre Lineage?",
+        answer: "Power increases your Sub-Ability damage (Hamon, Vampire, Cyborg) and your maximum Power meter. It does NOT affect Stand damage — that is covered by Destructive Power and Destructive Energy.",
     },
     {
         question: "Can I reset my stats in Bizarre Lineage?",
-        answer: "Yes, you can respec your stats by visiting the NPC near the spawn area. It costs in-game money, with the cost increasing based on your prestige level. There's no limit to how many times you can respec.",
+        answer: "Yes, you can respec your stats using a Stat Point Essence, which can be purchased from the Prestige Shop or Rahaj's Shop. There is no limit to how many times you can respec.",
     },
     {
-        question: "Should beginners focus on Vitality or Stand Power?",
-        answer: "Beginners should split roughly 30/30 between Vitality and Stand Power. Vitality keeps you alive while learning, and Stand Power ensures you can clear quests at a reasonable speed. Avoid dumping everything into one stat.",
+        question: "Should I invest in the Weapon stat?",
+        answer: "Only if you actively use a weapon (Stop Sign, Shadow Axe, Odachi, Katana, etc.) or Anubis. For most Stand-only builds, Weapon points are wasted — put them into Destructive Power or Health instead.",
     },
     {
-        question: "Does Speed affect attack speed?",
-        answer: "Speed primarily affects movement speed and dash distance. It slightly reduces startup frames on some moves, but it does not increase barrage speed or attack animation speed. For raw DPS, invest in Stand Power instead.",
+        question: "Should beginners focus on Health or Destructive Power?",
+        answer: "Beginners should invest heavily in both Health and Destructive Power. Health keeps you alive while learning, and Destructive Power ensures you can clear quests at a reasonable speed. Avoid dumping everything into one stat.",
     },
 ];
 
@@ -176,13 +188,23 @@ export default function StatsGuidePage() {
                         </div>
 
                         {/* Stat bars */}
-                        <div className="grid grid-cols-5 gap-2 mb-4">
-                            {Object.entries(preset.allocation).map(([key, value]) => (
+                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
+                            {Object.entries(preset.allocation).map(([key, value]) => {
+                                const labels: Record<string, string> = {
+                                    strength: "STR",
+                                    health: "HP",
+                                    power: "PWR",
+                                    weapon: "WPN",
+                                    destrPower: "D.Power",
+                                    destrEnergy: "D.Energy",
+                                };
+                                return (
                                 <div key={key} className="text-center">
-                                    <div className="text-xs text-muted capitalize mb-1">{key === "standPower" ? "Stand Pwr" : key}</div>
+                                    <div className="text-xs text-muted mb-1">{labels[key] || key}</div>
                                     <div className="text-lg font-mono font-bold text-white">{value}</div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
 
                         <p className="text-muted text-sm leading-relaxed mb-3">{preset.description}</p>
@@ -205,23 +227,23 @@ export default function StatsGuidePage() {
                 <ul className="space-y-3 text-red-200 m-0 list-none">
                     <li className="flex items-start gap-2">
                         <span className="text-red-400 font-bold shrink-0">✕</span>
-                        <span><strong>Dumping 100% into Stand Power.</strong> You will one-shot mobs but die to everything. Even glass cannon builds need at least 10% Vitality.</span>
+                        <span><strong>Dumping 100% into Destructive Power.</strong> You will one-shot mobs but die to everything. Even glass cannon builds need at least 10% Health.</span>
                     </li>
                     <li className="flex items-start gap-2">
                         <span className="text-red-400 font-bold shrink-0">✕</span>
-                        <span><strong>Ignoring Speed on mobility Stands.</strong> Made in Heaven and King Crimson lose half their identity without Speed investment.</span>
+                        <span><strong>Ignoring Weapon on Anubis.</strong> Anubis is a sword Stand — its damage scales with the Weapon stat, not just Destructive Power. Skipping Weapon on Anubis severely limits your damage.</span>
                     </li>
                     <li className="flex items-start gap-2">
                         <span className="text-red-400 font-bold shrink-0">✕</span>
-                        <span><strong>Maxing Special on Stands without a strong V move.</strong> If your Stand&apos;s V ability is mediocre (like Anubis or Red Hot Chili Pepper), Special points are wasted.</span>
+                        <span><strong>Investing in Power without a Sub-Ability.</strong> Power only boosts Sub-Ability damage. If you have not unlocked Hamon, Vampire, or Cyborg yet, those points are completely wasted.</span>
                     </li>
                     <li className="flex items-start gap-2">
                         <span className="text-red-400 font-bold shrink-0">✕</span>
-                        <span><strong>Never respeccing.</strong> Your stat needs change drastically between leveling, PvE farming, and endgame PvP. Respec is cheap — use it.</span>
+                        <span><strong>Confusing Destructive Power and Destructive Energy.</strong> Check your Stand&apos;s hit marker colors: red = Destructive Power, blue = Destructive Energy. Investing in the wrong one wastes points.</span>
                     </li>
                     <li className="flex items-start gap-2">
                         <span className="text-red-400 font-bold shrink-0">✕</span>
-                        <span><strong>Spreading stats perfectly evenly (20/20/20/20/20).</strong> This sounds balanced but actually means you are mediocre at everything. Commit to a playstyle.</span>
+                        <span><strong>Never respeccing.</strong> Your stat needs change drastically between leveling, PvE farming, and endgame PvP. Use a Stat Point Essence to respec whenever your build shifts.</span>
                     </li>
                 </ul>
             </div>
