@@ -51,6 +51,9 @@ const popularLinks = [
   { label: "Hamon Sub-Ability", href: "/sub-abilities/hamon" },
   { label: "Leveling Guide (1-50)", href: "/guides/leveling" },
   { label: "Prestige Requirements", href: "/guides/prestige" },
+  { label: "Stats Guide", href: "/guides/stats" },
+  { label: "Stand Chances & Rarity", href: "/guides/stand-chances" },
+  { label: "Best Builds", href: "/guides/best-builds" },
   { label: "All Stand Tier Rankings", href: "/tier-list" },
 ];
 
