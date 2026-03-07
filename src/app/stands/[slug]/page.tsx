@@ -103,9 +103,9 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         <h2 className="text-2xl font-bold text-white mb-4">How to Get {stand.name} in Bizarre Lineage</h2>
                         <p className="text-muted leading-relaxed">
                             {stand.name} is obtained via <strong className="text-white">{stand.obtainMethod}</strong>.
-                            {stand.rarity === 'Legendary' || stand.rarity === 'S' ? (
-                                <> This is one of the rarer Stands in the game, so expect multiple attempts before pulling it. Make sure to stock up on Arrows before committing.</>
-                            ) : stand.rarity === 'Epic' ? (
+                            {stand.rarity === 'Mythical' || stand.rarity === 'Legendary' ? (
+                                <> This is one of the rarest Stands in the game, so expect multiple attempts before pulling it. Make sure to stock up on Arrows before committing.</>
+                            ) : stand.rarity === 'Rare' ? (
                                 <> It has a moderate drop rate from the Stand Arrow pool. Most players obtain it within a few tries.</>
                             ) : (
                                 <> It has a relatively high drop rate from the Stand Arrow, making it beginner-friendly and easy to acquire early on.</>
