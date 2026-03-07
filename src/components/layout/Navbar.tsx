@@ -15,7 +15,7 @@ export function Navbar() {
                     <Link href="/stands" className="text-sm font-medium text-muted hover:text-white transition-colors">Stands</Link>
                     <Link href="/fighting-styles" className="text-sm font-medium text-muted hover:text-white transition-colors">Styles</Link>
                     <Link href="/sub-abilities" className="text-sm font-medium text-muted hover:text-white transition-colors">Subs</Link>
-                    <Link href="/guides/best-builds" className="text-sm font-medium text-muted hover:text-white transition-colors">Guides</Link>
+<Link href="/guides" className="text-sm font-medium text-muted hover:text-white transition-colors">Guides</Link>
                     <Link href="/codes" className="text-sm font-medium text-muted hover:text-white transition-colors">Codes</Link>
                     <Link href="/vault" className="text-sm font-medium text-muted hover:text-white transition-colors">Vault</Link>
                 </div>

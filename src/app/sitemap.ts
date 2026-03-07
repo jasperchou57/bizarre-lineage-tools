@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${BASE_URL}/sub-abilities`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
         { url: `${BASE_URL}/guides/leveling`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
         { url: `${BASE_URL}/guides/prestige`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+        { url: `${BASE_URL}/guides`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
         { url: `${BASE_URL}/guides/stats`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
         { url: `${BASE_URL}/guides/stand-chances`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
         { url: `${BASE_URL}/guides/best-builds`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
