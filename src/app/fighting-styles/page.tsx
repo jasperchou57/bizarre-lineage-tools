@@ -5,7 +5,7 @@ import stylesData from "@/data/fighting-styles.json";
 
 export const metadata: Metadata = {
     title: "Fighting Styles Tier List & Guide | Bizarre Lineage",
-    description: "Browse all fighting styles in Bizarre Lineage. Find the best stats, combos, and stand synergies for Boxing, Kendo, Vampire, and more.",
+    description: "Browse all fighting styles in Bizarre Lineage. Find the best stats, combos, and stand synergies for Boxing, Kendo, Karate, and more.",
 };
 
 export default function FightingStylesDirectory() {

@@ -22,6 +22,11 @@ const nextConfig = {
                 destination: '/tier-list',
                 permanent: true,
             },
+            {
+                source: '/stands/gold-experience',
+                destination: '/stands/golden-experience',
+                permanent: true,
+            },
         ];
     },
 };

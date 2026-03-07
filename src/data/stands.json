@@ -3,12 +3,12 @@
         "id": "whitesnake",
         "name": "Whitesnake",
         "part": 6,
-        "rarity": "S",
+        "rarity": "Mythical",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "S",
-            "pve": "S",
-            "overall": "S"
+            "pvp": "S+",
+            "pve": "S+",
+            "overall": "S+"
         },
         "scores": {
             "damage": 8,
@@ -88,8 +88,8 @@
         "obtainMethod": "Evolve C-Moon",
         "tier": {
             "pvp": "S+",
-            "pve": "A",
-            "overall": "S"
+            "pve": "S",
+            "overall": "S+"
         },
         "scores": {
             "damage": 7,
@@ -148,7 +148,7 @@
         "id": "star-platinum",
         "name": "Star Platinum",
         "part": 3,
-        "rarity": "A",
+        "rarity": "Legendary",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "A",
@@ -217,7 +217,7 @@
         "id": "the-world",
         "name": "The World",
         "part": 3,
-        "rarity": "S",
+        "rarity": "Legendary",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "S",
@@ -260,7 +260,7 @@
         },
         "requiem": false,
         "recommendedStyles": [
-            "vampire",
+            "karate",
             "boxing"
         ],
         "recommendedSubs": [
@@ -286,12 +286,12 @@
         "id": "killer-queen",
         "name": "Killer Queen",
         "part": 4,
-        "rarity": "B",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "B",
-            "pve": "S",
-            "overall": "A"
+            "pve": "A",
+            "overall": "B"
         },
         "scores": {
             "damage": 8,
@@ -328,7 +328,7 @@
         },
         "requiem": false,
         "recommendedStyles": [
-            "vampire"
+            "karate"
         ],
         "recommendedSubs": [
             "cyborg"
@@ -353,12 +353,12 @@
         "id": "crazy-diamond",
         "name": "Crazy Diamond",
         "part": 4,
-        "rarity": "A",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "A",
+            "pvp": "B",
             "pve": "B",
-            "overall": "A"
+            "overall": "B"
         },
         "scores": {
             "damage": 7,
@@ -420,7 +420,7 @@
         "id": "king-crimson",
         "name": "King Crimson",
         "part": 5,
-        "rarity": "S",
+        "rarity": "Legendary",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "S",
@@ -487,81 +487,15 @@
         "meta": "Pure assassin. The king of 1v1s."
     },
     {
-        "id": "gold-experience",
-        "name": "Gold Experience",
-        "part": 5,
-        "rarity": "B",
-        "obtainMethod": "Stand Arrow",
-        "tier": {
-            "pvp": "C",
-            "pve": "A",
-            "overall": "B"
-        },
-        "scores": {
-            "damage": 5,
-            "combo": 7,
-            "cc": 6,
-            "aoe": 4,
-            "mobility": 5,
-            "sustain": 10
-        },
-        "moves": [
-            {
-                "name": "Muda Barrage",
-                "key": "E",
-                "type": "melee"
-            },
-            {
-                "name": "Tree Summon",
-                "key": "R",
-                "type": "utility"
-            },
-            {
-                "name": "Frog Counter",
-                "key": "Z",
-                "type": "counter"
-            },
-            {
-                "name": "Self Heal",
-                "key": "V",
-                "type": "heal"
-            }
-        ],
-        "awakening": {
-            "required": 80
-        },
-        "requiem": false,
-        "recommendedStyles": [
-            "kendo"
-        ],
-        "recommendedSubs": [
-            "hamon"
-        ],
-        "counters": [],
-        "counteredBy": [
-            "the-world",
-            "star-platinum"
-        ],
-        "strengths": [
-            "Unkillable with constant healing",
-            "Required to access GER"
-        ],
-        "weaknesses": [
-            "Low damage output",
-            "Easily out-ranged"
-        ],
-        "meta": "Mostly a stepping stone to GER."
-    },
-    {
         "id": "c-moon",
         "name": "C-Moon",
         "part": 6,
-        "rarity": "Epic",
+        "rarity": "Legendary",
         "obtainMethod": "Evolve Whitesnake",
         "tier": {
-            "pvp": "A",
-            "pve": "B",
-            "overall": "A"
+            "pvp": "S",
+            "pve": "A",
+            "overall": "S"
         },
         "scores": {
             "damage": 8,
@@ -625,12 +559,12 @@
         "id": "weather-report",
         "name": "Weather Report",
         "part": 6,
-        "rarity": "Epic",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "A",
             "pve": "S",
-            "overall": "A"
+            "overall": "S"
         },
         "scores": {
             "damage": 7,
@@ -698,12 +632,12 @@
         "id": "anubis",
         "name": "Anubis",
         "part": 3,
-        "rarity": "A",
+        "rarity": "Common",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "A",
-            "pve": "B",
-            "overall": "B"
+            "pvp": "B",
+            "pve": "C",
+            "overall": "C"
         },
         "scores": {
             "damage": 9,
@@ -773,12 +707,12 @@
         "id": "golden-experience",
         "name": "Golden Experience",
         "part": 5,
-        "rarity": "A",
+        "rarity": "Uncommon",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "B",
-            "pve": "A",
-            "overall": "A"
+            "pvp": "C",
+            "pve": "B",
+            "overall": "B"
         },
         "scores": {
             "damage": 6,
@@ -849,12 +783,12 @@
         "id": "magicians-red",
         "name": "Magician's Red",
         "part": 3,
-        "rarity": "B",
+        "rarity": "Uncommon",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "B",
-            "pve": "A",
-            "overall": "B"
+            "pvp": "C",
+            "pve": "B",
+            "overall": "C"
         },
         "scores": {
             "damage": 8,
@@ -925,12 +859,12 @@
         "id": "purple-haze",
         "name": "Purple Haze",
         "part": 5,
-        "rarity": "A",
+        "rarity": "Uncommon",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "A",
-            "pve": "B",
-            "overall": "A"
+            "pvp": "C",
+            "pve": "C",
+            "overall": "C"
         },
         "scores": {
             "damage": 10,
@@ -1003,12 +937,12 @@
         "id": "the-hand",
         "name": "The Hand",
         "part": 4,
-        "rarity": "B",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
-            "pvp": "A",
-            "pve": "B",
-            "overall": "B"
+            "pvp": "C",
+            "pve": "D",
+            "overall": "C"
         },
         "scores": {
             "damage": 9,
@@ -1080,7 +1014,7 @@
         "id": "stone-free",
         "name": "Stone Free",
         "part": 6,
-        "rarity": "A",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "A",
@@ -1156,11 +1090,11 @@
         "name": "The World: High Voltage",
         "part": 7,
         "rarity": "Legendary",
-        "obtainMethod": "Requiem Arrow on The World",
+        "obtainMethod": "Evolve The World",
         "tier": {
-            "pvp": "S+",
-            "pve": "S",
-            "overall": "S+"
+            "pvp": "S",
+            "pve": "A",
+            "overall": "A"
         },
         "scores": {
             "damage": 10,
@@ -1227,13 +1161,83 @@
         "strengths": [
             "Time Stop is game-breaking",
             "Road Roller highest burst",
-            "Top-tier at everything"
+            "Strong DPS and mobility"
         ],
         "weaknesses": [
             "Extremely hard to obtain",
-            "Requiem Arrow required",
+            "Evolution required",
             "High skill ceiling"
         ],
-        "meta": "The undisputed #1 Stand. If you have it, you win. Period."
+        "meta": "Powerful evolution Stand with great engage and escape options."
+    },
+    {
+        "id": "red-hot-chili-pepper",
+        "name": "Red Hot Chili Pepper",
+        "part": 4,
+        "rarity": "Common",
+        "obtainMethod": "Stand Arrow",
+        "tier": {
+            "pvp": "D",
+            "pve": "D",
+            "overall": "D"
+        },
+        "scores": {
+            "damage": 3,
+            "combo": 4,
+            "cc": 3,
+            "aoe": 4,
+            "mobility": 6,
+            "sustain": 2
+        },
+        "moves": [
+            {
+                "name": "Barrage",
+                "key": "E",
+                "type": "melee"
+            },
+            {
+                "name": "Heavy Punch",
+                "key": "R",
+                "type": "melee"
+            },
+            {
+                "name": "Flash",
+                "key": "Z",
+                "type": "special",
+                "effect": "Short-range teleport"
+            },
+            {
+                "name": "Electric Shock",
+                "key": "X",
+                "type": "ranged",
+                "effect": "Stuns briefly"
+            }
+        ],
+        "awakening": {
+            "required": 50
+        },
+        "requiem": false,
+        "recommendedStyles": [
+            "boxing"
+        ],
+        "recommendedSubs": [
+            "hamon"
+        ],
+        "counters": [],
+        "counteredBy": [
+            "whitesnake",
+            "king-crimson"
+        ],
+        "strengths": [
+            "Flash provides useful mobility",
+            "Easy to obtain",
+            "Good for leveling Conjuration early"
+        ],
+        "weaknesses": [
+            "Lowest damage output in the game",
+            "Falls off sharply after early game",
+            "No sustained damage"
+        ],
+        "meta": "The weakest Stand. Replace it as soon as you roll anything better."
     }
 ]

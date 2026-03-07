@@ -136,7 +136,7 @@ export default function Home() {
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-accent-indigo/10 border border-accent-indigo/20 flex items-center justify-center text-accent-indigo font-bold text-lg">2</div>
               <h3 className="font-bold text-white">Select Style &amp; Sub</h3>
-              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Vampire) and a sub-ability (Hamon, Spin, Cyborg) to shape your build.</p>
+              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Karate) and a sub-ability (Hamon, Vampire, Spin, Cyborg) to shape your build.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 font-bold text-lg">3</div>

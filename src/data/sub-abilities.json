@@ -104,5 +104,41 @@
             "purple-haze"
         ],
         "summary": "Tanky PVE specialist with massive AoE damage."
+    },
+    {
+        "id": "vampire",
+        "name": "Vampire",
+        "origin": "Parts 1-3",
+        "moves": [
+            {
+                "name": "Space Ripper Stingy Eyes",
+                "key": "1",
+                "type": "ranged"
+            },
+            {
+                "name": "Leeching Terror",
+                "key": "2",
+                "type": "grab"
+            },
+            {
+                "name": "Flash Freeze",
+                "key": "3",
+                "type": "cc"
+            }
+        ],
+        "passive": "Red blood meter grants bonus HP regen when filled. Constant +0.02 HP regen, +0.04 with High Speed Regeneration",
+        "scores": {
+            "pvp": 9,
+            "pve": 7,
+            "survival": 10,
+            "mobility": 3,
+            "cost": 6
+        },
+        "bestWith": [
+            "the-world",
+            "king-crimson",
+            "whitesnake"
+        ],
+        "summary": "Best sustain sub-ability. Lifesteal and regen make you nearly unkillable in extended fights. Weak to Hamon."
     }
 ]

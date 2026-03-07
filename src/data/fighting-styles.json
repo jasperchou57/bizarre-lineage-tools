@@ -67,36 +67,36 @@
     "summary": "Excellent range and counter-attacks. Synergizes with fast or sword-based stands."
   },
   {
-    "id": "vampire",
-    "name": "Vampirism",
+    "id": "karate",
+    "name": "Karate",
     "moves": [
       {
-        "name": "Blood Suck",
+        "name": "Seiken Barrage",
         "key": "E",
-        "type": "grab"
+        "type": "melee"
       },
       {
-        "name": "Space Ripper Stingy Eyes",
+        "name": "Sixth Massacre",
         "key": "R",
-        "type": "ranged"
+        "type": "melee"
       },
       {
-        "name": "Freeze",
+        "name": "Tatsumaki",
         "key": "Z",
-        "type": "cc"
+        "type": "aoe"
       }
     ],
     "scores": {
-      "damage": 6,
-      "combo": 7,
-      "range": 8,
-      "utility": 9
+      "damage": 7,
+      "combo": 8,
+      "range": 5,
+      "utility": 7
     },
     "bestWith": [
-      "the-world",
+      "weather-report",
       "killer-queen",
-      "whitesnake"
+      "the-world"
     ],
-    "summary": "Provides high sustain and ranged pressure. Vulnerable to Hamon."
+    "summary": "Great combo extenders and AoE crowd control. Shines in PvE and group PvP fights."
   }
 ]

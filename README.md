@@ -12,8 +12,8 @@ The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Ro
 | Vault | `/vault` | Save / export / import builds (localStorage) |
 | Compare | `/compare` | Side-by-side build diff with stat highlighting |
 | Stand Pages | `/stands/[slug]` | 17 individual SSG pages with SEO metadata |
-| Fighting Styles | `/fighting-styles/[slug]` | Style details (Boxing, Kendo, Vampire) |
-| Sub-Abilities | `/sub-abilities/[slug]` | Sub details (Hamon, Spin, Cyborg) |
+| Fighting Styles | `/fighting-styles/[slug]` | Style details (Boxing, Kendo, Karate) |
+| Sub-Abilities | `/sub-abilities/[slug]` | Sub details (Hamon, Vampire, Cyborg, Spin) |
 | Codes | `/codes` | Active game codes tracker |
 | Guides | `/guides/leveling`, `/guides/prestige` | Progression guides |
 
@@ -30,8 +30,8 @@ The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Ro
 All game data lives in `src/data/`:
 
 - `stands.json` — 17 Stands with scores, tier, moves, counters, FAQ
-- `fighting-styles.json` — 3 Fighting Styles
-- `sub-abilities.json` — 3 Sub-Abilities
+- `fighting-styles.json` — 3 Fighting Styles (Boxing, Kendo, Karate)
+- `sub-abilities.json` — 4 Sub-Abilities (Hamon, Vampire, Cyborg, Spin)
 
 **To add a new Stand:** Add an entry to `stands.json` following the existing schema. The SSG pipeline (`generateStaticParams`) will auto-create the page.
 
