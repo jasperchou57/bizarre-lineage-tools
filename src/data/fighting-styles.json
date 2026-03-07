@@ -14,7 +14,7 @@
         "type": "melee"
       },
       {
-        "name": "Haymaker",
+        "name": "Dempsey Roll",
         "key": "Z",
         "type": "melee"
       }
@@ -38,19 +38,19 @@
     "name": "Kendo",
     "moves": [
       {
-        "name": "Sword Slash",
+        "name": "Whirlwind",
         "key": "E",
         "type": "melee"
       },
       {
-        "name": "Iaijutsu",
+        "name": "Silent Edge",
         "key": "R",
         "type": "dash"
       },
       {
-        "name": "Counter Stance",
+        "name": "Rising Tempest",
         "key": "Z",
-        "type": "counter"
+        "type": "melee"
       }
     ],
     "scores": {

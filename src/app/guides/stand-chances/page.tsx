@@ -27,7 +27,7 @@ const rarityTiers = [
         bgColor: "bg-green-500/5",
         badgeColor: "bg-green-500/20 text-green-400",
         icon: <Star className="h-6 w-6 text-green-400" />,
-        description: "Solid starter Stands that can carry you through most PvE content. Some Uncommon Stands like Golden Experience have Requiem evolutions that make them endgame-viable.",
+        description: "Solid starter Stands that can carry you through most PvE content. Uncommon Stands like Crazy Diamond and Golden Experience are strong enough for mid-game progression.",
     },
     {
         name: "Rare",
@@ -47,7 +47,7 @@ const rarityTiers = [
         bgColor: "bg-purple-500/5",
         badgeColor: "bg-purple-500/20 text-purple-400",
         icon: <Crown className="h-6 w-6 text-purple-400" />,
-        description: "Top-tier Stands that define the meta. Expect to use 10-15 Stand Arrows on average before pulling a Legendary. Some Legendaries like Made in Heaven are evolution-only and cannot be rolled directly.",
+        description: "Top-tier Stands that define the meta. Expect to use 10-15 Stand Arrows on average before pulling a Legendary. Stands like Star Platinum, The World, and King Crimson are all Legendary.",
     },
     {
         name: "Mythical",
@@ -61,7 +61,7 @@ const rarityTiers = [
     },
 ];
 
-const rarityOrder = ["Mythical", "Legendary", "Rare", "Uncommon", "Common"];
+const rarityOrder = ["Mythical", "Legendary", "Special", "Rare", "Uncommon", "Common"];
 
 // Group stands by rarity
 const standsByRarity = rarityOrder.map((rarity) => ({
@@ -80,7 +80,7 @@ const tips = [
     },
     {
         title: "Evolution Stands bypass the Arrow",
-        description: "Made in Heaven, C-Moon, The World: High Voltage, and Gold Experience Requiem are obtained through evolution, not rolling. Check the specific Stand page for evolution requirements.",
+        description: "Made in Heaven, C-Moon, and The World: High Voltage are obtained through evolution, not rolling. Check the specific Stand page for evolution requirements.",
     },
     {
         title: "2x Event weekends",
@@ -107,7 +107,7 @@ const faqItems = [
     },
     {
         question: "Are evolution Stands part of normal rolls?",
-        answer: "No. Evolution Stands (Made in Heaven, C-Moon, The World: High Voltage, Gold Experience Requiem) can only be obtained through their specific evolution paths, not from the Stand Arrow pool.",
+        answer: "No. Evolution Stands (Made in Heaven, C-Moon, The World: High Voltage) can only be obtained through their specific evolution paths, not from the Stand Arrow pool.",
     },
 ];
 

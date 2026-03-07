@@ -17,7 +17,7 @@
             {
                 "name": "Scarlet Overdrive",
                 "key": "3",
-                "type": "ranged"
+                "type": "melee"
             }
         ],
         "passive": "Bonus damage vs Vampires, slight HP regen",
@@ -36,41 +36,6 @@
         "summary": "High damage, anti-Vampire, beginner-friendly"
     },
     {
-        "id": "spin",
-        "name": "Spin",
-        "origin": "Part 7",
-        "moves": [
-            {
-                "name": "Steel Ball Throw",
-                "key": "1",
-                "type": "ranged"
-            },
-            {
-                "name": "Multi-Steel Ball",
-                "key": "2",
-                "type": "aoe"
-            },
-            {
-                "name": "Golden Rectangle",
-                "key": "3",
-                "type": "buff"
-            }
-        ],
-        "passive": "Bypasses block on fully charged attacks",
-        "scores": {
-            "pvp": 9,
-            "pve": 6,
-            "survival": 3,
-            "mobility": 5,
-            "cost": 8
-        },
-        "bestWith": [
-            "the-world-high-voltage",
-            "c-moon"
-        ],
-        "summary": "Ranged pressure and block bypass. Requires skill to aim."
-    },
-    {
         "id": "cyborg",
         "name": "Cyborg",
         "origin": "Part 2",
@@ -81,17 +46,17 @@
                 "type": "ranged"
             },
             {
-                "name": "UV Light",
+                "name": "Ultraviolet Radiation Apparatus",
                 "key": "2",
-                "type": "aoe"
+                "type": "grab"
             },
             {
-                "name": "Rocket Punch",
+                "name": "Missle Volley",
                 "key": "3",
                 "type": "ranged"
             }
         ],
-        "passive": "Increased base defense, immune to bleed",
+        "passive": "Increases defense by 15%, reducing incoming damage",
         "scores": {
             "pvp": 5,
             "pve": 9,

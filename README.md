@@ -31,7 +31,7 @@ All game data lives in `src/data/`:
 
 - `stands.json` — 17 Stands with scores, tier, moves, counters, FAQ
 - `fighting-styles.json` — 3 Fighting Styles (Boxing, Kendo, Karate)
-- `sub-abilities.json` — 4 Sub-Abilities (Hamon, Vampire, Cyborg, Spin)
+- `sub-abilities.json` — 3 Sub-Abilities (Hamon, Vampire, Cyborg)
 
 **To add a new Stand:** Add an entry to `stands.json` following the existing schema. The SSG pipeline (`generateStaticParams`) will auto-create the page.
 

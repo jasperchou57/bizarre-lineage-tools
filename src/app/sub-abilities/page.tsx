@@ -5,7 +5,7 @@ import subsData from "@/data/sub-abilities.json";
 
 export const metadata: Metadata = {
     title: "Sub-Abilities & Skill Trees | Bizarre Lineage",
-    description: "Browse all sub-abilities like Hamon, Spin, and Cyborg. Find the best PvP and PvE bonuses for your build in Bizarre Lineage.",
+    description: "Browse all sub-abilities like Hamon, Vampire, and Cyborg. Find the best PvP and PvE bonuses for your build in Bizarre Lineage.",
 };
 
 export default function SubAbilitiesDirectory() {

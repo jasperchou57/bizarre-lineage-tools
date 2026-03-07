@@ -18,7 +18,7 @@ const faqData = [
   },
   {
     question: "What is the best fighting style and sub-ability combo?",
-    answer: "The best combo depends on your Stand and playstyle. Boxing is the most versatile fighting style for PvP due to its consistent damage. For sub-abilities, Hamon is strong for general use, while Spin excels at ranged builds. Use our build planner to test different combinations and see the 5-dimension score breakdown.",
+    answer: "The best combo depends on your Stand and playstyle. Boxing is the most versatile fighting style for PvP due to its consistent damage. For sub-abilities, Hamon is strong for general use and damage, while Vampire excels at sustain builds. Use our build planner to test different combinations and see the 5-dimension score breakdown.",
   },
   {
     question: "How does the Build Planner scoring system work?",
@@ -139,7 +139,7 @@ export default function Home() {
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-accent-indigo/10 border border-accent-indigo/20 flex items-center justify-center text-accent-indigo font-bold text-lg">2</div>
               <h3 className="font-bold text-white">Select Style &amp; Sub</h3>
-              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Karate) and a sub-ability (Hamon, Vampire, Spin, Cyborg) to shape your build.</p>
+              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Karate) and a sub-ability (Hamon, Vampire, Cyborg) to shape your build.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 font-bold text-lg">3</div>
