@@ -418,7 +418,7 @@
         "id": "crazy-diamond",
         "name": "Crazy Diamond",
         "part": 4,
-        "rarity": "Rare",
+        "rarity": "Uncommon",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "B",
@@ -748,7 +748,7 @@
         "id": "anubis",
         "name": "Anubis",
         "part": 3,
-        "rarity": "Common",
+        "rarity": "Rare",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "B",
@@ -1076,7 +1076,7 @@
         "id": "the-hand",
         "name": "The Hand",
         "part": 4,
-        "rarity": "Rare",
+        "rarity": "Uncommon",
         "obtainMethod": "Stand Arrow",
         "tier": {
             "pvp": "C",
