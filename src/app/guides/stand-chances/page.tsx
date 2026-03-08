@@ -11,53 +11,53 @@ export const metadata: Metadata = {
 const rarityTiers = [
     {
         name: "Common",
-        chance: "45%",
+        chance: "Site Label",
         color: "text-gray-400",
         borderColor: "border-gray-500/30",
         bgColor: "bg-gray-500/5",
         badgeColor: "bg-gray-500/20 text-gray-300",
         icon: <CircleDot className="h-6 w-6 text-gray-400" />,
-        description: "Nearly half of all rolls land here. Common Stands are weak but serve as stepping stones for learning game mechanics. Replace them as soon as you roll something better.",
+        description: "This site uses Common as a local grouping label. The public official Trello does not publish exact Stand Arrow drop percentages for this tier.",
     },
     {
         name: "Uncommon",
-        chance: "30%",
+        chance: "Site Label",
         color: "text-green-400",
         borderColor: "border-green-500/30",
         bgColor: "bg-green-500/5",
         badgeColor: "bg-green-500/20 text-green-400",
         icon: <Star className="h-6 w-6 text-green-400" />,
-        description: "Solid starter Stands that can carry you through most PvE content. Uncommon Stands like Crazy Diamond and Golden Experience are strong enough for mid-game progression.",
+        description: "This is a site-maintained rarity bucket used for browsing. The official Trello documents move kits and obtainment methods, not precise odds for the bucket itself.",
     },
     {
         name: "Rare",
-        chance: "15%",
+        chance: "Site Label",
         color: "text-blue-400",
         borderColor: "border-blue-500/30",
         bgColor: "bg-blue-500/5",
         badgeColor: "bg-blue-500/20 text-blue-400",
         icon: <Gem className="h-6 w-6 text-blue-400" />,
-        description: "The sweet spot. Rare Stands are powerful enough for competitive play and obtainable within a few Arrow uses. Weather Report and Stone Free are both Rare and sit comfortably in S and A Tier.",
+        description: "Rare is another local grouping label. Treat it as a directory aid rather than an official percentage-backed drop tier.",
     },
     {
         name: "Legendary",
-        chance: "8%",
+        chance: "Site Label",
         color: "text-purple-400",
         borderColor: "border-purple-500/30",
         bgColor: "bg-purple-500/5",
         badgeColor: "bg-purple-500/20 text-purple-400",
         icon: <Crown className="h-6 w-6 text-purple-400" />,
-        description: "Top-tier Stands that define the meta. Expect to use 10-15 Stand Arrows on average before pulling a Legendary. Stands like Star Platinum, The World, and King Crimson are all Legendary.",
+        description: "The public Trello does not publish average Arrow counts or exact Legendary odds. This label is maintained by the site for browsing and planner purposes.",
     },
     {
         name: "Mythical",
-        chance: "2%",
+        chance: "Site Label",
         color: "text-yellow-400",
         borderColor: "border-yellow-500/30",
         bgColor: "bg-yellow-500/5",
         badgeColor: "bg-yellow-500/20 text-yellow-400",
         icon: <Sparkles className="h-6 w-6 text-yellow-400" />,
-        description: "The rarest tier in the game. On average, you need 50 Stand Arrows to pull a Mythical. Whitesnake is currently the only Mythical Stand and dominates both PvP and PvE at S+ Tier.",
+        description: "This site currently places Whitesnake in a Mythical bucket, but the public official Trello does not publish a percentage drop rate for that classification.",
     },
 ];
 
@@ -72,34 +72,30 @@ const standsByRarity = rarityOrder.map((rarity) => ({
 const tips = [
     {
         title: "Stock up before rolling",
-        description: "Stand Arrows cost money. Farm enough to buy 10-15 Arrows in one session so you can chain rolls without stopping. Use our Leveling Guide to earn money fast.",
+        description: "The public official Trello confirms that Stand Arrows can be found on the ground or obtained from chests. Use those official sources before assuming any third-party rate table is current.",
     },
     {
-        title: "Don't reroll good Rare Stands",
-        description: "Weather Report (S Tier PvE), Stone Free (A Tier), and Killer Queen (A Tier PvE) are all Rare. Many players waste Arrows chasing Legendaries when their Rare Stand is already competitive.",
+        title: "Lucky Arrow is cosmetic",
+        description: "The official Lucky Arrow card says it guarantees a random skin on your current Stand. It is not documented as a higher-rarity Stand roll.",
     },
     {
         title: "Evolution Stands bypass the Arrow",
-        description: "Made in Heaven, C-Moon, and The World: High Voltage are obtained through evolution, not rolling. Check the specific Stand page for evolution requirements.",
-    },
-    {
-        title: "2x Event weekends",
-        description: "The developers occasionally run double drop rate events (usually weekends). Your Legendary chance doubles from 8% to 16% during these events. Save your Arrows for these.",
+        description: "Made in Heaven, C-Moon, and The World High Voltage are listed on the site as evolution-based entries rather than normal Arrow rolls. Follow their official Trello quest or evolution lines instead of relying on drop tables.",
     },
 ];
 
 const faqItems = [
     {
         question: "What is the rarest Stand in Bizarre Lineage?",
-        answer: "Whitesnake is the only Mythical rarity Stand, with a 2% drop rate from the Stand Arrow. It is the rarest directly obtainable Stand in the game.",
+        answer: "This site currently places Whitesnake in its Mythical bucket, but the public official Trello does not publish an official rarest-Stand percentage table.",
     },
     {
         question: "How rare is Whitesnake in Bizarre Lineage?",
-        answer: "Whitesnake has a 2% (Mythical) drop rate. On average, you need approximately 50 Stand Arrow uses to pull it. During 2x events, this drops to roughly 25 attempts.",
+        answer: "The public official Trello documents Whitesnake's move kit, but it does not publish an official Stand Arrow percentage for Whitesnake.",
     },
     {
         question: "What are the Stand Arrow drop rates?",
-        answer: "Common: 45%, Uncommon: 30%, Rare: 15%, Legendary: 8%, Mythical: 2%. These rates apply to every Stand Arrow use unless a special event is active.",
+        answer: "The public official Trello does not publish exact Stand Arrow drop-rate percentages. Any percentages on this site should be treated as local, non-official notes.",
     },
     {
         question: "Can I get Made in Heaven from the Stand Arrow?",
@@ -107,7 +103,7 @@ const faqItems = [
     },
     {
         question: "Are evolution Stands part of normal rolls?",
-        answer: "No. Evolution Stands (Made in Heaven, C-Moon, The World: High Voltage) can only be obtained through their specific evolution paths, not from the Stand Arrow pool.",
+        answer: "No. Evolution Stands (Made in Heaven, C-Moon, The World High Voltage) are treated on this site as non-standard Arrow entries and should be checked against their official quest or evolution paths.",
     },
 ];
 
@@ -130,8 +126,15 @@ export default function StandChancesPage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-10">
-                Every Stand in Bizarre Lineage has a rarity tier that determines how likely you are to roll it from a Stand Arrow. This guide covers the exact drop rates for every tier, which Stands fall into each category, and how to maximize your odds of pulling the Stand you want.
+                The public official Trello confirms how to obtain Stand Arrows and documents evolution paths, but it does not publish a full official percentage table for every Stand. This page uses local site labels to group Stands while calling out what is and is not officially documented.
             </p>
+
+            <div className="bg-surface border border-border rounded-xl p-6 mb-10">
+                <p className="text-sm text-muted leading-relaxed">
+                    Officially verified: Stand Arrow obtainment, Lucky Arrow function, and evolution questlines.
+                    Site-maintained only: rarity buckets, grouped rankings, and any planner-oriented browsing labels shown below.
+                </p>
+            </div>
 
             {/* Rarity Tiers Overview */}
             <h2 className="text-2xl font-bold text-white mb-6">Rarity Tiers & Drop Rates</h2>
@@ -209,7 +212,7 @@ export default function StandChancesPage() {
             {/* Best Stands Worth Chasing */}
             <h2 className="text-2xl font-bold text-white mb-4">Best Stands Worth Chasing</h2>
             <p className="text-muted mb-6">
-                Not every Legendary or Mythical Stand is worth the Arrow investment. Here are the top targets by role:
+                This section is based on the site&apos;s local planner data, not on official patch notes. Use it as a browsing shortcut rather than a confirmed drop-value ranking.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">

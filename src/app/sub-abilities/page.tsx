@@ -15,7 +15,7 @@ export default function SubAbilitiesDirectory() {
                 Sub-Abilities
             </h1>
             <p className="text-lg text-muted mb-12 max-w-2xl">
-                Sub-Abilities provide passive bonuses, powerful utility skills, and alter your core gameplay loop.
+                Sub-Abilities provide passive bonuses, powerful utility skills, and alter your core gameplay loop. Passive notes are cross-checked against the public official Trello, while scores and pairing suggestions below are site-maintained planner notes.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

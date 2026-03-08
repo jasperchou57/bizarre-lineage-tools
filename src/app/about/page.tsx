@@ -16,7 +16,7 @@ export default function AboutPage() {
 
             <h2 className="text-2xl font-bold text-white mt-12 mb-4">Features & Data Sourcing</h2>
             <p className="text-muted leading-relaxed mb-6">
-                Our scoring matrix is derived from public community knowledge, tier lists, and the unofficial Bizarre Lineage public Trello board used by the community. We strive to provide the most accurate numbers possible for PVP, PVE, mobility, and cost. However, patches and silent buffs/nerfs occur frequently.
+                Move names, obtain methods, and core progression notes are cross-checked against the public official Bizarre Lineage Trello board. Rankings, planner scores, recommended builds, and matchup notes are site-maintained community data rather than official balance values.
             </p>
 
             <div className="bg-surface border border-white/10 rounded-xl p-6 my-8">

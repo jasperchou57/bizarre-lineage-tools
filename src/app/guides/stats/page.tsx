@@ -20,7 +20,7 @@ const stats = [
         name: "Health",
         icon: <Heart className="h-6 w-6 text-green-400" />,
         color: "border-green-500/30 bg-green-500/5",
-        description: "Increases your character's maximum health (Base HP + bonus HP). The most universally useful stat because surviving one extra hit often decides an entire fight.",
+        description: "Increases your character's maximum health (Base HP + bonus HP). It is one of the most widely useful stats because surviving one extra hit often changes a fight.",
         tip: "Health is valuable for every playstyle. Even glass cannon builds need some Health investment to avoid getting one-shot.",
         priority: "High for all playstyles",
     },
@@ -44,8 +44,8 @@ const stats = [
         name: "Destructive Power",
         icon: <Flame className="h-6 w-6 text-orange-400" />,
         color: "border-orange-500/30 bg-orange-500/5",
-        description: "Increases your Stand's physical-based attacks — specifically the red damage hit markers from Stand moves. This is your primary offensive stat for most Stands and the biggest factor in kill speed.",
-        tip: "Destructive Power is the most important offensive stat for the majority of Stands. Prioritize this unless your Stand relies on special energy moves.",
+        description: "Increases your Stand's physical-based attacks — specifically the red damage hit markers from Stand moves. For many Stands, this is one of the main damage stats that affects clear speed and combo threat.",
+        tip: "Destructive Power is a common priority for many Stands unless your move set leans more heavily on energy-based attacks.",
         priority: "High for most Stands",
     },
     {
@@ -64,7 +64,7 @@ const presets = [
         tag: "Most Popular",
         tagColor: "bg-accent-blue/20 text-accent-blue",
         allocation: { strength: "10%", health: "25%", power: "10%", weapon: "0%", destrPower: "35%", destrEnergy: "20%" },
-        description: "The safest allocation for ranked PvP. Enough HP to survive burst combos, high Destructive Power to threaten kills, and some Destructive Energy coverage.",
+        description: "A balanced site-maintained PvP starting point. It keeps a moderate HP buffer, leans into Destructive Power, and still leaves some coverage for Destructive Energy builds.",
         bestFor: ["Star Platinum", "Stone Free", "C-Moon"],
     },
     {
@@ -72,7 +72,7 @@ const presets = [
         tag: "High Risk",
         tagColor: "bg-red-500/20 text-red-400",
         allocation: { strength: "5%", health: "10%", power: "5%", weapon: "0%", destrPower: "50%", destrEnergy: "30%" },
-        description: "Maximum kill speed. Dump almost everything into Stand damage stats. You will delete enemies but die to a stiff breeze. Only for confident players.",
+        description: "A high-risk site preset that leans heavily into Stand damage. It trades durability for faster kill pressure and usually needs cleaner execution.",
         bestFor: ["The World", "King Crimson", "Anubis"],
     },
     {
@@ -80,7 +80,7 @@ const presets = [
         tag: "Best for Grinding",
         tagColor: "bg-green-500/20 text-green-400",
         allocation: { strength: "5%", health: "20%", power: "10%", weapon: "0%", destrPower: "40%", destrEnergy: "25%" },
-        description: "Optimized for quest grinding and boss farming. High Destructive Power clears mobs fast, moderate Health keeps you alive, and some Power investment for Sub-Ability damage.",
+        description: "A farming-oriented site preset for quests and bosses. It puts more weight on damage stats while keeping enough Health to avoid folding immediately in longer runs.",
         bestFor: ["Weather Report", "Killer Queen", "Magician's Red"],
     },
     {
@@ -88,7 +88,7 @@ const presets = [
         tag: "Sustain",
         tagColor: "bg-green-500/20 text-green-400",
         allocation: { strength: "10%", health: "25%", power: "30%", weapon: "0%", destrPower: "20%", destrEnergy: "15%" },
-        description: "Heavy investment in Power for maximum Sub-Ability damage and meter. Pair with Vampire or Hamon for powerful sub moves. Health keeps you alive in extended fights.",
+        description: "A sub-focused site preset with heavier Power investment. It is meant for builds where Hamon, Vampire, or Cyborg make up a meaningful part of your damage or sustain loop.",
         bestFor: ["Crazy Diamond", "Golden Experience", "Stone Free"],
     },
     {
@@ -96,7 +96,7 @@ const presets = [
         tag: "Recommended",
         tagColor: "bg-accent-indigo/20 text-accent-indigo",
         allocation: { strength: "10%", health: "25%", power: "10%", weapon: "0%", destrPower: "35%", destrEnergy: "20%" },
-        description: "A forgiving allocation for new players. Balanced enough to handle any content without feeling squishy or dealing no damage. Respec later once you understand your Stand.",
+        description: "A forgiving site-maintained starting point for newer players. It stays fairly even across damage and survivability so you can respec later once you understand your Stand better.",
         bestFor: ["Star Platinum", "Magician's Red", "Golden Experience"],
     },
 ];
@@ -104,7 +104,7 @@ const presets = [
 const faqItems = [
     {
         question: "What is the best stat build in Bizarre Lineage?",
-        answer: "There is no single best build — it depends on your Stand, playstyle, and whether you focus on PvP or PvE. For most players, a balanced allocation with high Health and Destructive Power is the safest starting point.",
+        answer: "There is no single best build — it depends on your Stand, playstyle, and whether you focus on PvP or PvE. On this site, a balanced allocation with high Health and Destructive Power is used as a common starting point.",
     },
     {
         question: "What is the difference between Destructive Power and Destructive Energy?",
@@ -120,7 +120,7 @@ const faqItems = [
     },
     {
         question: "Should I invest in the Weapon stat?",
-        answer: "Only if you actively use a weapon (Stop Sign, Shadow Axe, Odachi, Katana, etc.) or Anubis. For most Stand-only builds, Weapon points are wasted — put them into Destructive Power or Health instead.",
+        answer: "Only if you actively use a weapon (Stop Sign, Shadow Axe, Odachi, Katana, etc.) or Anubis. For most Stand-only builds, Weapon points are usually better spent on Destructive Power or Health instead.",
     },
     {
         question: "Should beginners focus on Health or Destructive Power?",
@@ -147,7 +147,7 @@ export default function StatsGuidePage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-10">
-                Stats are the foundation of every build in Bizarre Lineage. A bad stat allocation will cripple even an S+ Tier Stand, while smart stats can make a B Tier Stand punch way above its weight. This guide explains what each stat does, the best presets for every playstyle, and the mistakes that hold most players back.
+                Stats are the foundation of every build in Bizarre Lineage. This guide explains what each stat does, how the public stat definitions map to gameplay, and which site-maintained presets can serve as a practical starting point.
             </p>
 
             {/* What Each Stat Does */}
@@ -175,7 +175,7 @@ export default function StatsGuidePage() {
             <div className="prose prose-invert max-w-none">
                 <h2 className="text-2xl font-bold text-white mb-2">Best Stat Presets</h2>
                 <p className="text-muted mb-6">
-                    These are proven allocations tested in the current meta. Pick one as a starting point, then adjust based on your Stand. You can always <Link href="/build-planner" className="text-accent-blue hover:underline">open the Build Planner</Link> to simulate the full setup.
+                    These are site-maintained starting points built around the local planner dataset. Pick one as a baseline, then adjust based on your Stand. You can always <Link href="/build-planner" className="text-accent-blue hover:underline">open the Build Planner</Link> to compare the same setup in the planner.
                 </p>
             </div>
 

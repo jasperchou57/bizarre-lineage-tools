@@ -72,16 +72,16 @@ function BuildPlannerClient() {
     const oneStepUpgrade = useMemo(() => {
         if (!standObj) return null;
         if (!selectedStyle && standObj.recommendedStyles.length > 0) {
-            return `Select ${standObj.recommendedStyles[0]} Fighting Style to improve PvP combos.`;
+            return `The local planner often starts this setup with ${standObj.recommendedStyles[0]} as a first style to test.`;
         }
         if (!selectedSub && standObj.recommendedSubs.length > 0) {
-            return `Add ${standObj.recommendedSubs[0]} Sub-Ability to boost your base stats.`;
+            return `The local planner often pairs this build with ${standObj.recommendedSubs[0]} as a first sub-ability to try.`;
         }
         // If full build but not using recommended
         if (selectedStyle && !standObj.recommendedStyles.includes(selectedStyle)) {
-            return `Consider swapping to ${standObj.recommendedStyles[0]} — it synergizes better with ${standObj.name}.`;
+            return `If you want to compare against the site's default pairing, try ${standObj.recommendedStyles[0]} with ${standObj.name}.`;
         }
-        return "Your build is fully optimized for the current patch!";
+        return "This setup matches one of the site's saved planner pairings.";
     }, [standObj, selectedStyle, selectedSub]);
 
     const handleSave = () => {
@@ -94,7 +94,7 @@ function BuildPlannerClient() {
             sub: selectedSub,
             scores,
             createdAt: new Date().toISOString(),
-            patchVersion: "v1.0"
+            patchVersion: "planner-v1"
         };
 
         setVault([...vault, newBuild]);
@@ -116,7 +116,7 @@ function BuildPlannerClient() {
                         <Database className="h-12 w-12 text-accent-blue mx-auto mb-4" />
                         <h3 className="text-xl font-bold text-white mb-2">You&apos;ve saved 3 builds!</h3>
                         <p className="text-muted mb-6">
-                            Builds are saved in this browser. To prevent losing your theoretical perfect setups, export a backup.
+                            Builds are saved in this browser. Export a backup if you want to keep a copy of your saved planner profiles.
                         </p>
                         <div className="flex gap-4 justify-center">
                             <button
@@ -149,7 +149,7 @@ function BuildPlannerClient() {
 
             <div className="mb-8">
                 <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Build Planner</h1>
-                <p className="text-muted mt-2">Theorycraft the perfect combination. Scores update in real-time.</p>
+                <p className="text-muted mt-2">Compare site-maintained build estimates in real-time using the local planner dataset.</p>
             </div>
 
             <div className="flex flex-col lg:flex-row gap-8">
@@ -235,7 +235,7 @@ function BuildPlannerClient() {
                         {!standObj ? (
                             <div className="py-12 text-center text-muted">
                                 <Target className="h-12 w-12 mx-auto mb-4 opacity-20" />
-                                <p>Select a Stand to see its potential.</p>
+                                <p>Select a Stand to view its planner estimate.</p>
                             </div>
                         ) : (
                             <div className="space-y-8">
@@ -256,7 +256,7 @@ function BuildPlannerClient() {
                                         <ScoreBar label="Mobility" value={scores.mobility} icon={<Navigation className="h-4 w-4" />} color="bg-purple-500" />
                                         <ScoreBar label="Accessibility (Cost)" value={scores.cost} icon={<Database className="h-4 w-4" />} color="bg-orange-500" />
                                     </div>
-                                    <p className="text-xs text-center text-muted mt-4 opacity-70">Scores are tagged for Patch v1.0. Meta shifts may alter values.</p>
+                                    <p className="text-xs text-center text-muted mt-4 opacity-70">Planner estimates are derived from local site data and weighting rules, not official balance values.</p>
                                 </div>
 
                                 {/* 1-Step Upgrade */}
@@ -267,7 +267,7 @@ function BuildPlannerClient() {
                                     </div>
                                 )}
 
-                                <p className="text-xs text-center text-muted pt-4 border-t border-white/5">Saved directly to your local device</p>
+                                <p className="text-xs text-center text-muted pt-4 border-t border-white/5">Saved locally in your browser on this device</p>
                             </div>
                         )}
                     </div>
@@ -294,7 +294,7 @@ function ScoreBar({ label, value, icon, color }: { label: string, value: number,
                 )}
             </div>
             {value >= 10 && (
-                <p className="text-[10px] text-accent-blue font-bold text-right mt-1">OPTIMAL FOR CURRENT PATCH</p>
+                <p className="text-[10px] text-accent-blue font-bold text-right mt-1">TOP LOCAL PLANNER SCORE</p>
             )}
         </div>
     );

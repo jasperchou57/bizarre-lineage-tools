@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const guides = [
     {
         title: "Stats Guide",
-        description: "What each stat does, best presets for PvP/PvE/beginners, and common mistakes to avoid.",
+        description: "What each stat does, plus site-maintained starter presets for PvP, PvE, and beginner setups.",
         href: "/guides/stats",
         icon: <BarChart3 className="h-8 w-8 text-accent-blue" />,
         tag: "New",
@@ -18,7 +18,7 @@ const guides = [
     },
     {
         title: "Stand Chances & Rarity",
-        description: "Every rarity tier, exact drop rates, all Stands grouped by rarity, and tips to improve your odds.",
+        description: "See how this site groups Stands by rarity and what the public official Trello does and does not confirm about Stand acquisition.",
         href: "/guides/stand-chances",
         icon: <Dice6 className="h-8 w-8 text-accent-indigo" />,
         tag: "New",
@@ -26,7 +26,7 @@ const guides = [
     },
     {
         title: "Best Builds",
-        description: "Complete Stand + Style + Sub setups for PvP, PvE, beginners, glass cannon, and tank playstyles.",
+        description: "Site-maintained Stand + Style + Sub setups for PvP, PvE, beginners, glass cannon, and tank playstyles.",
         href: "/guides/best-builds",
         icon: <Wrench className="h-8 w-8 text-purple-400" />,
         tag: "New",
@@ -34,13 +34,13 @@ const guides = [
     },
     {
         title: "Fastest Leveling Route",
-        description: "The optimal quest loop from Level 1 to 50. Best enemies, quests, and EXP strategies.",
+        description: "Official Trello-based progression notes plus a safer checklist for early leveling priorities.",
         href: "/guides/leveling",
         icon: <TrendingUp className="h-8 w-8 text-green-400" />,
     },
     {
         title: "Prestige Guide",
-        description: "Requirements, benefits, what you keep and lose, and the fastest prestige route.",
+        description: "Officially documented prestige requirements, rewards, and notes on what the public Trello currently confirms.",
         href: "/guides/prestige",
         icon: <ArrowUpCircle className="h-8 w-8 text-yellow-400" />,
     },
@@ -63,7 +63,7 @@ export default function GuidesIndexPage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-10">
-                Everything you need to progress faster, build smarter, and understand the game mechanics. Pick a guide below.
+                These guides mix public official Trello notes with site-maintained planner guidance. Pick a guide below based on whether you need verified progression info or local build suggestions.
             </p>
 
             {/* Guide Cards */}

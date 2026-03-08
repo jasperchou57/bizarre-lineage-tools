@@ -18,7 +18,7 @@ export function StandCard({ stand }: { stand: Stand }) {
                         {stand.name}
                     </h3>
                     <span className="px-2 py-1 text-xs font-mono font-bold uppercase rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">
-                        Tier {stand.tier.overall}
+                        Planner {stand.tier.overall}
                     </span>
                 </div>
 
@@ -33,7 +33,7 @@ export function StandCard({ stand }: { stand: Stand }) {
                     </div>
                     <div className="flex items-center gap-1.5 flex-1 col-span-2 mt-2 pt-2 border-t border-white/5">
                         <Zap className="h-4 w-4 text-accent-blue" />
-                        <span className="truncate">Best with: <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong></span>
+                        <span className="truncate">Suggested: <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong></span>
                     </div>
                 </div>
             </div>

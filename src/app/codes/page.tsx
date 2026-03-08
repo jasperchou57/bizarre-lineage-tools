@@ -27,20 +27,18 @@ export default function CodesPage() {
                 <AlertCircle className="h-16 w-16 text-yellow-500 mx-auto mb-4 opacity-80" />
                 <h2 className="text-2xl font-bold text-white mb-2">No Active Codes Yet</h2>
                 <p className="text-lg text-muted max-w-2xl mx-auto">
-                    The code system has not been released by the developers yet.
-                    Bookmark this page &mdash; we will update it immediately as soon as the first wave of codes drops!
+                    We have not verified any active official codes from the public Trello or its linked channels.
+                    Check the official Discord, Roblox group, and game page before trusting third-party code lists.
                 </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-surface border border-white/5 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-3">What will codes give?</h3>
-                    <ul className="space-y-2 text-muted">
-                        <li>• Free Stand Arrows</li>
-                        <li>• Rokakaka Fruits (Resets)</li>
-                        <li>• In-game Cash for items</li>
-                        <li>• EXP Boosts</li>
-                    </ul>
+                    <p className="text-muted text-sm leading-relaxed">
+                        Public official sources do not currently confirm a live reward table for codes on this site.
+                        If codes appear, verify them through the <a href="https://discord.gg/bizarrelineage" className="hover:text-white transition-colors underline underline-offset-4">official Discord</a>, the <a href="https://www.roblox.com/communities/33161040/Bizarre-Collective" className="hover:text-white transition-colors underline underline-offset-4">official Roblox group</a>, or the <a href="https://www.roblox.com/games/14890802310/Bizarre-Lineage" className="hover:text-white transition-colors underline underline-offset-4">official game page</a>.
+                    </p>
                 </div>
 
                 <div className="bg-surface border border-white/5 rounded-xl p-6">

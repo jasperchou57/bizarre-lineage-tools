@@ -62,6 +62,9 @@ function ComparePageClient() {
                 <p className="text-white text-lg">
                     <span className="font-bold">{verdictPvP}</span> <span className="opacity-80">{verdictPvE}</span>
                 </p>
+                <p className="text-xs text-muted mt-3">
+                    These differences come from the site&apos;s local planner scores, not official balance data.
+                </p>
             </div>
 
             {/* Side-by-Side Comparison */}
@@ -86,7 +89,7 @@ function ComparisonColumn({ build, standName, label, otherScores }: { build: any
     return (
         <div className="bg-surface border border-border rounded-xl p-8">
             <div className="text-xs font-bold text-muted uppercase tracking-widest mb-6 border-b border-white/5 pb-2">
-                {label} (Patch {build.patchVersion})
+                {label} ({build.patchVersion})
             </div>
 
             <h2 className="text-2xl font-bold text-white mb-4">{build.name}</h2>
@@ -119,7 +122,7 @@ function ComparisonColumn({ build, standName, label, otherScores }: { build: any
                     href={`/build-planner?stand=${build.stand}&style=${build.style}&sub=${build.sub}`}
                     className="block w-full py-4 bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg text-white font-bold text-center hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all"
                 >
-                    Apply & Recalculate This Build
+                    Open This Build in Planner
                 </Link>
             </div>
         </div>

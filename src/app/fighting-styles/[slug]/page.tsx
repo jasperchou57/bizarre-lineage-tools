@@ -47,6 +47,9 @@ export default function StyleDetailPage({ params }: { params: { slug: string } }
                     <p className="text-xl text-muted leading-relaxed">
                         {style.summary}
                     </p>
+                    <p className="text-sm text-muted leading-relaxed">
+                        Move names are cross-checked against the public official Trello. Scores and pairings on this page are site-maintained planner notes.
+                    </p>
 
                     <div className="bg-surface border border-border rounded-xl overflow-hidden">
                         <div className="bg-white/5 border-b border-white/5 px-6 py-4">

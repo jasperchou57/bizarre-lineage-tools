@@ -6,23 +6,23 @@ import standsData from "@/data/stands.json";
 const faqData = [
   {
     question: "What is the best Stand in Bizarre Lineage for PvP?",
-    answer: "Made in Heaven, Whitesnake, and C-Moon are currently the S-tier Stands for PvP. Made in Heaven dominates with extreme mobility, Whitesnake offers strong control and DoT, and C-Moon has gravity manipulation with high burst damage. Check our tier list for the full rankings across PvP, PvE, and overall categories.",
+    answer: "On this site's community ranking, Made in Heaven, Whitesnake, and C-Moon currently sit near the top for PvP. Those placements are local planner notes, not official balance data.",
   },
   {
     question: "Are there any active Bizarre Lineage codes right now?",
-    answer: "Bizarre Lineage codes are released by the developers on their official Discord and social media channels. When active, codes can grant free Stand Arrows, Rokakakas, Cash, and XP boosts. Visit our codes page for the latest updates — we check for new codes daily.",
+    answer: "We do not currently list any verified official codes. The public official Trello links to the official Discord, Roblox group, and game page, which are the safest places to verify future code announcements.",
   },
   {
     question: "How do I get a specific Stand like Whitesnake or Made in Heaven?",
-    answer: "Stands are obtained by using a Stand Arrow, which gives you a random Stand based on the rarity table. Lucky Arrows increase your chance of getting rarer Stands. Some Stands like Made in Heaven require awakening C-Moon at 100+ Conjuring. You can reroll by storing your current Stand in Stand Storage first.",
+    answer: "The public Trello confirms that you unlock your first Stand with a Stand Arrow. Lucky Arrow does not raise Stand rarity; it guarantees a random skin on your current Stand. Evolution stands such as Made in Heaven follow their own quest or evolution paths on the official Trello.",
   },
   {
     question: "What is the best fighting style and sub-ability combo?",
-    answer: "The best combo depends on your Stand and playstyle. Boxing is the most versatile fighting style for PvP due to its consistent damage. For sub-abilities, Hamon is strong for general use and damage, while Vampire excels at sustain builds. Use our build planner to test different combinations and see the 5-dimension score breakdown.",
+    answer: "The best combo depends on your Stand and playstyle. In this site's planner data, Boxing is the safest all-round fighting style, while Hamon and Vampire are frequent community recommendations. Use the planner to compare local estimates side by side.",
   },
   {
     question: "How does the Build Planner scoring system work?",
-    answer: "Our build planner evaluates your Stand + Fighting Style + Sub-Ability combo across 5 dimensions: PvP, PvE, Survival, Mobility, and Cost Efficiency. Each component contributes to the final score based on community data. You can save builds to your Vault, compare two builds side-by-side, and get 1-step upgrade suggestions.",
+    answer: "Our build planner estimates a Stand + Fighting Style + Sub-Ability combo across 5 dimensions: PvP, PvE, Survival, Mobility, and Cost Efficiency. The numbers come from the site's local dataset and weighting rules, not from official game balance values.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function Home() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Tier List &amp; Codes
           </h1>
           <p className="text-lg md:text-xl text-muted text-balance mx-auto">
-            Find the best Stands, optimal build combos, and active codes for PvP and PvE. Don&apos;t waste your Stand Arrow.
+            Cross-check official Trello move data, compare site-maintained planner rankings, and verify official links before you spend your resources.
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Home() {
             <Link href="/tier-list" className="flex items-center justify-between p-6 bg-gradient-to-br from-surface to-[#1a1a1a] border border-border rounded-xl hover:border-accent-indigo/50 group transition-all">
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white group-hover:text-accent-indigo transition-colors">Tier List</span>
-                <span className="text-sm text-muted">Current meta rankings</span>
+                <span className="text-sm text-muted">Community ranking view</span>
               </div>
               <ArrowRight className="h-5 w-5 text-muted group-hover:text-accent-indigo transition-transform group-hover:translate-x-1" />
             </Link>
@@ -120,7 +120,7 @@ export default function Home() {
               <Gift className="h-5 w-5 text-yellow-400/70" />
               <div className="flex flex-col">
                 <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">Bizarre Lineage Codes</span>
-                <span className="text-sm text-muted">Check for free Arrows, Rokakakas &amp; Cash</span>
+                <span className="text-sm text-muted">Verified status + official links</span>
               </div>
             </div>
             <ArrowRight className="h-5 w-5 text-muted group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />
@@ -134,17 +134,17 @@ export default function Home() {
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue font-bold text-lg">1</div>
               <h3 className="font-bold text-white">Pick a Stand</h3>
-              <p className="text-sm text-muted">Choose from 17 Stands — from S-tier Made in Heaven to beginner-friendly Magician&apos;s Red. Each has unique PvP and PvE scores.</p>
+              <p className="text-sm text-muted">Choose from 17 Stands in this site&apos;s local dataset. Each entry keeps official move names but uses site-maintained planner scores.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-accent-indigo/10 border border-accent-indigo/20 flex items-center justify-center text-accent-indigo font-bold text-lg">2</div>
               <h3 className="font-bold text-white">Select Style &amp; Sub</h3>
-              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Karate) and a sub-ability (Hamon, Vampire, Cyborg) to shape your build.</p>
+              <p className="text-sm text-muted">Pair your Stand with a fighting style (Boxing, Kendo, Karate) and a sub-ability (Hamon, Vampire, Cyborg) to test planner combinations.</p>
             </div>
             <div className="text-center space-y-3">
               <div className="w-12 h-12 mx-auto rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 font-bold text-lg">3</div>
               <h3 className="font-bold text-white">Get Your Score</h3>
-              <p className="text-sm text-muted">See your build&apos;s 5-dimension score (PvP, PvE, Survival, Mobility, Cost), save it to your Vault, and compare it against other builds.</p>
+              <p className="text-sm text-muted">See planner estimates across 5 dimensions, save them to your Vault, and compare local build profiles side by side.</p>
             </div>
           </div>
         </div>
@@ -159,15 +159,15 @@ export default function Home() {
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors">{stand.name}</h3>
                     <span className="px-2 py-1 text-xs font-mono font-bold uppercase rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">
-                      Tier {stand.tier.overall}
+                      Planner {stand.tier.overall}
                     </span>
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-sm text-muted">
-                      <Target className="h-4 w-4" /> PvP Score: <span className="text-white font-medium">{stand.scores.damage}/10</span>
+                      <Target className="h-4 w-4" /> Damage Score: <span className="text-white font-medium">{stand.scores.damage}/10</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted">
-                      <Zap className="h-4 w-4" /> Best Style: <span className="text-white font-medium capitalize">{stand.recommendedStyles[0]}</span>
+                      <Zap className="h-4 w-4" /> Suggested Style: <span className="text-white font-medium capitalize">{stand.recommendedStyles[0]}</span>
                     </div>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function Home() {
         {/* Patch freshness note */}
         <div className="w-full max-w-2xl text-center">
           <p className="text-xs text-muted/60">
-            Data updated regularly based on community reports and the official Trello board. Stand rankings and scores may shift after game patches. Last reviewed: March 2026.
+            Move names, obtain methods, and progression notes are cross-checked against the public official Trello board. Rankings and planner scores on this site are community-maintained notes.
           </p>
         </div>
       </div>

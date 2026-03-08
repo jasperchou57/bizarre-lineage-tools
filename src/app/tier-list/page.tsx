@@ -30,7 +30,7 @@ export default function TierListPage() {
                     Bizarre Lineage Tier List
                 </h1>
                 <p className="text-lg text-muted max-w-2xl mx-auto mb-8">
-                    Current meta rankings for all Stands. Filter by overall power, player elimination (PvP), or optimal grinding speeds (PvE).
+                    Community-maintained ranking data for all Stands in this site&apos;s local dataset. Filter by overall, PvP, or PvE view.
                 </p>
 
                 <div className="inline-flex bg-surface border border-border rounded-xl p-1 shadow-lg">
@@ -38,19 +38,19 @@ export default function TierListPage() {
                         onClick={() => setActiveFilter("overall")}
                         className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${activeFilter === "overall" ? 'bg-accent-blue text-white shadow-[0_0_15px_rgba(59,130,246,0.3)]' : 'text-muted hover:text-white'}`}
                     >
-                        Overall Meta
+                        Overall
                     </button>
                     <button
                         onClick={() => setActiveFilter("pvp")}
                         className={`px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${activeFilter === "pvp" ? 'bg-accent-indigo text-white shadow-[0_0_15px_rgba(99,102,241,0.3)]' : 'text-muted hover:text-white'}`}
                     >
-                        <Target className="h-4 w-4" /> PvP Only
+                        <Target className="h-4 w-4" /> PvP
                     </button>
                     <button
                         onClick={() => setActiveFilter("pve")}
                         className={`px-6 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 ${activeFilter === "pve" ? 'bg-green-600 text-white shadow-[0_0_15px_rgba(22,163,74,0.3)]' : 'text-muted hover:text-white'}`}
                     >
-                        <Activity className="h-4 w-4" /> PvE / Grinding
+                        <Activity className="h-4 w-4" /> PvE
                     </button>
                 </div>
             </div>

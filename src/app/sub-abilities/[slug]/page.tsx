@@ -51,6 +51,9 @@ export default function SubAbilityDetailPage({ params }: { params: { slug: strin
                         <p className="text-xl text-muted leading-relaxed">
                             {sub.summary}
                         </p>
+                        <p className="text-sm text-muted leading-relaxed mt-3">
+                            Passive notes are cross-checked against the public official Trello. Scores and synergies below are site-maintained planner notes.
+                        </p>
                     </div>
 
                     <div className="bg-surface border border-accent-blue/30 rounded-xl overflow-hidden relative shadow-[0_0_30px_rgba(59,130,246,0.05)]">

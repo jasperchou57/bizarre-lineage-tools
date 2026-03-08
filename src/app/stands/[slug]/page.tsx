@@ -77,9 +77,7 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                             Overview & Rarity
                         </h2>
                         <p className="text-muted leading-relaxed">
-                            {stand.meta} Obtained primarily via <strong className="text-white">{stand.obtainMethod}</strong>,
-                            this Part {stand.part} Stand sits at a <strong className="text-accent-blue">{stand.tier.overall} Tier</strong> overall ranking.
-                            It requires {stand.awakening.required} points for Awakening.
+                            The public official Trello is used here for move names and obtainment notes. On this site, {stand.name} is grouped under the local <strong className="text-white">{stand.rarity}</strong> label, obtained primarily via <strong className="text-white">{stand.obtainMethod}</strong>, and currently placed at <strong className="text-accent-blue">{stand.tier.overall} Tier</strong> in the planner dataset.
                         </p>
                     </section>
 
@@ -104,13 +102,9 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         <p className="text-muted leading-relaxed">
                             {stand.name} is obtained via <strong className="text-white">{stand.obtainMethod}</strong>.
                             {stand.rarity === 'Special' ? (
-                                <> This is an evolution-only Stand that cannot be rolled from the Stand Arrow. Follow the specific evolution path to obtain it.</>
-                            ) : stand.rarity === 'Mythical' || stand.rarity === 'Legendary' ? (
-                                <> This is one of the rarest Stands in the game, so expect multiple attempts before pulling it. Make sure to stock up on Arrows before committing.</>
-                            ) : stand.rarity === 'Rare' ? (
-                                <> It has a moderate drop rate from the Stand Arrow pool. Most players obtain it within a few tries.</>
+                                <> This is listed on the site as an evolution-only Stand. Follow the relevant official quest or evolution path instead of relying on a normal Arrow roll.</>
                             ) : (
-                                <> It has a relatively high drop rate from the Stand Arrow, making it beginner-friendly and easy to acquire early on.</>
+                                <> The public Trello confirms the obtainment method, but it does not publish exact drop percentages on this page.</>
                             )}
                         </p>
                     </section>
@@ -122,7 +116,7 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                 <Sword className="h-5 w-5 text-accent-blue" /> Recommended PvP Setup
                             </h3>
                             <p className="text-muted mb-4">
-                                For optimal combat performance, pair {stand.name} with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong> and <strong className="text-white capitalize">{stand.recommendedSubs[0]}</strong>.
+                                Our local planner currently pairs {stand.name} with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong> and <strong className="text-white capitalize">{stand.recommendedSubs[0]}</strong>. This is a site recommendation, not an official balance callout.
                             </p>
                             <div className="flex gap-4">
                                 <Link href={`/build-planner?stand=${stand.id}&style=${stand.recommendedStyles[0]}&sub=${stand.recommendedSubs[0]}&mode=pvp`} className="text-sm font-bold text-accent-blue hover:text-white transition-colors border border-accent-blue/30 px-4 py-2 rounded-lg hover:bg-accent-blue/10">
@@ -136,7 +130,7 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         <h2 className="text-2xl font-bold text-white mb-4">{stand.name} vs Similar Stands</h2>
                         <div className="bg-surface border border-border rounded-xl p-6">
                             <p className="text-muted mb-4">
-                                {stand.name} counters <strong className="text-green-400">{stand.counters.join(', ')}</strong> but is weak against <strong className="text-red-400">{stand.counteredBy.join(', ')}</strong>.
+                                These matchup notes come from the site&apos;s local dataset. {stand.name} is currently tagged here as strong into <strong className="text-green-400">{stand.counters.join(', ')}</strong> and weaker into <strong className="text-red-400">{stand.counteredBy.join(', ')}</strong>.
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 {[...stand.counters, ...stand.counteredBy].map(id => {
@@ -157,15 +151,15 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         <ul className="space-y-3 text-muted">
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Using {stand.name} without a Fighting Style. Always pair it with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong> to maximize combo potential.</span>
+                                <span>Copying this page&apos;s recommended pairing without testing it. The local planner starts with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong>, but your own matchups may call for something else.</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Ignoring the matchup chart. Know your counters and play around them.</span>
+                                <span>Treating planner rankings as official patch notes. Use the public Trello for verified move and progression data.</span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Rushing Awakening before reaching the required {stand.awakening.required} points. Farm efficiently first using our <Link href="/guides/leveling" className="text-accent-blue hover:underline">Leveling Guide</Link>.</span>
+                                <span>Ignoring the matchup notes entirely. Even local planner suggestions work better when you test them against the matchups you see most often.</span>
                             </li>
                         </ul>
                     </section>
@@ -193,7 +187,7 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                     </span>
                                 </summary>
                                 <div className="border-t border-border p-4 text-muted text-sm">
-                                    The recommended styles are {stand.recommendedStyles.join(' and ')}.
+                                    Our planner currently suggests {stand.recommendedStyles.join(' and ')}.
                                 </div>
                             </details>
                         </div>
@@ -213,14 +207,14 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                                 "text": `${stand.name} is obtained through ${stand.obtainMethod}.`
                                             }
                                         },
-                                        {
-                                            "@type": "Question",
-                                            "name": `What is the best fighting style for ${stand.name}?`,
-                                            "acceptedAnswer": {
-                                                "@type": "Answer",
-                                                "text": `The recommended styles are ${stand.recommendedStyles.join(' and ')}.`
-                                            }
-                                        }
+                                                {
+                                                    "@type": "Question",
+                                                    "name": `What is the best fighting style for ${stand.name}?`,
+                                                    "acceptedAnswer": {
+                                                        "@type": "Answer",
+                                                        "text": `Our planner currently suggests ${stand.recommendedStyles.join(' and ')}.`
+                                                    }
+                                                }
                                     ]
                                 })
                             }}
@@ -274,6 +268,9 @@ export default function StandPage({ params }: { params: { slug: string } }) {
 
                     <div className="bg-surface border border-border rounded-xl p-6">
                         <h3 className="text-lg font-bold text-white mb-4">Pros & Cons</h3>
+                        <p className="text-sm text-muted mb-4">
+                            These strengths and weaknesses are site-maintained planner notes, not official Trello labels.
+                        </p>
                         <div className="mb-4">
                             <h4 className="text-sm font-bold text-green-400 mb-2 uppercase tracking-wide">Strengths</h4>
                             <ul className="text-sm text-muted space-y-1 list-disc list-inside">

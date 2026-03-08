@@ -1,6 +1,6 @@
 # Bizarre Lineage Wiki
 
-The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Roblox). Fan-made, not affiliated with Roblox or the game developers.
+Fan-made tools and planner hub for [Bizarre Lineage](https://www.roblox.com/) (Roblox). Not affiliated with Roblox or the game developers.
 
 ## Live Pages
 
@@ -13,7 +13,7 @@ The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Ro
 | Compare | `/compare` | Side-by-side build diff with stat highlighting |
 | Stand Pages | `/stands/[slug]` | 17 individual SSG pages with SEO metadata |
 | Fighting Styles | `/fighting-styles/[slug]` | Style details (Boxing, Kendo, Karate) |
-| Sub-Abilities | `/sub-abilities/[slug]` | Sub details (Hamon, Vampire, Cyborg, Spin) |
+| Sub-Abilities | `/sub-abilities/[slug]` | Sub details (Hamon, Vampire, Cyborg) |
 | Codes | `/codes` | Active game codes tracker |
 | Guides | `/guides/leveling`, `/guides/prestige` | Progression guides |
 
@@ -29,9 +29,9 @@ The ultimate optimization hub for [Bizarre Lineage](https://www.roblox.com/) (Ro
 
 All game data lives in `src/data/`:
 
-- `stands.json` — 17 Stands with scores, tier, moves, counters, FAQ
-- `fighting-styles.json` — 3 Fighting Styles (Boxing, Kendo, Karate)
-- `sub-abilities.json` — 3 Sub-Abilities (Hamon, Vampire, Cyborg)
+- `stands.json` — 17 Stands with move references plus site-maintained planner scores and rankings
+- `fighting-styles.json` — 3 Fighting Styles (official move names + site notes)
+- `sub-abilities.json` — 3 Sub-Abilities (official move names + site notes)
 
 **To add a new Stand:** Add an entry to `stands.json` following the existing schema. The SSG pipeline (`generateStaticParams`) will auto-create the page.
 
@@ -63,4 +63,4 @@ Or push to `main` with Vercel GitHub integration for auto-deploy.
 
 ## License
 
-Fan-made project. Game data sourced from public Trello board and community resources.
+Fan-made project. Move names, obtain methods, and core mechanics are cross-checked against the public official Trello board. Rankings, planner scores, and build suggestions are site-maintained community data.

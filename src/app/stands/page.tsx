@@ -17,7 +17,7 @@ export default function StandsDirectoryPage() {
                     Stands Directory
                 </h1>
                 <p className="text-lg text-muted max-w-2xl">
-                    Browse all available Stands in Bizarre Lineage. Click on any Stand to view its complete stat breakdown, rarity, moveset, and recommended builds.
+                    Browse all available Stands in Bizarre Lineage. Each page combines official move and obtainment notes with this site&apos;s planner scores and community build suggestions.
                 </p>
             </div>
 

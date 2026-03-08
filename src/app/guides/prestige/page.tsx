@@ -24,68 +24,37 @@ export default function PrestigeGuidePage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-10">
-                Prestiging in Bizarre Lineage is the core progression mechanic that resets your level in exchange for powerful account-wide buffs, increased level caps, and access to new content tiers.
+                The public official Trello confirms that prestiging is an end-game mechanic handled by the Arch Mage. This page sticks to the details that are explicitly documented there.
             </p>
 
             <h2>Basic Requirements</h2>
-            <p>To perform a prestige, you must meet the following criteria based on your current prestige level:</p>
-
-            <div className="overflow-x-auto not-prose my-8">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="border-b border-white/10">
-                            <th className="py-4 px-6 text-muted font-bold">Current Prestige</th>
-                            <th className="py-4 px-6 text-muted font-bold">Required Level</th>
-                            <th className="py-4 px-6 text-muted font-bold">Money Cost</th>
-                            <th className="py-4 px-6 text-muted font-bold">Next Cap</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                        <tr className="hover:bg-white/5 transition-colors">
-                            <td className="py-4 px-6 font-bold text-white">Prestige 0</td>
-                            <td className="py-4 px-6 text-white font-mono">35</td>
-                            <td className="py-4 px-6 text-green-400 font-mono">$5,000</td>
-                            <td className="py-4 px-6 text-accent-blue font-bold">Level 40</td>
-                        </tr>
-                        <tr className="hover:bg-white/5 transition-colors">
-                            <td className="py-4 px-6 font-bold text-white">Prestige 1</td>
-                            <td className="py-4 px-6 text-white font-mono">40</td>
-                            <td className="py-4 px-6 text-green-400 font-mono">$10,000</td>
-                            <td className="py-4 px-6 text-accent-blue font-bold">Level 45</td>
-                        </tr>
-                        <tr className="hover:bg-white/5 transition-colors">
-                            <td className="py-4 px-6 font-bold text-white">Prestige 2</td>
-                            <td className="py-4 px-6 text-white font-mono">45</td>
-                            <td className="py-4 px-6 text-green-400 font-mono">$15,000</td>
-                            <td className="py-4 px-6 text-accent-blue font-bold">Level 50 (Max)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <p>The public official Trello currently confirms the following:</p>
+            <ul>
+                <li><strong>Cost:</strong> You need 10,000 Cash.</li>
+                <li><strong>NPC:</strong> Talk to the <strong>Arch Mage</strong> in the <strong>Hospital</strong>.</li>
+                <li><strong>Location:</strong> The official Trello places the Arch Mage near <strong>Bus Stop 10</strong>.</li>
+            </ul>
 
             <h2>Benefits of Prestiging</h2>
             <ul>
-                <li><strong>Skill Points:</strong> Each prestige grants additional skill points at max level, allowing you to max out more branches of your Stand and Character skill trees simultaneously.</li>
-                <li><strong>Requiem Arrows:</strong> You cannot use a Requiem Arrow unless you are Prestige 1 or higher.</li>
-                <li><strong>Story Mode:</strong> Certain story quests are gated behind Prestige requirements.</li>
+                <li><strong>5 Prestige Shards:</strong> The official card says the Arch Mage grants five Prestige Shards.</li>
+                <li><strong>1 Stand Storage:</strong> The same card says you also receive one Stand storage.</li>
+                <li><strong>Prestige Shop access:</strong> The Arch Mage also provides access to the Prestige Shop.</li>
             </ul>
 
             <h2>What do I lose?</h2>
-            <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-6 my-6 not-prose">
-                <ul className="space-y-2 text-red-200 m-0">
-                    <li className="flex items-center gap-2">❌ Your character level resets to Level 1.</li>
-                    <li className="flex items-center gap-2">❌ Your base stats (Health, Stamina) reset to base values.</li>
-                    <li className="flex items-center gap-2">❌ All allocated skill points are refunded and locked behind leveling.</li>
+            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 my-6 not-prose">
+                <ul className="space-y-2 text-yellow-100 m-0">
+                    <li className="flex items-center gap-2">• The public Trello does not publish a complete lose-on-prestige checklist.</li>
+                    <li className="flex items-center gap-2">• Verify reset behavior in-game before prestiging instead of relying on third-party tables.</li>
                 </ul>
             </div>
 
             <h2>What do I keep?</h2>
-            <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 my-6 not-prose">
-                <ul className="space-y-2 text-green-200 m-0">
-                    <li className="flex items-center gap-2">✅ Your Stand remains unchanged.</li>
-                    <li className="flex items-center gap-2">✅ Your Fighting Style and Sub-Ability remain unlocked.</li>
-                    <li className="flex items-center gap-2">✅ Your Money and Items (Arrows, Rokakakas) are safe.</li>
-                    <li className="flex items-center gap-2">✅ Story progression is saved.</li>
+            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 my-6 not-prose">
+                <ul className="space-y-2 text-yellow-100 m-0">
+                    <li className="flex items-center gap-2">• The public Trello does not publish a full keep-on-prestige checklist either.</li>
+                    <li className="flex items-center gap-2">• What is clearly documented publicly is the 10,000 Cash cost, Arch Mage location, Prestige Shards, Stand storage, and Prestige Shop access.</li>
                 </ul>
             </div>
 

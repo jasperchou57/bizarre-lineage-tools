@@ -15,7 +15,7 @@ export default function FightingStylesDirectory() {
                 Fighting Styles
             </h1>
             <p className="text-lg text-muted mb-12 max-w-2xl">
-                Fighting Styles modify your base combat capabilities. Pair them with specific Stands to unlock devastating combo potential.
+                Fighting Styles modify your base combat capabilities. Move names are cross-checked against the public official Trello, while combo scores and pairing suggestions below are site-maintained planner notes.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

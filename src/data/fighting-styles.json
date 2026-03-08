@@ -5,17 +5,17 @@
     "moves": [
       {
         "name": "White Fang",
-        "key": "E",
+        "key": "Any",
         "type": "melee"
       },
       {
         "name": "Liver Crusher",
-        "key": "R",
+        "key": "Any",
         "type": "melee"
       },
       {
         "name": "Dempsey Roll",
-        "key": "Z",
+        "key": "Any",
         "type": "melee"
       }
     ],
@@ -31,7 +31,7 @@
       "star-platinum",
       "crazy-diamond"
     ],
-    "summary": "Reliable combos, high burst, close-range specialist. Great for extending M1 chains."
+    "summary": "Reliable combos, high burst, and close-range pressure. Commonly used to extend M1 chains."
   },
   {
     "id": "kendo",
@@ -39,17 +39,17 @@
     "moves": [
       {
         "name": "Whirlwind",
-        "key": "E",
+        "key": "Any",
         "type": "melee"
       },
       {
         "name": "Silent Edge",
-        "key": "R",
+        "key": "Any",
         "type": "dash"
       },
       {
         "name": "Rising Tempest",
-        "key": "Z",
+        "key": "Any",
         "type": "melee"
       }
     ],
@@ -64,7 +64,7 @@
       "made-in-heaven",
       "c-moon"
     ],
-    "summary": "Excellent range and counter-attacks. Synergizes with fast or sword-based stands."
+    "summary": "Longer reach and counter-attacks. Often paired with fast or sword-based Stands."
   },
   {
     "id": "karate",
@@ -72,17 +72,17 @@
     "moves": [
       {
         "name": "Seiken Barrage",
-        "key": "E",
+        "key": "Any",
         "type": "melee"
       },
       {
         "name": "Sixth Massacre",
-        "key": "R",
+        "key": "Any",
         "type": "melee"
       },
       {
         "name": "Tatsumaki",
-        "key": "Z",
+        "key": "Any",
         "type": "aoe"
       }
     ],
@@ -97,6 +97,6 @@
       "killer-queen",
       "the-world"
     ],
-    "summary": "Great combo extenders and AoE crowd control. Shines in PvE and group PvP fights."
+    "summary": "Combo extenders with AoE crowd control. Often used in PvE and group fights."
   }
 ]

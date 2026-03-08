@@ -37,8 +37,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "king-crimson", name: "King Crimson" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "The highest skill-ceiling PvP build in the game. Time Erase lets you phase through attacks and reposition for free, Boxing extends your combos after Epitaph counters, and Vampire sustain means you can outlast anyone in extended fights.",
-                strengths: ["Invisible engages with Time Erase", "Epitaph counters punish aggressive players", "Vampire lifesteal sustains through trades"],
+                description: "A popular PvP-focused setup in this site's planner. Time Erase supports resets and repositioning, Boxing extends punish windows after successful reads, and Vampire adds sustain in longer trades.",
+                strengths: ["Time Erase supports safe re-engages", "Counter windows convert well into Boxing follow-ups", "Vampire sustain helps in longer trades"],
                 statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
@@ -46,8 +46,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "made-in-heaven", name: "Made in Heaven" },
                 style: { id: "kendo", name: "Kendo" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "Unmatched mobility makes this build impossible to pin down. Double Accel + Time Acceleration turns you into a blur that hits before enemies can react. Kendo's Rising Tempest punishes anyone who tries to trade, and Vampire keeps your HP topped off between engages.",
-                strengths: ["Fastest Stand in the game", "Hit-and-run playstyle dominates open world", "Rising Tempest catches aggressive players"],
+                description: "A mobility-heavy setup built around Made in Heaven's movement tools. Acceleration helps you pressure or disengage quickly, Kendo adds a clean follow-up option, and Vampire helps smooth out extended skirmishes.",
+                strengths: ["Very high movement ceiling", "Comfortable hit-and-run pressure", "Kendo follow-ups punish overcommits"],
                 statFocus: "20% Health, 30% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
             {
@@ -55,8 +55,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "whitesnake", name: "Whitesnake" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "The best control build in the game. Whitesnake's Disc Extraction disables enemy Stands entirely, Acid Rupture controls space, and Boxing extends your combo windows. Hamon boosts your already strong damage and gives HP regen for sustain. Dominant in both 1v1 and team fights.",
-                strengths: ["Disc Extraction wins fights by itself", "Best CC chain in the game", "Strong at every range"],
+                description: "A control-oriented setup that this site tags as a strong PvP option. Disc Extraction and Acid Rupture create disruption windows, while Boxing and Hamon give you a straightforward follow-up plan.",
+                strengths: ["Multiple disruption tools", "Works across mid and close range", "Hamon helps sustain pressure"],
                 statFocus: "25% Health, 30% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
@@ -72,8 +72,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "weather-report", name: "Weather Report" },
                 style: { id: "karate", name: "Karate" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "The undisputed king of PvE farming. Weather Report's screen-wide AoE clears entire mob packs in seconds. Karate adds Tatsumaki for even more AoE coverage, and Hamon's damage bonus makes clears even faster. Heavy Weather CC locks down remaining enemies.",
-                strengths: ["Largest AoE coverage in the game", "Heavy Weather CC locks down enemies", "Clears quest mobs in one rotation"],
+                description: "A PvE-oriented farming suggestion built around wide-area pressure. Weather Report covers groups well, Karate adds another AoE layer, and Hamon is used here as a simple damage-focused support pick.",
+                strengths: ["Good area coverage", "Crowd-control friendly move set", "Comfortable for mission clearing"],
                 statFocus: "20% Health, 40% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
@@ -81,8 +81,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "magicians-red", name: "Magician's Red" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "The best PvE build you can get within your first few hours. Magician's Red is Uncommon (easy to roll), has massive AoE with Crossfire Hurricane and Ignition Burst, and Hamon's damage bonus makes quest clears even faster. Perfect for new accounts grinding their first prestige.",
-                strengths: ["Uncommon rarity — easy to obtain", "Huge AoE with Crossfire Hurricane", "Hamon bonus damage speeds up clears"],
+                description: "A lower-commitment farming suggestion for earlier accounts in the site's planner. Magician's Red provides AoE options, Boxing gives a simple close-range backup, and Hamon keeps the setup straightforward.",
+                strengths: ["Accessible move kit", "Crossfire Hurricane adds AoE reach", "Straightforward damage-focused support"],
                 statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
@@ -90,8 +90,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "the-world", name: "The World" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "Time Stop + Knives + Kick Volley deals the highest single-target burst in the game. This build melts bosses during the 6-second freeze window. Boxing fills in damage between cooldowns, and Vampire sustain lets you solo bosses that normally require a party.",
-                strengths: ["Highest burst damage combo", "6-second Time Stop is massive", "Vampire sustain enables solo boss runs"],
+                description: "A single-target focused suggestion for players who like burst windows. Time Stop creates setup space for Knives and Kick Volley, Boxing covers downtime, and Vampire adds sustain between openings.",
+                strengths: ["Strong burst windows", "Time Stop creates reliable setup space", "Vampire helps in longer solo attempts"],
                 statFocus: "20% Health, 30% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
@@ -107,8 +107,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "star-platinum", name: "Star Platinum" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "Star Platinum is the textbook beginner Stand — straightforward combos, Time Stop for clutch moments, and A Tier in both PvP and PvE. Boxing is the easiest fighting style to learn, and Hamon adds raw damage without requiring complex mechanics. You can comfortably reach Prestige 3 with this setup.",
-                strengths: ["Simple, effective combos", "Time Stop bails you out of bad situations", "Works well in every game mode"],
+                description: "A common beginner recommendation on this site. Star Platinum has a readable move kit, Boxing is straightforward to pilot, and Hamon keeps the setup simple while you learn core timing.",
+                strengths: ["Easy-to-read combo routes", "Time Stop offers a reset tool", "Comfortable across different activities"],
                 statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
@@ -116,8 +116,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "crazy-diamond", name: "Crazy Diamond" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "Can't lose if you can't die. Crazy Diamond's Restore heals you constantly, Rock Trap provides strong CC for setting up combos, and the combo potential with Boxing is incredible if you hit your skills. The most forgiving build in the game — you can make mistakes and heal through them.",
-                strengths: ["Infinite self-healing", "Very forgiving of mistakes", "Strong combo potential with Rock Trap"],
+                description: "A forgiving setup built around Crazy Diamond's healing tools. Boxing adds easy follow-ups, and Hamon keeps the build simple for players still learning spacing and timing.",
+                strengths: ["Healing helps cover mistakes", "Rock Trap can start follow-ups", "Useful for steady, patient play"],
                 statFocus: "30% Health, 25% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
@@ -133,8 +133,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "the-world", name: "The World" },
                 style: { id: "karate", name: "Karate" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "The highest damage combo in the game: Time Stop → Knives → Kick Volley → Karate follow-up. If you land Time Stop, the fight is over. The risk? Miss your TS and you're a sitting duck with high cooldowns. Vampire partially offsets the squishiness.",
-                strengths: ["Kills any Stand in one Time Stop combo", "Kick Volley has devastating burst damage", "Vampire provides emergency sustain"],
+                description: "A high-risk burst suggestion for players who want explosive punish windows. Time Stop opens a large combo route, Karate adds a heavy follow-up, and Vampire partially offsets the fragile profile.",
+                strengths: ["Explosive burst if the opener lands", "Kick Volley converts Time Stop windows well", "Vampire softens the sustain tradeoff"],
                 statFocus: "10% Health, 40% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
             {
@@ -142,8 +142,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "anubis", name: "Anubis" },
                 style: { id: "kendo", name: "Kendo" },
                 sub: { id: "hamon", name: "Hamon" },
-                description: "Pure melee devastation. Anubis has the highest raw DPS in the game, Flash Strike chains into rapid invisible follow-ups, and Kendo's sword synergy creates seamless combo chains. Hamon amplifies the already insane damage. Zero ranged options means you have to commit, but if you get in, nobody survives.",
-                strengths: ["Highest melee DPS", "Flash Strike chains into invisible follow-ups", "Kendo sword synergy is seamless"],
+                description: "A melee-focused glass-cannon suggestion. Anubis rewards close-range commitment, Kendo keeps the setup aggressive, and Hamon is used here as a direct damage support pick.",
+                strengths: ["Strong melee pressure", "Flash Strike can chain into close follow-ups", "Rewards committed sword-range play"],
                 statFocus: "15% Health, 35% Destructive Power, 15% Destructive Energy, 10% Power, 25% Weapon",
             },
         ],
@@ -159,8 +159,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "crazy-diamond", name: "Crazy Diamond" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "Double healing — Crazy Diamond's Restore plus Vampire lifesteal — makes you nearly unkillable. Boxing's damage keeps you relevant in fights, and Rock Trap CC means enemies can't just ignore you. The ultimate war-of-attrition build for patient players who win by never dying.",
-                strengths: ["Double healing sources", "Rock Trap forces engagement", "Extremely hard to kill"],
+                description: "A sustain-heavy setup for slower fights. Crazy Diamond and Vampire both add survivability tools, while Boxing gives the build a simple combo structure.",
+                strengths: ["Multiple sustain sources", "Rock Trap can force respect", "Fits patient, attrition-focused play"],
                 statFocus: "30% Health, 20% Destructive Power, 15% Destructive Energy, 25% Power, 10% Strength",
             },
             {
@@ -168,8 +168,8 @@ const categories: BuildCategory[] = [
                 stand: { id: "stone-free", name: "Stone Free" },
                 style: { id: "boxing", name: "Boxing" },
                 sub: { id: "vampire", name: "Vampire" },
-                description: "Stone Free's versatility combined with Vampire sustain creates a build that has an answer for everything. String Trap immobilizes aggressive rushers, Spiralling Thread provides ranged pressure, and Vampire keeps your HP up through extended fights. Not the flashiest build, but incredibly consistent.",
-                strengths: ["Answer for every matchup", "String Trap is excellent peel", "Spiralling Thread pressures at range"],
+                description: "A balanced sustain suggestion built around Stone Free's utility. String Trap and ranged thread pressure help control pace, while Vampire supports longer fights.",
+                strengths: ["Good mix of utility and sustain", "Trap tools help peel rushers", "Can pressure from more than one range"],
                 statFocus: "30% Health, 25% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
@@ -179,23 +179,23 @@ const categories: BuildCategory[] = [
 const faqItems = [
     {
         question: "What is the best build in Bizarre Lineage?",
-        answer: "It depends on your playstyle. For PvP, King Crimson + Boxing + Vampire is the highest skill-ceiling build. For PvE farming, Weather Report + Karate + Hamon clears the fastest. For beginners, Star Platinum + Boxing + Hamon is the safest all-rounder.",
+        answer: "It depends on your playstyle. This page collects site-maintained community suggestions rather than official best-in-slot builds, so use the ideas here as starting points and adjust them in the planner.",
     },
     {
         question: "What is the best Stand for PvP in Bizarre Lineage?",
-        answer: "King Crimson, Made in Heaven, and Whitesnake are the top three PvP Stands. King Crimson dominates 1v1s, Made in Heaven excels in open world, and Whitesnake's Disc Extraction is the strongest single ability in PvP.",
+        answer: "In this site's current community notes, King Crimson, Made in Heaven, and Whitesnake are popular PvP picks. That is a local ranking, not an official balance statement.",
     },
     {
         question: "What is the best beginner build?",
-        answer: "Star Platinum + Boxing + Hamon. Star Platinum is A Tier in both PvP and PvE, Boxing is easy to learn with high damage, and Hamon adds straightforward damage bonuses without complex mechanics.",
+        answer: "Star Platinum + Boxing + Hamon is one of this site's safer starter suggestions because it is easy to understand in the planner and uses straightforward move kits.",
     },
     {
         question: "How is this different from the Tier List?",
-        answer: "The Tier List ranks individual Stands by power level. This page recommends complete builds — Stand + Fighting Style + Sub-Ability — optimized for specific scenarios like PvP, PvE, or beginner play. Use the Tier List to compare Stands, use this page to find ready-to-use setups.",
+        answer: "The Tier List is the site's ranking view for individual Stands. This page collects complete Stand + Fighting Style + Sub-Ability suggestions for different scenarios. Use the Tier List to compare entries and this page to open a starter setup in the planner.",
     },
     {
         question: "Can I use these builds at any prestige level?",
-        answer: "Most builds work at any prestige. The main exception is builds using Legendary or Mythical Stands — you may need to use a budget alternative while farming for your target Stand. Check our Stand Chances guide for obtainability details.",
+        answer: "Most of these setups can be adapted at different prestige levels. Builds that rely on harder-to-target entries in the site's local rarity labels may take longer to assemble, so a cheaper placeholder build is often practical first.",
     },
 ];
 
@@ -218,11 +218,11 @@ export default function BestBuildsPage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-4">
-                Stop guessing. These are the strongest complete builds for every playstyle in the current meta — each one includes a Stand, Fighting Style, Sub-Ability, and recommended stat allocation. Every build links directly to the <Link href="/build-planner" className="text-accent-blue hover:underline">Build Planner</Link> so you can customize it further.
+                These are site-maintained community build ideas for different playstyles. They are not official rankings or patch notes. Each build links directly to the <Link href="/build-planner" className="text-accent-blue hover:underline">Build Planner</Link> so you can customize the local estimates further.
             </p>
 
             <p className="text-sm text-muted mb-10">
-                Looking for individual Stand rankings instead? Check the <Link href="/tier-list" className="text-accent-blue hover:underline">full Tier List</Link> for all Stands ranked by PvP, PvE, and overall power.
+                Looking for individual Stand rankings instead? Check the <Link href="/tier-list" className="text-accent-blue hover:underline">full Tier List</Link> for the site&apos;s PvP, PvE, and overall ranking view.
             </p>
 
             {/* Build Categories */}

@@ -13,7 +13,7 @@ export function Footer() {
                             Fan-made tools site. Not affiliated with Roblox or the game developers.
                         </p>
                         <p className="text-xs text-muted mt-1">
-                            Data compiled from public Trello board and community resources.
+                            Official move and progression notes are cross-checked against the public Trello board. Planner rankings and build notes are site-maintained.
                         </p>
                     </div>
                     <div className="flex items-center gap-6 text-sm text-muted">

@@ -6,17 +6,17 @@
         "moves": [
             {
                 "name": "Sunlight Yellow Overdrive",
-                "key": "1",
+                "key": "Any",
                 "type": "melee"
             },
             {
                 "name": "Sendo Ripple Overdrive",
-                "key": "2",
+                "key": "Any",
                 "type": "melee"
             },
             {
                 "name": "Scarlet Overdrive",
-                "key": "3",
+                "key": "Any",
                 "type": "melee"
             }
         ],
@@ -42,17 +42,17 @@
         "moves": [
             {
                 "name": "Machine Gun",
-                "key": "1",
+                "key": "Any",
                 "type": "ranged"
             },
             {
                 "name": "Ultraviolet Radiation Apparatus",
-                "key": "2",
+                "key": "Any",
                 "type": "grab"
             },
             {
                 "name": "Missle Volley",
-                "key": "3",
+                "key": "Any",
                 "type": "ranged"
             }
         ],
@@ -68,7 +68,7 @@
             "magicians-red",
             "purple-haze"
         ],
-        "summary": "Tanky PVE specialist with massive AoE damage."
+        "summary": "Tanky PvE-oriented sub-ability with AoE tools."
     },
     {
         "id": "vampire",
@@ -77,17 +77,17 @@
         "moves": [
             {
                 "name": "Space Ripper Stingy Eyes",
-                "key": "1",
+                "key": "Any",
                 "type": "ranged"
             },
             {
                 "name": "Leeching Terror",
-                "key": "2",
+                "key": "Any",
                 "type": "grab"
             },
             {
                 "name": "Flash Freeze",
-                "key": "3",
+                "key": "Any",
                 "type": "cc"
             }
         ],
@@ -104,6 +104,6 @@
             "king-crimson",
             "whitesnake"
         ],
-        "summary": "Best sustain sub-ability. Lifesteal and regen make you nearly unkillable in extended fights. Weak to Hamon."
+        "summary": "Sustain-focused sub-ability with lifesteal and regen in longer fights. Weak to Hamon."
     }
 ]

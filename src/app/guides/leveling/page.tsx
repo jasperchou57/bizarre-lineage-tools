@@ -24,60 +24,56 @@ export default function LevelingGuidePage() {
             </div>
 
             <p className="text-xl text-muted leading-relaxed mb-10">
-                Hitting Max Level (or your Prestige Cap) fast is vital for PvP viability. This guide covers the optimal quest loop for solo players. If you have an AoE Stand like Killer Queen or Weather Report, these times can be cut in half.
+                This guide focuses on the progression steps that are explicitly described on the public official Trello. It avoids undocumented NPC routes and level brackets that can drift out of date.
             </p>
 
             <div className="space-y-8 not-prose">
-                {/* Level 1-10 */}
                 <div className="bg-surface border border-border rounded-xl p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-2 h-full bg-slate-500"></div>
                     <h3 className="text-2xl font-bold text-white mb-2">Level 1 - 10: Thugs</h3>
-                    <p className="text-muted mb-4">Focus on learning your basic M1 combos. Do not pull out your Stand in crowded areas to avoid drawing aggro from max level players.</p>
+                    <p className="text-muted mb-4">The public Trello does not document a verified level-1-10 NPC route here. What it does confirm is that your first step should be the Tutorial at the Morioh Grand Hotel by talking to the Receptionist.</p>
                     <div className="bg-background rounded-lg p-4 border border-white/5">
-                        <p className="text-sm font-bold text-white mb-1">Optimal Quest:</p>
-                        <p className="text-sm text-muted">Talk to <span className="text-accent-blue">Officer Giorno</span> near the train station. Accept &quot;Defeat 5 Thugs&quot;.</p>
+                        <p className="text-sm font-bold text-white mb-1">Official Source:</p>
+                        <p className="text-sm text-muted">The Tutorial entry on the public Trello explains where to start and which area to visit first.</p>
                     </div>
                 </div>
 
-                {/* Level 10-25 */}
                 <div className="bg-surface border border-border rounded-xl p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
                     <h3 className="text-2xl font-bold text-white mb-2">Level 10 - 25: Corrupt Police</h3>
-                    <p className="text-muted mb-4">These enemies block often. You will need to start using your Stand&apos;s heavy attacks (usually X or C) or guardbreak moves (like Sweep Kick) to open them up.</p>
+                    <p className="text-muted mb-4">The public Trello does not confirm this exact bracket as an official route. What it does confirm is that early progression depends on unlocking your first Stand with a Stand Arrow and building around the move set you pull.</p>
                     <div className="bg-background rounded-lg p-4 border border-white/5">
-                        <p className="text-sm font-bold text-white mb-1">Optimal Quest:</p>
-                        <p className="text-sm text-muted">Talk to <span className="text-accent-blue">Bruno</span> in the back alley. Accept &quot;Clear the Station&quot;.</p>
+                        <p className="text-sm font-bold text-white mb-1">Official Source:</p>
+                        <p className="text-sm text-muted">Check the public Trello cards for <span className="text-accent-blue">Stand Arrow</span> and the early progression section.</p>
                     </div>
                 </div>
 
-                {/* Level 25-35 */}
                 <div className="bg-surface border border-border rounded-xl p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-2 h-full bg-purple-500"></div>
                     <h3 className="text-2xl font-bold text-white mb-2">Level 25 - 35: Alpha Thugs</h3>
-                    <p className="text-muted mb-4">Alpha Thugs have hyper armor on their heavy attacks. Dash backwards (Dash + S) when they glow red. Ranged stands excel here.</p>
+                    <p className="text-muted mb-4">The public Trello does not publish this exact mid-game route, but it does confirm that missions, kills, ranked wins, and PvP missions all build Stand conjuration. It also points to the gym mat as a strong conjuration farm.</p>
                     <div className="bg-background rounded-lg p-4 border border-white/5">
-                        <p className="text-sm font-bold text-white mb-1">Optimal Quest:</p>
-                        <p className="text-sm text-muted">Talk to <span className="text-accent-blue">Mista</span> on the roof. Accept &quot;Snipe the Alphas&quot;.</p>
+                        <p className="text-sm font-bold text-white mb-1">Official Source:</p>
+                        <p className="text-sm text-muted">The progression cards describe mission boards and conjuration farming in the gym.</p>
                     </div>
                 </div>
 
-                {/* Level 35-50 */}
                 <div className="bg-surface border border-border rounded-xl p-6 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-2 h-full bg-red-500"></div>
                     <h3 className="text-2xl font-bold text-white mb-2">Level 35 - 50: Boss Farming (Dio)</h3>
-                    <p className="text-muted mb-4">Normal quests fall off here. It is significantly faster to find a server jumping group to farm the Dio boss. You need at least 3 players to do this efficiently without dying.</p>
+                    <p className="text-muted mb-4">The public Trello does not confirm a single official late-game farming route on this page. What it does document clearly is where Boxing, Kendo, Karate, Hamon, Vampire, and Cyborg come from once you are ready to expand your build.</p>
                     <div className="bg-background rounded-lg p-4 border border-white/5">
-                        <p className="text-sm font-bold text-white mb-1">Server Hopping Strategy:</p>
-                        <p className="text-sm text-muted">Kill Dio -&gt; Leave Game -&gt; Join new server -&gt; Repeat.</p>
+                        <p className="text-sm font-bold text-white mb-1">Official Source:</p>
+                        <p className="text-sm text-muted">Use the official Trello obtainment cards for each trainer or item path instead of outdated community route lists.</p>
                     </div>
                 </div>
             </div>
 
             <h2 className="mt-12">General Pro-Tips</h2>
             <ul>
-                <li><strong>Spawn Point:</strong> Always set your spawn point at the bench near your current quest giver.</li>
-                <li><strong>Party EXP:</strong> Being in a party shares EXP, but only if you hit the enemy at least once.</li>
-                <li><strong>2x EXP Events:</strong> The developers usually run 2x EXP on weekends. Save your heavy grinding for Saturday/Sunday.</li>
+                <li><strong>Mission Boards:</strong> The official Trello calls them one of the most important early-game progression tools.</li>
+                <li><strong>Lucky Arrow:</strong> The official Lucky Arrow card is cosmetic; it guarantees a random skin on your current Stand.</li>
+                <li><strong>Prestige:</strong> The public Trello confirms you prestige through the Arch Mage for 10,000 Cash near Bus Stop 10.</li>
             </ul>
 
             <div className="mt-12 not-prose">

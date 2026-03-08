@@ -130,7 +130,7 @@ export default function VaultPage() {
                 <div className="bg-surface border border-border rounded-xl p-12 text-center">
                     <Database className="h-16 w-16 text-muted mx-auto mb-4 opacity-50" />
                     <h2 className="text-2xl font-bold text-white mb-2">Vault is Empty</h2>
-                    <p className="text-muted mb-6">Create and save builds in the Planner to store them here.</p>
+                    <p className="text-muted mb-6">Create and save planner builds to store them here.</p>
                     <Link href="/build-planner" className="px-6 py-3 bg-accent-blue rounded-lg text-white font-bold inline-block hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all">
                         Open Build Planner
                     </Link>
@@ -150,7 +150,7 @@ export default function VaultPage() {
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <h3 className="text-xl font-bold text-white mb-1">{build.name}</h3>
-                                        <p className="text-xs text-muted">Patch: {build.patchVersion} | Saved: {new Date(build.createdAt).toLocaleDateString()}</p>
+                                        <p className="text-xs text-muted">Profile: {build.patchVersion} | Saved: {new Date(build.createdAt).toLocaleDateString()}</p>
                                     </div>
                                     <button
                                         onClick={() => handleDelete(build.id)}
