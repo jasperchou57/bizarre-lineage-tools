@@ -288,25 +288,6 @@ export default function StatsGuidePage() {
                 ))}
             </div>
 
-            {/* JSON-LD FAQ Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": faqItems.map((item) => ({
-                            "@type": "Question",
-                            "name": item.question,
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": item.answer,
-                            },
-                        })),
-                    }),
-                }}
-            />
-
             {/* Next Guide Nav */}
             <div className="mt-12">
                 <Link href="/guides/stand-chances" className="block w-full py-4 bg-surface border border-white/10 rounded-xl text-center hover:bg-white/5 hover:border-accent-blue transition-all group">

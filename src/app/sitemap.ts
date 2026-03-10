@@ -3,7 +3,7 @@ import standsData from "@/data/stands.json";
 import stylesData from "@/data/fighting-styles.json";
 import subsData from "@/data/sub-abilities.json";
 
-const BASE_URL = "https://bizarrelineage.com";
+const BASE_URL = "https://www.bizarrelineage.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date();
@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${BASE_URL}/build-planner`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
         { url: `${BASE_URL}/stands`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
         { url: `${BASE_URL}/codes`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
-        { url: `${BASE_URL}/vault`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-        { url: `${BASE_URL}/compare`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
         { url: `${BASE_URL}/fighting-styles`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
         { url: `${BASE_URL}/sub-abilities`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
         { url: `${BASE_URL}/guides/leveling`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },

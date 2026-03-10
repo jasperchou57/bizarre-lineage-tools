@@ -164,63 +164,6 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </ul>
                     </section>
 
-                    {/* Simple FAQ for Schema/SEO */}
-                    <section className="mb-8">
-                        <h2 className="text-2xl font-bold text-white mb-4">FAQ</h2>
-                        <div className="space-y-4">
-                            <details className="group bg-surface border border-border rounded-lg [&_summary::-webkit-details-marker]:hidden">
-                                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
-                                    How to get {stand.name} in Bizarre Lineage?
-                                    <span className="transition group-open:rotate-180">
-                                        <ChevronRight className="h-5 w-5 text-muted rotate-90" />
-                                    </span>
-                                </summary>
-                                <div className="border-t border-border p-4 text-muted text-sm">
-                                    {stand.name} is obtained through {stand.obtainMethod}.
-                                </div>
-                            </details>
-                            <details className="group bg-surface border border-border rounded-lg [&_summary::-webkit-details-marker]:hidden">
-                                <summary className="flex cursor-pointer items-center justify-between p-4 font-medium text-white">
-                                    What is the best fighting style for {stand.name}?
-                                    <span className="transition group-open:rotate-180">
-                                        <ChevronRight className="h-5 w-5 text-muted rotate-90" />
-                                    </span>
-                                </summary>
-                                <div className="border-t border-border p-4 text-muted text-sm">
-                                    Our planner currently suggests {stand.recommendedStyles.join(' and ')}.
-                                </div>
-                            </details>
-                        </div>
-                        {/* Inject JSON-LD FAQ Schema */}
-                        <script
-                            type="application/ld+json"
-                            dangerouslySetInnerHTML={{
-                                __html: JSON.stringify({
-                                    "@context": "https://schema.org",
-                                    "@type": "FAQPage",
-                                    "mainEntity": [
-                                        {
-                                            "@type": "Question",
-                                            "name": `How to get ${stand.name} in Bizarre Lineage?`,
-                                            "acceptedAnswer": {
-                                                "@type": "Answer",
-                                                "text": `${stand.name} is obtained through ${stand.obtainMethod}.`
-                                            }
-                                        },
-                                                {
-                                                    "@type": "Question",
-                                                    "name": `What is the best fighting style for ${stand.name}?`,
-                                                    "acceptedAnswer": {
-                                                        "@type": "Answer",
-                                                        "text": `Our planner currently suggests ${stand.recommendedStyles.join(' and ')}.`
-                                                    }
-                                                }
-                                    ]
-                                })
-                            }}
-                        />
-                    </section>
-
                 </div>
 
                 {/* Sidebar (Right 1/3) */}

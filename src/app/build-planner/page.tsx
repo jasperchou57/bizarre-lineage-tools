@@ -300,10 +300,51 @@ function ScoreBar({ label, value, icon, color }: { label: string, value: number,
     );
 }
 
+function BuildPlannerFallback() {
+    return (
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
+            <div className="max-w-3xl mb-8">
+                <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Build Planner</h1>
+                <p className="text-muted mt-3 text-lg leading-relaxed">
+                    Compare site-maintained build estimates across 5 dimensions: PvP, PvE, Survival, Mobility, and Accessibility.
+                    The interactive planner is loading below.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div className="bg-surface border border-border rounded-xl p-5">
+                    <h2 className="text-sm font-bold text-accent-blue uppercase tracking-widest mb-2">Stand Pool</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{standsData.length} Stands</p>
+                    <p className="text-sm text-muted">Browse the current local dataset and start from any stand profile.</p>
+                </div>
+                <div className="bg-surface border border-border rounded-xl p-5">
+                    <h2 className="text-sm font-bold text-accent-indigo uppercase tracking-widest mb-2">Style Options</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{stylesData.length} Fighting Styles</p>
+                    <p className="text-sm text-muted">Test Boxing, Kendo, and Karate against different stand setups.</p>
+                </div>
+                <div className="bg-surface border border-border rounded-xl p-5">
+                    <h2 className="text-sm font-bold text-purple-400 uppercase tracking-widest mb-2">Sub-Abilities</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{subsData.length} Subs</p>
+                    <p className="text-sm text-muted">Layer Hamon, Vampire, or Cyborg into the same build profile.</p>
+                </div>
+            </div>
+
+            <div className="bg-surface border border-border rounded-xl p-6">
+                <h2 className="text-lg font-bold text-white mb-3">What This Planner Does</h2>
+                <ul className="space-y-2 text-sm text-muted">
+                    <li>Scores a stand, style, and sub-ability combination using the site&apos;s local planner rules.</li>
+                    <li>Highlights suggested pairings so you can compare a default setup against your own build idea.</li>
+                    <li>Saves finished setups to your local browser vault after the interactive controls load.</li>
+                </ul>
+            </div>
+        </div>
+    );
+}
+
 // Wrap in Suspense because we useSearchParams
 export default function BuildPlanner() {
     return (
-        <Suspense fallback={<div className="container mx-auto p-12 text-center text-white">Loading Planner...</div>}>
+        <Suspense fallback={<BuildPlannerFallback />}>
             <BuildPlannerClient />
         </Suspense>
     )

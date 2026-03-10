@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ChevronRight, Gift, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "All Bizarre Lineage Codes (March 2026) | Free Rewards",
-    description: "Looking for Bizarre Lineage codes? We track all active codes for free Arrows, Rokakakas, and Cash. Bookmark this page for updates.",
+    title: "Bizarre Lineage Codes (March 2026) | No Verified Active Codes",
+    description: "Check the current Bizarre Lineage code status and verify announcements through the official Discord, Roblox group, and game page before trusting third-party code lists.",
 };
 
 export default function CodesPage() {

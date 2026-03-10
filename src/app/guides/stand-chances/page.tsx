@@ -4,8 +4,8 @@ import { ChevronRight, Dice6, Gem, Crown, Star, Sparkles, CircleDot } from "luci
 import standsData from "@/data/stands.json";
 
 export const metadata: Metadata = {
-    title: "Stand Chances & Rarity Guide — All Drop Rates | Bizarre Lineage",
-    description: "Every Stand rarity and drop rate in Bizarre Lineage. Learn the exact chances for Common, Uncommon, Rare, Legendary, and Mythical Stands from the Stand Arrow.",
+    title: "Stand Chances & Rarity Guide | Arrow Odds, Labels & Evolution Paths",
+    description: "Learn what the public official Trello confirms about Stand Arrows and evolution paths, plus how this site groups Stands by local rarity labels for browsing.",
 };
 
 const rarityTiers = [
@@ -283,25 +283,6 @@ export default function StandChancesPage() {
                     </details>
                 ))}
             </div>
-
-            {/* JSON-LD FAQ Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "FAQPage",
-                        "mainEntity": faqItems.map((item) => ({
-                            "@type": "Question",
-                            "name": item.question,
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": item.answer,
-                            },
-                        })),
-                    }),
-                }}
-            />
 
             {/* Next Guide Nav */}
             <div className="mt-12">

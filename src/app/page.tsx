@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Script from "next/script";
 import { Search, Target, ArrowRight, Zap, Gift, ChevronDown } from "lucide-react";
 import standsData from "@/data/stands.json";
 
@@ -26,19 +25,6 @@ const faqData = [
   },
 ];
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqData.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
 const popularLinks = [
   { label: "Whitesnake Build Guide", href: "/stands/whitesnake" },
   { label: "Made in Heaven Guide", href: "/stands/made-in-heaven" },
@@ -62,11 +48,6 @@ export default function Home() {
 
   return (
     <>
-      <Script
-        id="faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="flex flex-col items-center px-4 py-16 md:py-24 max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="text-center space-y-6 mb-12 w-full max-w-3xl">
