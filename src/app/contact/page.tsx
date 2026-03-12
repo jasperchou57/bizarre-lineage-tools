@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Contact Us | Bizarre Lineage Wiki",
     description: "Get in touch with the Bizarre Lineage Wiki team for questions, suggestions, or feedback.",
-};
+}, "/contact");
 
 export default function ContactPage() {
     return (

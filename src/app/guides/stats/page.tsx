@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, BarChart3, Heart, Zap, Shield, Sword, Flame, Sparkles } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Stats Guide — What Each Stat Does & Best Builds | Bizarre Lineage",
     description: "Understand every stat in Bizarre Lineage: Strength, Health, Power, Weapon, Destructive Power, and Destructive Energy. Includes the best stat allocations for PvP, PvE, and beginners.",
-};
+}, "/guides/stats");
 
 const stats = [
     {

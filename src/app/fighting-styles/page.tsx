@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Activity, Zap } from "lucide-react";
 import stylesData from "@/data/fighting-styles.json";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Fighting Styles Tier List & Guide | Bizarre Lineage",
     description: "Browse all fighting styles in Bizarre Lineage. Find the best stats, combos, and stand synergies for Boxing, Kendo, Karate, and more.",
-};
+}, "/fighting-styles");
 
 export default function FightingStylesDirectory() {
     return (

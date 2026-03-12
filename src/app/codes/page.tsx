@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Gift, AlertCircle } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Bizarre Lineage Codes (March 2026) | No Verified Active Codes",
     description: "Check the current Bizarre Lineage code status and verify announcements through the official Discord, Roblox group, and game page before trusting third-party code lists.",
-};
+}, "/codes");
 
 export default function CodesPage() {
     return (

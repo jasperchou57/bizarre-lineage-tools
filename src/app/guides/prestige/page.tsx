@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, ArrowUpCircle } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Prestige Guide & Requirements | Bizarre Lineage",
     description: "Learn how to prestige in Bizarre Lineage. Requirements, benefits, and the fastest progression routes.",
-};
+}, "/guides/prestige");
 
 export default function PrestigeGuidePage() {
     return (

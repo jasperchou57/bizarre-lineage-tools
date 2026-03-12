@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Target, Shield } from "lucide-react";
 import subsData from "@/data/sub-abilities.json";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Sub-Abilities & Skill Trees | Bizarre Lineage",
     description: "Browse all sub-abilities like Hamon, Vampire, and Cyborg. Find the best PvP and PvE bonuses for your build in Bizarre Lineage.",
-};
+}, "/sub-abilities");
 
 export default function SubAbilitiesDirectory() {
     return (

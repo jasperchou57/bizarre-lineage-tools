@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Wrench, Sword, Activity, Shield, Zap, Users } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Best Builds for PvP, PvE & Beginners | Bizarre Lineage",
     description: "The top Bizarre Lineage builds for every playstyle. Complete Stand + Fighting Style + Sub-Ability setups with stat advice. Open any build directly in the Planner.",
-};
+}, "/guides/best-builds");
 
 interface Build {
     name: string;

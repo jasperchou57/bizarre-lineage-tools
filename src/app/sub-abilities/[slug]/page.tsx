@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight, Target, Shield, Zap, Navigation, Activity } from 'lucide-react';
 import subsData from '@/data/sub-abilities.json';
+import { withCanonical } from '@/lib/metadata';
 
 export function generateStaticParams() {
     return subsData.map((sub) => ({
@@ -14,10 +15,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     const sub = subsData.find((s) => s.id === params.slug);
     if (!sub) return { title: 'Sub-Ability Not Found' };
 
-    return {
+    return withCanonical({
         title: `${sub.name} Sub-Ability Guide | Bizarre Lineage Wiki`,
         description: `Complete guide for the ${sub.name} Sub-Ability. Analyze its passive bonuses, PvP/PvE scores, and build synergies.`,
-    };
+    }, `/sub-abilities/${sub.id}`);
 }
 
 export default function SubAbilityDetailPage({ params }: { params: { slug: string } }) {

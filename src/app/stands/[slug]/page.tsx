@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Target, Shield, Sword, Navigation, Activity, ChevronRight } from 'lucide-react';
 import standsData from '@/data/stands.json';
+import { withCanonical } from '@/lib/metadata';
 
 // Generate static routes for all stands
 export async function generateStaticParams() {
@@ -16,10 +17,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const stand = standsData.find((s) => s.id === params.slug);
     if (!stand) return {};
 
-    return {
+    return withCanonical({
         title: `${stand.name} Build Guide — Moves, Rarity & Best Combos | Bizarre Lineage`,
         description: `Don't waste your Stand Arrow. Full ${stand.name} guide: rarity, moves, best PvP & PvE builds. Bizarre Lineage tools & data.`,
-    };
+    }, `/stands/${stand.id}`);
 }
 
 export default function StandPage({ params }: { params: { slug: string } }) {

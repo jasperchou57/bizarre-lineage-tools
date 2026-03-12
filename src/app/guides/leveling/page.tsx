@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, TrendingUp } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Fastest Leveling Guide (1-50) | Bizarre Lineage",
     description: "The optimal route to hit max level in Bizarre Lineage. Best quests, enemy spots, and EXP grinding strategies.",
-};
+}, "/guides/leveling");
 
 export default function LevelingGuidePage() {
     return (

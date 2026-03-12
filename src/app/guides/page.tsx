@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle } from "lucide-react";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "All Guides | Bizarre Lineage",
     description: "Browse all Bizarre Lineage guides: stats explained, stand rarity & drop rates, best builds, leveling routes, and prestige requirements.",
-};
+}, "/guides");
 
 const guides = [
     {

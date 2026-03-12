@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "About Us | Bizarre Lineage Wiki",
     description: "Learn more about Bizarre Lineage Wiki, a fan-made optimizer for adjusting and testing your Roblox setups.",
-};
+}, "/about");
 
 export default function AboutPage() {
     return (

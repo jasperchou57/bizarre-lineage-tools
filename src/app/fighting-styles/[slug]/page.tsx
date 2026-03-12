@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
 import stylesData from '@/data/fighting-styles.json';
+import { withCanonical } from '@/lib/metadata';
 
 export function generateStaticParams() {
     return stylesData.map((style) => ({
@@ -14,10 +15,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     const style = stylesData.find((s) => s.id === params.slug);
     if (!style) return { title: 'Style Not Found' };
 
-    return {
+    return withCanonical({
         title: `${style.name} Fighting Style Build & Guide | Bizarre Lineage`,
         description: `Complete guide for the ${style.name} Fighting Style in Bizarre Lineage. Learn its moves, best Stand synergies, and combo potential.`,
-    };
+    }, `/fighting-styles/${style.id}`);
 }
 
 export default function StyleDetailPage({ params }: { params: { slug: string } }) {

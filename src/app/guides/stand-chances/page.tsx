@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight, Dice6, Gem, Crown, Star, Sparkles, CircleDot } from "lucide-react";
 import standsData from "@/data/stands.json";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Stand Chances & Rarity Guide | Arrow Odds, Labels & Evolution Paths",
     description: "Learn what the public official Trello confirms about Stand Arrows and evolution paths, plus how this site groups Stands by local rarity labels for browsing.",
-};
+}, "/guides/stand-chances");
 
 const rarityTiers = [
     {

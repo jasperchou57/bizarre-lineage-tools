@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Terms of Service | Bizarre Lineage Wiki",
     description: "Terms of Service for using Bizarre Lineage Wiki.",
-};
+}, "/terms");
 
 export default function TermsPage() {
     return (

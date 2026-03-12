@@ -1,10 +1,11 @@
 import { StandCard } from "@/components/StandCard";
 import standsData from "@/data/stands.json";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata = {
+export const metadata = withCanonical({
     title: "All Stands in Bizarre Lineage | Database & Stats",
     description: "Browse all Stands in Bizarre Lineage. See tier rankings, stats, moves, and find the the best builds for your playstyle.",
-};
+}, "/stands");
 
 export default function StandsDirectoryPage() {
     // In a real iteration, we would add client-side filtering here

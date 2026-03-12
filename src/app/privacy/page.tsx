@@ -1,9 +1,10 @@
 import { Metadata } from "next";
+import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical({
     title: "Privacy Policy | Bizarre Lineage Wiki",
     description: "Privacy policy for Bizarre Lineage Wiki. Learn how we use cookies, handle data, and work with third-party advertisers.",
-};
+}, "/privacy");
 
 export default function PrivacyPage() {
     return (
