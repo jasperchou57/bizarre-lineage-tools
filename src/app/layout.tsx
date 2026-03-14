@@ -39,7 +39,7 @@ export default function RootLayout({
           <Script
             id="adsterra-popunder"
             src="https://alibisboast.com/36/e7/2a/36e72a817802f9fa24ec89342b952ff6.js"
-            strategy="afterInteractive"
+            strategy="beforeInteractive"
           />
         )}
       </head>
