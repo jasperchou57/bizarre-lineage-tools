@@ -35,6 +35,13 @@ export default function RootLayout({
             gtag('config', 'G-M7LZME8PZ6');
           `}
         </Script>
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            id="adsterra-popunder"
+            src="https://alibisboast.com/36/e7/2a/36e72a817802f9fa24ec89342b952ff6.js"
+            strategy="afterInteractive"
+          />
+        )}
       </head>
       <body className="font-sans antialiased text-white min-h-screen flex flex-col bg-background">
         <Navbar />
