@@ -40,17 +40,26 @@
       {
         "name": "Whirlwind",
         "key": "Any",
-        "type": "melee"
+        "type": "melee",
+        "effect": "Slash in front hitting everyone in a small area. Guardbreaks"
+      },
+      {
+        "name": "Whirlwind (Air)",
+        "key": "Any",
+        "type": "melee",
+        "effect": "Two vertical slashes upwards, sends you and opponent upward then knocks them away"
       },
       {
         "name": "Silent Edge",
         "key": "Any",
-        "type": "dash"
+        "type": "dash",
+        "effect": "Dash forward with sword, if hit unleash a flurry of slashes stunning anyone hit"
       },
       {
         "name": "Rising Tempest",
         "key": "Any",
-        "type": "melee"
+        "type": "melee",
+        "effect": "Stomp ground, drag opponent upward with 3 slashes, final slash into floor drag and knockaway"
       }
     ],
     "scores": {

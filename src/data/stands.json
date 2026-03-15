@@ -439,9 +439,9 @@
             },
             {
                 "name": "Heavy Punch",
-                "key": "R",
+                "key": "R+R",
                 "type": "melee",
-                "effect": "Powerful heavy punch"
+                "effect": "Powerful heavy punch, press R again to pull the enemy back to you with a small heal"
             },
             {
                 "name": "Bearing Shot",
@@ -453,13 +453,13 @@
                 "name": "Heal Mode",
                 "key": "X",
                 "type": "heal",
-                "effect": "Activates restoration mode, heals anything hit"
+                "effect": "Activates restoration mode, heals anything hit. Close range variant: grab opponent and slam them on the ground repeatedly"
             },
             {
                 "name": "Wall Smash",
                 "key": "C",
                 "type": "melee",
-                "effect": "Lifts ground chunk to slam opponent. Heal mode variant creates a wall."
+                "effect": "Lifts ground chunk to slam opponent into a rock wall. Heal mode variant restores the ground into a wall"
             },
             {
                 "name": "Pulverizer",
@@ -472,6 +472,7 @@
             "required": 90
         },
         "requiem": false,
+        "passive": "Rage Mode: when taking too much damage, damage dealt increases by ~15%",
         "recommendedStyles": [
             "boxing"
         ],
@@ -686,9 +687,9 @@
             },
             {
                 "name": "Howling Blitz",
-                "key": "R",
+                "key": "R+R",
                 "type": "ranged",
-                "effect": "Lightning blast that pushes opponent back"
+                "effect": "Lightning blast that pushes opponent back. If landed, press R again to dash forward in astronaut suit, grab and shock opponent. Suit grants increased jump height and ~22% defense increase"
             },
             {
                 "name": "Charged Vault",
@@ -774,16 +775,16 @@
                 "effect": "Spinning slash, hits everyone around"
             },
             {
-                "name": "Dice Out",
-                "key": "Z",
+                "name": "Dice Cut",
+                "key": "Z+Z",
                 "type": "melee",
-                "effect": "Dash slice into diagonal and slamming slashes, stuns"
+                "effect": "Dash slice, then follow-up with diagonal slash into slamming slash, stuns"
             },
             {
                 "name": "Cursed Severance",
-                "key": "X",
+                "key": "X+X",
                 "type": "melee",
-                "effect": "Extra-powered slash, stuns opponent"
+                "effect": "Extra-powered slash, stuns opponent. If landed, press X again to strike a second time cutting opponent down"
             },
             {
                 "name": "Flash Strike",
@@ -1046,6 +1047,7 @@
             "required": 100
         },
         "requiem": false,
+        "passive": "Idle Rage: when taking too much damage, Purple Haze goes berserk and attacks anyone nearby including the user",
         "recommendedStyles": [
             "boxing"
         ],
