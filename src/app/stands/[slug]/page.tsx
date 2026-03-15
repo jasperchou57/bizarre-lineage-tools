@@ -1,9 +1,75 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { Target, Shield, Sword, Navigation, Activity, ChevronRight } from 'lucide-react';
+import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle } from 'lucide-react';
 import standsData from '@/data/stands.json';
-import { withCanonical } from '@/lib/metadata';
+import { withCanonical, SITE_URL } from '@/lib/metadata';
+
+// Evolution chains: source of truth for stand progression
+const EVOLUTION_CHAINS: Record<string, string[]> = {
+    'whitesnake': ['whitesnake', 'c-moon', 'made-in-heaven'],
+    'c-moon': ['whitesnake', 'c-moon', 'made-in-heaven'],
+    'made-in-heaven': ['whitesnake', 'c-moon', 'made-in-heaven'],
+    'the-world': ['the-world', 'the-world-high-voltage'],
+    'the-world-high-voltage': ['the-world', 'the-world-high-voltage'],
+};
+
+function getEvolutionChain(standId: string) {
+    const chain = EVOLUTION_CHAINS[standId];
+    if (!chain) return null;
+    return chain.map(id => standsData.find(s => s.id === id)).filter(Boolean);
+}
+
+function getRelatedStands(stand: typeof standsData[0]) {
+    const relatedIds = new Set([
+        ...stand.counters,
+        ...stand.counteredBy,
+        ...stand.recommendedStyles.flatMap(style =>
+            standsData.filter(s => s.id !== stand.id && s.recommendedStyles.includes(style)).map(s => s.id)
+        ),
+    ]);
+    // Remove self and evolution chain members
+    const chainIds = new Set(EVOLUTION_CHAINS[stand.id] || []);
+    return Array.from(relatedIds)
+        .filter(id => id !== stand.id && !chainIds.has(id))
+        .slice(0, 6)
+        .map(id => standsData.find(s => s.id === id))
+        .filter(Boolean);
+}
+
+function generateFAQ(stand: typeof standsData[0]) {
+    const faqs = [
+        {
+            question: `Is ${stand.name} good in Bizarre Lineage?`,
+            answer: `${stand.name} is currently rated ${stand.tier.overall} Tier overall in our planner dataset, with ${stand.tier.pvp} in PvP and ${stand.tier.pve} in PvE. ${stand.meta}`,
+        },
+        {
+            question: `How do I get ${stand.name}?`,
+            answer: `${stand.name} is obtained via ${stand.obtainMethod}. ${stand.rarity === 'Special' ? 'This is an evolution-only Stand — follow the evolution quest path instead of using a Stand Arrow.' : 'Use Stand Arrows obtained from codes, quests, meteor spawns, chests, or raids.'}`,
+        },
+        {
+            question: `What is the best build for ${stand.name}?`,
+            answer: `Our planner recommends pairing ${stand.name} with ${stand.recommendedStyles[0]} fighting style and ${stand.recommendedSubs[0]} sub-ability for PvP. Use the Build Planner to test different combinations and find what works for your playstyle.`,
+        },
+        {
+            question: `What does ${stand.name} counter?`,
+            answer: stand.counters.length > 0
+                ? `${stand.name} is strong against ${stand.counters.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(' and ')}. ${stand.counteredBy.length > 0 ? `However, it struggles against ${stand.counteredBy.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(' and ')}.` : ''}`
+                : `${stand.name} does not have strong counters in the current meta. Focus on building around its strengths: ${stand.strengths[0]?.toLowerCase()}.`,
+        },
+    ];
+
+    const chain = getEvolutionChain(stand.id);
+    if (chain && chain.length > 1) {
+        const chainNames = chain.map(s => s!.name).join(' → ');
+        faqs.push({
+            question: `Does ${stand.name} have an evolution?`,
+            answer: `Yes. ${stand.name} is part of the evolution chain: ${chainNames}. ${stand.obtainMethod.startsWith('Evolve') ? `You evolve into ${stand.name} from the previous stage.` : `${stand.name} can evolve into the next stage through the in-game quest.`}`,
+        });
+    }
+
+    return faqs;
+}
 
 // Generate static routes for all stands
 export async function generateStaticParams() {
@@ -30,9 +96,48 @@ export default function StandPage({ params }: { params: { slug: string } }) {
         notFound();
     }
 
+    const evolutionChain = getEvolutionChain(stand.id);
+    const relatedStands = getRelatedStands(stand);
+    const faqs = generateFAQ(stand);
+
+    // JSON-LD: BreadcrumbList
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+            { '@type': 'ListItem', position: 2, name: 'Stands', item: `${SITE_URL}/stands` },
+            { '@type': 'ListItem', position: 3, name: stand.name, item: `${SITE_URL}/stands/${stand.id}` },
+        ],
+    };
+
+    // JSON-LD: FAQPage
+    const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map(faq => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    };
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-5xl">
-            {/* Breadcrumbs (SEO MUST-HAVE) */}
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+
+            {/* Breadcrumbs */}
             <nav className="flex items-center text-sm text-muted mb-8" aria-label="Breadcrumb">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
                 <ChevronRight className="h-4 w-4 mx-2" />
@@ -82,6 +187,38 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </p>
                     </section>
 
+                    {/* Evolution Chain */}
+                    {evolutionChain && evolutionChain.length > 1 && (
+                        <section>
+                            <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                                <Zap className="h-5 w-5 text-yellow-400" /> Evolution Chain
+                            </h2>
+                            <div className="flex flex-wrap items-center gap-2">
+                                {evolutionChain.map((evoStand, index) => (
+                                    <div key={evoStand!.id} className="flex items-center gap-2">
+                                        {evoStand!.id === stand.id ? (
+                                            <span className="px-4 py-3 bg-accent-blue/15 border-2 border-accent-blue/40 rounded-lg text-white font-bold text-sm">
+                                                {evoStand!.name}
+                                                <span className="block text-xs font-normal text-accent-blue mt-0.5">{evoStand!.tier.overall} Tier &middot; {evoStand!.rarity}</span>
+                                            </span>
+                                        ) : (
+                                            <Link
+                                                href={`/stands/${evoStand!.id}`}
+                                                className="px-4 py-3 bg-surface border border-border rounded-lg text-white hover:border-accent-blue/50 transition-colors text-sm"
+                                            >
+                                                {evoStand!.name}
+                                                <span className="block text-xs font-normal text-muted mt-0.5">{evoStand!.tier.overall} Tier &middot; {evoStand!.rarity}</span>
+                                            </Link>
+                                        )}
+                                        {index < evolutionChain.length - 1 && (
+                                            <ArrowRight className="h-4 w-4 text-muted shrink-0" />
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
                     <section>
                         <h2 className="text-2xl font-bold text-white mb-4">Moves & Abilities</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -110,6 +247,51 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </p>
                     </section>
 
+                    {/* Counters & Matchups */}
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">{stand.name} Counters & Matchups</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="bg-surface border border-border rounded-xl p-5">
+                                <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-3">Strong Against</h3>
+                                {stand.counters.length > 0 ? (
+                                    <div className="space-y-2">
+                                        {stand.counters.map(id => {
+                                            const target = standsData.find(s => s.id === id);
+                                            if (!target) return null;
+                                            return (
+                                                <Link key={id} href={`/stands/${id}`} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-colors group">
+                                                    <span className="text-white text-sm">{target.name}</span>
+                                                    <span className="text-xs text-muted group-hover:text-accent-blue">{target.tier.overall} Tier</span>
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-muted">No strong counters in current dataset.</p>
+                                )}
+                            </div>
+                            <div className="bg-surface border border-border rounded-xl p-5">
+                                <h3 className="text-sm font-bold text-red-400 uppercase tracking-wide mb-3">Weak Against</h3>
+                                {stand.counteredBy.length > 0 ? (
+                                    <div className="space-y-2">
+                                        {stand.counteredBy.map(id => {
+                                            const target = standsData.find(s => s.id === id);
+                                            if (!target) return null;
+                                            return (
+                                                <Link key={id} href={`/stands/${id}`} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-colors group">
+                                                    <span className="text-white text-sm">{target.name}</span>
+                                                    <span className="text-xs text-muted group-hover:text-red-400">{target.tier.overall} Tier</span>
+                                                </Link>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-muted">No hard counters in current dataset.</p>
+                                )}
+                            </div>
+                        </div>
+                    </section>
+
                     <section>
                         <h2 className="text-2xl font-bold text-white mb-4">Best Builds for {stand.name}</h2>
                         <div className="bg-gradient-to-br from-surface to-background border border-border rounded-xl p-6">
@@ -119,30 +301,15 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                             <p className="text-muted mb-4">
                                 Our local planner currently pairs {stand.name} with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong> and <strong className="text-white capitalize">{stand.recommendedSubs[0]}</strong>. This is a site recommendation, not an official balance callout.
                             </p>
-                            <div className="flex gap-4">
+                            <div className="flex flex-wrap gap-3">
                                 <Link href={`/build-planner?stand=${stand.id}&style=${stand.recommendedStyles[0]}&sub=${stand.recommendedSubs[0]}&mode=pvp`} className="text-sm font-bold text-accent-blue hover:text-white transition-colors border border-accent-blue/30 px-4 py-2 rounded-lg hover:bg-accent-blue/10">
                                     Load PvP Build
                                 </Link>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">{stand.name} vs Similar Stands</h2>
-                        <div className="bg-surface border border-border rounded-xl p-6">
-                            <p className="text-muted mb-4">
-                                These matchup notes come from the site&apos;s local dataset. {stand.name} is currently tagged here as strong into <strong className="text-green-400">{stand.counters.join(', ')}</strong> and weaker into <strong className="text-red-400">{stand.counteredBy.join(', ')}</strong>.
-                            </p>
-                            <div className="flex flex-wrap gap-3">
-                                {[...stand.counters, ...stand.counteredBy].map(id => {
-                                    const related = standsData.find(s => s.id === id);
-                                    if (!related) return null;
-                                    return (
-                                        <Link key={id} href={`/stands/${id}`} className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">
-                                            {related.name}
-                                        </Link>
-                                    );
-                                })}
+                                {stand.recommendedStyles.length > 1 && (
+                                    <Link href={`/build-planner?stand=${stand.id}&style=${stand.recommendedStyles[1]}&sub=${stand.recommendedSubs[0]}`} className="text-sm font-bold text-muted hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-lg hover:bg-white/5">
+                                        Try {stand.recommendedStyles[1]}
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     </section>
@@ -163,6 +330,57 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                 <span>Ignoring the matchup notes entirely. Even local planner suggestions work better when you test them against the matchups you see most often.</span>
                             </li>
                         </ul>
+                    </section>
+
+                    {/* FAQ */}
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                            <HelpCircle className="h-5 w-5 text-accent-blue" /> Frequently Asked Questions
+                        </h2>
+                        <div className="space-y-4">
+                            {faqs.map((faq) => (
+                                <details key={faq.question} className="group bg-surface border border-border rounded-lg">
+                                    <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
+                                        {faq.question}
+                                        <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
+                                    </summary>
+                                    <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
+                                        {faq.answer}
+                                    </div>
+                                </details>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Related Stands */}
+                    {relatedStands.length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-bold text-white mb-4">Related Stands</h2>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                {relatedStands.map(rs => (
+                                    <Link
+                                        key={rs!.id}
+                                        href={`/stands/${rs!.id}`}
+                                        className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group"
+                                    >
+                                        <div className="font-bold text-white text-sm group-hover:text-accent-blue transition-colors">{rs!.name}</div>
+                                        <div className="text-xs text-muted mt-1">{rs!.tier.overall} Tier &middot; {rs!.rarity}</div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* Bottom Planner CTA */}
+                    <section className="bg-gradient-to-r from-accent-blue/10 to-accent-indigo/10 border border-accent-blue/20 rounded-xl p-6 text-center">
+                        <p className="text-white font-bold text-lg mb-2">Ready to build with {stand.name}?</p>
+                        <p className="text-muted text-sm mb-4">Test different style and sub-ability combos in the Build Planner.</p>
+                        <Link
+                            href={`/build-planner?stand=${stand.id}`}
+                            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all"
+                        >
+                            Open {stand.name} in Build Planner <ArrowRight className="h-4 w-4" />
+                        </Link>
                     </section>
 
                 </div>
@@ -226,6 +444,28 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                             <ul className="text-sm text-muted space-y-1 list-disc list-inside">
                                 {stand.weaknesses.map(w => <li key={w}>{w}</li>)}
                             </ul>
+                        </div>
+                    </div>
+
+                    {/* Quick Links sidebar */}
+                    <div className="bg-surface border border-border rounded-xl p-6">
+                        <h3 className="text-lg font-bold text-white mb-4">Quick Links</h3>
+                        <div className="space-y-2">
+                            <Link href="/tier-list" className="flex items-center gap-2 text-sm text-muted hover:text-accent-blue transition-colors">
+                                <ChevronRight className="h-3 w-3" /> Tier List
+                            </Link>
+                            <Link href="/build-planner" className="flex items-center gap-2 text-sm text-muted hover:text-accent-blue transition-colors">
+                                <ChevronRight className="h-3 w-3" /> Build Planner
+                            </Link>
+                            <Link href={`/fighting-styles/${stand.recommendedStyles[0]}`} className="flex items-center gap-2 text-sm text-muted hover:text-accent-blue transition-colors capitalize">
+                                <ChevronRight className="h-3 w-3" /> {stand.recommendedStyles[0]} Guide
+                            </Link>
+                            <Link href={`/sub-abilities/${stand.recommendedSubs[0]}`} className="flex items-center gap-2 text-sm text-muted hover:text-accent-blue transition-colors capitalize">
+                                <ChevronRight className="h-3 w-3" /> {stand.recommendedSubs[0]} Guide
+                            </Link>
+                            <Link href="/codes" className="flex items-center gap-2 text-sm text-muted hover:text-accent-blue transition-colors">
+                                <ChevronRight className="h-3 w-3" /> Active Codes
+                            </Link>
                         </div>
                     </div>
                 </div>
