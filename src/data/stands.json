@@ -210,16 +210,16 @@
                 "effect": "Grab, spin, throw into air, then uppercut"
             },
             {
-                "name": "Time Stop",
-                "key": "C",
-                "type": "special",
-                "effect": "Stops time for ~5 seconds"
-            },
-            {
                 "name": "Harpoon",
-                "key": "V",
+                "key": "C",
                 "type": "ranged",
                 "effect": "Throws fishing harpoon, applies bleed for ~3 seconds"
+            },
+            {
+                "name": "Time Stop",
+                "key": "V",
+                "type": "special",
+                "effect": "Stops time for ~5 seconds"
             }
         ],
         "awakening": {
@@ -275,7 +275,7 @@
                 "type": "melee"
             },
             {
-                "name": "Hard Fight",
+                "name": "Hard Right",
                 "key": "R",
                 "type": "melee",
                 "effect": "Powerful punch that knocks opponent back"
@@ -1047,7 +1047,7 @@
             "required": 100
         },
         "requiem": false,
-        "passive": "Idle Rage: when taking too much damage, Purple Haze goes berserk and attacks anyone nearby including the user",
+        "passive": "Idle Rage: when taking too much damage, Purple Haze goes berserk and attacks anyone nearby including the user. Poisoning Bulbs: bulb-based attacks apply poison DoT on contact.",
         "recommendedStyles": [
             "boxing"
         ],
