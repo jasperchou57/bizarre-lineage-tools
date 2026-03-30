@@ -1,0 +1,137 @@
+[
+    {
+        "id": "avdol",
+        "name": "Muhammad Avdol Raid",
+        "boss": "Muhammad Avdol",
+        "difficulty": "Easy",
+        "bossHp": 1500,
+        "bossLevel": 50,
+        "location": "Bus Stop 14, beach area",
+        "npc": "Muhammad Avdol",
+        "maxTokens": 35,
+        "grading": {
+            "SSS": "0 deaths",
+            "SS": "1 death",
+            "S": "2 deaths",
+            "A": "3-4 deaths",
+            "B": "5-6 deaths",
+            "C": "7-8 deaths",
+            "D": "9+ deaths"
+        },
+        "mechanics": [
+            "Avdol uses fire-based attacks with AoE zones",
+            "Crossfire Hurricane creates flame pillars on the ground — dodge sideways",
+            "Flamethrower has a wide cone — stay behind him during this attack",
+            "Life Sensor reveals your position — hiding is ineffective"
+        ],
+        "recommendedStands": ["whitesnake", "weather-report", "made-in-heaven", "the-world"],
+        "strategy": "Avdol is the entry-level raid boss. His fire attacks are telegraphed and dodgeable. Use ranged Stands to stay out of AoE zones. Weather Report and Whitesnake excel here due to strong AoE and CC that can interrupt his attacks. Made in Heaven's speed lets you dodge everything. Avoid melee-only Stands like Anubis unless you're very experienced with perfect block timing.",
+        "rewards": ["Raid Tokens", "Stand Arrows", "Cash", "Rare accessories"],
+        "shopItems": [
+            { "name": "Jotaro's Hat", "cost": 50, "rarity": "Legendary" },
+            { "name": "Jotaro's Coat", "cost": 75, "rarity": "Legendary" }
+        ]
+    },
+    {
+        "id": "kira",
+        "name": "Yoshikage Kira Raid",
+        "boss": "Yoshikage Kira",
+        "difficulty": "Hard",
+        "bossHp": 4000,
+        "bossLevel": 75,
+        "location": "Left of Morioh Station",
+        "npc": "Yoshikage Kira",
+        "maxTokens": 35,
+        "grading": {
+            "SSS": "0 deaths",
+            "SS": "1 death",
+            "S": "2 deaths",
+            "A": "3-4 deaths",
+            "B": "5-6 deaths",
+            "C": "7-8 deaths",
+            "D": "9+ deaths"
+        },
+        "mechanics": [
+            "Multi-stage fight with terrain-trapping mechanics",
+            "Sheer Heart Attack deploys tracking drones — destroy them or dodge",
+            "Bites the Dust rewinds time and resets positioning",
+            "Primary Bomb can one-shot if you're caught in the grab — dodge when he lunges",
+            "Stray Cat bubbles are invisible — watch for distortion effects"
+        ],
+        "recommendedStands": ["made-in-heaven", "king-crimson", "the-world", "c-moon"],
+        "strategy": "Kira is a mechanics-heavy boss with multiple phases. Phase 1 is standard combat — use CC to interrupt his combos. Phase 2 introduces Sheer Heart Attack drones that track you. Phase 3 activates Bites the Dust which resets your position. Speed Stands (Made in Heaven) can dodge everything. King Crimson's Time Erase lets you avoid Bites the Dust entirely. The World's Time Stop creates safe DPS windows. Avoid low-mobility Stands — you need to dodge Sheer Heart Attack.",
+        "rewards": ["Raid Tokens", "Stand Arrows", "Cash", "Kira's Coat"],
+        "shopItems": [
+            { "name": "Kira's Coat", "cost": 100, "rarity": "Legendary" },
+            { "name": "Skull Tie", "cost": 150, "rarity": "Mythical" }
+        ]
+    },
+    {
+        "id": "jotaro",
+        "name": "Jotaro Kujo Raid",
+        "boss": "Jotaro Kujo",
+        "difficulty": "Hard",
+        "bossHp": 6000,
+        "bossLevel": 75,
+        "location": "Jojo's Bizarre Gym side entrance (Chumbo NPC)",
+        "npc": "Chumbo",
+        "maxTokens": 35,
+        "grading": {
+            "SSS": "0 deaths",
+            "SS": "1 death",
+            "S": "2 deaths",
+            "A": "3-4 deaths",
+            "B": "5-6 deaths",
+            "C": "7-8 deaths",
+            "D": "9+ deaths"
+        },
+        "mechanics": [
+            "Jotaro has the highest HP of any raid boss (6000)",
+            "Star Finger has long range and stuns — keep moving",
+            "Time Stop freezes you for ~5 seconds — block immediately when you see the animation",
+            "Ora Ora Barrage deals massive damage if all hits connect",
+            "Inhale pulls you in — dodge backward when you see the suction effect"
+        ],
+        "recommendedStands": ["anubis", "king-crimson", "whitesnake", "the-world-high-voltage"],
+        "strategy": "Jotaro has 6000 HP — the highest of any raid boss. This is a war of attrition. The Anubis cheese method works: Anubis's high melee DPS shreds Jotaro's HP pool faster than any other Stand, and Flash Strike can be chained repeatedly. King Crimson's Epitaph counters Jotaro's attacks for free damage. Whitesnake's Disc Extraction can steal Jotaro's Stand temporarily. The World High Voltage's Time Stop creates safe burst windows. Avoid AoE Stands — Jotaro is single-target focused, so you need single-target DPS.",
+        "rewards": ["Raid Tokens", "Stand Arrows", "Cash", "Prime Jotaro accessories"],
+        "shopItems": [
+            { "name": "Prime Jotaro's Hat", "cost": 200, "rarity": "Mythical" },
+            { "name": "Prime Jotaro's Coat", "cost": 200, "rarity": "Mythical" }
+        ]
+    },
+    {
+        "id": "dio",
+        "name": "DIO Raid",
+        "boss": "DIO",
+        "difficulty": "Hard",
+        "bossHp": 3000,
+        "bossLevel": 75,
+        "location": "World Event spawn / Graveyard area",
+        "npc": "??? (DIO)",
+        "maxTokens": 35,
+        "grading": {
+            "SSS": "0 deaths",
+            "SS": "1 death",
+            "S": "2 deaths",
+            "A": "3-4 deaths",
+            "B": "5-6 deaths",
+            "C": "7-8 deaths",
+            "D": "9+ deaths"
+        },
+        "mechanics": [
+            "DIO uses The World's Time Stop — freezes all players for ~6 seconds",
+            "Knife barrage deals high damage at range — dodge sideways, not backward",
+            "Road Roller is a grab into massive AoE damage — stay out of melee range when HP is low",
+            "Space Ripper Stingy Eyes is a fast ranged attack — hard to react to",
+            "DIO heals from vampire lifesteal — you need sustained DPS to outpace regen"
+        ],
+        "recommendedStands": ["star-platinum", "the-world", "made-in-heaven", "weather-report"],
+        "strategy": "DIO's 3000 HP seems lower than Jotaro but his vampire lifesteal makes the effective HP much higher. You need consistent DPS to outpace his regen. Star Platinum's Time Stop counters DIO's Time Stop (lore-accurate and mechanically sound). The World mirrors DIO's kit and can match his Time Stop. Made in Heaven's speed outruns all of DIO's attacks. Weather Report's AoE keeps constant pressure to counter his regen. Hamon sub-ability deals bonus damage to DIO (vampire weakness). Avoid Vampire sub-ability — DIO's attacks deal extra damage to vampires.",
+        "rewards": ["Raid Tokens", "Dio's Bone", "Cosmic Radiation", "Cash"],
+        "shopItems": [
+            { "name": "Heart Headband", "cost": 150, "rarity": "Mythical" },
+            { "name": "Crucifix Pendant", "cost": 200, "rarity": "Mythical" }
+        ]
+    }
+]

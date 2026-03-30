@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle } from 'lucide-react';
 import standsData from '@/data/stands.json';
+import raidsData from '@/data/raids.json';
 import { withCanonical, SITE_URL } from '@/lib/metadata';
 
 // Evolution chains: source of truth for stand progression
@@ -388,6 +389,28 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                             ))}
                         </div>
                     </section>
+
+                    {/* Raid Recommendations */}
+                    {(() => {
+                        const standsRaids = raidsData.filter(r => r.recommendedStands.includes(stand.id));
+                        if (standsRaids.length === 0) return null;
+                        return (
+                            <section>
+                                <h2 className="text-2xl font-bold text-white mb-4">{stand.name} in Raids</h2>
+                                <div className="space-y-3">
+                                    {standsRaids.map(raid => (
+                                        <Link key={raid.id} href={`/raids/${raid.id}`} className="flex items-center justify-between bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                                            <div>
+                                                <span className="font-bold text-white group-hover:text-accent-blue transition-colors">{raid.boss} Raid</span>
+                                                <span className="text-xs text-muted ml-2">{raid.difficulty} &middot; {raid.bossHp.toLocaleString()} HP</span>
+                                            </div>
+                                            <ChevronRight className="h-4 w-4 text-muted group-hover:text-accent-blue" />
+                                        </Link>
+                                    ))}
+                                </div>
+                            </section>
+                        );
+                    })()}
 
                     {/* Related Stands */}
                     {relatedStands.length > 0 && (

@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import standsData from "@/data/stands.json";
 import stylesData from "@/data/fighting-styles.json";
 import subsData from "@/data/sub-abilities.json";
+import raidsData from "@/data/raids.json";
 
 const BASE_URL = "https://bizarrelineage.com";
 
@@ -52,5 +53,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    return [...staticRoutes, ...standRoutes, ...styleRoutes, ...subRoutes];
+    // Dynamic Raid pages
+    const raidRoutes: MetadataRoute.Sitemap = [
+        { url: `${BASE_URL}/raids`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 },
+        ...raidsData.map((raid) => ({
+            url: `${BASE_URL}/raids/${raid.id}`,
+            lastModified: now,
+            changeFrequency: "weekly" as const,
+            priority: 0.7,
+        })),
+    ];
+
+    return [...staticRoutes, ...standRoutes, ...styleRoutes, ...subRoutes, ...raidRoutes];
 }

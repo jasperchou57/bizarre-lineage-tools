@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useMemo, useEffect, Suspense } from "react";
+import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { Sword, Activity, Target, Shield, Navigation, Save, Database, Download } from "lucide-react";
+import { Sword, Activity, Target, Shield, Navigation, Save, Database, Download, AlertTriangle } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { trackEvent } from "@/lib/analytics";
 import standsData from "@/data/stands.json";
 import stylesData from "@/data/fighting-styles.json";
 import subsData from "@/data/sub-abilities.json";
+
+type Scores = { pvp: number; pve: number; survival: number; mobility: number; cost: number };
 
 function BuildPlannerClient() {
     const searchParams = useSearchParams();
@@ -69,6 +71,43 @@ function BuildPlannerClient() {
             cost: Math.min(10, Number(cost.toFixed(1)))
         };
     }, [standObj, styleObj, subObj]);
+
+    // Track previous scores for delta display
+    const prevScoresRef = useRef<Scores>({ pvp: 0, pve: 0, survival: 0, mobility: 0, cost: 0 });
+    const [deltas, setDeltas] = useState<Scores>({ pvp: 0, pve: 0, survival: 0, mobility: 0, cost: 0 });
+
+    useEffect(() => {
+        const prev = prevScoresRef.current;
+        if (prev.pvp !== 0 || prev.pve !== 0) {
+            setDeltas({
+                pvp: Number((scores.pvp - prev.pvp).toFixed(1)),
+                pve: Number((scores.pve - prev.pve).toFixed(1)),
+                survival: Number((scores.survival - prev.survival).toFixed(1)),
+                mobility: Number((scores.mobility - prev.mobility).toFixed(1)),
+                cost: Number((scores.cost - prev.cost).toFixed(1)),
+            });
+            const timer = setTimeout(() => setDeltas({ pvp: 0, pve: 0, survival: 0, mobility: 0, cost: 0 }), 3000);
+            return () => clearTimeout(timer);
+        }
+        prevScoresRef.current = scores;
+    }, [scores]);
+
+    useEffect(() => { prevScoresRef.current = scores; }, [scores]);
+
+    // Automatic weakness detection
+    const weaknesses = useMemo(() => {
+        if (!standObj) return [];
+        const issues: { severity: 'red' | 'yellow'; message: string }[] = [];
+        if (scores.survival < 4) issues.push({ severity: 'red', message: `Low survivability (${scores.survival}/10) — Vampire sub-ability would add lifesteal and regen.` });
+        if (scores.mobility <= 3) issues.push({ severity: 'red', message: `Very low mobility (${scores.mobility}/10) — ${standObj.name} can't chase or escape. Commit to fights carefully.` });
+        if (scores.pvp < 5 && scores.pve < 5) issues.push({ severity: 'red', message: `Below average in both PvP (${scores.pvp}) and PvE (${scores.pve}). Consider a different Stand.` });
+        if (!selectedStyle) issues.push({ severity: 'yellow', message: `No Fighting Style selected — you're missing +0.5-1.0 score from style bonuses.` });
+        if (!selectedSub) issues.push({ severity: 'yellow', message: `No Sub-Ability selected — you're missing Survival and PvP/PvE modifiers.` });
+        if (selectedStyle && standObj.recommendedStyles.length > 0 && !standObj.recommendedStyles.includes(selectedStyle)) {
+            issues.push({ severity: 'yellow', message: `${stylesData.find(s => s.id === selectedStyle)?.name} isn't the recommended style for ${standObj.name}. Try ${standObj.recommendedStyles[0]} for better synergy.` });
+        }
+        return issues;
+    }, [standObj, scores, selectedStyle, selectedSub]);
 
     // 1-Step Upgrade Logic
     const oneStepUpgrade = useMemo(() => {
@@ -253,14 +292,26 @@ function BuildPlannerClient() {
                                 <div>
                                     <h3 className="text-sm font-bold text-muted uppercase tracking-wider mb-4 font-mono">Performance Scores</h3>
                                     <div className="space-y-4">
-                                        <ScoreBar label="PvP Effectiveness" value={scores.pvp} icon={<Sword className="h-4 w-4" />} color="bg-accent-blue" />
-                                        <ScoreBar label="PvE / Grinding" value={scores.pve} icon={<Activity className="h-4 w-4" />} color="bg-accent-indigo" />
-                                        <ScoreBar label="Survival" value={scores.survival} icon={<Shield className="h-4 w-4" />} color="bg-green-500" />
-                                        <ScoreBar label="Mobility" value={scores.mobility} icon={<Navigation className="h-4 w-4" />} color="bg-purple-500" />
-                                        <ScoreBar label="Accessibility (Cost)" value={scores.cost} icon={<Database className="h-4 w-4" />} color="bg-orange-500" />
+                                        <ScoreBar label="PvP Effectiveness" value={scores.pvp} delta={deltas.pvp} icon={<Sword className="h-4 w-4" />} color="bg-accent-blue" />
+                                        <ScoreBar label="PvE / Grinding" value={scores.pve} delta={deltas.pve} icon={<Activity className="h-4 w-4" />} color="bg-accent-indigo" />
+                                        <ScoreBar label="Survival" value={scores.survival} delta={deltas.survival} icon={<Shield className="h-4 w-4" />} color="bg-green-500" />
+                                        <ScoreBar label="Mobility" value={scores.mobility} delta={deltas.mobility} icon={<Navigation className="h-4 w-4" />} color="bg-purple-500" />
+                                        <ScoreBar label="Accessibility (Cost)" value={scores.cost} delta={deltas.cost} icon={<Database className="h-4 w-4" />} color="bg-orange-500" />
                                     </div>
                                     <p className="text-xs text-center text-muted mt-4 opacity-70">Planner estimates are derived from local site data and weighting rules, not official balance values.</p>
                                 </div>
+
+                                {/* Weakness Detection Panel */}
+                                {weaknesses.length > 0 && (
+                                    <div className="space-y-2">
+                                        {weaknesses.map((w, i) => (
+                                            <div key={i} className={`flex items-start gap-2 p-3 rounded-lg text-sm ${w.severity === 'red' ? 'bg-red-500/10 border border-red-500/20 text-red-300' : 'bg-yellow-500/10 border border-yellow-500/20 text-yellow-300'}`}>
+                                                <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" />
+                                                <span>{w.message}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
 
                                 {/* Build Grade — progress loop */}
                                 {(() => {
@@ -313,12 +364,19 @@ function BuildPlannerClient() {
     );
 }
 
-function ScoreBar({ label, value, icon, color }: { label: string, value: number, icon: React.ReactNode, color: string }) {
+function ScoreBar({ label, value, delta, icon, color }: { label: string, value: number, delta?: number, icon: React.ReactNode, color: string }) {
     return (
         <div>
             <div className="flex justify-between text-sm mb-1">
                 <span className="text-muted flex items-center gap-1.5">{icon} {label}</span>
-                <span className="text-white font-mono font-bold text-[15px]">{value}/10</span>
+                <span className="text-white font-mono font-bold text-[15px] flex items-center gap-1.5">
+                    {value}/10
+                    {delta !== undefined && delta !== 0 && (
+                        <span className={`text-xs font-bold ${delta > 0 ? 'text-green-400' : 'text-red-400'} transition-opacity duration-300`}>
+                            {delta > 0 ? '+' : ''}{delta}
+                        </span>
+                    )}
+                </span>
             </div>
             <div className="w-full bg-background rounded-full h-2 relative overflow-hidden">
                 <div
