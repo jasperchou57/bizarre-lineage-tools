@@ -262,6 +262,26 @@ function BuildPlannerClient() {
                                     <p className="text-xs text-center text-muted mt-4 opacity-70">Planner estimates are derived from local site data and weighting rules, not official balance values.</p>
                                 </div>
 
+                                {/* Build Grade — progress loop */}
+                                {(() => {
+                                    const maxScore = Math.max(scores.pvp, scores.pve, scores.survival, scores.mobility);
+                                    const grade = maxScore >= 9 ? 'S+' : maxScore >= 8 ? 'S' : maxScore >= 7 ? 'A' : maxScore >= 5 ? 'B' : 'C';
+                                    const gradeColor = grade === 'S+' ? 'text-purple-400 border-purple-400/30 bg-purple-400/10' : grade === 'S' ? 'text-accent-blue border-accent-blue/30 bg-accent-blue/10' : grade === 'A' ? 'text-green-400 border-green-400/30 bg-green-400/10' : 'text-muted border-white/10 bg-white/5';
+                                    const incomplete = !selectedStyle || !selectedSub;
+                                    return (
+                                        <div className={`text-center p-4 rounded-lg border ${gradeColor}`}>
+                                            <div className="text-3xl font-heading font-black">{grade}</div>
+                                            <div className="text-xs mt-1 opacity-80">Build Grade</div>
+                                            {incomplete && (
+                                                <p className="text-xs mt-2 text-yellow-400">Your build is incomplete — {!selectedStyle ? 'add a Fighting Style' : 'add a Sub-Ability'} to unlock its full potential.</p>
+                                            )}
+                                            {!incomplete && maxScore < 8 && (
+                                                <p className="text-xs mt-2">Try a different {scores.pvp < scores.pve ? 'style' : 'sub-ability'} to push this build higher.</p>
+                                            )}
+                                        </div>
+                                    );
+                                })()}
+
                                 {/* 1-Step Upgrade */}
                                 {oneStepUpgrade && (
                                     <div className="bg-accent-blue/10 border border-accent-blue/30 rounded-lg p-4">
@@ -270,7 +290,20 @@ function BuildPlannerClient() {
                                     </div>
                                 )}
 
-                                <p className="text-xs text-center text-muted pt-4 border-t border-white/5">Saved locally in your browser on this device</p>
+                                {/* Flow guidance: Planner → Vault → Compare */}
+                                <div className="space-y-2 pt-4 border-t border-white/5">
+                                    <p className="text-xs text-muted text-center mb-2">Don&apos;t lose this build — save it and compare later.</p>
+                                    <div className="flex gap-2">
+                                        <a href="/vault" className="flex-1 text-center px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-muted hover:text-white hover:border-accent-blue/30 transition-colors">
+                                            View Vault ({vault.length} saved)
+                                        </a>
+                                        {vault.length >= 2 && (
+                                            <a href={`/compare?a=${vault[vault.length - 1]?.id}&b=${vault[vault.length - 2]?.id}`} className="flex-1 text-center px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-muted hover:text-white hover:border-accent-indigo/30 transition-colors">
+                                                Compare Last 2 Builds
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -488,8 +521,8 @@ function PlannerSchema() {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.bizarrelineage.com' },
-            { '@type': 'ListItem', position: 2, name: 'Build Planner', item: 'https://www.bizarrelineage.com/build-planner' },
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bizarrelineage.com' },
+            { '@type': 'ListItem', position: 2, name: 'Build Planner', item: 'https://bizarrelineage.com/build-planner' },
         ],
     };
 

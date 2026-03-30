@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Search, Target, ArrowRight, Zap, Gift, ChevronDown } from "lucide-react";
 import standsData from "@/data/stands.json";
-import { withCanonical } from "@/lib/metadata";
+import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = withCanonical({}, "/");
 
@@ -50,8 +50,19 @@ const popularLinks = [
 export default function Home() {
   const trendingStands = standsData.slice(0, 3);
 
+  const homeFaqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqData.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
       <div className="flex flex-col items-center px-4 py-16 md:py-24 max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="text-center space-y-6 mb-12 w-full max-w-3xl">
@@ -83,7 +94,7 @@ export default function Home() {
             <Link href="/build-planner" className="flex items-center justify-between p-6 bg-gradient-to-br from-surface to-[#1a1a1a] border border-border rounded-xl hover:border-accent-blue/50 group transition-all">
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">Build Planner</span>
-                <span className="text-sm text-muted">Create and score your setup</span>
+                <span className="text-sm text-muted">Don&apos;t waste your Stand Arrow</span>
               </div>
               <ArrowRight className="h-5 w-5 text-muted group-hover:text-accent-blue transition-transform group-hover:translate-x-1" />
             </Link>
@@ -91,7 +102,7 @@ export default function Home() {
             <Link href="/tier-list" className="flex items-center justify-between p-6 bg-gradient-to-br from-surface to-[#1a1a1a] border border-border rounded-xl hover:border-accent-indigo/50 group transition-all">
               <div className="flex flex-col">
                 <span className="text-lg font-bold text-white group-hover:text-accent-indigo transition-colors">Tier List</span>
-                <span className="text-sm text-muted">Community ranking view</span>
+                <span className="text-sm text-muted">Stop guessing which Stand is best</span>
               </div>
               <ArrowRight className="h-5 w-5 text-muted group-hover:text-accent-indigo transition-transform group-hover:translate-x-1" />
             </Link>
@@ -104,8 +115,8 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Gift className="h-5 w-5 text-yellow-400/70" />
               <div className="flex flex-col">
-                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">Bizarre Lineage Codes</span>
-                <span className="text-sm text-muted">Verified status + official links</span>
+                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">4 Active Codes — Don&apos;t Miss Free Rewards</span>
+                <span className="text-sm text-muted">Verified from official Trello &middot; Redeem before they expire</span>
               </div>
             </div>
             <ArrowRight className="h-5 w-5 text-muted group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />

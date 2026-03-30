@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-export const SITE_URL = "https://www.bizarrelineage.com";
+export const SITE_URL = "https://bizarrelineage.com";
 
 function normalizePath(pathname: string) {
   if (!pathname || pathname === "/") {

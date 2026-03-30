@@ -324,6 +324,29 @@ export default function BestBuildsPage() {
                 ))}
             </div>
 
+            {/* Related Guides */}
+            <div className="mt-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Related Guides</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Link href="/guides/stats" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Stats Guide</div>
+                        <div className="text-xs text-muted mt-1">Optimize your stat allocation</div>
+                    </Link>
+                    <Link href="/guides/stand-chances" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Stand Chances</div>
+                        <div className="text-xs text-muted mt-1">Drop rates and rarity breakdown</div>
+                    </Link>
+                    <Link href="/tier-list" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Tier List</div>
+                        <div className="text-xs text-muted mt-1">See which Stands rank highest</div>
+                    </Link>
+                    <Link href="/build-planner" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Build Planner</div>
+                        <div className="text-xs text-muted mt-1">Test your combo before committing</div>
+                    </Link>
+                </div>
+            </div>
+
         </div>
     );
 }

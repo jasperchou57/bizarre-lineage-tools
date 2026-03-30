@@ -314,20 +314,57 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </div>
                     </section>
 
+                    {/* Stat Breakdown — unique per stand, boosts word count */}
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">Common Mistakes to Avoid</h2>
+                        <h2 className="text-2xl font-bold text-white mb-4">{stand.name} Stat Breakdown</h2>
+                        <div className="bg-surface border border-border rounded-xl p-6 text-sm text-muted leading-relaxed space-y-3">
+                            <p>
+                                {stand.name} scores <strong className="text-white">{stand.scores.damage}/10</strong> in Damage and <strong className="text-white">{stand.scores.combo}/10</strong> in Combo potential.
+                                {stand.scores.damage >= 8 ? ` This puts it among the hardest-hitting Stands in Bizarre Lineage, capable of deleting opponents in short combo windows.` : stand.scores.damage >= 6 ? ` This is solid mid-range damage — enough to trade effectively but not enough to one-combo most opponents.` : ` The lower damage means ${stand.name} relies more on utility, CC, or sustain to win fights rather than raw burst.`}
+                            </p>
+                            <p>
+                                For crowd control, {stand.name} sits at <strong className="text-white">{stand.scores.cc}/10</strong> CC with <strong className="text-white">{stand.scores.aoe}/10</strong> AoE coverage.
+                                {stand.scores.cc >= 8 ? ` The high CC rating means this Stand can lock opponents down reliably — critical for setting up combos or peeling for teammates in group fights.` : stand.scores.cc >= 5 ? ` The moderate CC gives you some control tools but you may need to rely on your fighting style for additional stun or grab options.` : ` Limited CC means you need to rely on prediction and positioning rather than lockdown. Pairing with a CC-heavy fighting style like Kendo helps compensate.`}
+                            </p>
+                            <p>
+                                Mobility is rated <strong className="text-white">{stand.scores.mobility}/10</strong> and Sustain <strong className="text-white">{stand.scores.sustain}/10</strong>.
+                                {stand.scores.mobility >= 8 ? ` High mobility makes ${stand.name} excellent at chasing down opponents or disengaging from unfavorable fights.` : stand.scores.mobility <= 4 ? ` The low mobility is ${stand.name}'s biggest weakness — you need to commit to fights carefully since escaping is difficult.` : ` Average mobility means you can reposition but won't outrun dedicated speed Stands like Made in Heaven.`}
+                                {stand.scores.sustain >= 7 ? ` Strong sustain lets you win extended trades and stay in fights longer than most opponents expect.` : ` Consider pairing with Vampire sub-ability if you need more survivability in longer fights.`}
+                            </p>
+                            <p>
+                                {stand.name} is classified as <strong className="text-white">{stand.rarity}</strong> rarity and requires <strong className="text-white">{stand.awakening.required} Conjuration</strong> for Stand Awakening. {stand.awakening.required >= 120 ? `The higher awakening threshold means you need more combat experience before unlocking the full potential of this Stand.` : `The relatively low awakening requirement lets you access the awakened moveset earlier than many other Stands.`}
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">Common Mistakes with {stand.name}</h2>
                         <ul className="space-y-3 text-muted">
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Copying this page&apos;s recommended pairing without testing it. The local planner starts with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong>, but your own matchups may call for something else.</span>
+                                <span>
+                                    {stand.scores.mobility <= 4
+                                        ? `Trying to chase opponents without a gap closer. ${stand.name} has ${stand.scores.mobility}/10 mobility — you lose chases against faster Stands. Use your CC to force fights on your terms instead.`
+                                        : stand.scores.damage >= 9
+                                            ? `Over-relying on raw damage and forgetting to block or dodge. ${stand.name} hits hard but can get punished if you play too aggressively without confirming hits first.`
+                                            : `Picking ${stand.name} without testing the recommended ${stand.recommendedStyles[0]} pairing first. The planner suggests it for a reason — it covers ${stand.name}'s gaps in ${stand.scores.cc < 5 ? 'crowd control' : stand.scores.mobility < 5 ? 'mobility' : 'sustain'}.`}
+                                </span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Treating planner rankings as official patch notes. Use the public Trello for verified move and progression data.</span>
+                                <span>
+                                    {stand.counteredBy.length > 0
+                                        ? `Queueing into ${standsData.find(s => s.id === stand.counteredBy[0])?.name || 'your counters'} without a plan. ${stand.name} struggles in this matchup — ${stand.scores.mobility >= 7 ? 'use your mobility to disengage and wait for cooldowns' : 'bait their key abilities before committing to a combo'}.`
+                                        : `Ignoring your Stand Awakening. ${stand.name} needs ${stand.awakening.required} Conjuration to awaken — grind this early because the awakened moveset significantly changes how you play.`}
+                                </span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
-                                <span>Ignoring the matchup notes entirely. Even local planner suggestions work better when you test them against the matchups you see most often.</span>
+                                <span>
+                                    {stand.tier.pvp !== stand.tier.pve
+                                        ? `Using your PvP build for PvE (or vice versa). ${stand.name} is rated ${stand.tier.pvp} in PvP but ${stand.tier.pve} in PvE — these are different contexts that may call for different style and sub-ability pairings.`
+                                        : `Skipping the Build Planner entirely. Even if you know ${stand.name} well, testing different style and sub combos in the planner can reveal setups you haven't considered.`}
+                                </span>
                             </li>
                         </ul>
                     </section>
@@ -371,15 +408,15 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </section>
                     )}
 
-                    {/* Bottom Planner CTA */}
+                    {/* Bottom Planner CTA — loss aversion framing */}
                     <section className="bg-gradient-to-r from-accent-blue/10 to-accent-indigo/10 border border-accent-blue/20 rounded-xl p-6 text-center">
-                        <p className="text-white font-bold text-lg mb-2">Ready to build with {stand.name}?</p>
-                        <p className="text-muted text-sm mb-4">Test different style and sub-ability combos in the Build Planner.</p>
+                        <p className="text-white font-bold text-lg mb-2">Don&apos;t waste resources on a bad {stand.name} build</p>
+                        <p className="text-muted text-sm mb-4">Test your Stand + Style + Sub combo before committing. Most players skip this and regret it.</p>
                         <Link
                             href={`/build-planner?stand=${stand.id}`}
                             className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all"
                         >
-                            Open {stand.name} in Build Planner <ArrowRight className="h-4 w-4" />
+                            Check {stand.name} Build Scores <ArrowRight className="h-4 w-4" />
                         </Link>
                     </section>
 

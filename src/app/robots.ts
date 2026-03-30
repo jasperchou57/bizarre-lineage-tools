@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/api/"],
         },
-        sitemap: "https://www.bizarrelineage.com/sitemap.xml",
+        sitemap: "https://bizarrelineage.com/sitemap.xml",
     };
 }

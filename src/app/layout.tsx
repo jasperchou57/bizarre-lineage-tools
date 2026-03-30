@@ -12,7 +12,7 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Bizarre Lineage Wiki - Tier List, Codes & Best Builds (2026)",
-  description: "The ultimate Bizarre Lineage wiki & tools hub. Tier list, active codes, Stand builds, PvP guides. Updated for the latest meta. (Also: bizare lineage, bizzare lineage).",
+  description: "The ultimate Bizarre Lineage wiki and tools hub. Free tier list, 4 active codes, Stand build planner, PvP and PvE guides. Updated for March 2026 meta.",
 };
 
 export default function RootLayout({
