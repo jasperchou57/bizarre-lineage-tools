@@ -4,7 +4,7 @@ import stylesData from "@/data/fighting-styles.json";
 import subsData from "@/data/sub-abilities.json";
 import raidsData from "@/data/raids.json";
 
-const BASE_URL = "https://bizarrelineage.com";
+const BASE_URL = "https://www.bizarrelineage.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date();

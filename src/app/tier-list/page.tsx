@@ -176,8 +176,8 @@ function TierListSchema() {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bizarrelineage.com' },
-            { '@type': 'ListItem', position: 2, name: 'Tier List', item: 'https://bizarrelineage.com/tier-list' },
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.bizarrelineage.com' },
+            { '@type': 'ListItem', position: 2, name: 'Tier List', item: 'https://www.bizarrelineage.com/tier-list' },
         ],
     };
 

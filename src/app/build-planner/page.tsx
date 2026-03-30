@@ -579,8 +579,8 @@ function PlannerSchema() {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bizarrelineage.com' },
-            { '@type': 'ListItem', position: 2, name: 'Build Planner', item: 'https://bizarrelineage.com/build-planner' },
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.bizarrelineage.com' },
+            { '@type': 'ListItem', position: 2, name: 'Build Planner', item: 'https://www.bizarrelineage.com/build-planner' },
         ],
     };
 
