@@ -39,7 +39,7 @@
         "difficulty": "Hard",
         "bossHp": 4000,
         "bossLevel": 75,
-        "location": "Left of Morioh Station",
+        "location": "Bus Stop 1, left of Morioh Station",
         "npc": "Yoshikage Kira",
         "maxTokens": 35,
         "grading": {
@@ -73,7 +73,7 @@
         "difficulty": "Hard",
         "bossHp": 6000,
         "bossLevel": 75,
-        "location": "Jojo's Bizarre Gym side entrance (Chumbo NPC)",
+        "location": "Bus Stop 2, Jojo's Bizarre Gym side entrance (Chumbo NPC)",
         "npc": "Chumbo",
         "maxTokens": 35,
         "grading": {
@@ -107,7 +107,7 @@
         "difficulty": "Hard",
         "bossHp": 3000,
         "bossLevel": 75,
-        "location": "World Event spawn / Graveyard area",
+        "location": "Bus Stop 18, Graveyard area",
         "npc": "??? (DIO)",
         "maxTokens": 35,
         "grading": {

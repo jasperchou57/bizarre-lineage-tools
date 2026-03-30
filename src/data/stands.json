@@ -111,7 +111,7 @@
             },
             {
                 "name": "Infinite Pursuit",
-                "key": "R",
+                "key": "R+R",
                 "type": "melee",
                 "effect": "Dash punch into multi-hit teleport combo. Has follow-up."
             },
