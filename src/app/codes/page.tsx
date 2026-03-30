@@ -4,10 +4,10 @@ import { ChevronRight, Gift, Check, Clock, Copy, HelpCircle } from "lucide-react
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 const ACTIVE_CODES = [
-    { code: "30kLikes", reward: "Stand Arrows, Cash, Stat Resets", source: "Official Trello" },
-    { code: "100kLikes", reward: "Stand Arrows, Cash, Stat Resets", source: "Official Trello" },
-    { code: "shutdownwoops", reward: "Cash, Stand Arrows", source: "Official Trello" },
-    { code: "1week", reward: "Cash, Stand Arrows", source: "Official Trello" },
+    { code: "30kLikes", reward: "1 Stat Point Essence", source: "Official Trello" },
+    { code: "100kLikes", reward: "1 Stat Point Essence + Rare Chest", source: "Official Trello" },
+    { code: "shutdownwoops", reward: "Stand Stat Essence", source: "Official Trello" },
+    { code: "1week", reward: "Stand Personality Essence", source: "Official Trello" },
 ];
 
 const EXPIRED_CODES: { code: string; reward: string }[] = [];
@@ -51,10 +51,24 @@ export default function CodesPage() {
         ],
     };
 
+    const howToSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: 'How to Redeem Codes in Bizarre Lineage',
+        description: 'Step-by-step guide to redeem codes in Bizarre Lineage on Roblox.',
+        step: [
+            { '@type': 'HowToStep', position: 1, name: 'Open the game', text: 'Open Bizarre Lineage on Roblox.' },
+            { '@type': 'HowToStep', position: 2, name: 'Open chat', text: 'Open the in-game chat by pressing / or clicking the chat icon.' },
+            { '@type': 'HowToStep', position: 3, name: 'Type the code', text: 'Type !code followed by the code. For example: !code 30kLikes' },
+            { '@type': 'HowToStep', position: 4, name: 'Claim rewards', text: 'Press Enter. Rewards are added to your inventory instantly.' },
+        ],
+    };
+
     return (
         <div className="container mx-auto px-4 py-12 max-w-4xl">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
             {/* Breadcrumbs */}
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">

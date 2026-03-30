@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowRightLeft, Target, Activity, Shield, Navigation, Database } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { trackEvent } from "@/lib/analytics";
 import standsData from "@/data/stands.json";
 import { Suspense } from "react";
 
@@ -19,6 +20,7 @@ function ComparePageClient() {
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
+        trackEvent('compare_open');
     }, []);
 
     if (!isMounted) return null;

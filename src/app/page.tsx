@@ -13,7 +13,7 @@ const faqData = [
   },
   {
     question: "Are there any active Bizarre Lineage codes right now?",
-    answer: "We do not currently list any verified official codes. The public official Trello links to the official Discord, Roblox group, and game page, which are the safest places to verify future code announcements.",
+    answer: "Yes — there are currently 4 active codes verified from the official Trello: 30kLikes, 100kLikes, shutdownwoops, and 1week. Type !code followed by the code in the in-game chat to redeem. Visit our Codes page for full details and rewards.",
   },
   {
     question: "How do I get a specific Stand like Whitesnake or Made in Heaven?",

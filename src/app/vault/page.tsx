@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Database, Download, Trash2, ArrowRightLeft, Target, Shield, Zap, Upload } from "lucide-react";
 import { useRef } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { trackEvent } from "@/lib/analytics";
 import standsData from "@/data/stands.json";
 
 export default function VaultPage() {
@@ -17,6 +18,7 @@ export default function VaultPage() {
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
+        trackEvent('vault_open', { builds_count: vault.length });
     }, []);
 
     if (!isMounted) return null;
@@ -29,6 +31,7 @@ export default function VaultPage() {
     };
 
     const handleExport = () => {
+        trackEvent('vault_export', { builds_count: vault.length });
         const blob = new Blob([JSON.stringify(vault, null, 2)], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
