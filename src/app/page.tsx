@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { Search, Target, ArrowRight, Zap, Gift, ChevronDown } from "lucide-react";
 import standsData from "@/data/stands.json";
-import { withCanonical, SITE_URL } from "@/lib/metadata";
+import { withCanonical } from "@/lib/metadata";
 
 export const metadata: Metadata = withCanonical({}, "/");
 

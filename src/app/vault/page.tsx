@@ -19,6 +19,7 @@ export default function VaultPage() {
     useEffect(() => {
         setIsMounted(true);
         trackEvent('vault_open', { builds_count: vault.length });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (!isMounted) return null;

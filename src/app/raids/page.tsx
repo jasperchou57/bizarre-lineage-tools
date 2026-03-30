@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Swords, Shield, Zap, HelpCircle } from "lucide-react";
+import { ChevronRight, Shield, Zap, HelpCircle } from "lucide-react";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 import raidsData from "@/data/raids.json";
 import standsData from "@/data/stands.json";

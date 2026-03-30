@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Gift, Check, Clock, Copy, HelpCircle } from "lucide-react";
+import { ChevronRight, Gift, Check, Clock, HelpCircle } from "lucide-react";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 const ACTIVE_CODES = [
