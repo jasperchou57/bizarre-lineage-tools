@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Zap, Shield, Sword } from "lucide-react";
+import { getStandImagePath } from "@/data/stand-media";
 
 interface Stand {
     id: string;
@@ -12,13 +14,24 @@ interface Stand {
 export function StandCard({ stand }: { stand: Stand }) {
     return (
         <Link href={`/stands/${stand.id}`} className="block group h-full">
-            <div className="bg-surface border border-border rounded-xl p-6 h-full hover:border-accent-blue/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all flex flex-col">
+            <div className="bg-surface border border-border rounded-xl overflow-hidden h-full hover:border-accent-blue/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all flex flex-col">
+                <div className="relative aspect-square bg-background overflow-hidden">
+                    <Image
+                        src={getStandImagePath(stand.id)}
+                        alt={stand.name}
+                        width={280}
+                        height={280}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                    />
+                </div>
+                <div className="p-4 flex flex-col flex-1">
                 <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors">
+                    <h3 className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">
                         {stand.name}
                     </h3>
                     <span className="px-2 py-1 text-xs font-mono font-bold uppercase rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">
-                        Planner {stand.tier.overall}
+                        {stand.tier.overall}
                     </span>
                 </div>
 
@@ -35,6 +48,7 @@ export function StandCard({ stand }: { stand: Stand }) {
                         <Zap className="h-4 w-4 text-accent-blue" />
                         <span className="truncate">Suggested: <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong></span>
                     </div>
+                </div>
                 </div>
             </div>
         </Link>

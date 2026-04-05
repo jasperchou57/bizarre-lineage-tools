@@ -187,6 +187,24 @@ export default function RaidPage({ params }: { params: { slug: string } }) {
                         </div>
                     </section>
 
+                    {/* Raid Guide Video */}
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">{raid.boss} Raid Video Guide</h2>
+                        <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={`https://www.youtube.com/embed/${raid.id === 'dio' ? 'PD6-_hViNmo' : 'dvKRUTiNZ5E'}`}
+                                title={`${raid.boss} Raid Guide - Bizarre Lineage`}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                                loading="lazy"
+                                className="w-full h-full"
+                            />
+                        </div>
+                    </section>
+
                     {/* Other Raids */}
                     <section>
                         <h2 className="text-2xl font-bold text-white mb-4">Other Raids</h2>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Search, Target, ArrowRight, Zap, Gift, ChevronDown } from "lucide-react";
 import standsData from "@/data/stands.json";
@@ -63,16 +64,29 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqSchema) }} />
-      <div className="flex flex-col items-center px-4 py-16 md:py-24 max-w-5xl mx-auto">
-        {/* Hero Section */}
-        <div className="text-center space-y-6 mb-12 w-full max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-white text-balance">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Tier List &amp; Codes
-          </h1>
-          <p className="text-lg md:text-xl text-muted text-balance mx-auto">
-            Cross-check official Trello move data, compare site-maintained planner rankings, and verify official links before you spend your resources.
-          </p>
+      <div className="flex flex-col items-center max-w-5xl mx-auto">
+        {/* Hero Section with Background Image */}
+        <div className="relative w-full rounded-2xl overflow-hidden mb-12">
+          <Image
+            src="/images/hero-bg.jpg"
+            alt="Bizarre Lineage Background"
+            width={1280}
+            height={720}
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+          <div className="relative text-center space-y-6 px-4 py-20 md:py-28 w-full max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold tracking-tight text-white text-balance">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Tier List &amp; Codes
+            </h1>
+            <p className="text-lg md:text-xl text-muted text-balance mx-auto">
+              Cross-check official Trello move data, compare site-maintained planner rankings, and verify official links before you spend your resources.
+            </p>
+          </div>
         </div>
+
+        <div className="px-4 w-full flex flex-col items-center">
 
         {/* Primary Actions */}
         <div className="w-full max-w-2xl space-y-6 mb-16">
@@ -115,7 +129,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Gift className="h-5 w-5 text-yellow-400/70" />
               <div className="flex flex-col">
-                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">4 Active Codes — Don&apos;t Miss Free Rewards</span>
+                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">7 Active Codes — Don&apos;t Miss Free Rewards</span>
                 <span className="text-sm text-muted">Verified from official Trello &middot; Redeem before they expire</span>
               </div>
             </div>
@@ -188,6 +202,25 @@ export default function Home() {
           </div>
         </div>
 
+        {/* YouTube Video Section */}
+        <div className="w-full max-w-3xl mb-16">
+          <h2 className="text-2xl font-heading font-bold text-white text-center mb-3">Watch Bizarre Lineage in Action</h2>
+          <p className="text-sm text-muted text-center mb-6">Gameplay showcases, combo guides, and Stand previews from the community.</p>
+          <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/Tx0h0rJK6yo"
+              title="Bizarre Lineage Gameplay Showcase"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+              className="w-full h-full"
+            />
+          </div>
+        </div>
+
         {/* FAQ Section */}
         <div className="w-full max-w-3xl mb-16">
           <h2 className="text-2xl font-heading font-bold text-white text-center mb-8">Bizarre Lineage FAQ</h2>
@@ -211,6 +244,7 @@ export default function Home() {
           <p className="text-xs text-muted/60">
             Move names, obtain methods, and progression notes are cross-checked against the public official Trello board. Rankings and planner scores on this site are community-maintained notes.
           </p>
+        </div>
         </div>
       </div>
     </>

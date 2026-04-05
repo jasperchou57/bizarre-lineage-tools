@@ -16,11 +16,16 @@ export function Footer() {
                             Official move and progression notes are cross-checked against the public Trello board. Planner rankings and build notes are site-maintained.
                         </p>
                     </div>
-                    <div className="flex items-center gap-6 text-sm text-muted">
-                        <Link href="/guides/leveling" className="hover:text-white transition-colors">Leveling Guide</Link>
-                        <Link href="/guides/prestige" className="hover:text-white transition-colors">Prestige Guide</Link>
+                    <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-sm text-muted">
+                        <Link href="/skins" className="hover:text-white transition-colors">Skins</Link>
+                        <Link href="/items" className="hover:text-white transition-colors">Items</Link>
+                        <Link href="/world-events" className="hover:text-white transition-colors">World Events</Link>
+                        <Link href="/perks" className="hover:text-white transition-colors">Perks</Link>
+                        <Link href="/trello" className="hover:text-white transition-colors">Trello</Link>
+                        <Link href="/guides/awakening" className="hover:text-white transition-colors">Awakening</Link>
+                        <Link href="/guides/night-vampire" className="hover:text-white transition-colors">Night Vampire</Link>
+                        <Link href="/guides/leveling" className="hover:text-white transition-colors">Leveling</Link>
                         <Link href="/about" className="hover:text-white transition-colors">About</Link>
-                        <Link href="/contact" className="hover:text-white transition-colors">Contact</Link>
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
                     </div>

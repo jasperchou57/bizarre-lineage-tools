@@ -1,9 +1,12 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle } from 'lucide-react';
 import standsData from '@/data/stands.json';
 import raidsData from '@/data/raids.json';
+import skinsData from '@/data/skins.json';
+import { getStandImagePath, STAND_VIDEOS } from '@/data/stand-media';
 import { withCanonical, SITE_URL } from '@/lib/metadata';
 
 // Evolution chains: source of truth for stand progression
@@ -149,7 +152,17 @@ export default function StandPage({ params }: { params: { slug: string } }) {
 
             {/* Hero Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-white/5 pb-8">
-                <div>
+                <div className="hidden md:block shrink-0">
+                    <Image
+                        src={getStandImagePath(stand.id)}
+                        alt={stand.name}
+                        width={140}
+                        height={140}
+                        className="rounded-xl border border-border bg-surface object-contain"
+                        priority
+                    />
+                </div>
+                <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
                         <span className="px-3 py-1 text-xs font-mono font-bold uppercase rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">
                             Rarity: {stand.rarity}
@@ -187,6 +200,26 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                             The public official Trello is used here for move names and obtainment notes. On this site, {stand.name} is grouped under the local <strong className="text-white">{stand.rarity}</strong> label, obtained primarily via <strong className="text-white">{stand.obtainMethod}</strong>, and currently placed at <strong className="text-accent-blue">{stand.tier.overall} Tier</strong> in the planner dataset.
                         </p>
                     </section>
+
+                    {/* YouTube Showcase Video */}
+                    {STAND_VIDEOS[stand.id] && (
+                        <section>
+                            <h2 className="text-2xl font-bold text-white mb-4">{stand.name} Showcase Video</h2>
+                            <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src={`https://www.youtube.com/embed/${STAND_VIDEOS[stand.id]}`}
+                                    title={`${stand.name} Showcase - Bizarre Lineage`}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                    loading="lazy"
+                                    className="w-full h-full"
+                                />
+                            </div>
+                        </section>
+                    )}
 
                     {/* Evolution Chain */}
                     {evolutionChain && evolutionChain.length > 1 && (
@@ -408,6 +441,40 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                         </Link>
                                     ))}
                                 </div>
+                            </section>
+                        );
+                    })()}
+
+                    {/* Related Skins */}
+                    {(() => {
+                        const standSkins = skinsData.filter(s => s.stand === stand.name);
+                        if (standSkins.length === 0) return null;
+                        return (
+                            <section>
+                                <h2 className="text-2xl font-bold text-white mb-4">{stand.name} Skins</h2>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                    {standSkins.map(skin => (
+                                        <div key={skin.id} className="bg-surface border border-border rounded-xl overflow-hidden">
+                                            <div className="relative aspect-[4/3] bg-background">
+                                                <Image
+                                                    src={`/images/skins/${skin.id}-skin-bizarre-lineage.webp`}
+                                                    alt={skin.name}
+                                                    width={280}
+                                                    height={210}
+                                                    className="w-full h-full object-cover"
+                                                    loading="lazy"
+                                                />
+                                            </div>
+                                            <div className="p-3">
+                                                <h3 className="font-bold text-white text-sm">{skin.name}</h3>
+                                                <p className="text-xs text-muted">{skin.rarity}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                <Link href="/skins" className="inline-flex items-center gap-1 text-sm text-accent-blue hover:text-white mt-3 transition-colors">
+                                    View all skins <ArrowRight className="h-3 w-3" />
+                                </Link>
                             </section>
                         );
                     })()}

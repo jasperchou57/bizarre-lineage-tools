@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle } from "lucide-react";
+import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle, Zap, Moon } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
 export const metadata: Metadata = withCanonical({
@@ -30,6 +30,22 @@ const guides = [
         description: "Site-maintained Stand + Style + Sub setups for PvP, PvE, beginners, glass cannon, and tank playstyles.",
         href: "/guides/best-builds",
         icon: <Wrench className="h-8 w-8 text-purple-400" />,
+        tag: "New",
+        tagColor: "bg-green-500/20 text-green-400",
+    },
+    {
+        title: "Awakening Guide",
+        description: "Step-by-step walkthrough to awaken your Stand. Requirements, boss fight strategies, and best Stands for the awakening quest.",
+        href: "/guides/awakening",
+        icon: <Zap className="h-8 w-8 text-yellow-400" />,
+        tag: "New",
+        tagColor: "bg-green-500/20 text-green-400",
+    },
+    {
+        title: "Night Vampire Guide",
+        description: "How to become a Night Vampire, all abilities, best Stand pairings, and PvP strategies for the Vampire sub-ability.",
+        href: "/guides/night-vampire",
+        icon: <Moon className="h-8 w-8 text-purple-400" />,
         tag: "New",
         tagColor: "bg-green-500/20 text-green-400",
     },

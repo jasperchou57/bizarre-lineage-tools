@@ -77,7 +77,24 @@ export default function LevelingGuidePage() {
                 <li><strong>Prestige:</strong> The public Trello confirms you prestige through the Arch Mage for 10,000 Cash near Bus Stop 10.</li>
             </ul>
 
-            <div className="mt-12 not-prose">
+            <div className="mt-12 not-prose mb-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Leveling Video Guide</h2>
+                <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/LnyDuoPfC18"
+                        title="Ultimate Beginner Leveling Guide - Bizarre Lineage"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                        className="w-full h-full"
+                    />
+                </div>
+            </div>
+
+            <div className="mt-8 not-prose">
                 <Link href="/guides/prestige" className="block w-full py-4 bg-surface border border-white/10 rounded-xl text-center hover:bg-white/5 hover:border-accent-blue transition-all group">
                     <span className="text-sm text-muted uppercase tracking-widest block mb-1">Next Guide</span>
                     <span className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors flex items-center justify-center gap-2">

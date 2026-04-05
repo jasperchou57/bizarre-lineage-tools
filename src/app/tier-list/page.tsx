@@ -201,12 +201,17 @@ export default function TierListPage() {
                 <span className="text-white" aria-current="page">Tier List</span>
             </nav>
 
+            <div className="relative w-full rounded-xl overflow-hidden mb-8">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/images/tier-list-preview.webp" alt="Bizarre Lineage Tier List" className="w-full h-48 object-cover opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
+                <div className="absolute bottom-4 left-6">
+                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Bizarre Lineage Tier List</h1>
+                </div>
+            </div>
             <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-4">
-                    Bizarre Lineage Tier List
-                </h1>
                 <p className="text-lg text-muted max-w-2xl mx-auto">
-                    Community-maintained ranking data for all {standsData.length} Stands in Bizarre Lineage. Filter by Overall, PvP, or PvE performance. Updated for March 2026 meta.
+                    Community-maintained ranking data for all {standsData.length} Stands in Bizarre Lineage. Filter by Overall, PvP, or PvE performance. Updated for April 2026 meta.
                 </p>
             </div>
 

@@ -324,6 +324,24 @@ export default function BestBuildsPage() {
                 ))}
             </div>
 
+            {/* Best Builds Video */}
+            <div className="mt-8 mb-8">
+                <h2 className="text-2xl font-bold text-white mb-4">Best Stands Tier List Video</h2>
+                <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src="https://www.youtube.com/embed/dqwua8EXkZQ"
+                        title="Bizarre Lineage Tier List 2026 - Best Stands"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                        className="w-full h-full"
+                    />
+                </div>
+            </div>
+
             {/* Related Guides */}
             <div className="mt-8">
                 <h2 className="text-2xl font-bold text-white mb-4">Related Guides</h2>

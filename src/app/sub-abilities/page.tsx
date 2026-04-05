@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight, Target, Shield } from "lucide-react";
 import subsData from "@/data/sub-abilities.json";
@@ -12,9 +13,13 @@ export const metadata: Metadata = withCanonical({
 export default function SubAbilitiesDirectory() {
     return (
         <div className="container mx-auto px-4 py-12 max-w-6xl">
-            <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-4">
-                Sub-Abilities
-            </h1>
+            <div className="relative w-full rounded-xl overflow-hidden mb-6">
+                <Image src="/images/pages/sub-abilities.png" alt="Bizarre Lineage Sub-Abilities" width={800} height={450} className="w-full h-48 object-cover opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+                <div className="absolute bottom-4 left-6">
+                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Sub-Abilities</h1>
+                </div>
+            </div>
             <p className="text-lg text-muted mb-12 max-w-2xl">
                 Sub-Abilities provide passive bonuses, powerful utility skills, and alter your core gameplay loop. Passive notes are cross-checked against the public official Trello, while scores and pairing suggestions below are site-maintained planner notes.
             </p>

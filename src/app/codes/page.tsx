@@ -8,17 +8,20 @@ const ACTIVE_CODES = [
     { code: "100kLikes", reward: "1 Stat Point Essence + Rare Chest", source: "Official Trello" },
     { code: "shutdownwoops", reward: "Stand Stat Essence", source: "Official Trello" },
     { code: "1week", reward: "Stand Personality Essence", source: "Official Trello" },
+    { code: "Update1", reward: "3 Stand Arrows + 5,000 Cash", source: "Update 1 Release" },
+    { code: "DIOOverHeaven", reward: "1 Legendary Chest", source: "Update 1 Release" },
+    { code: "NewStands", reward: "2 Stand Arrows + Stat Reset", source: "Update 1 Release" },
 ];
 
 const EXPIRED_CODES: { code: string; reward: string }[] = [];
 
 export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Codes (March 2026) | 4 Active Codes",
-    description: "All 4 working Bizarre Lineage codes for March 2026. Verified from the official Trello. Redeem for Stand Arrows, Cash, and Stat Resets.",
+    title: "Bizarre Lineage Codes (April 2026) | 7 Active Codes",
+    description: "All 7 working Bizarre Lineage codes for April 2026 including Update 1 codes. Redeem for Stand Arrows, Cash, Legendary Chests, and more.",
 }, "/codes");
 
 export default function CodesPage() {
-    const lastVerified = "March 22, 2026";
+    const lastVerified = "April 4, 2026";
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
