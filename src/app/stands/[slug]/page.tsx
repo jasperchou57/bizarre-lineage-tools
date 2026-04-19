@@ -456,18 +456,24 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                     {standSkins.map(skin => (
                                         <div key={skin.id} className="bg-surface border border-border rounded-xl overflow-hidden">
                                             <div className="relative aspect-[4/3] bg-background">
-                                                <Image
-                                                    src={`/images/skins/${skin.id}-skin-bizarre-lineage.webp`}
-                                                    alt={skin.name}
-                                                    width={280}
-                                                    height={210}
-                                                    className="w-full h-full object-cover"
-                                                    loading="lazy"
-                                                />
+                                                {skin.imageUrl ? (
+                                                    <Image
+                                                        src={skin.imageUrl}
+                                                        alt={skin.name}
+                                                        width={280}
+                                                        height={210}
+                                                        className="w-full h-full object-cover"
+                                                        loading="lazy"
+                                                    />
+                                                ) : (
+                                                    <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
+                                                        Official Trello listing without an attached preview image.
+                                                    </div>
+                                                )}
                                             </div>
                                             <div className="p-3">
-                                                <h3 className="font-bold text-white text-sm">{skin.name}</h3>
-                                                <p className="text-xs text-muted">{skin.rarity}</p>
+                                                <h3 className="font-bold text-white text-sm">{skin.skinName}</h3>
+                                                <p className="text-xs text-muted">{skin.rarity ?? "Official Trello listing"}</p>
                                             </div>
                                         </div>
                                     ))}

@@ -129,7 +129,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <Gift className="h-5 w-5 text-yellow-400/70" />
               <div className="flex flex-col">
-                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">7 Active Codes — Don&apos;t Miss Free Rewards</span>
+                <span className="text-base font-bold text-white group-hover:text-yellow-400 transition-colors">4 Active Codes — Official Trello Sync</span>
                 <span className="text-sm text-muted">Verified from official Trello &middot; Redeem before they expire</span>
               </div>
             </div>

@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'trello.com',
+                pathname: '/1/cards/**',
+            },
+        ],
+    },
     async redirects() {
         return [
             {
