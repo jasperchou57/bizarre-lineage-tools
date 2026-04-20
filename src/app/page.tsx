@@ -205,13 +205,13 @@ export default function Home() {
         {/* YouTube Video Section */}
         <div className="w-full max-w-3xl mb-16">
           <h2 className="text-2xl font-heading font-bold text-white text-center mb-3">Watch Bizarre Lineage in Action</h2>
-          <p className="text-sm text-muted text-center mb-6">Gameplay showcases, combo guides, and Stand previews from the community.</p>
+          <p className="text-sm text-muted text-center mb-6">Complete beginner&apos;s walkthrough covering Stands, leveling, progression, and Awakening.</p>
           <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/Tx0h0rJK6yo"
-              title="Bizarre Lineage Gameplay Showcase"
+              src="https://www.youtube.com/embed/LnyDuoPfC18"
+              title="The Ultimate Beginner's Guide to Bizarre Lineage — Stands, Leveling, Progression & Awakening"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen

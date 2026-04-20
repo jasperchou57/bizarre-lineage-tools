@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle } from 'lucide-react';
 import standsData from '@/data/stands.json';
-import raidsData from '@/data/raids.json';
 import skinsData from '@/data/skins.json';
 import { getStandImagePath, STAND_VIDEOS } from '@/data/stand-media';
 import { withCanonical, SITE_URL } from '@/lib/metadata';
@@ -423,28 +422,6 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                         </div>
                     </section>
 
-                    {/* Raid Recommendations */}
-                    {(() => {
-                        const standsRaids = raidsData.filter(r => r.recommendedStands.includes(stand.id));
-                        if (standsRaids.length === 0) return null;
-                        return (
-                            <section>
-                                <h2 className="text-2xl font-bold text-white mb-4">{stand.name} in Raids</h2>
-                                <div className="space-y-3">
-                                    {standsRaids.map(raid => (
-                                        <Link key={raid.id} href={`/raids/${raid.id}`} className="flex items-center justify-between bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                                            <div>
-                                                <span className="font-bold text-white group-hover:text-accent-blue transition-colors">{raid.boss} Raid</span>
-                                                <span className="text-xs text-muted ml-2">{raid.difficulty} &middot; {raid.bossHp.toLocaleString()} HP</span>
-                                            </div>
-                                            <ChevronRight className="h-4 w-4 text-muted group-hover:text-accent-blue" />
-                                        </Link>
-                                    ))}
-                                </div>
-                            </section>
-                        );
-                    })()}
-
                     {/* Related Skins */}
                     {(() => {
                         const standSkins = skinsData.filter(s => s.stand === stand.name);
@@ -467,7 +444,7 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                                     />
                                                 ) : (
                                                     <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
-                                                        Official Trello listing without an attached preview image.
+                                                        Preview not yet released — Trello shows a TBA placeholder.
                                                     </div>
                                                 )}
                                             </div>

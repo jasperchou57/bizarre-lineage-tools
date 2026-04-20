@@ -13,47 +13,80 @@ const ITEM_CATEGORIES = [
     {
         category: "Stand Items",
         items: [
-            { name: "Stand Arrow", rarity: "Common", effect: "Grants a random Stand. The most fundamental item in the game.", sources: ["NPC Quests", "Codes", "Meteor Shower", "Legendary Chests", "Raid Shops"] },
-            { name: "Lucky Arrow", rarity: "Rare", effect: "Grants a random skin for your currently equipped Stand. Does NOT change your Stand or improve rarity.", sources: ["Raid Shops (450-510 tokens)", "Meteor Shower (rare)", "Events"] },
-            { name: "Requiem Arrow", rarity: "Legendary", effect: "Used to evolve certain Stands into their Requiem form (e.g. Gold Experience → Gold Experience Requiem).", sources: ["Boss Drops", "DIO Raid Shop", "Special Quests"] },
-            { name: "Holy Corpse Part", rarity: "Mythical", effect: "Required to evolve The World into The World: High Voltage. The rarest evolution item.", sources: ["DIO Raid (rare drop)", "Special Events"] },
-            { name: "Rokakaka Fruit", rarity: "Common", effect: "Removes your current Stand, allowing you to roll a new one with a Stand Arrow.", sources: ["NPC Quests", "Legendary Chests", "Ground Spawns"] },
+            { name: "Stand Arrow", rarity: "Common", effect: "Grants a random Stand when used. The fundamental item to obtain a Stand.", sources: ["Ground spawns", "Common / Rare / Legendary Chests", "Codes"] },
+            { name: "Lucky Arrow", rarity: "Legendary", effect: "Guarantees a random skin on your current Stand.", sources: ["Prestige Shop", "Raid Shops", "Legendary Chests"] },
+            { name: "Stone Mask", rarity: "Rare", effect: "Rejecting your humanity transforms you into a Vampire (sub-ability).", sources: ["Shop", "Common / Rare / Legendary Chests"] },
         ],
     },
     {
-        category: "Sub-Ability Items",
+        category: "Essences",
         items: [
-            { name: "Stone Mask", rarity: "Rare", effect: "Transforms you into a Vampire. Grants lifesteal and vampire abilities.", sources: ["Legendary Chests", "Raid Shops", "Meteor Shower"] },
-            { name: "Hamon Training Manual", rarity: "Uncommon", effect: "Unlocks Hamon sub-ability. Grants bonus damage vs Vampires and HP regeneration.", sources: ["NPC Quest (Morioh Beach)", "Codes"] },
-            { name: "Cyborg Parts", rarity: "Uncommon", effect: "Unlocks Cyborg sub-ability. Grants UV radiation attacks and defense bonus.", sources: ["NPC Quest", "Raid Shops"] },
-            { name: "Spin Ball", rarity: "Rare", effect: "Unlocks Spin sub-ability. Grants ranged attacks with spin mechanics.", sources: ["Special NPC Quest", "Events"] },
+            { name: "Stat Point Essence", rarity: "Uncommon", effect: "Resets your stat points upon use.", sources: ["Prestige Shop", "Rahaj's Shop", "Robux Shop"] },
+            { name: "Stand Skin Essence", rarity: "Rare", effect: "Gives your current Stand a random skin upon use.", sources: ["Prestige Shop", "Robux Shop", "Achievements"] },
+            { name: "Stand Stat Essence", rarity: "Uncommon", effect: "Rerolls your Stand's stats upon use.", sources: ["Prestige Shop", "Robux Shop"] },
+            { name: "Stand Personality Essence", rarity: "Rare", effect: "Rerolls your Stand's personality upon use.", sources: ["Prestige Shop", "Robux Shop"] },
+            { name: "Stand Conjuration Essence", rarity: "Rare", effect: "Maxes out your equipped Stand's Conjuration upon use.", sources: ["Prestige Shop", "Rahaj's Shop", "Robux Shop"] },
+            { name: "Custom Clothing Essence", rarity: "Legendary", effect: "Lets you use your Roblox avatar's clothes in-game upon use.", sources: ["Robux Shop"] },
         ],
     },
     {
-        category: "Consumables",
+        category: "Special Items",
         items: [
-            { name: "Stat Point Essence", rarity: "Uncommon", effect: "Grants 1 additional stat point to distribute. Stacks with level-up stat points.", sources: ["Codes", "Raid Rewards", "Events"] },
-            { name: "Stand Stat Essence", rarity: "Uncommon", effect: "Grants 1 additional Stand stat point. Used to boost Stand-specific stats.", sources: ["Codes", "Raid Rewards"] },
-            { name: "Stand Personality Essence", rarity: "Rare", effect: "Rerolls your Stand's personality trait. Useful for optimizing builds.", sources: ["Codes", "Prestige Shop"] },
-            { name: "EXP Boost (30 min)", rarity: "Common", effect: "Doubles all EXP gained for 30 minutes. Does not stack with other EXP boosts.", sources: ["Codes", "Login Rewards", "Events"] },
-            { name: "Cash Boost (30 min)", rarity: "Common", effect: "Doubles all Cash earned for 30 minutes.", sources: ["Codes", "Login Rewards"] },
+            { name: "Dio's Diary", rarity: "Legendary", effect: "Quest item used in Pucci's questline.", sources: ["Legendary Chest", "DIO Raid drop"] },
+            { name: "Red Stone of Aja", rarity: "Mythical", effect: "Grants double Legendary skin chance (stacking), 2x Conjuration (stacking), +1% Lucky Arrow spawn chance per wielder in your server (stacking), and infinite Stand storage.", sources: ["Robux Shop"] },
         ],
     },
     {
         category: "Chests",
         items: [
-            { name: "Common Chest", rarity: "Common", effect: "Contains Cash (100-500) and occasionally a Stand Arrow.", sources: ["Ground Spawns", "Quest Rewards"] },
-            { name: "Rare Chest", rarity: "Uncommon", effect: "Contains Cash (500-2,000), Stand Arrows, and occasionally rare items.", sources: ["Codes", "World Events", "Quest Rewards"] },
-            { name: "Legendary Chest", rarity: "Rare", effect: "Contains high-value items: Lucky Arrows, Stone Masks, Requiem Arrows, large Cash amounts.", sources: ["Codes", "Raid Rewards", "World Boss DIO"] },
+            { name: "Common Chest", rarity: "Common", effect: "Drops basic items, materials and small Cash.", sources: ["Mission rewards", "Raid drops"] },
+            { name: "Rare Chest", rarity: "Uncommon", effect: "Drops mid-tier materials, Stand Arrows and occasional rare items.", sources: ["Mission rewards", "Raid drops"] },
+            { name: "Legendary Chest", rarity: "Rare", effect: "Drops high-value items including Lucky Arrows, Stone Masks, Dio's Diary, and Imperfect Aja.", sources: ["Mission rewards", "Raid drops"] },
         ],
     },
     {
-        category: "Accessories",
+        category: "Mounts",
         items: [
-            { name: "Jotaro's Coat", rarity: "Legendary", effect: "Cosmetic accessory. Obtained from Jotaro Raid Shop.", sources: ["Jotaro Raid Shop"] },
-            { name: "Jotaro's Hat", rarity: "Legendary", effect: "Cosmetic accessory. Iconic cap from Part 3.", sources: ["Jotaro Raid Shop"] },
-            { name: "Skull Tie", rarity: "Legendary", effect: "Cosmetic accessory. Kira's signature neckwear.", sources: ["Kira Raid Shop"] },
-            { name: "Flaming Medallion Necklace", rarity: "Legendary", effect: "Cosmetic accessory. Avdol's iconic necklace.", sources: ["Avdol Raid Shop"] },
+            { name: "Plank Skateboard", rarity: "Common", effect: "Basic skateboard mount. Required to obtain the upgraded Skateboard.", sources: ["Craft from Gupta", "Zuleima's quest (thieves area)"] },
+            { name: "Skateboard", rarity: "Uncommon", effect: "Upgraded skateboard mount with better speed.", sources: ["Yuto Horigome's questline at the Gym (requires Plank Skateboard equipped)"] },
+            { name: "Motorcycle", rarity: "Legendary", effect: "Premium fast mount.", sources: ["Starter Pack (Robux Shop)"] },
+        ],
+    },
+    {
+        category: "Weapons",
+        items: [
+            { name: "Stop Sign", rarity: "Rare", effect: "Blunt weapon with M1 combo.", sources: ["DIO's Raid Shop"] },
+            { name: "Shadow Axe", rarity: "Rare", effect: "Cleaving weapon with M1 combo.", sources: ["DIO's Raid Shop"] },
+            { name: "Odachi", rarity: "Legendary", effect: "Long-blade sword. Strong critical attack.", sources: ["Miyamoto drop (0.5–1% chance)"] },
+            { name: "Katana", rarity: "Uncommon", effect: "Standard sword with M1 combo and critical attack.", sources: ["Defeat Samurai enemies"] },
+            { name: "Hammer", rarity: "Rare", effect: "Heavy two-handed weapon.", sources: ["Mafia Boss questline (Dedequann near the Gym)"] },
+            { name: "Shovel", rarity: "Uncommon", effect: "Improvised weapon with M1 combo and critical attack.", sources: ["Cultist Leaders", "Elite Mafia Members"] },
+            { name: "Luck & Pluck", rarity: "Legendary", effect: "Special weapon obtained from Bruford's questline.", sources: ["Bruford's quest (beach northeast of Bus Stop 17)"] },
+        ],
+    },
+    {
+        category: "Materials",
+        items: [
+            { name: "Fabric", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Bronze Fragments", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Acid", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Leather", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Sapphire", rarity: "Uncommon", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Ruby", rarity: "Uncommon", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Opal", rarity: "Uncommon", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Bones", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Silver Fragments", rarity: "Uncommon", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Gold Fragments", rarity: "Rare", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Gold Coins", rarity: "Common", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Lost Spirit", rarity: "Uncommon", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Vampire Fang", rarity: "Rare", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Dio's Bone", rarity: "Rare", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests"] },
+            { name: "Cosmic Radiation", rarity: "Rare", effect: "Crafting material used at Gupta.", sources: ["Common / Rare / Legendary Chests", "Slay Miyamoto"] },
+            { name: "Meteor Fragments", rarity: "Legendary", effect: "High-tier crafting material used at Gupta.", sources: ["Legendary Chest"] },
+            { name: "Imperfect Aja", rarity: "Legendary", effect: "High-tier crafting material used at Gupta.", sources: ["Legendary Chest"] },
+            { name: "Maigot Recipe", rarity: "Rare", effect: "Quest item — get from Mr. Rengatei (do not skip dialogue) and give to Tonio Trussardi.", sources: ["Mr. Rengatei NPC (questline)"] },
+            { name: "Burner Phone", rarity: "Uncommon", effect: "Quest item used in a mafia questline.", sources: ["Mafia drops"] },
+            { name: "Manga Manuscripts", rarity: "Uncommon", effect: "Quest / collectible item (source uncertain on Trello).", sources: ["See in-game"] },
         ],
     },
 ];
@@ -68,6 +101,14 @@ const RARITY_COLORS: Record<string, string> = {
 
 export default function ItemsPage() {
     const totalItems = ITEM_CATEGORIES.reduce((sum, cat) => sum + cat.items.length, 0);
+    const legendaryPlusCount = ITEM_CATEGORIES.reduce(
+        (sum, cat) => sum + cat.items.filter((i) => i.rarity === "Legendary" || i.rarity === "Mythical").length,
+        0,
+    );
+    const mythicalCount = ITEM_CATEGORIES.reduce(
+        (sum, cat) => sum + cat.items.filter((i) => i.rarity === "Mythical").length,
+        0,
+    );
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
@@ -110,11 +151,11 @@ export default function ItemsPage() {
                     <div className="text-xs text-muted">Categories</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-yellow-400">4</div>
+                    <div className="text-2xl font-bold text-yellow-400">{legendaryPlusCount}</div>
                     <div className="text-xs text-muted">Legendary+</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
-                    <div className="text-2xl font-bold text-purple-400">1</div>
+                    <div className="text-2xl font-bold text-purple-400">{mythicalCount}</div>
                     <div className="text-xs text-muted">Mythical</div>
                 </div>
             </div>

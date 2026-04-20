@@ -4,21 +4,33 @@ import { ChevronRight, Gift, Check, Clock, HelpCircle } from "lucide-react";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 const ACTIVE_CODES = [
-    { code: "30kLikes", reward: "1 Stat Point Essence", source: "Official Trello" },
-    { code: "100kLikes", reward: "1 Stat Point Essence + Rare Chest", source: "Official Trello" },
-    { code: "shutdownwoops", reward: "Stand Stat Essence", source: "Official Trello" },
-    { code: "1week", reward: "Stand Personality Essence", source: "Official Trello" },
+    { code: "Delay1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "Delay2", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "Delay3", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "Update1", reward: "3 Stand Arrows + 5,000 Cash", source: "Update 1 Release" },
+    { code: "BizarreLineage1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "LikeTheGameForMore1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "FavoriteTheGame1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "Update2=2027", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "250kLikes", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "500kLikes", reward: "Free Rewards (check in-game)", source: "Official Trello" },
+    { code: "750LikesforNextCode", reward: "Free Rewards (check in-game)", source: "Official Trello" },
 ];
 
-const EXPIRED_CODES: { code: string; reward: string }[] = [];
+const EXPIRED_CODES: { code: string; reward: string }[] = [
+    { code: "30kLikes", reward: "1 Stat Point Essence" },
+    { code: "100kLikes", reward: "1 Stat Point Essence + Rare Chest" },
+    { code: "shutdownwoops", reward: "Stand Stat Essence" },
+    { code: "1week", reward: "Stand Personality Essence" },
+];
 
 export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Codes (April 2026) | 4 Active Codes",
-    description: "All 4 working Bizarre Lineage codes currently listed on the official Trello for April 2026. Redeem them for essences and a Rare Chest.",
+    title: "Bizarre Lineage Codes (April 2026) | 11 Active Codes",
+    description: "All 11 working Bizarre Lineage codes for April 2026 — including Update 1, Delay, and milestone like codes. Redeem them in-game for free rewards.",
 }, "/codes");
 
 export default function CodesPage() {
-    const lastVerified = "April 18, 2026";
+    const lastVerified = "April 20, 2026";
 
     const breadcrumbSchema = {
         '@context': 'https://schema.org',
@@ -41,7 +53,7 @@ export default function CodesPage() {
             {
                 '@type': 'Question',
                 name: 'How do I redeem codes in Bizarre Lineage?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Open the in-game chat and type !code followed by the code. For example: !code 30kLikes. Codes are case-sensitive.' },
+                acceptedAnswer: { '@type': 'Answer', text: 'Open the in-game chat and type !code followed by the code. For example: !code Update1. Codes are case-sensitive.' },
             },
             {
                 '@type': 'Question',
@@ -59,7 +71,7 @@ export default function CodesPage() {
         step: [
             { '@type': 'HowToStep', position: 1, name: 'Open the game', text: 'Open Bizarre Lineage on Roblox.' },
             { '@type': 'HowToStep', position: 2, name: 'Open chat', text: 'Open the in-game chat by pressing / or clicking the chat icon.' },
-            { '@type': 'HowToStep', position: 3, name: 'Type the code', text: 'Type !code followed by the code. For example: !code 30kLikes' },
+            { '@type': 'HowToStep', position: 3, name: 'Type the code', text: 'Type !code followed by the code. For example: !code Update1' },
             { '@type': 'HowToStep', position: 4, name: 'Claim rewards', text: 'Press Enter. Rewards are added to your inventory instantly.' },
         ],
     };
@@ -123,7 +135,7 @@ export default function CodesPage() {
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">3</span>
-                            <span>Type <code className="bg-white/5 px-2 py-0.5 rounded text-white font-mono text-sm">!code 30kLikes</code> (replace with any code above)</span>
+                            <span>Type <code className="bg-white/5 px-2 py-0.5 rounded text-white font-mono text-sm">!code Update1</code> (replace with any code above)</span>
                         </li>
                         <li className="flex items-start gap-3">
                             <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">4</span>
@@ -139,7 +151,7 @@ export default function CodesPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="bg-surface border border-border rounded-lg p-4">
                         <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Case Sensitivity</h3>
-                        <p className="text-sm text-muted">Codes are case-sensitive. <code className="text-white">30kLikes</code> works, <code className="text-muted">30klikes</code> does not.</p>
+                        <p className="text-sm text-muted">Codes are case-sensitive. <code className="text-white">Update1</code> works, <code className="text-muted">update1</code> does not.</p>
                     </div>
                     <div className="bg-surface border border-border rounded-lg p-4">
                         <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Already Redeemed</h3>
@@ -202,7 +214,7 @@ export default function CodesPage() {
                             <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
                         </summary>
                         <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
-                            Open the in-game chat and type <code className="text-white">!code</code> followed by the code. For example: <code className="text-white">!code 30kLikes</code>. Codes are case-sensitive.
+                            Open the in-game chat and type <code className="text-white">!code</code> followed by the code. For example: <code className="text-white">!code Update1</code>. Codes are case-sensitive.
                         </div>
                     </details>
                     <details className="group bg-surface border border-border rounded-lg">

@@ -119,7 +119,7 @@ export default function SkinsPage() {
                                         />
                                     ) : (
                                         <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
-                                            Official Trello listing without an attached preview image.
+                                            Preview image not yet released — Trello currently shows a TBA placeholder for this skin.
                                         </div>
                                     )}
                                 </div>
