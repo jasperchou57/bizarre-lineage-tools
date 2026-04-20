@@ -66,18 +66,25 @@ export default function RaidsPage() {
                 <h2 className="text-2xl font-bold text-white mb-4">All 4 Raids</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {raidsData.map(raid => (
-                        <Link key={raid.id} href={`/raids/${raid.id}`} className="bg-surface border border-border rounded-xl p-6 hover:border-accent-blue/50 transition-colors group">
-                            <h3 className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors mb-2">{raid.boss}</h3>
-                            <div className="text-sm text-muted mb-2 flex items-start gap-1.5">
-                                <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0" />
-                                <span>{raid.location}</span>
-                            </div>
-                            <div className="text-sm text-muted mb-3 flex items-center gap-1.5">
-                                <ShoppingBag className="h-3.5 w-3.5" />
-                                <span>{raid.shopItems.length} shop items</span>
-                            </div>
-                            <div className="flex items-center text-sm text-accent-blue group-hover:translate-x-1 transition-transform">
-                                View shop & details <ChevronRight className="h-4 w-4 ml-1" />
+                        <Link key={raid.id} href={`/raids/${raid.id}`} className="bg-surface border border-border rounded-xl overflow-hidden hover:border-accent-blue/50 transition-colors group flex flex-col sm:flex-row">
+                            {raid.imageUrl && (
+                                <div className="relative w-full sm:w-40 shrink-0 aspect-[4/3] sm:aspect-auto sm:h-auto bg-background">
+                                    <Image src={raid.imageUrl} alt={raid.boss} fill sizes="(max-width: 640px) 100vw, 160px" className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                                </div>
+                            )}
+                            <div className="p-5 flex-1">
+                                <h3 className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors mb-2">{raid.boss}</h3>
+                                <div className="text-sm text-muted mb-2 flex items-start gap-1.5">
+                                    <MapPin className="h-3.5 w-3.5 mt-0.5 shrink-0" />
+                                    <span>{raid.location}</span>
+                                </div>
+                                <div className="text-sm text-muted mb-3 flex items-center gap-1.5">
+                                    <ShoppingBag className="h-3.5 w-3.5" />
+                                    <span>{raid.shopItems.length} shop items</span>
+                                </div>
+                                <div className="flex items-center text-sm text-accent-blue group-hover:translate-x-1 transition-transform">
+                                    View shop & details <ChevronRight className="h-4 w-4 ml-1" />
+                                </div>
                             </div>
                         </Link>
                     ))}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronRight, ExternalLink } from "lucide-react";
 import skinsData from "@/data/skins.json";
 import standsData from "@/data/stands.json";
+import { getStandImagePath } from "@/data/stand-media";
 import { withCanonical } from "@/lib/metadata";
 
 export const metadata = withCanonical({
@@ -21,6 +22,7 @@ export default function SkinsPage() {
     type Skin = (typeof skinsData)[number];
 
     const standOrder = new Map(standsData.map((stand, index) => [stand.name, index]));
+    const standIdByName = new Map(standsData.map((stand) => [stand.name, stand.id]));
     const groupedSkins = skinsData.reduce<Record<string, Skin[]>>((acc, skin) => {
         if (!acc[skin.stand]) {
             acc[skin.stand] = [];
@@ -108,20 +110,39 @@ export default function SkinsPage() {
                                 className="bg-surface border border-border rounded-xl overflow-hidden hover:border-white/20 transition-all group"
                             >
                                 <div className="relative aspect-[4/3] bg-background">
-                                    {skin.imageUrl ? (
-                                        <Image
-                                            src={skin.imageUrl}
-                                            alt={skin.name}
-                                            width={320}
-                                            height={240}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                            loading="lazy"
-                                        />
-                                    ) : (
-                                        <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
-                                            Preview image not yet released — Trello currently shows a TBA placeholder for this skin.
-                                        </div>
-                                    )}
+                                    {(() => {
+                                        if (skin.imageUrl) {
+                                            return (
+                                                <Image
+                                                    src={skin.imageUrl}
+                                                    alt={skin.name}
+                                                    width={320}
+                                                    height={240}
+                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                    loading="lazy"
+                                                />
+                                            );
+                                        }
+                                        const isGrayscaleSkin = /^grey?scale$/i.test(skin.skinName);
+                                        const standId = standIdByName.get(skin.stand);
+                                        if (isGrayscaleSkin && standId) {
+                                            return (
+                                                <Image
+                                                    src={getStandImagePath(standId)}
+                                                    alt={`${skin.name} — grayscale render of ${skin.stand}`}
+                                                    width={320}
+                                                    height={240}
+                                                    className="w-full h-full object-cover grayscale brightness-90 group-hover:scale-105 transition-transform duration-300"
+                                                    loading="lazy"
+                                                />
+                                            );
+                                        }
+                                        return (
+                                            <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
+                                                Preview image not yet released — Trello currently shows a TBA placeholder for this skin.
+                                            </div>
+                                        );
+                                    })()}
                                 </div>
                                 <div className="p-3">
                                     <div className="flex items-start justify-between gap-3 mb-2">

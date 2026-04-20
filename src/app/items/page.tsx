@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Star, ArrowRight } from "lucide-react";
+import { ChevronRight, Star, ArrowRight, ExternalLink } from "lucide-react";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 export const metadata: Metadata = withCanonical({
@@ -91,6 +91,53 @@ const ITEM_CATEGORIES = [
     },
 ];
 
+const ITEM_IMAGES: Record<string, { imageUrl: string; sourceUrl: string }> = {
+    "Stand Arrow": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecca/attachments/69a48a356523bfba0a221356/download/image.png", sourceUrl: "https://trello.com/c/cgs8T2ym" },
+    "Lucky Arrow": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eccc/attachments/69a48a356523bfba0a221372/download/image.png", sourceUrl: "https://trello.com/c/GkaiurWp" },
+    "Stone Mask": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee74/attachments/69a48a356523bfba0a2219b2/download/image.png", sourceUrl: "https://trello.com/c/LU6kjpH5" },
+    "Stat Point Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecd6/attachments/69a48a356523bfba0a22138f/download/image.png", sourceUrl: "https://trello.com/c/iPSpjeff" },
+    "Stand Skin Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee76/attachments/69a48a356523bfba0a2219b8/download/image.png", sourceUrl: "https://trello.com/c/2C8UIUzq" },
+    "Stand Stat Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee78/attachments/69a48a356523bfba0a2219be/download/image.png", sourceUrl: "https://trello.com/c/Xq6EdXTt" },
+    "Stand Personality Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee7a/attachments/69a48a356523bfba0a2219c4/download/image.png", sourceUrl: "https://trello.com/c/eFbT3L0d" },
+    "Stand Conjuration Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee7c/attachments/69a48a356523bfba0a2219ca/download/image.png", sourceUrl: "https://trello.com/c/kU1AtJbz" },
+    "Custom Clothing Essence": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eedc/attachments/69a48a356523bfba0a221ca7/download/image.png", sourceUrl: "https://trello.com/c/LInDdcHv" },
+    "Dio's Diary": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ed06/attachments/69a48a356523bfba0a22145d/download/image.png", sourceUrl: "https://trello.com/c/iqYhCj37" },
+    "Red Stone of Aja": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eeec/attachments/69a48a356523bfba0a221cdc/download/image.png", sourceUrl: "https://trello.com/c/05rFkTP3" },
+    "Common Chest": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecce/attachments/69a48a356523bfba0a221378/download/image.png", sourceUrl: "https://trello.com/c/RRh0WyMs" },
+    "Rare Chest": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecd0/attachments/69a48a356523bfba0a22137e/download/image.png", sourceUrl: "https://trello.com/c/Kb2Lw0s6" },
+    "Legendary Chest": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecd2/attachments/69a48a356523bfba0a221384/download/image.png", sourceUrl: "https://trello.com/c/FbJI818T" },
+    "Plank Skateboard": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eee6/attachments/69a48a356523bfba0a221cc8/download/image.png", sourceUrl: "https://trello.com/c/6eqc4BSW" },
+    "Skateboard": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eee8/attachments/69a48a356523bfba0a221ccf/download/image.png", sourceUrl: "https://trello.com/c/i5eU4Wrb" },
+    "Motorcycle": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eeea/attachments/69a48a356523bfba0a221cd6/download/image.png", sourceUrl: "https://trello.com/c/MOe3EOT7" },
+    "Stop Sign": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee84/attachments/69a48a356523bfba0a2219f1/download/image.png", sourceUrl: "https://trello.com/c/3qiSVPem" },
+    "Shadow Axe": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee86/attachments/69a48a356523bfba0a221a08/download/image.png", sourceUrl: "https://trello.com/c/lYSSiOeA" },
+    "Odachi": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee88/attachments/69a48a356523bfba0a221a1f/download/image.png", sourceUrl: "https://trello.com/c/w2WyRmBk" },
+    "Katana": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee8a/attachments/69a48a356523bfba0a221a2c/download/image.png", sourceUrl: "https://trello.com/c/5eGyRxHU" },
+    "Hammer": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eeae/attachments/69a48a356523bfba0a221b6e/download/image.png", sourceUrl: "https://trello.com/c/Yz2hPkiK" },
+    "Shovel": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eeb0/attachments/69a48a356523bfba0a221b8d/download/image.png", sourceUrl: "https://trello.com/c/pqFk2zu2" },
+    "Luck & Pluck": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eeb2/attachments/69a48a356523bfba0a221ba7/download/image.png", sourceUrl: "https://trello.com/c/fASCRqcD" },
+    "Fabric": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ece8/attachments/69a48a356523bfba0a2213e9/download/image.png", sourceUrl: "https://trello.com/c/tKdwA8KD" },
+    "Bronze Fragments": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecea/attachments/69a48a356523bfba0a2213ef/download/image.png", sourceUrl: "https://trello.com/c/D5IRUAdE" },
+    "Acid": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecec/attachments/69a48a356523bfba0a2213fb/download/image.png", sourceUrl: "https://trello.com/c/cB4QEDmn" },
+    "Leather": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecee/attachments/69a48a356523bfba0a221401/download/image.png", sourceUrl: "https://trello.com/c/edQaqLdh" },
+    "Sapphire": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecf0/attachments/69a48a356523bfba0a221407/download/image.png", sourceUrl: "https://trello.com/c/uOZGrbjY" },
+    "Ruby": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecf2/attachments/69a48a356523bfba0a22140d/download/image.png", sourceUrl: "https://trello.com/c/xcqvYV9k" },
+    "Opal": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecf6/attachments/69a48a356523bfba0a221419/download/image.png", sourceUrl: "https://trello.com/c/sYn9CMxZ" },
+    "Bones": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecf4/attachments/69a48a356523bfba0a221413/download/image.png", sourceUrl: "https://trello.com/c/O8GeVDIa" },
+    "Silver Fragments": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecf8/attachments/69a48a356523bfba0a22141f/download/image.png", sourceUrl: "https://trello.com/c/fH6JwnDV" },
+    "Gold Fragments": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecfa/attachments/69a48a356523bfba0a221425/download/image.png", sourceUrl: "https://trello.com/c/vqh7rfm2" },
+    "Gold Coins": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ed9e/attachments/69a48a356523bfba0a2216d9/download/image.png", sourceUrl: "https://trello.com/c/FISzlXU4" },
+    "Lost Spirit": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ed00/attachments/69a48a356523bfba0a22143f/download/image.png", sourceUrl: "https://trello.com/c/ZwgwqPpf" },
+    "Vampire Fang": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ed02/attachments/69a48a356523bfba0a221445/download/image.png", sourceUrl: "https://trello.com/c/20Sc0DBQ" },
+    "Dio's Bone": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ed04/attachments/69a48a356523bfba0a221451/download/image.png", sourceUrl: "https://trello.com/c/G2aRa5fy" },
+    "Cosmic Radiation": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee3c/attachments/69a48a356523bfba0a221839/download/image.png", sourceUrl: "https://trello.com/c/bdA5kUhr" },
+    "Meteor Fragments": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee3e/attachments/69a48a356523bfba0a22183f/download/image.png", sourceUrl: "https://trello.com/c/hWzg7JqH" },
+    "Imperfect Aja": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ee40/attachments/69a48a356523bfba0a221845/download/image.png", sourceUrl: "https://trello.com/c/O4wGpZS0" },
+    "Maigot Recipe": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecfe/attachments/69a48a356523bfba0a221431/download/image.png", sourceUrl: "https://trello.com/c/Pa5BcNXQ" },
+    "Burner Phone": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21eda0/attachments/69a48a356523bfba0a2216e5/download/image.png", sourceUrl: "https://trello.com/c/ZDJ4EbqC" },
+    "Manga Manuscripts": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecfc/attachments/69a48a356523bfba0a22142b/download/image.png", sourceUrl: "https://trello.com/c/wSC3EwVI" },
+};
+
 const RARITY_COLORS: Record<string, string> = {
     Common: "text-gray-400 bg-gray-400/10 border-gray-400/20",
     Uncommon: "text-green-400 bg-green-400/10 border-green-400/20",
@@ -167,21 +214,38 @@ export default function ItemsPage() {
                         <Star className="h-5 w-5 text-accent-blue" /> {category.category}
                     </h2>
                     <div className="space-y-3">
-                        {category.items.map((item) => (
-                            <div key={item.name} className="bg-surface border border-border rounded-xl p-5">
-                                <div className="flex items-center justify-between mb-2">
-                                    <h3 className="font-bold text-white">{item.name}</h3>
-                                    <span className={`px-2 py-1 text-xs font-mono font-bold rounded-full border ${RARITY_COLORS[item.rarity]}`}>
-                                        {item.rarity}
-                                    </span>
+                        {category.items.map((item) => {
+                            const media = ITEM_IMAGES[item.name];
+                            return (
+                                <div key={item.name} className="bg-surface border border-border rounded-xl p-5 flex gap-4">
+                                    {media && (
+                                        <div className="relative w-20 h-20 shrink-0 rounded-lg overflow-hidden bg-background border border-border">
+                                            <Image src={media.imageUrl} alt={item.name} fill sizes="80px" className="object-cover" loading="lazy" />
+                                        </div>
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex items-center justify-between gap-3 mb-2">
+                                            <h3 className="font-bold text-white">{item.name}</h3>
+                                            <span className={`px-2 py-1 text-xs font-mono font-bold rounded-full border whitespace-nowrap ${RARITY_COLORS[item.rarity]}`}>
+                                                {item.rarity}
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-muted mb-3">{item.effect}</p>
+                                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                                            <div>
+                                                <span className="text-xs text-muted">Obtained from: </span>
+                                                <span className="text-xs text-white">{item.sources.join(" · ")}</span>
+                                            </div>
+                                            {media && (
+                                                <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent-blue hover:text-white transition-colors">
+                                                    Official card <ExternalLink className="h-3 w-3" />
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="text-sm text-muted mb-3">{item.effect}</p>
-                                <div>
-                                    <span className="text-xs text-muted">Obtained from: </span>
-                                    <span className="text-xs text-white">{item.sources.join(" · ")}</span>
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </section>
             ))}

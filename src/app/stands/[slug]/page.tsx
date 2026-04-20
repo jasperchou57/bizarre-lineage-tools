@@ -433,20 +433,37 @@ export default function StandPage({ params }: { params: { slug: string } }) {
                                     {standSkins.map(skin => (
                                         <div key={skin.id} className="bg-surface border border-border rounded-xl overflow-hidden">
                                             <div className="relative aspect-[4/3] bg-background">
-                                                {skin.imageUrl ? (
-                                                    <Image
-                                                        src={skin.imageUrl}
-                                                        alt={skin.name}
-                                                        width={280}
-                                                        height={210}
-                                                        className="w-full h-full object-cover"
-                                                        loading="lazy"
-                                                    />
-                                                ) : (
-                                                    <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
-                                                        Preview not yet released — Trello shows a TBA placeholder.
-                                                    </div>
-                                                )}
+                                                {(() => {
+                                                    if (skin.imageUrl) {
+                                                        return (
+                                                            <Image
+                                                                src={skin.imageUrl}
+                                                                alt={skin.name}
+                                                                width={280}
+                                                                height={210}
+                                                                className="w-full h-full object-cover"
+                                                                loading="lazy"
+                                                            />
+                                                        );
+                                                    }
+                                                    if (/^grey?scale$/i.test(skin.skinName)) {
+                                                        return (
+                                                            <Image
+                                                                src={getStandImagePath(stand.id)}
+                                                                alt={`${skin.name} — grayscale render of ${stand.name}`}
+                                                                width={280}
+                                                                height={210}
+                                                                className="w-full h-full object-cover grayscale brightness-90"
+                                                                loading="lazy"
+                                                            />
+                                                        );
+                                                    }
+                                                    return (
+                                                        <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
+                                                            Preview not yet released — Trello shows a TBA placeholder.
+                                                        </div>
+                                                    );
+                                                })()}
                                             </div>
                                             <div className="p-3">
                                                 <h3 className="font-bold text-white text-sm">{skin.skinName}</h3>

@@ -6,12 +6,34 @@
         "npc": "Muhammad Avdol",
         "location": "Bus Stop 14, near the rocks",
         "shopItems": [
-            { "name": "Flaming Medallion Necklace", "stock": 1, "cost": 682 },
-            { "name": "Legendary Chest", "stock": 2, "cost": 787 },
-            { "name": "Stand Arrow", "stock": 5, "cost": 11 },
-            { "name": "Conjurer Trait", "stock": 1, "cost": 242 },
-            { "name": "King of Flames Trait", "stock": 1, "cost": 980 }
-        ]
+            {
+                "name": "Flaming Medallion Necklace",
+                "stock": 1,
+                "cost": 682
+            },
+            {
+                "name": "Legendary Chest",
+                "stock": 2,
+                "cost": 787
+            },
+            {
+                "name": "Stand Arrow",
+                "stock": 5,
+                "cost": 11
+            },
+            {
+                "name": "Conjurer Trait",
+                "stock": 1,
+                "cost": 242
+            },
+            {
+                "name": "King of Flames Trait",
+                "stock": 1,
+                "cost": 980
+            }
+        ],
+        "imageUrl": "https://trello.com/1/cards/69b50b5adfc19e71abd29a37/attachments/69b6188b7c6c7d99ddb75be1/download/image.png",
+        "sourceUrl": "https://trello.com/c/Z1oZbEde"
     },
     {
         "id": "kira",
@@ -20,13 +42,39 @@
         "npc": "Yoshikage Kira",
         "location": "Bus Stop 1, around the Rengatei shop (Morioh Station area)",
         "shopItems": [
-            { "name": "Skull Tie", "stock": 1, "cost": 1030 },
-            { "name": "Lucky Arrow", "stock": 1, "cost": 510 },
-            { "name": "Legendary Chest", "stock": 3, "cost": 214 },
-            { "name": "Stand Arrow", "stock": 3, "cost": 12 },
-            { "name": "A Quiet Life", "stock": 1, "cost": 392 },
-            { "name": "Serial Killer", "stock": 1, "cost": 436 }
-        ]
+            {
+                "name": "Skull Tie",
+                "stock": 1,
+                "cost": 1030
+            },
+            {
+                "name": "Lucky Arrow",
+                "stock": 1,
+                "cost": 510
+            },
+            {
+                "name": "Legendary Chest",
+                "stock": 3,
+                "cost": 214
+            },
+            {
+                "name": "Stand Arrow",
+                "stock": 3,
+                "cost": 12
+            },
+            {
+                "name": "A Quiet Life",
+                "stock": 1,
+                "cost": 392
+            },
+            {
+                "name": "Serial Killer",
+                "stock": 1,
+                "cost": 436
+            }
+        ],
+        "imageUrl": "https://trello.com/1/cards/69b50b66d80afcd3633847dc/attachments/69b61763981492110c538199/download/image.png",
+        "sourceUrl": "https://trello.com/c/zDAIXsf4"
     },
     {
         "id": "jotaro",
@@ -35,14 +83,44 @@
         "npc": "Chumbo (Jotaro)",
         "location": "Bus Stop 2, near the Gym",
         "shopItems": [
-            { "name": "Lucky Arrow", "stock": 1, "cost": 450 },
-            { "name": "Jotaro's Coat", "stock": 1, "cost": 250 },
-            { "name": "Jotaro's Hat", "stock": 1, "cost": 257 },
-            { "name": "Legendary Chest", "stock": 2, "cost": 208 },
-            { "name": "Stand Arrow", "stock": 3, "cost": 12 },
-            { "name": "Grappler Trait", "stock": 1, "cost": 360 },
-            { "name": "Intimidation Trait", "stock": 1, "cost": 368 }
-        ]
+            {
+                "name": "Lucky Arrow",
+                "stock": 1,
+                "cost": 450
+            },
+            {
+                "name": "Jotaro's Coat",
+                "stock": 1,
+                "cost": 250
+            },
+            {
+                "name": "Jotaro's Hat",
+                "stock": 1,
+                "cost": 257
+            },
+            {
+                "name": "Legendary Chest",
+                "stock": 2,
+                "cost": 208
+            },
+            {
+                "name": "Stand Arrow",
+                "stock": 3,
+                "cost": 12
+            },
+            {
+                "name": "Grappler Trait",
+                "stock": 1,
+                "cost": 360
+            },
+            {
+                "name": "Intimidation Trait",
+                "stock": 1,
+                "cost": 368
+            }
+        ],
+        "imageUrl": "https://trello.com/1/cards/69b50b6d9ad3d370982de52f/attachments/69b61821ae17484a78c31936/download/image.png",
+        "sourceUrl": "https://trello.com/c/OO5ipWL3"
     },
     {
         "id": "dio",
@@ -51,14 +129,48 @@
         "npc": "??? (DIO)",
         "location": "Bus Stop 18, near the Elder Vampire in the castle (Graveyard area)",
         "shopItems": [
-            { "name": "Heart Headband", "stock": 1, "cost": 1060 },
-            { "name": "Lucky Arrow", "stock": 1, "cost": 545 },
-            { "name": "Legendary Chest", "stock": 2, "cost": 210 },
-            { "name": "Stand Arrow", "stock": 3, "cost": 11 },
-            { "name": "The Godfather Trait", "stock": 1, "cost": 412 },
-            { "name": "Emperor of Time Trait", "stock": 1, "cost": 420 },
-            { "name": "Shadow Axe", "stock": 1, "cost": 410 },
-            { "name": "Stop Sign", "stock": 1, "cost": 618 }
-        ]
+            {
+                "name": "Heart Headband",
+                "stock": 1,
+                "cost": 1060
+            },
+            {
+                "name": "Lucky Arrow",
+                "stock": 1,
+                "cost": 545
+            },
+            {
+                "name": "Legendary Chest",
+                "stock": 2,
+                "cost": 210
+            },
+            {
+                "name": "Stand Arrow",
+                "stock": 3,
+                "cost": 11
+            },
+            {
+                "name": "The Godfather Trait",
+                "stock": 1,
+                "cost": 412
+            },
+            {
+                "name": "Emperor of Time Trait",
+                "stock": 1,
+                "cost": 420
+            },
+            {
+                "name": "Shadow Axe",
+                "stock": 1,
+                "cost": 410
+            },
+            {
+                "name": "Stop Sign",
+                "stock": 1,
+                "cost": 618
+            }
+        ],
+        "imageUrl": "https://trello.com/1/cards/69b617d393569abbbc71341c/attachments/69b617d65e7d6e2a828a8458/download/image.png",
+        "sourceUrl": "https://trello.com/c/41XcMyJD"
     }
 ]
