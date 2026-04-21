@@ -4,7 +4,11 @@ import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { AdsterraBanner468x60 } from "@/components/ads/AdsterraBanner468x60";
+import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
 import { SITE_URL } from "@/lib/metadata";
+
+const ADS_ENABLED = process.env.NODE_ENV === "production";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -35,19 +39,14 @@ export default function RootLayout({
             gtag('config', 'G-M7LZME8PZ6');
           `}
         </Script>
-        {process.env.NODE_ENV === "production" && (
-          <Script
-            id="adsterra-popunder"
-            src="https://alibisboast.com/36/e7/2a/36e72a817802f9fa24ec89342b952ff6.js"
-            strategy="beforeInteractive"
-          />
-        )}
       </head>
       <body className="font-sans antialiased text-white min-h-screen flex flex-col bg-background">
         <Navbar />
+        {ADS_ENABLED && <AdsterraBanner468x60 />}
         <main className="flex-1 w-full mx-auto flex flex-col">
           {children}
         </main>
+        {ADS_ENABLED && <AdsterraNativeBanner />}
         <Footer />
       </body>
     </html>
