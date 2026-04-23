@@ -1,6 +1,23 @@
-import Link from 'next/link';
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Navbar() {
+    const t = useTranslations("Navbar");
+
+    const items = [
+        { href: "/build-planner", label: t("buildPlanner") },
+        { href: "/tier-list", label: t("tierList") },
+        { href: "/stands", label: t("stands") },
+        { href: "/fighting-styles", label: t("styles") },
+        { href: "/sub-abilities", label: t("subs") },
+        { href: "/skins", label: t("skins") },
+        { href: "/raids", label: t("raids") },
+        { href: "/guides", label: t("guides") },
+        { href: "/codes", label: t("codes") },
+        { href: "/vault", label: t("vault") },
+    ] as const;
+
     return (
         <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-md">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between">
@@ -10,20 +27,16 @@ export function Navbar() {
                     </span>
                 </Link>
                 <div className="hidden md:flex items-center gap-6">
-                    <Link href="/build-planner" className="text-sm font-medium text-muted hover:text-white transition-colors">Build Planner</Link>
-                    <Link href="/tier-list" className="text-sm font-medium text-muted hover:text-white transition-colors">Tier List</Link>
-                    <Link href="/stands" className="text-sm font-medium text-muted hover:text-white transition-colors">Stands</Link>
-                    <Link href="/fighting-styles" className="text-sm font-medium text-muted hover:text-white transition-colors">Styles</Link>
-                    <Link href="/sub-abilities" className="text-sm font-medium text-muted hover:text-white transition-colors">Subs</Link>
-                    <Link href="/skins" className="text-sm font-medium text-muted hover:text-white transition-colors">Skins</Link>
-                    <Link href="/raids" className="text-sm font-medium text-muted hover:text-white transition-colors">Raids</Link>
-                    <Link href="/guides" className="text-sm font-medium text-muted hover:text-white transition-colors">Guides</Link>
-                    <Link href="/codes" className="text-sm font-medium text-muted hover:text-white transition-colors">Codes</Link>
-                    <Link href="/vault" className="text-sm font-medium text-muted hover:text-white transition-colors">Vault</Link>
+                    {items.map((item) => (
+                        <Link key={item.href} href={item.href} className="text-sm font-medium text-muted hover:text-white transition-colors">
+                            {item.label}
+                        </Link>
+                    ))}
                 </div>
                 <div className="flex items-center gap-4">
+                    <LanguageSwitcher />
                     <Link href="/build-planner" className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] transition-all">
-                        Open Planner
+                        {t("openPlanner")}
                     </Link>
                 </div>
             </div>

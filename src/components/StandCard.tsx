@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Zap, Shield, Sword } from "lucide-react";
 import { getStandImagePath } from "@/data/stand-media";
