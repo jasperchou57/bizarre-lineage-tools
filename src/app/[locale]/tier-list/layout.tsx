@@ -1,10 +1,15 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Tier List: Best Stands for PvP & PvE (2026)",
-    description: "The definitive Bizarre Lineage Stand tier list. Filter by PvP, PvE, or overall power. See which Stands dominate the current meta.",
-}, "/tier-list");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "TierList" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/tier-list");
+}
 
 export default function TierListLayout({ children }: { children: React.ReactNode }) {
     return <>{children}</>;

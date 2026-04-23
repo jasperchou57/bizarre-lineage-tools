@@ -1,13 +1,18 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, Sparkles, Info } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Perks & Traits — All Sources (Official Trello)",
-    description: "All perks and traits in Bizarre Lineage as documented on the official Trello — sourced from Money Store, Tutorial, Prestige Shop, Side Quests, Gang Wars, and the four Raid Shops.",
-}, "/perks");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Perks" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/perks");
+}
 
 type Perk = {
     name: string;
@@ -98,15 +103,19 @@ const PERK_SECTIONS: PerkSection[] = [
     },
 ];
 
-export default function PerksPage() {
+export default async function PerksPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Perks" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
     const totalPerks = PERK_SECTIONS.reduce((sum, s) => sum + s.perks.length, 0);
 
     const breadcrumbSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: 'Perks & Traits', item: `${SITE_URL}/perks` },
+            { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: SITE_URL },
+            { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: `${SITE_URL}/perks` },
         ],
     };
 
@@ -115,27 +124,25 @@ export default function PerksPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white" aria-current="page">Perks & Traits</span>
+                <span className="text-white" aria-current="page">{t("breadcrumbCurrent")}</span>
             </nav>
 
             <div className="relative w-full rounded-xl overflow-hidden mb-8">
-                <Image src="/images/pages/perks.png" alt="Bizarre Lineage Perks" width={800} height={450} className="w-full h-48 object-cover opacity-40" />
+                <Image src="/images/pages/perks.png" alt={t("heroTitle")} width={800} height={450} className="w-full h-48 object-cover opacity-40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                 <div className="absolute bottom-4 left-6">
-                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Bizarre Lineage Perks & Traits</h1>
+                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">{t("heroTitle")}</h1>
                 </div>
             </div>
-            <p className="text-lg text-muted mb-6 leading-relaxed">
-                All {totalPerks} perks and traits documented on the official Trello, grouped by where you obtain them. Money Store, Tutorial, Prestige Shop, Side Quests, Gang Wars, and the four Raid Shops are the official sources.
-            </p>
+            <p className="text-lg text-muted mb-6 leading-relaxed">{t("heroIntro", { count: totalPerks })}</p>
 
             <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-4 mb-10 flex gap-3 text-sm text-muted">
                 <Info className="h-5 w-5 text-accent-blue shrink-0 mt-0.5" />
                 <div>
-                    <p className="text-white font-medium mb-1">About this page</p>
-                    <p>Effect text and costs come from the public official Trello board. Raid Shop traits show only the name and approximate token cost because the Trello does not document their effect — confirm in-game before spending tokens. The game also has a Personality system, but the Trello does not document personality stats; check the official Discord for the live list.</p>
+                    <p className="text-white font-medium mb-1">{t("aboutTitle")}</p>
+                    <p>{t("aboutBody")}</p>
                 </div>
             </div>
 
@@ -162,7 +169,7 @@ export default function PerksPage() {
                                 {perk.effect ? (
                                     <p className="text-sm text-muted">{perk.effect}</p>
                                 ) : (
-                                    <p className="text-sm text-muted italic">Effect not documented on Trello — verify in-game.</p>
+                                    <p className="text-sm text-muted italic">{t("effectNotDocumented")}</p>
                                 )}
                             </div>
                         ))}
@@ -171,22 +178,22 @@ export default function PerksPage() {
             ))}
 
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">Source</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("sourceTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6 text-sm text-muted">
-                    <p>Verified against the public official Trello board: <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="text-accent-blue hover:text-white transition-colors underline underline-offset-2">trello.com/b/wtzgwqIf</a>. If a perk or trait you have seen in-game is missing here, it likely has not been added to the public Trello yet.</p>
+                    <p>{t("sourceBody")} <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="text-accent-blue hover:text-white transition-colors underline underline-offset-2">trello.com/b/wtzgwqIf</a>.</p>
                 </div>
             </section>
 
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">Related</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("relatedTitle")}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Link href="/raids" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Raid Guides</div>
-                        <div className="text-xs text-muted mt-1">Earn tokens to buy raid-shop traits</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("relatedRaidsTitle")}</div>
+                        <div className="text-xs text-muted mt-1">{t("relatedRaidsSub")}</div>
                     </Link>
                     <Link href="/build-planner" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Build Planner</div>
-                        <div className="text-xs text-muted mt-1">Plan your Stand + Style + Sub combo</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("relatedBuildPlannerTitle")}</div>
+                        <div className="text-xs text-muted mt-1">{t("relatedBuildPlannerSub")}</div>
                     </Link>
                 </div>
             </section>

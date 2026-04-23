@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, Gift, Check, Clock, HelpCircle } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 const ACTIVE_CODES = [
@@ -24,95 +25,82 @@ const EXPIRED_CODES: { code: string; reward: string }[] = [
     { code: "1week", reward: "Stand Personality Essence" },
 ];
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Codes (April 2026) | 11 Active Codes",
-    description: "All 11 working Bizarre Lineage codes for April 2026 — including Update 1, Delay, and milestone like codes. Redeem them in-game for free rewards.",
-}, "/codes");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Codes" });
+    return withCanonical({
+        title: t("metaTitle", { count: ACTIVE_CODES.length }),
+        description: t("metaDescription", { count: ACTIVE_CODES.length }),
+    }, "/codes");
+}
 
-export default function CodesPage() {
+export default async function CodesPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Codes" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
     const lastVerified = "April 20, 2026";
 
     const breadcrumbSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: 'Codes', item: `${SITE_URL}/codes` },
+            { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: SITE_URL },
+            { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: `${SITE_URL}/codes` },
         ],
     };
+
+    const faqIds = [1, 2, 3] as const;
+    const faqData = faqIds.map((id) => ({
+        q: t(`faq.q${id}` as `faq.q${1 | 2 | 3}`),
+        a: t(`faq.a${id}` as `faq.a${1 | 2 | 3}`),
+    }));
 
     const faqSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: [
-            {
-                '@type': 'Question',
-                name: 'What are the active Bizarre Lineage codes?',
-                acceptedAnswer: { '@type': 'Answer', text: `The current active codes are: ${ACTIVE_CODES.map(c => c.code).join(', ')}. Redeem them in-game by typing !code followed by the code in the chat.` },
-            },
-            {
-                '@type': 'Question',
-                name: 'How do I redeem codes in Bizarre Lineage?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Open the in-game chat and type !code followed by the code. For example: !code Update1. Codes are case-sensitive.' },
-            },
-            {
-                '@type': 'Question',
-                name: 'Why is my Bizarre Lineage code not working?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Codes are case-sensitive — make sure capitalization matches exactly. The code may also have expired. Check back here for the latest verified codes.' },
-            },
-        ],
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqData.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a.replace(/<[^>]+>/g, "") },
+        })),
     };
 
-    const howToSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'HowTo',
-        name: 'How to Redeem Codes in Bizarre Lineage',
-        description: 'Step-by-step guide to redeem codes in Bizarre Lineage on Roblox.',
-        step: [
-            { '@type': 'HowToStep', position: 1, name: 'Open the game', text: 'Open Bizarre Lineage on Roblox.' },
-            { '@type': 'HowToStep', position: 2, name: 'Open chat', text: 'Open the in-game chat by pressing / or clicking the chat icon.' },
-            { '@type': 'HowToStep', position: 3, name: 'Type the code', text: 'Type !code followed by the code. For example: !code Update1' },
-            { '@type': 'HowToStep', position: 4, name: 'Claim rewards', text: 'Press Enter. Rewards are added to your inventory instantly.' },
-        ],
+    const rich = {
+        strong: (chunks: React.ReactNode) => <strong className="text-white">{chunks}</strong>,
+        code: (chunks: React.ReactNode) => <code className="bg-white/5 px-2 py-0.5 rounded text-white font-mono text-sm">{chunks}</code>,
     };
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-4xl">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
-            {/* Breadcrumbs */}
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white" aria-current="page">Codes</span>
+                <span className="text-white" aria-current="page">{t("breadcrumbCurrent")}</span>
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
                 <Gift className="h-12 w-12 text-accent-blue" />
-                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">
-                    Bizarre Lineage Codes
-                </h1>
+                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">{t("heroTitle")}</h1>
             </div>
 
             <p className="text-sm text-muted mb-8 flex items-center gap-2">
-                <Clock className="h-4 w-4" /> Last verified: <strong className="text-white">{lastVerified}</strong> via official Trello
+                <Clock className="h-4 w-4" /> {t("lastVerified", { date: lastVerified })}
             </p>
 
-            {/* Active Codes */}
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <Check className="h-5 w-5 text-green-400" /> Active Codes ({ACTIVE_CODES.length})
+                    <Check className="h-5 w-5 text-green-400" /> {t("activeTitle", { count: ACTIVE_CODES.length })}
                 </h2>
                 <div className="space-y-3">
                     {ACTIVE_CODES.map((item) => (
                         <div key={item.code} className="bg-surface border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                             <div className="flex items-center gap-3">
-                                <code className="bg-accent-blue/10 text-accent-blue border border-accent-blue/20 px-3 py-1.5 rounded font-mono font-bold text-sm">
-                                    !code {item.code}
-                                </code>
-                                <span className="text-xs text-green-400 font-bold uppercase">Active</span>
+                                <code className="bg-accent-blue/10 text-accent-blue border border-accent-blue/20 px-3 py-1.5 rounded font-mono font-bold text-sm">!code {item.code}</code>
+                                <span className="text-xs text-green-400 font-bold uppercase">{t("activeBadge")}</span>
                             </div>
                             <div className="text-sm text-muted">{item.reward}</div>
                         </div>
@@ -120,143 +108,95 @@ export default function CodesPage() {
                 </div>
             </section>
 
-            {/* How to Redeem */}
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">How to Redeem Codes</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("howToRedeemTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6">
                     <ol className="space-y-3 text-muted">
-                        <li className="flex items-start gap-3">
-                            <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">1</span>
-                            <span>Open <strong className="text-white">Bizarre Lineage</strong> on Roblox</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">2</span>
-                            <span>Open the <strong className="text-white">in-game chat</strong> (press / or click the chat icon)</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">3</span>
-                            <span>Type <code className="bg-white/5 px-2 py-0.5 rounded text-white font-mono text-sm">!code Update1</code> (replace with any code above)</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                            <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">4</span>
-                            <span>Press <strong className="text-white">Enter</strong> — rewards are added to your inventory instantly</span>
-                        </li>
+                        {([1, 2, 3, 4] as const).map((n) => (
+                            <li key={n} className="flex items-start gap-3">
+                                <span className="bg-accent-blue/10 text-accent-blue rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold shrink-0">{n}</span>
+                                <span>{t.rich(`step${n}` as `step${1 | 2 | 3 | 4}`, rich)}</span>
+                            </li>
+                        ))}
                     </ol>
                 </div>
             </section>
 
-            {/* Why Codes Fail */}
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">Why Codes Might Not Work</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("whyFailTitle")}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-surface border border-border rounded-lg p-4">
-                        <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Case Sensitivity</h3>
-                        <p className="text-sm text-muted">Codes are case-sensitive. <code className="text-white">Update1</code> works, <code className="text-muted">update1</code> does not.</p>
-                    </div>
-                    <div className="bg-surface border border-border rounded-lg p-4">
-                        <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Already Redeemed</h3>
-                        <p className="text-sm text-muted">Each code can only be used once per account.</p>
-                    </div>
-                    <div className="bg-surface border border-border rounded-lg p-4">
-                        <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Expired</h3>
-                        <p className="text-sm text-muted">Codes expire without warning. Check this page for the latest status.</p>
-                    </div>
-                    <div className="bg-surface border border-border rounded-lg p-4">
-                        <h3 className="text-sm font-bold text-red-400 uppercase mb-2">Fake Codes</h3>
-                        <p className="text-sm text-muted">Only trust codes from the official Trello, Discord, or this page. Many third-party sites list unverified codes.</p>
-                    </div>
+                    {([1, 2, 3, 4] as const).map((n) => (
+                        <div key={n} className="bg-surface border border-border rounded-lg p-4">
+                            <h3 className="text-sm font-bold text-red-400 uppercase mb-2">{t(`why${n}Title` as `why${1 | 2 | 3 | 4}Title`)}</h3>
+                            <p className="text-sm text-muted">{t.rich(`why${n}Body` as `why${1 | 2 | 3 | 4}Body`, rich)}</p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
-            {/* Expired Codes */}
             {EXPIRED_CODES.length > 0 && (
                 <section className="mb-12">
-                    <h2 className="text-2xl font-bold text-white mb-4">Expired Codes</h2>
+                    <h2 className="text-2xl font-bold text-white mb-4">{t("expiredTitle")}</h2>
                     <div className="space-y-2">
                         {EXPIRED_CODES.map((item) => (
                             <div key={item.code} className="bg-surface/50 border border-white/5 rounded-lg p-3 flex items-center justify-between opacity-60">
                                 <code className="font-mono text-sm text-muted line-through">{item.code}</code>
-                                <span className="text-xs text-red-400">Expired</span>
+                                <span className="text-xs text-red-400">{t("expiredBadge")}</span>
                             </div>
                         ))}
                     </div>
                 </section>
             )}
 
-            {/* Official Sources */}
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">Official Sources</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("sourcesTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6">
-                    <p className="text-muted text-sm mb-4">We verify codes from these official channels only:</p>
+                    <p className="text-muted text-sm mb-4">{t("sourcesIntro")}</p>
                     <div className="flex flex-wrap gap-3">
-                        <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">
-                            Official Trello
-                        </a>
-                        <a href="https://discord.gg/bizarrelineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">
-                            Official Discord
-                        </a>
-                        <a href="https://www.roblox.com/games/14890802310/Bizarre-Lineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">
-                            Roblox Game Page
-                        </a>
+                        <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceTrello")}</a>
+                        <a href="https://discord.gg/bizarrelineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceDiscord")}</a>
+                        <a href="https://www.roblox.com/games/14890802310/Bizarre-Lineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceRoblox")}</a>
                     </div>
                 </div>
             </section>
 
-            {/* FAQ */}
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <HelpCircle className="h-5 w-5 text-accent-blue" /> Frequently Asked Questions
+                    <HelpCircle className="h-5 w-5 text-accent-blue" /> {t("faqTitle")}
                 </h2>
                 <div className="space-y-4">
-                    <details className="group bg-surface border border-border rounded-lg">
-                        <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
-                            How do I redeem codes in Bizarre Lineage?
-                            <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
-                        </summary>
-                        <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
-                            Open the in-game chat and type <code className="text-white">!code</code> followed by the code. For example: <code className="text-white">!code Update1</code>. Codes are case-sensitive.
-                        </div>
-                    </details>
-                    <details className="group bg-surface border border-border rounded-lg">
-                        <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
-                            Why is my code not working?
-                            <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
-                        </summary>
-                        <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
-                            Codes are case-sensitive — make sure the capitalization matches exactly. The code may have expired or already been redeemed on your account.
-                        </div>
-                    </details>
-                    <details className="group bg-surface border border-border rounded-lg">
-                        <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
-                            Where do new codes come from?
-                            <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
-                        </summary>
-                        <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
-                            New codes are released by the developer MIDAS on the official Trello board and Discord server, usually tied to like milestones or special events.
-                        </div>
-                    </details>
+                    {faqIds.map((id) => (
+                        <details key={id} className="group bg-surface border border-border rounded-lg">
+                            <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
+                                {t(`faq.q${id}` as `faq.q${1 | 2 | 3}`)}
+                                <ChevronRight className="h-4 w-4 text-muted group-open:rotate-90 transition-transform shrink-0 ml-2" />
+                            </summary>
+                            <div className="px-4 pb-4 text-muted text-sm leading-relaxed">
+                                {t.rich(`faq.a${id}` as `faq.a${1 | 2 | 3}`, rich)}
+                            </div>
+                        </details>
+                    ))}
                 </div>
             </section>
 
-            {/* Internal Links */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">Explore More</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("exploreTitle")}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Link href="/tier-list" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Stand Tier List</div>
-                        <div className="text-xs text-muted mt-1">See which Stands are best in the current meta</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("exploreTierList")}</div>
+                        <div className="text-xs text-muted mt-1">{t("exploreTierListSub")}</div>
                     </Link>
                     <Link href="/build-planner" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Build Planner</div>
-                        <div className="text-xs text-muted mt-1">Plan your Stand + Style + Sub combo</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("exploreBuildPlanner")}</div>
+                        <div className="text-xs text-muted mt-1">{t("exploreBuildPlannerSub")}</div>
                     </Link>
                     <Link href="/stands" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">All Stands</div>
-                        <div className="text-xs text-muted mt-1">Browse all 17 Stands with moves and stats</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("exploreStands")}</div>
+                        <div className="text-xs text-muted mt-1">{t("exploreStandsSub")}</div>
                     </Link>
                     <Link href="/guides/stand-chances" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Stand Chances</div>
-                        <div className="text-xs text-muted mt-1">Drop rates and rarity breakdown</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("exploreStandChances")}</div>
+                        <div className="text-xs text-muted mt-1">{t("exploreStandChancesSub")}</div>
                     </Link>
                 </div>
             </section>

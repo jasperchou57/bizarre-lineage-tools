@@ -1,28 +1,35 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, Target, Shield } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import subsData from "@/data/sub-abilities.json";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Sub-Abilities & Skill Trees | Bizarre Lineage",
-    description: "Browse all sub-abilities like Hamon, Vampire, and Cyborg. Find the best PvP and PvE bonuses for your build in Bizarre Lineage.",
-}, "/sub-abilities");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "SubAbilities" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/sub-abilities");
+}
 
-export default function SubAbilitiesDirectory() {
+export default async function SubAbilitiesDirectory({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "SubAbilities" });
+
     return (
         <div className="container mx-auto px-4 py-12 max-w-6xl">
             <div className="relative w-full rounded-xl overflow-hidden mb-6">
-                <Image src="/images/pages/sub-abilities.png" alt="Bizarre Lineage Sub-Abilities" width={800} height={450} className="w-full h-48 object-cover opacity-40" />
+                <Image src="/images/pages/sub-abilities.png" alt={t("heroTitle")} width={800} height={450} className="w-full h-48 object-cover opacity-40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                 <div className="absolute bottom-4 left-6">
-                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Sub-Abilities</h1>
+                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">{t("heroTitle")}</h1>
                 </div>
             </div>
-            <p className="text-lg text-muted mb-12 max-w-2xl">
-                Sub-Abilities provide passive bonuses, powerful utility skills, and alter your core gameplay loop. Passive notes are cross-checked against the public official Trello, while scores and pairing suggestions below are site-maintained planner notes.
-            </p>
+            <p className="text-lg text-muted mb-12 max-w-2xl">{t("heroIntro")}</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {subsData.map((sub) => (
@@ -33,15 +40,11 @@ export default function SubAbilitiesDirectory() {
                     >
                         <div className="p-6 border-b border-white/5 bg-white/5 group-hover:bg-accent-indigo/5 transition-colors">
                             <div className="flex justify-between items-start mb-2">
-                                <h2 className="text-2xl font-bold text-white group-hover:text-accent-indigo transition-colors">
-                                    {sub.name}
-                                </h2>
+                                <h2 className="text-2xl font-bold text-white group-hover:text-accent-indigo transition-colors">{sub.name}</h2>
                                 <ChevronRight className="h-5 w-5 text-muted group-hover:text-white group-hover:translate-x-1 transition-all" />
                             </div>
                             <p className="text-sm text-accent-blue font-mono mb-3">{sub.origin}</p>
-                            <p className="text-sm text-muted line-clamp-2 min-h-[40px]">
-                                {sub.summary}
-                            </p>
+                            <p className="text-sm text-muted line-clamp-2 min-h-[40px]">{sub.summary}</p>
                         </div>
 
                         <div className="p-6">
