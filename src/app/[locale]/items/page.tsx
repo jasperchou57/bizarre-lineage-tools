@@ -1,13 +1,18 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, Star, ArrowRight, ExternalLink } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "All Bizarre Lineage Items — Complete Item List & How to Get Them",
-    description: "Complete item database for Bizarre Lineage. Every item, how to obtain it, rarity, and what it does. Stand Arrows, Lucky Arrows, Masks, and more.",
-}, "/items");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Items" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/items");
+}
 
 const ITEM_CATEGORIES = [
     {
@@ -89,7 +94,7 @@ const ITEM_CATEGORIES = [
             { name: "Manga Manuscripts", rarity: "Uncommon", effect: "Quest / collectible item (source uncertain on Trello).", sources: ["See in-game"] },
         ],
     },
-];
+] as const;
 
 const ITEM_IMAGES: Record<string, { imageUrl: string; sourceUrl: string }> = {
     "Stand Arrow": { imageUrl: "https://trello.com/1/cards/69a48a326523bfba0a21ecca/attachments/69a48a356523bfba0a221356/download/image.png", sourceUrl: "https://trello.com/c/cgs8T2ym" },
@@ -146,7 +151,12 @@ const RARITY_COLORS: Record<string, string> = {
     Mythical: "text-purple-400 bg-purple-400/10 border-purple-400/20",
 };
 
-export default function ItemsPage() {
+export default async function ItemsPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Items" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
+
     const totalItems = ITEM_CATEGORIES.reduce((sum, cat) => sum + cat.items.length, 0);
     const legendaryPlusCount = ITEM_CATEGORIES.reduce(
         (sum, cat) => sum + cat.items.filter((i) => i.rarity === "Legendary" || i.rarity === "Mythical").length,
@@ -158,60 +168,58 @@ export default function ItemsPage() {
     );
 
     const breadcrumbSchema = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
         itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: 'Items', item: `${SITE_URL}/items` },
+            { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: SITE_URL },
+            { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: `${SITE_URL}/items` },
         ],
     };
+
+    type CategoryKey = "Stand Items" | "Essences" | "Special Items" | "Chests" | "Mounts" | "Weapons" | "Materials";
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-4xl">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white" aria-current="page">Items</span>
+                <span className="text-white" aria-current="page">{t("breadcrumbCurrent")}</span>
             </nav>
 
             <div className="relative w-full rounded-xl overflow-hidden mb-8">
-                <Image src="/images/pages/items.png" alt="Bizarre Lineage Items" width={800} height={450} className="w-full h-48 object-cover opacity-40" />
+                <Image src="/images/pages/items.png" alt={t("heroTitle")} width={800} height={450} className="w-full h-48 object-cover opacity-40" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
                 <div className="absolute bottom-4 left-6">
-                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">All Bizarre Lineage Items</h1>
+                    <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">{t("heroTitle")}</h1>
                 </div>
             </div>
-            <p className="text-lg text-muted mb-10 leading-relaxed">
-                Complete database of all {totalItems} items in Bizarre Lineage. Find out what each item does, where to get it, and how rare it is.
-            </p>
+            <p className="text-lg text-muted mb-10 leading-relaxed">{t("heroIntro", { count: totalItems })}</p>
 
-            {/* Quick Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
                     <div className="text-2xl font-bold text-white">{totalItems}</div>
-                    <div className="text-xs text-muted">Total Items</div>
+                    <div className="text-xs text-muted">{t("statTotal")}</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
                     <div className="text-2xl font-bold text-white">{ITEM_CATEGORIES.length}</div>
-                    <div className="text-xs text-muted">Categories</div>
+                    <div className="text-xs text-muted">{t("statCategories")}</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
                     <div className="text-2xl font-bold text-yellow-400">{legendaryPlusCount}</div>
-                    <div className="text-xs text-muted">Legendary+</div>
+                    <div className="text-xs text-muted">{t("statLegendaryPlus")}</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-4 text-center">
                     <div className="text-2xl font-bold text-purple-400">{mythicalCount}</div>
-                    <div className="text-xs text-muted">Mythical</div>
+                    <div className="text-xs text-muted">{t("statMythical")}</div>
                 </div>
             </div>
 
-            {/* Item Categories */}
             {ITEM_CATEGORIES.map((category) => (
                 <section key={category.category} className="mb-12">
                     <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                        <Star className="h-5 w-5 text-accent-blue" /> {category.category}
+                        <Star className="h-5 w-5 text-accent-blue" /> {t(`categories.${category.category as CategoryKey}`)}
                     </h2>
                     <div className="space-y-3">
                         {category.items.map((item) => {
@@ -233,12 +241,12 @@ export default function ItemsPage() {
                                         <p className="text-sm text-muted mb-3">{item.effect}</p>
                                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                                             <div>
-                                                <span className="text-xs text-muted">Obtained from: </span>
+                                                <span className="text-xs text-muted">{t("obtainedFrom")} </span>
                                                 <span className="text-xs text-white">{item.sources.join(" · ")}</span>
                                             </div>
                                             {media && (
                                                 <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent-blue hover:text-white transition-colors">
-                                                    Official card <ExternalLink className="h-3 w-3" />
+                                                    {tCommon("officialCard")} <ExternalLink className="h-3 w-3" />
                                                 </a>
                                             )}
                                         </div>
@@ -250,25 +258,24 @@ export default function ItemsPage() {
                 </section>
             ))}
 
-            {/* Related */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">Related</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("relatedTitle")}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <Link href="/codes" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">Active Codes <ArrowRight className="h-3 w-3" /></div>
-                        <div className="text-xs text-muted mt-1">Redeem codes for free items</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">{t("related.codesTitle")} <ArrowRight className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">{t("related.codesSub")}</div>
                     </Link>
                     <Link href="/raids" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">Raid Guides <ArrowRight className="h-3 w-3" /></div>
-                        <div className="text-xs text-muted mt-1">Farm tokens for raid shop items</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">{t("related.raidsTitle")} <ArrowRight className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">{t("related.raidsSub")}</div>
                     </Link>
                     <Link href="/skins" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">Skins Gallery <ArrowRight className="h-3 w-3" /></div>
-                        <div className="text-xs text-muted mt-1">All Stand skins from Lucky Arrows</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">{t("related.skinsTitle")} <ArrowRight className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">{t("related.skinsSub")}</div>
                     </Link>
                     <Link href="/world-events" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">World Events <ArrowRight className="h-3 w-3" /></div>
-                        <div className="text-xs text-muted mt-1">Events that drop rare items</div>
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">{t("related.worldEventsTitle")} <ArrowRight className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">{t("related.worldEventsSub")}</div>
                     </Link>
                 </div>
             </section>

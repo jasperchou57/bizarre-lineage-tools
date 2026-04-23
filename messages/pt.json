@@ -1,4 +1,109 @@
 {
+    "Common": {
+        "breadcrumbHome": "Início",
+        "officialCard": "Card oficial",
+        "rarityCaption": "Tag oficial do Trello mostrada acima.",
+        "noRarityCaption": "Nenhuma raridade pública exibida no card oficial.",
+        "previewUnavailable": "Imagem de prévia ainda não divulgada — o Trello mostra atualmente um marcador TBA para esta skin."
+    },
+    "Skins": {
+        "metaTitle": "Skins Oficiais de Bizarre Lineage (Abril 2026) | {count} Entradas no Trello",
+        "metaDescription": "Confira as {count} skins atualmente listadas no Trello oficial de Bizarre Lineage, com links diretos para os cards e artes de prévia oficiais quando disponíveis.",
+        "breadcrumbCurrent": "Skins",
+        "heroTitle": "Skins Oficiais de Bizarre Lineage",
+        "heroIntro": "O Trello público oficial lista atualmente {skinCount} skins em {standCount} famílias de Stand. Esta página espelha essas entradas diretamente, incluindo arte de prévia oficial e links para o card de origem.",
+        "howToGetTitle": "Como conseguir skins",
+        "howToGetBody": "O card oficial do Lucky Arrow diz que uma <strong>Lucky Arrow</strong> garante uma skin aleatória para o Stand atualmente equipado. O mesmo card oficial lista três formas de obter: <strong>Prestige Shop</strong>, <strong>Raid Shops</strong> e <strong>Legendary Chests</strong>.",
+        "statOfficialEntries": "Entradas Oficiais",
+        "statStandFamilies": "Famílias de Stand",
+        "statCommon": "Marcadas como Common",
+        "officialListingSingular": "{count} entrada oficial",
+        "officialListingPlural": "{count} entradas oficiais",
+        "faqTitle": "FAQ de Skins",
+        "faq": {
+            "q1": "As skins afetam os atributos do meu Stand?",
+            "a1": "Não. As skins de Bizarre Lineage são puramente cosméticas. Mudam a aparência visual do Stand mas não alteram atributos, golpes ou habilidades.",
+            "q2": "Por que algumas entradas não têm badge de raridade?",
+            "a2": "O Trello oficial público mostra uma etiqueta Common em alguns cards de skin, mas muitos cards ficam sem etiqueta. Esta página não chuta raridades faltantes e liga cada entrada de volta ao card de origem oficial.",
+            "q3": "De onde vêm essas prévias?",
+            "a3": "A arte de prévia nesta página é puxada dos anexos dos cards do Trello oficial quando o card expõe um. Se um card não tem prévia anexada, a entrada permanece listada mas mostra um marcador de imagem."
+        }
+    },
+    "Stands": {
+        "metaTitle": "Todos os Stands em Bizarre Lineage | Base e Stats",
+        "metaDescription": "Navegue por todos os Stands em Bizarre Lineage. Veja tier rankings, stats, golpes e encontre as melhores builds para seu estilo de jogo.",
+        "heroTitle": "Diretório de Stands",
+        "heroIntro": "Navegue por todos os Stands disponíveis em Bizarre Lineage. Cada página combina golpes oficiais e notas de obtenção com as pontuações do planejador e builds sugeridas pela comunidade.",
+        "cardDamage": "Dano",
+        "cardSustain": "Sustain",
+        "cardSuggested": "Sugerido"
+    },
+    "Items": {
+        "metaTitle": "Todos os Itens de Bizarre Lineage — Lista Completa e Como Conseguir",
+        "metaDescription": "Base completa de itens de Bizarre Lineage. Cada item, como obtê-lo, raridade e o que faz. Stand Arrows, Lucky Arrows, Masks e mais.",
+        "breadcrumbCurrent": "Itens",
+        "heroTitle": "Todos os Itens de Bizarre Lineage",
+        "heroIntro": "Base completa de todos os {count} itens de Bizarre Lineage. Descubra o que cada item faz, onde conseguir e qual sua raridade.",
+        "statTotal": "Total de Itens",
+        "statCategories": "Categorias",
+        "statLegendaryPlus": "Legendary+",
+        "statMythical": "Mythical",
+        "obtainedFrom": "Obtido em:",
+        "relatedTitle": "Relacionados",
+        "related": {
+            "codesTitle": "Códigos Ativos",
+            "codesSub": "Resgate códigos para itens grátis",
+            "raidsTitle": "Guias de Raids",
+            "raidsSub": "Farme tokens para itens da raid shop",
+            "skinsTitle": "Galeria de Skins",
+            "skinsSub": "Todas as skins de Stand das Lucky Arrows",
+            "worldEventsTitle": "Eventos Mundiais",
+            "worldEventsSub": "Eventos que dropam itens raros"
+        },
+        "categories": {
+            "Stand Items": "Itens de Stand",
+            "Essences": "Essências",
+            "Special Items": "Itens Especiais",
+            "Chests": "Baús",
+            "Mounts": "Montarias",
+            "Weapons": "Armas",
+            "Materials": "Materiais"
+        }
+    },
+    "Raids": {
+        "metaTitle": "Raids de Bizarre Lineage — Todas as Lojas e Localizações (Trello Oficial)",
+        "metaDescription": "Todos os 4 chefes de raid de Bizarre Lineage (Avdol, Kira, Jotaro, DIO) com localizações verificadas do Trello e listagem completa das lojas — custos em tokens e estoque de cada item.",
+        "breadcrumbCurrent": "Raids",
+        "heroTitle": "Raids de Bizarre Lineage",
+        "heroIntro": "Raids são um modo cooperativo para 8 jogadores. Completar uma raid dá recompensas e Tokens de Raid Shop, que são gastos na loja exclusiva daquela raid. Há 4 raids no Trello oficial.",
+        "verifiedTitle": "Verificado no Trello oficial",
+        "verifiedBody": "HP do chefe, nível, mecânicas e ranking <strong>não estão documentados no Trello público</strong>. Esta página lista apenas o que o Trello confirma: localizações, nomes dos NPCs e o catálogo completo da loja (com estoque e custo aproximado em tokens).",
+        "allRaidsTitle": "Todas as 4 Raids",
+        "shopItems": "{count} itens na loja",
+        "viewShopCta": "Ver loja e detalhes",
+        "faqTitle": "FAQ de Raids",
+        "faq": {
+            "q1": "Quantas raids existem?",
+            "a1": "Quatro: Avdol, Kira (Bites the Dust), Jotaro (Chumbo) e DIO. Cada uma tem sua própria loja e tipo de token.",
+            "q2": "Quantos jogadores por raid?",
+            "a2": "Até 8 jogadores por raid (conforme o Trello oficial).",
+            "q3": "O que posso comprar com tokens de raid?",
+            "a3": "Cada loja de raid tem uma mistura diferente de acessórios, traits, Stand Arrows, Lucky Arrows e Legendary Chests. A loja da DIO Raid também vende as armas Shadow Axe e Stop Sign.",
+            "q4": "HP do chefe, nível e mecânicas estão no Trello?",
+            "a4": "Não — esses detalhes não estão documentados no Trello oficial público. Não listamos números especulativos aqui."
+        },
+        "relatedTitle": "Relacionados",
+        "relatedPerks": "Perks e Traits",
+        "relatedItems": "Itens",
+        "relatedBuildPlanner": "Planejador de Builds",
+        "relatedCodes": "Códigos Ativos",
+        "locations": {
+            "avdol": "Ponto de Ônibus 14, perto das pedras",
+            "kira": "Ponto de Ônibus 1, perto da loja Rengatei (área da Estação de Morioh)",
+            "jotaro": "Ponto de Ônibus 2, perto da Academia",
+            "dio": "Ponto de Ônibus 18, perto do Elder Vampire no castelo (área do Cemitério)"
+        }
+    },
     "Navbar": {
         "buildPlanner": "Planejador de Builds",
         "tierList": "Tier List",

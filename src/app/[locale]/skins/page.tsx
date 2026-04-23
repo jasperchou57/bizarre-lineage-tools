@@ -1,15 +1,21 @@
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, ExternalLink } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
 import skinsData from "@/data/skins.json";
 import standsData from "@/data/stands.json";
 import { getStandImagePath } from "@/data/stand-media";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata = withCanonical({
-    title: `Official Bizarre Lineage Skins (April 2026) | ${skinsData.length} Trello Listings`,
-    description: `Browse the ${skinsData.length} skin entries currently listed on the official Bizarre Lineage Trello, with direct card links and official preview art where available.`,
-}, "/skins");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Skins" });
+    return withCanonical({
+        title: t("metaTitle", { count: skinsData.length }),
+        description: t("metaDescription", { count: skinsData.length }),
+    }, "/skins");
+}
 
 const RARITY_COLORS: Record<string, string> = {
     Common: "text-gray-300 bg-gray-300/10 border-gray-300/20",
@@ -18,8 +24,13 @@ const RARITY_COLORS: Record<string, string> = {
     Mythical: "text-purple-400 bg-purple-400/10 border-purple-400/20",
 };
 
-export default function SkinsPage() {
-    type Skin = (typeof skinsData)[number];
+type Skin = (typeof skinsData)[number];
+
+export default async function SkinsPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Skins" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
 
     const standOrder = new Map(standsData.map((stand, index) => [stand.name, index]));
     const standIdByName = new Map(standsData.map((stand) => [stand.name, stand.id]));
@@ -27,7 +38,6 @@ export default function SkinsPage() {
         if (!acc[skin.stand]) {
             acc[skin.stand] = [];
         }
-
         acc[skin.stand].push(skin);
         return acc;
     }, {});
@@ -41,47 +51,48 @@ export default function SkinsPage() {
         .sort((left, right) => {
             const leftOrder = standOrder.get(left.stand) ?? Number.MAX_SAFE_INTEGER;
             const rightOrder = standOrder.get(right.stand) ?? Number.MAX_SAFE_INTEGER;
-
             return leftOrder - rightOrder || left.stand.localeCompare(right.stand);
         });
 
     const commonTaggedCount = skinsData.filter((skin) => skin.rarity === "Common").length;
 
+    const faqIds = [1, 2, 3] as const;
+
     return (
         <div className="container mx-auto px-4 py-12 max-w-6xl">
             <nav className="flex items-center text-sm text-muted mb-8" aria-label="Breadcrumb">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4 mx-2" />
-                <span className="text-white" aria-current="page">Skins</span>
+                <span className="text-white" aria-current="page">{t("breadcrumbCurrent")}</span>
             </nav>
 
             <div className="mb-10 text-center md:text-left">
-                <h1 className="text-4xl font-heading font-extrabold text-white mb-4">
-                    Official Bizarre Lineage Skins
-                </h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white mb-4">{t("heroTitle")}</h1>
                 <p className="text-lg text-muted max-w-3xl">
-                    The public official Trello currently lists {skinsData.length} skin entries across {standGroups.length} Stand families. This page mirrors those listings directly, including official preview art and per-card source links.
+                    {t("heroIntro", { skinCount: skinsData.length, standCount: standGroups.length })}
                 </p>
             </div>
 
             <div className="bg-surface border border-border rounded-xl p-6 mb-12">
-                <h2 className="text-xl font-bold text-white mb-3">How to Get Skins</h2>
+                <h2 className="text-xl font-bold text-white mb-3">{t("howToGetTitle")}</h2>
                 <p className="text-sm text-muted leading-relaxed">
-                    The official Lucky Arrow item card says that a <strong className="text-white">Lucky Arrow</strong> guarantees a random skin for your currently equipped Stand. The same official item card currently lists three acquisition paths: <strong className="text-white">Prestige Shop</strong>, <strong className="text-white">Raid Shops</strong>, and <strong className="text-white">Legendary Chests</strong>.
+                    {t.rich("howToGetBody", {
+                        strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                    })}
                 </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <div className="text-xs uppercase tracking-wide text-muted mb-2">Official Entries</div>
+                    <div className="text-xs uppercase tracking-wide text-muted mb-2">{t("statOfficialEntries")}</div>
                     <div className="text-2xl font-bold text-white">{skinsData.length}</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <div className="text-xs uppercase tracking-wide text-muted mb-2">Stand Families</div>
+                    <div className="text-xs uppercase tracking-wide text-muted mb-2">{t("statStandFamilies")}</div>
                     <div className="text-2xl font-bold text-white">{standGroups.length}</div>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <div className="text-xs uppercase tracking-wide text-muted mb-2">Explicitly Tagged Common</div>
+                    <div className="text-xs uppercase tracking-wide text-muted mb-2">{t("statCommon")}</div>
                     <div className="text-2xl font-bold text-white">{commonTaggedCount}</div>
                 </div>
             </div>
@@ -99,7 +110,11 @@ export default function SkinsPage() {
                                     stand
                                 )}
                             </h2>
-                            <p className="text-sm text-muted mt-1">{skins.length} official listing{skins.length > 1 ? "s" : ""}</p>
+                            <p className="text-sm text-muted mt-1">
+                                {skins.length > 1
+                                    ? t("officialListingPlural", { count: skins.length })
+                                    : t("officialListingSingular", { count: skins.length })}
+                            </p>
                         </div>
                     </div>
 
@@ -124,11 +139,11 @@ export default function SkinsPage() {
                                             );
                                         }
                                         const isGrayscaleSkin = /^grey?scale$/i.test(skin.skinName);
-                                        const standId = standIdByName.get(skin.stand);
-                                        if (isGrayscaleSkin && standId) {
+                                        const sid = standIdByName.get(skin.stand);
+                                        if (isGrayscaleSkin && sid) {
                                             return (
                                                 <Image
-                                                    src={getStandImagePath(standId)}
+                                                    src={getStandImagePath(sid)}
                                                     alt={`${skin.name} — grayscale render of ${skin.stand}`}
                                                     width={320}
                                                     height={240}
@@ -139,7 +154,7 @@ export default function SkinsPage() {
                                         }
                                         return (
                                             <div className="flex h-full items-center justify-center px-4 text-center text-xs text-muted">
-                                                Preview image not yet released — Trello currently shows a TBA placeholder for this skin.
+                                                {tCommon("previewUnavailable")}
                                             </div>
                                         );
                                     })()}
@@ -154,7 +169,7 @@ export default function SkinsPage() {
                                         )}
                                     </div>
                                     <p className="text-xs text-muted mb-3">
-                                        {skin.rarity ? "Official Trello tag shown above." : "No public rarity label shown on the official card."}
+                                        {skin.rarity ? tCommon("rarityCaption") : tCommon("noRarityCaption")}
                                     </p>
                                     <a
                                         href={skin.sourceUrl}
@@ -162,7 +177,7 @@ export default function SkinsPage() {
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-1 text-xs text-accent-blue hover:text-white transition-colors"
                                     >
-                                        Official card <ExternalLink className="h-3 w-3" />
+                                        {tCommon("officialCard")} <ExternalLink className="h-3 w-3" />
                                     </a>
                                 </div>
                             </article>
@@ -172,35 +187,19 @@ export default function SkinsPage() {
             ))}
 
             <div className="mt-12">
-                <h2 className="text-2xl font-bold text-white mb-6">Skins FAQ</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">{t("faqTitle")}</h2>
                 <div className="space-y-4">
-                    <details className="group bg-surface border border-border rounded-xl overflow-hidden">
-                        <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-                            <span className="font-medium text-white pr-4">Do skins affect my Stand&apos;s stats?</span>
-                            <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
-                        </summary>
-                        <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
-                            No. Skins in Bizarre Lineage are purely cosmetic. They change the visual appearance of your Stand but do not modify any stats, moves, or abilities.
-                        </div>
-                    </details>
-                    <details className="group bg-surface border border-border rounded-xl overflow-hidden">
-                        <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-                            <span className="font-medium text-white pr-4">Why do some entries have no rarity badge?</span>
-                            <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
-                        </summary>
-                        <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
-                            The public official Trello currently shows an explicit <strong className="text-white">Common</strong> label on some skin cards, but many cards are unlabeled. This page avoids guessing the missing rarity values and links every entry back to its official source card.
-                        </div>
-                    </details>
-                    <details className="group bg-surface border border-border rounded-xl overflow-hidden">
-                        <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-                            <span className="font-medium text-white pr-4">Where do these previews come from?</span>
-                            <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
-                        </summary>
-                        <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
-                            The preview art on this page is pulled from the public official Trello card attachments whenever the card exposes one. If a card has no attached preview image, the entry stays listed here but shows an image placeholder instead.
-                        </div>
-                    </details>
+                    {faqIds.map((id) => (
+                        <details key={id} className="group bg-surface border border-border rounded-xl overflow-hidden">
+                            <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
+                                <span className="font-medium text-white pr-4">{t(`faq.q${id}` as `faq.q${1 | 2 | 3}`)}</span>
+                                <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
+                            </summary>
+                            <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
+                                {t(`faq.a${id}` as `faq.a${1 | 2 | 3}`)}
+                            </div>
+                        </details>
+                    ))}
                 </div>
             </div>
         </div>
