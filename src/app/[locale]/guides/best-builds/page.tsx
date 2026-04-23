@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Wrench, Sword, Activity, Shield, Zap, Users } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Best Builds for PvP, PvE & Beginners | Bizarre Lineage",
-    description: "The top Bizarre Lineage builds for every playstyle. Complete Stand + Fighting Style + Sub-Ability setups with stat advice. Open any build directly in the Planner.",
-}, "/guides/best-builds");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("bestBuilds.metaTitle"),
+        description: t("bestBuilds.metaDescription"),
+    }, "/guides/best-builds");
+}
 
 interface Build {
     name: string;

@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, BarChart3, Heart, Zap, Shield, Sword, Flame, Sparkles } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Stats Guide — What Each Stat Does & Best Builds | Bizarre Lineage",
-    description: "Understand every stat in Bizarre Lineage: Strength, Health, Power, Weapon, Destructive Power, and Destructive Energy. Includes the best stat allocations for PvP, PvE, and beginners.",
-}, "/guides/stats");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("stats.metaTitle"),
+        description: t("stats.metaDescription"),
+    }, "/guides/stats");
+}
 
 const stats = [
     {

@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, ArrowUpCircle } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Prestige Guide & Requirements | Bizarre Lineage",
-    description: "Learn how to prestige in Bizarre Lineage. Requirements, benefits, and the fastest progression routes.",
-}, "/guides/prestige");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("prestige.metaTitle"),
+        description: t("prestige.metaDescription"),
+    }, "/guides/prestige");
+}
 
 export default function PrestigeGuidePage() {
     return (

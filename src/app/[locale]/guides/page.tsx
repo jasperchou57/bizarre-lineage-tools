@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle, Zap, Moon } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "All Guides | Bizarre Lineage",
-    description: "Browse all Bizarre Lineage guides: stats explained, stand rarity & drop rates, best builds, leveling routes, and prestige requirements.",
-}, "/guides");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/guides");
+}
 
 const guides = [
     {

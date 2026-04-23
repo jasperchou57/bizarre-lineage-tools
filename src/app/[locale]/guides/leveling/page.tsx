@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, TrendingUp } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Fastest Leveling Guide (1-50) | Bizarre Lineage",
-    description: "The optimal route to hit max level in Bizarre Lineage. Best quests, enemy spots, and EXP grinding strategies.",
-}, "/guides/leveling");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("leveling.metaTitle"),
+        description: t("leveling.metaDescription"),
+    }, "/guides/leveling");
+}
 
 export default function LevelingGuidePage() {
     return (

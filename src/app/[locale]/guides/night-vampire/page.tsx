@@ -1,12 +1,17 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Moon, Skull, Heart, Shield } from "lucide-react";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Night Vampire Guide — How to Become & Best Builds",
-    description: "Complete Night Vampire guide for Bizarre Lineage. Learn how to become a Night Vampire, all abilities, best Stand pairings, and PvP strategies.",
-}, "/guides/night-vampire");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("nightVampire.metaTitle"),
+        description: t("nightVampire.metaDescription"),
+    }, "/guides/night-vampire");
+}
 
 const VAMPIRE_ABILITIES = [
     { name: "Blood Drain", key: "G", type: "Melee", description: "Grab an enemy and drain their HP. Heals you for the damage dealt. Core sustain ability.", cooldown: "8s" },

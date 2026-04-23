@@ -113,6 +113,47 @@
         "metaDescription": "Termos de serviço da Bizarre Lineage Wiki — direitos de uso, isenções e responsabilidades do usuário.",
         "heroTitle": "Termos de Serviço",
         "noteTranslated": "Os termos de serviço completos abaixo estão em inglês por clareza jurídica. Se precisar de tradução, envie e-mail para redmanhao@gmail.com."
+    },
+    "Guides": {
+        "metaTitle": "Todos os Guias | Bizarre Lineage",
+        "metaDescription": "Navegue por todos os guias de Bizarre Lineage: stats explicados, chances e raridade de Stand, melhores builds, rotas de upagem e requisitos de prestige.",
+        "heroTitle": "Todos os Guias",
+        "heroIntro": "Cada guia aqui é cruzado com o Trello oficial público para nomes de golpes e métodos de obtenção. Rankings e notas de build são mantidos pelo site.",
+        "stats": {
+            "metaTitle": "Guia de Stats de Bizarre Lineage — Dano, HP, Velocidade",
+            "metaDescription": "O que cada stat faz em Bizarre Lineage, mais presets mantidos pelo site para setups PvP, PvE e iniciante.",
+            "heroTitle": "Guia de Stats de Bizarre Lineage"
+        },
+        "standChances": {
+            "metaTitle": "Chances e Raridade de Stand de Bizarre Lineage",
+            "metaDescription": "Como os Stands são agrupados por raridade e o que o Trello público confirma sobre taxas de drop de Stand em Bizarre Lineage.",
+            "heroTitle": "Chances e Raridade de Stand"
+        },
+        "bestBuilds": {
+            "metaTitle": "Melhores Builds de Bizarre Lineage — PvP, PvE, Tank, Glass Cannon",
+            "metaDescription": "Melhores builds mantidas pelo site para Bizarre Lineage — setups Stand + Estilo + Sub para PvP, PvE, iniciante, glass cannon e tank.",
+            "heroTitle": "Melhores Builds de Bizarre Lineage"
+        },
+        "prestige": {
+            "metaTitle": "Guia de Prestige de Bizarre Lineage — Requisitos e Recompensas",
+            "metaDescription": "Guia completo de Prestige de Bizarre Lineage — requisitos de level, o que reseta, o que é mantido e o que a Prestige Shop vende.",
+            "heroTitle": "Guia de Prestige de Bizarre Lineage"
+        },
+        "leveling": {
+            "metaTitle": "Guia de Upagem de Bizarre Lineage — Rotas Mais Rápidas de XP",
+            "metaDescription": "As rotas mais rápidas para upar em Bizarre Lineage, dicas de XP em side quests e combos recomendados Stand + Estilo para early, mid e late game.",
+            "heroTitle": "Guia de Upagem de Bizarre Lineage"
+        },
+        "awakening": {
+            "metaTitle": "Guia de Awakening de Bizarre Lineage — Como Despertar seu Stand",
+            "metaDescription": "Como despertar seu Stand em Bizarre Lineage, os requisitos por Stand e o que o Awakening desbloqueia.",
+            "heroTitle": "Guia de Awakening de Bizarre Lineage"
+        },
+        "nightVampire": {
+            "metaTitle": "Guia de Night Vampire de Bizarre Lineage — Como Virar Night Vampire",
+            "metaDescription": "Guia passo-a-passo para a evolução Night Vampire em Bizarre Lineage — pré-requisitos, etapas da quest e o que você ganha.",
+            "heroTitle": "Guia de Night Vampire de Bizarre Lineage"
+        }
     }
     ,
     "WorldEvents": {

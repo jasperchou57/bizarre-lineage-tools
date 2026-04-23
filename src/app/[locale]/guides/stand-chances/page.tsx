@@ -1,13 +1,18 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Dice6, Gem, Crown, Star, Sparkles, CircleDot } from "lucide-react";
 import standsData from "@/data/stands.json";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Stand Chances & Rarity Guide | Arrow Odds, Labels & Evolution Paths",
-    description: "Learn what the public official Trello confirms about Stand Arrows and evolution paths, plus how this site groups Stands by local rarity labels for browsing.",
-}, "/guides/stand-chances");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    return withCanonical({
+        title: t("standChances.metaTitle"),
+        description: t("standChances.metaDescription"),
+    }, "/guides/stand-chances");
+}
 
 const rarityTiers = [
     {

@@ -113,6 +113,47 @@
         "metaDescription": "Условия использования Bizarre Lineage Wiki — права пользования, оговорки и обязанности пользователей.",
         "heroTitle": "Условия использования",
         "noteTranslated": "Полный текст условий ниже — на английском для юридической точности. Если нужен перевод, пишите на redmanhao@gmail.com."
+    },
+    "Guides": {
+        "metaTitle": "Все гайды | Bizarre Lineage",
+        "metaDescription": "Все гайды по Bizarre Lineage: характеристики, шансы и редкость Стендов, лучшие билды, маршруты прокачки и требования престижа.",
+        "heroTitle": "Все гайды",
+        "heroIntro": "Каждый гайд здесь сверен с публичным официальным Trello по названиям мувов и способам получения. Рейтинги и заметки по билдам ведутся сайтом.",
+        "stats": {
+            "metaTitle": "Гайд по характеристикам Bizarre Lineage — Урон, HP, Скорость",
+            "metaDescription": "Что делает каждая характеристика в Bizarre Lineage, плюс пресеты для PvP, PvE и новичков от сайта.",
+            "heroTitle": "Гайд по характеристикам Bizarre Lineage"
+        },
+        "standChances": {
+            "metaTitle": "Шансы и редкость Стендов Bizarre Lineage",
+            "metaDescription": "Как Стенды сгруппированы по редкости и что публичный Trello подтверждает о дроп-рейтах Стендов в Bizarre Lineage.",
+            "heroTitle": "Шансы и редкость Стендов"
+        },
+        "bestBuilds": {
+            "metaTitle": "Лучшие билды Bizarre Lineage — PvP, PvE, танк, стеклянная пушка",
+            "metaDescription": "Лучшие билды для Bizarre Lineage от сайта — связки Стенд + Стиль + Суб для PvP, PvE, новичков, стеклянной пушки и танка.",
+            "heroTitle": "Лучшие билды Bizarre Lineage"
+        },
+        "prestige": {
+            "metaTitle": "Гайд по престижу Bizarre Lineage — требования и награды",
+            "metaDescription": "Полный гайд по престижу в Bizarre Lineage — требования к уровню, что сбрасывается, что остаётся, что продаёт Prestige Shop.",
+            "heroTitle": "Гайд по престижу Bizarre Lineage"
+        },
+        "leveling": {
+            "metaTitle": "Гайд по прокачке Bizarre Lineage — самые быстрые маршруты XP",
+            "metaDescription": "Самые быстрые маршруты прокачки Bizarre Lineage, XP-советы по сайд-квестам и рекомендуемые связки Стенд + Стиль для раннего, среднего и позднего этапа.",
+            "heroTitle": "Гайд по прокачке Bizarre Lineage"
+        },
+        "awakening": {
+            "metaTitle": "Гайд по Awakening Bizarre Lineage — как пробудить Стенд",
+            "metaDescription": "Как пробудить Стенд в Bizarre Lineage, требования по Стендам и что разблокирует Awakening.",
+            "heroTitle": "Гайд по Awakening Bizarre Lineage"
+        },
+        "nightVampire": {
+            "metaTitle": "Гайд по Night Vampire Bizarre Lineage — как стать ночным вампиром",
+            "metaDescription": "Пошаговый гайд по эволюции Night Vampire в Bizarre Lineage — предусловия, шаги квеста и что вы получаете.",
+            "heroTitle": "Гайд по Night Vampire Bizarre Lineage"
+        }
     }
     ,
     "WorldEvents": {
