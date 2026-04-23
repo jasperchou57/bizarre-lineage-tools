@@ -1,0 +1,47 @@
+[
+    {
+        "id": "hamon",
+        "name": "Hamon",
+        "origin": "Partes 1-2",
+        "obtainFrom": "Ancient Ghost perto do Ponto de Ônibus 13",
+        "moves": [
+            { "name": "Sunlight Yellow Overdrive", "key": "Any", "type": "melee" },
+            { "name": "Sendo Ripple Overdrive", "key": "Any", "type": "melee" },
+            { "name": "Scarlet Overdrive", "key": "Any", "type": "melee" }
+        ],
+        "passive": "Dano bônus contra Vampiros, pequena regeneração de HP",
+        "scores": { "pvp": 7, "pve": 8, "survival": 4, "mobility": 2, "cost": 5 },
+        "bestWith": ["the-world", "star-platinum", "whitesnake"],
+        "summary": "Alto dano, anti-Vampiro, amigável para iniciantes"
+    },
+    {
+        "id": "cyborg",
+        "name": "Cyborg",
+        "origin": "Parte 2",
+        "obtainFrom": "Rudol von Stroheim perto do Ponto de Ônibus 3",
+        "moves": [
+            { "name": "Ultraviolet Radiation Apparatus", "key": "Any", "type": "grab" },
+            { "name": "Machine Gun", "key": "Any", "type": "ranged" },
+            { "name": "Missile Volley", "key": "Any", "type": "ranged" }
+        ],
+        "passive": "Aumenta defesa em 15%, reduzindo dano recebido",
+        "scores": { "pvp": 5, "pve": 9, "survival": 9, "mobility": 2, "cost": 7 },
+        "bestWith": ["magicians-red", "purple-haze"],
+        "summary": "Sub-habilidade tanky orientada a PvE com ferramentas de AoE."
+    },
+    {
+        "id": "vampire",
+        "name": "Vampire",
+        "origin": "Partes 1-3",
+        "obtainFrom": "Item Stone Mask, depois Elder Vampire na Capela do Dio",
+        "moves": [
+            { "name": "Space Ripper Stingy Eyes", "key": "Any", "type": "ranged" },
+            { "name": "Leeching Terror", "key": "Any", "type": "grab" },
+            { "name": "Flash Freeze", "key": "Any", "type": "cc" }
+        ],
+        "passive": "Medidor de sangue vermelho dá regeneração bônus de HP quando cheio. Regeneração constante de +0.02 HP, +0.04 com High Speed Regeneration",
+        "scores": { "pvp": 9, "pve": 7, "survival": 10, "mobility": 3, "cost": 6 },
+        "bestWith": ["the-world", "king-crimson", "whitesnake"],
+        "summary": "Sub-habilidade focada em sustain com lifesteal e regen em lutas longas. Fraca contra Hamon."
+    }
+]

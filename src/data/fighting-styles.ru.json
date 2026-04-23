@@ -1,0 +1,39 @@
+[
+    {
+        "id": "boxing",
+        "name": "Boxing",
+        "moves": [
+            { "name": "White Fang", "key": "Any", "type": "melee" },
+            { "name": "Liver Crusher", "key": "Any", "type": "melee" },
+            { "name": "Dempsey Roll", "key": "Any", "type": "melee" }
+        ],
+        "scores": { "damage": 8, "combo": 9, "range": 3, "utility": 5 },
+        "bestWith": ["whitesnake", "the-world", "star-platinum", "crazy-diamond"],
+        "summary": "Надёжные комбо, высокий бёрст и давление в ближнем бою. Часто используется для удлинения M1-цепочек."
+    },
+    {
+        "id": "kendo",
+        "name": "Kendo",
+        "moves": [
+            { "name": "Whirlwind", "key": "Any", "type": "melee", "effect": "Слэш перед собой по небольшой области. Ломает гард" },
+            { "name": "Whirlwind (Air)", "key": "Any", "type": "melee", "effect": "Два вертикальных слэша вверх, подбрасывает вас и противника, затем отбрасывает" },
+            { "name": "Silent Edge", "key": "Any", "type": "dash", "effect": "Рывок вперёд с мечом, при попадании — шквал слэшей, оглушающий всех задетых" },
+            { "name": "Rising Tempest", "key": "Any", "type": "melee", "effect": "Топот по земле, поднимает противника вверх 3 слэшами, финальный слэш роняет на пол и отбрасывает" }
+        ],
+        "scores": { "damage": 7, "combo": 6, "range": 6, "utility": 8 },
+        "bestWith": ["anubis", "made-in-heaven", "c-moon"],
+        "summary": "Больший радиус и контратаки. Часто сочетается с быстрыми Стендами или Стендами на основе меча."
+    },
+    {
+        "id": "karate",
+        "name": "Karate",
+        "moves": [
+            { "name": "Seiken Barrage", "key": "Any", "type": "melee" },
+            { "name": "Sixth Massacre", "key": "Any", "type": "melee" },
+            { "name": "Tatsumaki", "key": "Any", "type": "aoe" }
+        ],
+        "scores": { "damage": 7, "combo": 8, "range": 5, "utility": 7 },
+        "bestWith": ["weather-report", "killer-queen", "the-world"],
+        "summary": "Удлинители комбо с AoE-контролем. Часто используется в PvE и групповых боях."
+    }
+]

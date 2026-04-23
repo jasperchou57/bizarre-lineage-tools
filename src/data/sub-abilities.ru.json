@@ -1,0 +1,47 @@
+[
+    {
+        "id": "hamon",
+        "name": "Hamon",
+        "origin": "Части 1-2",
+        "obtainFrom": "Древний призрак у автобусной остановки 13",
+        "moves": [
+            { "name": "Sunlight Yellow Overdrive", "key": "Any", "type": "melee" },
+            { "name": "Sendo Ripple Overdrive", "key": "Any", "type": "melee" },
+            { "name": "Scarlet Overdrive", "key": "Any", "type": "melee" }
+        ],
+        "passive": "Бонусный урон по вампирам, небольшая регенерация HP",
+        "scores": { "pvp": 7, "pve": 8, "survival": 4, "mobility": 2, "cost": 5 },
+        "bestWith": ["the-world", "star-platinum", "whitesnake"],
+        "summary": "Высокий урон, анти-вампирская, удобна для новичков"
+    },
+    {
+        "id": "cyborg",
+        "name": "Cyborg",
+        "origin": "Часть 2",
+        "obtainFrom": "Рудольф фон Штрохайм у автобусной остановки 3",
+        "moves": [
+            { "name": "Ultraviolet Radiation Apparatus", "key": "Any", "type": "grab" },
+            { "name": "Machine Gun", "key": "Any", "type": "ranged" },
+            { "name": "Missile Volley", "key": "Any", "type": "ranged" }
+        ],
+        "passive": "Увеличивает защиту на 15%, снижая получаемый урон",
+        "scores": { "pvp": 5, "pve": 9, "survival": 9, "mobility": 2, "cost": 7 },
+        "bestWith": ["magicians-red", "purple-haze"],
+        "summary": "Танковая PvE-ориентированная суб-способность с инструментами AoE."
+    },
+    {
+        "id": "vampire",
+        "name": "Vampire",
+        "origin": "Части 1-3",
+        "obtainFrom": "Предмет Stone Mask, затем Старший Вампир в часовне Dio",
+        "moves": [
+            { "name": "Space Ripper Stingy Eyes", "key": "Any", "type": "ranged" },
+            { "name": "Leeching Terror", "key": "Any", "type": "grab" },
+            { "name": "Flash Freeze", "key": "Any", "type": "cc" }
+        ],
+        "passive": "Красная шкала крови даёт бонусную регенерацию HP при заполнении. Постоянная регенерация +0.02 HP, +0.04 с High Speed Regeneration",
+        "scores": { "pvp": 9, "pve": 7, "survival": 10, "mobility": 3, "cost": 6 },
+        "bestWith": ["the-world", "king-crimson", "whitesnake"],
+        "summary": "Суб-способность с фокусом на устойчивость — лайфстил и регенерация в длительных боях. Уязвима к Hamon."
+    }
+]

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ChevronRight, Target, Shield } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import subsData from "@/data/sub-abilities.json";
+import { getSubsData } from "@/data/locale-data";
 import { withCanonical } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -19,6 +19,7 @@ export default async function SubAbilitiesDirectory({ params }: { params: Promis
     const { locale } = await params;
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "SubAbilities" });
+    const subsData = getSubsData(locale);
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-6xl">

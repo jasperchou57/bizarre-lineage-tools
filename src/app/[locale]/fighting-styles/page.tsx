@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ChevronRight, Activity, Zap } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import stylesData from "@/data/fighting-styles.json";
+import { getStylesData } from "@/data/locale-data";
 import { withCanonical } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -19,6 +19,7 @@ export default async function FightingStylesDirectory({ params }: { params: Prom
     const { locale } = await params;
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "FightingStyles" });
+    const stylesData = getStylesData(locale);
 
     return (
         <div className="container mx-auto px-4 py-12 max-w-6xl">
@@ -47,7 +48,7 @@ export default async function FightingStylesDirectory({ params }: { params: Prom
                         </div>
 
                         <div className="p-6">
-                            <h3 className="text-xs font-bold text-muted uppercase tracking-widest mb-3">Best With</h3>
+                            <h3 className="text-xs font-bold text-muted uppercase tracking-widest mb-3">{t("cardBestWith")}</h3>
                             <div className="flex flex-wrap gap-2 mb-6">
                                 {style.bestWith.map((standId) => (
                                     <span key={standId} className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-white capitalize">
@@ -59,7 +60,7 @@ export default async function FightingStylesDirectory({ params }: { params: Prom
                             <div className="space-y-3">
                                 <div>
                                     <div className="flex justify-between text-xs mb-1">
-                                        <span className="text-muted flex items-center gap-1.5"><Zap className="h-3 w-3" /> Combo Potential</span>
+                                        <span className="text-muted flex items-center gap-1.5"><Zap className="h-3 w-3" /> {t("cardComboPotential")}</span>
                                         <span className="text-white font-mono font-bold">{style.scores.combo}</span>
                                     </div>
                                     <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">
@@ -68,7 +69,7 @@ export default async function FightingStylesDirectory({ params }: { params: Prom
                                 </div>
                                 <div>
                                     <div className="flex justify-between text-xs mb-1">
-                                        <span className="text-muted flex items-center gap-1.5"><Activity className="h-3 w-3" /> Damage Scaling</span>
+                                        <span className="text-muted flex items-center gap-1.5"><Activity className="h-3 w-3" /> {t("cardDamageScaling")}</span>
                                         <span className="text-white font-mono font-bold">{style.scores.damage}</span>
                                     </div>
                                     <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">

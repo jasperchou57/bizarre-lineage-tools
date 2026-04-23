@@ -1,0 +1,39 @@
+[
+    {
+        "id": "boxing",
+        "name": "Boxing",
+        "moves": [
+            { "name": "White Fang", "key": "Any", "type": "melee" },
+            { "name": "Liver Crusher", "key": "Any", "type": "melee" },
+            { "name": "Dempsey Roll", "key": "Any", "type": "melee" }
+        ],
+        "scores": { "damage": 8, "combo": 9, "range": 3, "utility": 5 },
+        "bestWith": ["whitesnake", "the-world", "star-platinum", "crazy-diamond"],
+        "summary": "Combos confiáveis, alto burst e pressão de curta distância. Comumente usado para estender M1 chains."
+    },
+    {
+        "id": "kendo",
+        "name": "Kendo",
+        "moves": [
+            { "name": "Whirlwind", "key": "Any", "type": "melee", "effect": "Slash à frente atingindo todos numa pequena área. Quebra guarda" },
+            { "name": "Whirlwind (Air)", "key": "Any", "type": "melee", "effect": "Dois slashes verticais para cima, lança você e o oponente para o alto e depois o empurra" },
+            { "name": "Silent Edge", "key": "Any", "type": "dash", "effect": "Dash à frente com a espada, se acertar libera uma rajada de slashes atordoando quem for atingido" },
+            { "name": "Rising Tempest", "key": "Any", "type": "melee", "effect": "Pisão no chão, arrasta oponente para cima com 3 slashes, slash final derruba no chão e afasta" }
+        ],
+        "scores": { "damage": 7, "combo": 6, "range": 6, "utility": 8 },
+        "bestWith": ["anubis", "made-in-heaven", "c-moon"],
+        "summary": "Alcance maior e contra-ataques. Frequentemente pareado com Stands rápidos ou baseados em espada."
+    },
+    {
+        "id": "karate",
+        "name": "Karate",
+        "moves": [
+            { "name": "Seiken Barrage", "key": "Any", "type": "melee" },
+            { "name": "Sixth Massacre", "key": "Any", "type": "melee" },
+            { "name": "Tatsumaki", "key": "Any", "type": "aoe" }
+        ],
+        "scores": { "damage": 7, "combo": 8, "range": 5, "utility": 7 },
+        "bestWith": ["weather-report", "killer-queen", "the-world"],
+        "summary": "Extensores de combo com crowd control em AoE. Frequentemente usado em PvE e lutas em grupo."
+    }
+]
