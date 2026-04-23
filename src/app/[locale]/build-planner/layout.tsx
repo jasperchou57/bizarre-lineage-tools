@@ -1,10 +1,15 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { withCanonical } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Build Planner & Optimizer | Best Builds",
-    description: "Create and score your Bizarre Lineage build. Select a Stand, Fighting Style, and Sub-Ability to calculate 5-dimension performance scores in real-time.",
-}, "/build-planner");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "BuildPlanner" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/build-planner");
+}
 
 export default function BuildPlannerLayout({ children }: { children: React.ReactNode }) {
     return <>{children}</>;

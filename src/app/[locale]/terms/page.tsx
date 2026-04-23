@@ -1,15 +1,30 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { withCanonical } from "@/lib/metadata";
+import { routing } from "@/i18n/routing";
 
-export const metadata: Metadata = withCanonical({
-    title: "Terms of Service | Bizarre Lineage Wiki",
-    description: "Terms of Service for using Bizarre Lineage Wiki.",
-}, "/terms");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Terms" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/terms");
+}
 
-export default function TermsPage() {
+export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Terms" });
+
     return (
         <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-invert">
-            <h1 className="text-4xl font-heading font-extrabold text-white mb-8">Terms of Service</h1>
+            <h1 className="text-4xl font-heading font-extrabold text-white mb-8">{t("heroTitle")}</h1>
+            {locale !== routing.defaultLocale && (
+                <div className="not-prose bg-amber-500/10 border border-amber-500/20 text-amber-200 text-sm rounded-lg p-4 mb-8">
+                    {t("noteTranslated")}
+                </div>
+            )}
 
             <p className="text-muted leading-relaxed mb-6">
                 Last updated: {new Date().toISOString().split('T')[0]}

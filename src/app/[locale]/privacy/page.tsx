@@ -1,15 +1,30 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { withCanonical } from "@/lib/metadata";
+import { routing } from "@/i18n/routing";
 
-export const metadata: Metadata = withCanonical({
-    title: "Privacy Policy | Bizarre Lineage Wiki",
-    description: "Privacy policy for Bizarre Lineage Wiki. Learn how we use cookies, handle data, and work with third-party advertisers.",
-}, "/privacy");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Privacy" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/privacy");
+}
 
-export default function PrivacyPage() {
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Privacy" });
+
     return (
         <div className="container mx-auto px-4 py-16 max-w-3xl prose prose-invert">
-            <h1 className="text-4xl font-heading font-extrabold text-white mb-8">Privacy Policy</h1>
+            <h1 className="text-4xl font-heading font-extrabold text-white mb-8">{t("heroTitle")}</h1>
+            {locale !== routing.defaultLocale && (
+                <div className="not-prose bg-amber-500/10 border border-amber-500/20 text-amber-200 text-sm rounded-lg p-4 mb-8">
+                    {t("noteTranslated")}
+                </div>
+            )}
 
             <p className="text-muted leading-relaxed mb-6">
                 Last updated: 2026-03-04

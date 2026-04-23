@@ -101,6 +101,18 @@
         "breadcrumbCurrent": "Contact",
         "heroTitle": "Contact",
         "body": "For bug reports, typos, data corrections, or general feedback, email redmanhao@gmail.com. If you found a fact on this site that contradicts the public official Trello, please include the page URL and the Trello card link — we will fix it fast."
+    },
+    "Privacy": {
+        "metaTitle": "Privacy Policy | Bizarre Lineage Wiki",
+        "metaDescription": "Privacy policy for Bizarre Lineage Wiki. Learn how we use cookies, handle data, and work with third-party advertisers.",
+        "heroTitle": "Privacy Policy",
+        "noteTranslated": "The full privacy policy below is in English for legal clarity. If you need a translation, email redmanhao@gmail.com."
+    },
+    "Terms": {
+        "metaTitle": "Terms of Service | Bizarre Lineage Wiki",
+        "metaDescription": "Terms of service for Bizarre Lineage Wiki — usage rights, disclaimers, and user responsibilities.",
+        "heroTitle": "Terms of Service",
+        "noteTranslated": "The full terms of service below are in English for legal clarity. If you need a translation, email redmanhao@gmail.com."
     }
     ,
     "WorldEvents": {

@@ -1,12 +1,17 @@
-import { Metadata } from "next";
-import { Link } from "@/i18n/navigation";
+import type { Metadata } from "next";
 import { ChevronRight, ExternalLink, ClipboardList } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export const metadata: Metadata = withCanonical({
-    title: "Bizarre Lineage Trello — Official Board Link & What It Covers",
-    description: "Direct link to the official Bizarre Lineage Trello board. See what the Trello confirms: Stand moves, raid mechanics, progression, and developer roadmap.",
-}, "/trello");
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "Trello" });
+    return withCanonical({
+        title: t("metaTitle"),
+        description: t("metaDescription"),
+    }, "/trello");
+}
 
 const TRELLO_SECTIONS = [
     {
