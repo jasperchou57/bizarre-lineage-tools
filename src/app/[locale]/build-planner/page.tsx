@@ -100,32 +100,36 @@ function BuildPlannerClient() {
     const weaknesses = useMemo(() => {
         if (!standObj) return [];
         const issues: { severity: 'red' | 'yellow'; message: string }[] = [];
-        if (scores.survival < 4) issues.push({ severity: 'red', message: `Low survivability (${scores.survival}/10) — Vampire sub-ability would add lifesteal and regen.` });
-        if (scores.mobility <= 3) issues.push({ severity: 'red', message: `Very low mobility (${scores.mobility}/10) — ${standObj.name} can't chase or escape. Commit to fights carefully.` });
-        if (scores.pvp < 5 && scores.pve < 5) issues.push({ severity: 'red', message: `Below average in both PvP (${scores.pvp}) and PvE (${scores.pve}). Consider a different Stand.` });
-        if (!selectedStyle) issues.push({ severity: 'yellow', message: `No Fighting Style selected — you're missing +0.5-1.0 score from style bonuses.` });
-        if (!selectedSub) issues.push({ severity: 'yellow', message: `No Sub-Ability selected — you're missing Survival and PvP/PvE modifiers.` });
+        if (scores.survival < 4) issues.push({ severity: 'red', message: t("warningSurvival", { score: scores.survival }) });
+        if (scores.mobility <= 3) issues.push({ severity: 'red', message: t("warningMobility", { score: scores.mobility, name: standObj.name }) });
+        if (scores.pvp < 5 && scores.pve < 5) issues.push({ severity: 'red', message: t("warningBothLow", { pvp: scores.pvp, pve: scores.pve }) });
+        if (!selectedStyle) issues.push({ severity: 'yellow', message: t("warningNoStyle") });
+        if (!selectedSub) issues.push({ severity: 'yellow', message: t("warningNoSub") });
         if (selectedStyle && standObj.recommendedStyles.length > 0 && !standObj.recommendedStyles.includes(selectedStyle)) {
-            issues.push({ severity: 'yellow', message: `${stylesData.find(s => s.id === selectedStyle)?.name} isn't the recommended style for ${standObj.name}. Try ${standObj.recommendedStyles[0]} for better synergy.` });
+            issues.push({ severity: 'yellow', message: t("warningStyleMismatch", {
+                currentStyle: stylesData.find(s => s.id === selectedStyle)?.name ?? selectedStyle,
+                name: standObj.name,
+                recommendedStyle: standObj.recommendedStyles[0],
+            }) });
         }
         return issues;
-    }, [standObj, scores, selectedStyle, selectedSub]);
+    }, [standObj, scores, selectedStyle, selectedSub, t]);
 
     // 1-Step Upgrade Logic
     const oneStepUpgrade = useMemo(() => {
         if (!standObj) return null;
         if (!selectedStyle && standObj.recommendedStyles.length > 0) {
-            return `The local planner often starts this setup with ${standObj.recommendedStyles[0]} as a first style to test.`;
+            return t("oneStepStyleHint", { style: standObj.recommendedStyles[0] });
         }
         if (!selectedSub && standObj.recommendedSubs.length > 0) {
-            return `The local planner often pairs this build with ${standObj.recommendedSubs[0]} as a first sub-ability to try.`;
+            return t("oneStepSubHint", { sub: standObj.recommendedSubs[0] });
         }
         // If full build but not using recommended
         if (selectedStyle && !standObj.recommendedStyles.includes(selectedStyle)) {
             return `If you want to compare against the site's default pairing, try ${standObj.recommendedStyles[0]} with ${standObj.name}.`;
         }
         return "This setup matches one of the site's saved planner pairings.";
-    }, [standObj, selectedStyle, selectedSub]);
+    }, [standObj, selectedStyle, selectedSub, t]);
 
     const handleSave = () => {
         if (!standObj) return;
@@ -396,40 +400,38 @@ function ScoreBar({ label, value, delta, icon, color, topLabel }: { label: strin
 }
 
 function BuildPlannerFallback() {
+    const t = useTranslations("BuildPlanner");
     return (
         <div className="container mx-auto px-4 py-8 max-w-7xl">
             <div className="max-w-3xl mb-8">
-                <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">Build Planner</h1>
-                <p className="text-muted mt-3 text-lg leading-relaxed">
-                    Compare site-maintained build estimates across 5 dimensions: PvP, PvE, Survival, Mobility, and Accessibility.
-                    The interactive planner is loading below.
-                </p>
+                <h1 className="text-3xl md:text-4xl font-heading font-extrabold text-white">{t("heroTitle")}</h1>
+                <p className="text-muted mt-3 text-lg leading-relaxed">{t("fallbackIntro")}</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <h2 className="text-sm font-bold text-accent-blue uppercase tracking-widest mb-2">Stand Pool</h2>
-                    <p className="text-2xl font-bold text-white mb-1">{standsData.length} Stands</p>
-                    <p className="text-sm text-muted">Browse the current local dataset and start from any stand profile.</p>
+                    <h2 className="text-sm font-bold text-accent-blue uppercase tracking-widest mb-2">{t("fallbackBox1Title")}</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{t("fallbackBox1Count", { count: standsData.length })}</p>
+                    <p className="text-sm text-muted">{t("fallbackBox1Body")}</p>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <h2 className="text-sm font-bold text-accent-indigo uppercase tracking-widest mb-2">Style Options</h2>
-                    <p className="text-2xl font-bold text-white mb-1">{stylesData.length} Fighting Styles</p>
-                    <p className="text-sm text-muted">Test Boxing, Kendo, and Karate against different stand setups.</p>
+                    <h2 className="text-sm font-bold text-accent-indigo uppercase tracking-widest mb-2">{t("fallbackBox2Title")}</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{t("fallbackBox2Count", { count: stylesData.length })}</p>
+                    <p className="text-sm text-muted">{t("fallbackBox2Body")}</p>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-5">
-                    <h2 className="text-sm font-bold text-purple-400 uppercase tracking-widest mb-2">Sub-Abilities</h2>
-                    <p className="text-2xl font-bold text-white mb-1">{subsData.length} Subs</p>
-                    <p className="text-sm text-muted">Layer Hamon, Vampire, or Cyborg into the same build profile.</p>
+                    <h2 className="text-sm font-bold text-purple-400 uppercase tracking-widest mb-2">{t("fallbackBox3Title")}</h2>
+                    <p className="text-2xl font-bold text-white mb-1">{t("fallbackBox3Count", { count: subsData.length })}</p>
+                    <p className="text-sm text-muted">{t("fallbackBox3Body")}</p>
                 </div>
             </div>
 
             <div className="bg-surface border border-border rounded-xl p-6">
-                <h2 className="text-lg font-bold text-white mb-3">What This Planner Does</h2>
+                <h2 className="text-lg font-bold text-white mb-3">{t("fallbackWhatTitle")}</h2>
                 <ul className="space-y-2 text-sm text-muted">
-                    <li>Scores a stand, style, and sub-ability combination using the site&apos;s local planner rules.</li>
-                    <li>Highlights suggested pairings so you can compare a default setup against your own build idea.</li>
-                    <li>Saves finished setups to your local browser vault after the interactive controls load.</li>
+                    <li>{t("fallbackWhat1")}</li>
+                    <li>{t("fallbackWhat2")}</li>
+                    <li>{t("fallbackWhat3")}</li>
                 </ul>
             </div>
         </div>
@@ -438,113 +440,108 @@ function BuildPlannerFallback() {
 
 // Zone 2: SSR Landing Page Content (visible to Google crawlers)
 function PlannerSEOContent() {
+    const t = useTranslations("BuildPlanner");
+    const stands = standsData.filter((s) => ["S+", "S"].includes(s.tier.overall)).slice(0, 4);
+    const faqIds = [1, 2, 3, 4] as const;
+    const relatedLinks = [
+        { labelKey: "relatedTierList", href: "/tier-list" },
+        { labelKey: "relatedAllStands", href: "/stands" },
+        { labelKey: "relatedActiveCodes", href: "/codes" },
+        { labelKey: "relatedBestBuilds", href: "/guides/best-builds" },
+        { labelKey: "relatedStatsGuide", href: "/guides/stats" },
+        { labelKey: "relatedStandChances", href: "/guides/stand-chances" },
+        { labelKey: "relatedBoxing", href: "/fighting-styles/boxing" },
+        { labelKey: "relatedHamon", href: "/sub-abilities/hamon" },
+    ] as const;
+
     return (
         <div className="container mx-auto px-4 max-w-7xl mt-12 space-y-12">
-            {/* How to Use */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">How to Use the Bizarre Lineage Build Planner</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("howToUseTitle")}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="bg-surface border border-border rounded-lg p-5">
                         <div className="w-8 h-8 rounded-full bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue font-bold text-sm mb-3">1</div>
-                        <h3 className="font-bold text-white mb-2">Pick Your Stand</h3>
-                        <p className="text-sm text-muted">Choose from {standsData.length} Stands in the database. Each Stand has unique base scores for Damage, Combo, CC, AoE, Mobility, and Sustain that feed into the planner calculations.</p>
+                        <h3 className="font-bold text-white mb-2">{t("howToUse1Title")}</h3>
+                        <p className="text-sm text-muted">{t("howToUse1Body", { count: standsData.length })}</p>
                     </div>
                     <div className="bg-surface border border-border rounded-lg p-5">
                         <div className="w-8 h-8 rounded-full bg-accent-indigo/10 border border-accent-indigo/20 flex items-center justify-center text-accent-indigo font-bold text-sm mb-3">2</div>
-                        <h3 className="font-bold text-white mb-2">Add Fighting Style & Sub-Ability</h3>
-                        <p className="text-sm text-muted">Pair your Stand with Boxing, Kendo, or Karate for fighting style, and Hamon, Vampire, or Cyborg for sub-ability. Each combination changes your PvP, PvE, and Survival scores differently.</p>
+                        <h3 className="font-bold text-white mb-2">{t("howToUse2Title")}</h3>
+                        <p className="text-sm text-muted">{t("howToUse2Body")}</p>
                     </div>
                     <div className="bg-surface border border-border rounded-lg p-5">
                         <div className="w-8 h-8 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 font-bold text-sm mb-3">3</div>
-                        <h3 className="font-bold text-white mb-2">Compare & Save</h3>
-                        <p className="text-sm text-muted">See real-time scores across 5 dimensions. Save builds to your Vault and compare up to 2 builds side-by-side to find the optimal loadout for your playstyle.</p>
+                        <h3 className="font-bold text-white mb-2">{t("howToUse3Title")}</h3>
+                        <p className="text-sm text-muted">{t("howToUse3Body")}</p>
                     </div>
                 </div>
             </section>
 
-            {/* What the Scores Mean */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">What the Build Scores Mean</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("whatScoresTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
                         <div>
-                            <h3 className="font-bold text-accent-blue mb-1">PvP Score</h3>
-                            <p className="text-muted">Weighted combination of Damage (50%), CC (30%), and Combo (20%), plus style and sub modifiers. Higher = stronger in 1v1 duels.</p>
+                            <h3 className="font-bold text-accent-blue mb-1">{t("scoreCardPvpTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardPvpBody")}</p>
                         </div>
                         <div>
-                            <h3 className="font-bold text-accent-blue mb-1">PvE Score</h3>
-                            <p className="text-muted">Weighted by AoE (60%) and Damage (40%). Reflects how well a build clears missions, raids, and world events.</p>
+                            <h3 className="font-bold text-accent-blue mb-1">{t("scoreCardPveTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardPveBody")}</p>
                         </div>
                         <div>
-                            <h3 className="font-bold text-accent-blue mb-1">Survival Score</h3>
-                            <p className="text-muted">Based on Stand sustain plus sub-ability survival rating. Vampire builds score highest here due to lifesteal mechanics.</p>
+                            <h3 className="font-bold text-accent-blue mb-1">{t("scoreCardSurvivalTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardSurvivalBody")}</p>
                         </div>
                         <div>
-                            <h3 className="font-bold text-accent-indigo mb-1">Mobility Score</h3>
-                            <p className="text-muted">Pure Stand mobility stat. Made in Heaven and King Crimson lead. Important for chase/escape in PvP.</p>
+                            <h3 className="font-bold text-accent-indigo mb-1">{t("scoreCardMobilityTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardMobilityBody")}</p>
                         </div>
                         <div>
-                            <h3 className="font-bold text-accent-indigo mb-1">Cost Efficiency</h3>
-                            <p className="text-muted">Based on Stand rarity. Common/Uncommon Stands score higher (easier to obtain). Mythical/Special Stands score lowest.</p>
+                            <h3 className="font-bold text-accent-indigo mb-1">{t("scoreCardCostTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardCostBody")}</p>
                         </div>
                         <div>
-                            <h3 className="font-bold text-purple-400 mb-1">Build Grade</h3>
-                            <p className="text-muted">The top-right badge shows S+/S/A/B/C/D based on the highest individual score dimension in your build.</p>
+                            <h3 className="font-bold text-purple-400 mb-1">{t("scoreCardGradeTitle")}</h3>
+                            <p className="text-muted">{t("scoreCardGradeBody")}</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Popular Build Combos */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">Popular Build Combinations</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("popularCombosTitle")}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {standsData.filter(s => ['S+', 'S'].includes(s.tier.overall)).slice(0, 4).map(stand => (
+                    {stands.map((stand) => (
                         <a key={stand.id} href={`/build-planner?stand=${stand.id}&style=${stand.recommendedStyles[0]}&sub=${stand.recommendedSubs[0]}`} className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group block">
                             <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{stand.name} + {stand.recommendedStyles[0]} + {stand.recommendedSubs[0]}</div>
-                            <div className="text-xs text-muted mt-1">{stand.tier.overall} Tier &middot; {stand.rarity} &middot; {stand.meta}</div>
+                            <div className="text-xs text-muted mt-1">{t("comboMeta", { tier: stand.tier.overall, rarity: stand.rarity, meta: stand.meta })}</div>
                         </a>
                     ))}
                 </div>
             </section>
 
-            {/* FAQ */}
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">Build Planner FAQ</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("faqTitle")}</h2>
                 <div className="space-y-3">
-                    {[
-                        { q: "Is the Build Planner based on official game data?", a: "Move names and obtainment methods come from the official Trello board. The scoring weights and tier rankings are site-maintained community estimates, not official balance values." },
-                        { q: "Are my saved builds stored on a server?", a: "No. All builds are saved in your browser's local storage. They are never uploaded. Use the Export feature to back up your vault as a JSON file." },
-                        { q: "How often are scores updated?", a: "We cross-check the official Trello after each game update. The scoring formula and tier placements are reviewed when the meta shifts significantly." },
-                        { q: "Can I share a build with someone?", a: "Yes. Copy the URL from your browser after selecting a Stand, Style, and Sub — the selections are encoded in the URL query parameters. Anyone opening that link will see the same build loaded." },
-                    ].map(faq => (
-                        <details key={faq.q} className="group bg-surface border border-border rounded-lg">
+                    {faqIds.map((n) => (
+                        <details key={n} className="group bg-surface border border-border rounded-lg">
                             <summary className="cursor-pointer p-4 text-white font-medium flex items-center justify-between hover:bg-white/5 transition-colors rounded-lg">
-                                {faq.q}
+                                {t(`faqQ${n}` as `faqQ${1 | 2 | 3 | 4}`)}
                                 <span className="text-muted group-open:rotate-90 transition-transform ml-2">›</span>
                             </summary>
-                            <div className="px-4 pb-4 text-muted text-sm leading-relaxed">{faq.a}</div>
+                            <div className="px-4 pb-4 text-muted text-sm leading-relaxed">{t(`faqA${n}` as `faqA${1 | 2 | 3 | 4}`)}</div>
                         </details>
                     ))}
                 </div>
             </section>
 
-            {/* Internal Links */}
             <section className="pb-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Related Tools & Guides</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">{t("relatedTitle")}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                    {[
-                        { label: "Stand Tier List", href: "/tier-list" },
-                        { label: "All Stands", href: "/stands" },
-                        { label: "Active Codes", href: "/codes" },
-                        { label: "Best Builds Guide", href: "/guides/best-builds" },
-                        { label: "Stats Guide", href: "/guides/stats" },
-                        { label: "Stand Chances", href: "/guides/stand-chances" },
-                        { label: "Boxing Guide", href: "/fighting-styles/boxing" },
-                        { label: "Hamon Guide", href: "/sub-abilities/hamon" },
-                    ].map(link => (
+                    {relatedLinks.map((link) => (
                         <a key={link.href} href={link.href} className="bg-surface border border-border rounded-lg p-3 text-sm text-white hover:border-accent-blue/50 transition-colors">
-                            {link.label}
+                            {t(link.labelKey as "relatedTierList" | "relatedAllStands" | "relatedActiveCodes" | "relatedBestBuilds" | "relatedStatsGuide" | "relatedStandChances" | "relatedBoxing" | "relatedHamon")}
                         </a>
                     ))}
                 </div>
