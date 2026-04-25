@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { ChevronRight, ArrowUpCircle } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { withCanonical } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -13,62 +13,66 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }, "/guides/prestige");
 }
 
-export default function PrestigeGuidePage() {
+export default async function PrestigeGuidePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
+    const rich = { strong: (chunks: React.ReactNode) => <strong>{chunks}</strong> };
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-4xl prose prose-invert">
             <div className="flex items-center gap-2 text-sm text-muted mb-8 not-prose">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Guides</span>
+                <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Prestige</span>
+                <span className="text-white">{t("prestige.breadcrumbCurrent")}</span>
             </div>
 
             <div className="flex items-center gap-4 mb-8 not-prose">
                 <ArrowUpCircle className="h-12 w-12 text-accent-indigo" />
-                <h1 className="text-4xl font-heading font-extrabold text-white m-0">Prestige Guide</h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white m-0">{t("prestige.heroTitle")}</h1>
             </div>
 
-            <p className="text-xl text-muted leading-relaxed mb-10">
-                The public official Trello confirms that prestiging is an end-game mechanic handled by the Arch Mage. This page sticks to the details that are explicitly documented there.
-            </p>
+            <p className="text-xl text-muted leading-relaxed mb-10">{t("prestige.intro")}</p>
 
-            <h2>Basic Requirements</h2>
-            <p>The public official Trello currently confirms the following:</p>
+            <h2>{t("prestige.requirementsTitle")}</h2>
+            <p>{t("prestige.requirementsIntro")}</p>
             <ul>
-                <li><strong>Cost:</strong> You need 10,000 Cash.</li>
-                <li><strong>NPC:</strong> Talk to the <strong>Arch Mage</strong> in the <strong>Hospital</strong>.</li>
-                <li><strong>Location:</strong> The official Trello places the Arch Mage near <strong>Bus Stop 10</strong>.</li>
+                <li>{t.rich("prestige.reqCost", rich)}</li>
+                <li>{t.rich("prestige.reqNpc", rich)}</li>
+                <li>{t.rich("prestige.reqLocation", rich)}</li>
             </ul>
 
-            <h2>Benefits of Prestiging</h2>
+            <h2>{t("prestige.benefitsTitle")}</h2>
             <ul>
-                <li><strong>5 Prestige Shards:</strong> The official card says the Arch Mage grants five Prestige Shards.</li>
-                <li><strong>1 Stand Storage:</strong> The same card says you also receive one Stand storage.</li>
-                <li><strong>Prestige Shop access:</strong> The Arch Mage also provides access to the Prestige Shop.</li>
+                <li>{t.rich("prestige.benefit1", rich)}</li>
+                <li>{t.rich("prestige.benefit2", rich)}</li>
+                <li>{t.rich("prestige.benefit3", rich)}</li>
             </ul>
 
-            <h2>What do I lose?</h2>
+            <h2>{t("prestige.loseTitle")}</h2>
             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 my-6 not-prose">
                 <ul className="space-y-2 text-yellow-100 m-0">
-                    <li className="flex items-center gap-2">• The public Trello does not publish a complete lose-on-prestige checklist.</li>
-                    <li className="flex items-center gap-2">• Verify reset behavior in-game before prestiging instead of relying on third-party tables.</li>
+                    <li className="flex items-center gap-2">• {t("prestige.lose1")}</li>
+                    <li className="flex items-center gap-2">• {t("prestige.lose2")}</li>
                 </ul>
             </div>
 
-            <h2>What do I keep?</h2>
+            <h2>{t("prestige.keepTitle")}</h2>
             <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-6 my-6 not-prose">
                 <ul className="space-y-2 text-yellow-100 m-0">
-                    <li className="flex items-center gap-2">• The public Trello does not publish a full keep-on-prestige checklist either.</li>
-                    <li className="flex items-center gap-2">• What is clearly documented publicly is the 10,000 Cash cost, Arch Mage location, Prestige Shards, Stand storage, and Prestige Shop access.</li>
+                    <li className="flex items-center gap-2">• {t("prestige.keep1")}</li>
+                    <li className="flex items-center gap-2">• {t("prestige.keep2")}</li>
                 </ul>
             </div>
 
             <div className="mt-12 not-prose">
                 <Link href="/guides/leveling" className="block w-full py-4 bg-surface border border-white/10 rounded-xl text-center hover:bg-white/5 hover:border-accent-blue transition-all group">
-                    <span className="text-sm text-muted uppercase tracking-widest block mb-1">Next Guide</span>
+                    <span className="text-sm text-muted uppercase tracking-widest block mb-1">{t("prestige.nextGuideLabel")}</span>
                     <span className="text-xl font-bold text-white group-hover:text-accent-blue transition-colors flex items-center justify-center gap-2">
-                        Fastest Leveling Routes <ChevronRight className="h-5 w-5" />
+                        {t("prestige.nextGuideLeveling")} <ChevronRight className="h-5 w-5" />
                     </span>
                 </Link>
             </div>

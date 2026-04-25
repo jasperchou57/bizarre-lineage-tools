@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle, Zap, Moon } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { withCanonical } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -13,82 +13,37 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }, "/guides");
 }
 
-const guides = [
-    {
-        title: "Stats Guide",
-        description: "What each stat does, plus site-maintained starter presets for PvP, PvE, and beginner setups.",
-        href: "/guides/stats",
-        icon: <BarChart3 className="h-8 w-8 text-accent-blue" />,
-        tag: "New",
-        tagColor: "bg-green-500/20 text-green-400",
-    },
-    {
-        title: "Stand Chances & Rarity",
-        description: "See how this site groups Stands by rarity and what the public official Trello does and does not confirm about Stand acquisition.",
-        href: "/guides/stand-chances",
-        icon: <Dice6 className="h-8 w-8 text-accent-indigo" />,
-        tag: "New",
-        tagColor: "bg-green-500/20 text-green-400",
-    },
-    {
-        title: "Best Builds",
-        description: "Site-maintained Stand + Style + Sub setups for PvP, PvE, beginners, glass cannon, and tank playstyles.",
-        href: "/guides/best-builds",
-        icon: <Wrench className="h-8 w-8 text-purple-400" />,
-        tag: "New",
-        tagColor: "bg-green-500/20 text-green-400",
-    },
-    {
-        title: "Awakening Guide",
-        description: "Step-by-step walkthrough to awaken your Stand. Requirements, boss fight strategies, and best Stands for the awakening quest.",
-        href: "/guides/awakening",
-        icon: <Zap className="h-8 w-8 text-yellow-400" />,
-        tag: "New",
-        tagColor: "bg-green-500/20 text-green-400",
-    },
-    {
-        title: "Night Vampire Guide",
-        description: "How to become a Night Vampire, all abilities, best Stand pairings, and PvP strategies for the Vampire sub-ability.",
-        href: "/guides/night-vampire",
-        icon: <Moon className="h-8 w-8 text-purple-400" />,
-        tag: "New",
-        tagColor: "bg-green-500/20 text-green-400",
-    },
-    {
-        title: "Fastest Leveling Route",
-        description: "Official Trello-based progression notes plus a safer checklist for early leveling priorities.",
-        href: "/guides/leveling",
-        icon: <TrendingUp className="h-8 w-8 text-green-400" />,
-    },
-    {
-        title: "Prestige Guide",
-        description: "Officially documented prestige requirements, rewards, and notes on what the public Trello currently confirms.",
-        href: "/guides/prestige",
-        icon: <ArrowUpCircle className="h-8 w-8 text-yellow-400" />,
-    },
-];
+export default async function GuidesIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
 
-export default function GuidesIndexPage() {
+    const guides = [
+        { titleKey: "cardStatsTitle", descKey: "cardStatsDesc", href: "/guides/stats", icon: <BarChart3 className="h-8 w-8 text-accent-blue" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardStandChancesTitle", descKey: "cardStandChancesDesc", href: "/guides/stand-chances", icon: <Dice6 className="h-8 w-8 text-accent-indigo" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardBestBuildsTitle", descKey: "cardBestBuildsDesc", href: "/guides/best-builds", icon: <Wrench className="h-8 w-8 text-purple-400" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardAwakeningTitle", descKey: "cardAwakeningDesc", href: "/guides/awakening", icon: <Zap className="h-8 w-8 text-yellow-400" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardNightVampireTitle", descKey: "cardNightVampireDesc", href: "/guides/night-vampire", icon: <Moon className="h-8 w-8 text-purple-400" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardLevelingTitle", descKey: "cardLevelingDesc", href: "/guides/leveling", icon: <TrendingUp className="h-8 w-8 text-green-400" />, tag: null, tagColor: "" },
+        { titleKey: "cardPrestigeTitle", descKey: "cardPrestigeDesc", href: "/guides/prestige", icon: <ArrowUpCircle className="h-8 w-8 text-yellow-400" />, tag: null, tagColor: "" },
+    ] as const;
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
-            {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-muted mb-8">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Guides</span>
+                <span className="text-white">{t("breadcrumbCurrent")}</span>
             </div>
 
-            {/* Hero */}
             <div className="flex items-center gap-4 mb-8">
                 <BookOpen className="h-12 w-12 text-accent-blue" />
-                <h1 className="text-4xl font-heading font-extrabold text-white m-0">Bizarre Lineage Guides</h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white m-0">{t("heroTitle")}</h1>
             </div>
 
-            <p className="text-xl text-muted leading-relaxed mb-10">
-                These guides mix public official Trello notes with site-maintained planner guidance. Pick a guide below based on whether you need verified progression info or local build suggestions.
-            </p>
+            <p className="text-xl text-muted leading-relaxed mb-10">{t("heroIntro")}</p>
 
-            {/* Guide Cards */}
             <div className="space-y-4">
                 {guides.map((guide) => (
                     <Link
@@ -99,12 +54,18 @@ export default function GuidesIndexPage() {
                         <div className="shrink-0">{guide.icon}</div>
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                                <h2 className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">{guide.title}</h2>
+                                <h2 className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">
+                                    {t(guide.titleKey as "cardStatsTitle" | "cardStandChancesTitle" | "cardBestBuildsTitle" | "cardAwakeningTitle" | "cardNightVampireTitle" | "cardLevelingTitle" | "cardPrestigeTitle")}
+                                </h2>
                                 {guide.tag && (
-                                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${guide.tagColor}`}>{guide.tag}</span>
+                                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${guide.tagColor}`}>
+                                        {t(guide.tag as "newTag")}
+                                    </span>
                                 )}
                             </div>
-                            <p className="text-sm text-muted">{guide.description}</p>
+                            <p className="text-sm text-muted">
+                                {t(guide.descKey as "cardStatsDesc" | "cardStandChancesDesc" | "cardBestBuildsDesc" | "cardAwakeningDesc" | "cardNightVampireDesc" | "cardLevelingDesc" | "cardPrestigeDesc")}
+                            </p>
                         </div>
                         <ChevronRight className="h-5 w-5 text-muted group-hover:text-accent-blue shrink-0 transition-colors" />
                     </Link>
