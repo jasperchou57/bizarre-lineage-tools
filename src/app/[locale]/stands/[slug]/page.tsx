@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import standsData from "@/data/stands.json";
 import skinsData from "@/data/skins.json";
 import { getStandImagePath, STAND_VIDEOS } from "@/data/stand-media";
+import { getStandTranslation } from "@/data/locale-data";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 // Evolution chains: source of truth for stand progression
@@ -41,40 +42,6 @@ function getRelatedStands(stand: typeof standsData[0]) {
         .filter(Boolean);
 }
 
-function generateFAQ(stand: typeof standsData[0]) {
-    const faqs = [
-        {
-            question: `Is ${stand.name} good in Bizarre Lineage?`,
-            answer: `${stand.name} is currently rated ${stand.tier.overall} Tier overall in our planner dataset, with ${stand.tier.pvp} in PvP and ${stand.tier.pve} in PvE. ${stand.meta}`,
-        },
-        {
-            question: `How do I get ${stand.name}?`,
-            answer: `${stand.name} is obtained via ${stand.obtainMethod}. ${stand.rarity === 'Special' ? 'This is an evolution-only Stand — follow the evolution quest path instead of using a Stand Arrow.' : 'Use Stand Arrows obtained from codes, quests, meteor spawns, chests, or raids.'}`,
-        },
-        {
-            question: `What is the best build for ${stand.name}?`,
-            answer: `Our planner recommends pairing ${stand.name} with ${stand.recommendedStyles[0]} fighting style and ${stand.recommendedSubs[0]} sub-ability for PvP. Use the Build Planner to test different combinations and find what works for your playstyle.`,
-        },
-        {
-            question: `What does ${stand.name} counter?`,
-            answer: stand.counters.length > 0
-                ? `${stand.name} is strong against ${stand.counters.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(' and ')}. ${stand.counteredBy.length > 0 ? `However, it struggles against ${stand.counteredBy.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(' and ')}.` : ''}`
-                : `${stand.name} does not have strong counters in the current meta. Focus on building around its strengths: ${stand.strengths[0]?.toLowerCase()}.`,
-        },
-    ];
-
-    const chain = getEvolutionChain(stand.id);
-    if (chain && chain.length > 1) {
-        const chainNames = chain.map(s => s!.name).join(' → ');
-        faqs.push({
-            question: `Does ${stand.name} have an evolution?`,
-            answer: `Yes. ${stand.name} is part of the evolution chain: ${chainNames}. ${stand.obtainMethod.startsWith('Evolve') ? `You evolve into ${stand.name} from the previous stage.` : `${stand.name} can evolve into the next stage through the in-game quest.`}`,
-        });
-    }
-
-    return faqs;
-}
-
 // Generate static routes for all stands
 export async function generateStaticParams() {
     return standsData.map((stand) => ({
@@ -105,12 +72,63 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
     const t = await getTranslations({ locale, namespace: "Stands" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
 
+    const stTrans = getStandTranslation(locale, stand.id);
+    const meta = stTrans?.meta ?? stand.meta;
+    const obtainMethod = stTrans?.obtainMethod ?? stand.obtainMethod;
+    const strengths = stTrans?.strengths ?? stand.strengths;
+    const weaknesses = stTrans?.weaknesses ?? stand.weaknesses;
+    const localizedMoves = stand.moves.map((m) => ({
+        ...m,
+        effect: stTrans?.moveEffects?.[m.name] ?? (m as { effect?: string }).effect,
+    }));
+
     const evolutionChain = getEvolutionChain(stand.id);
     const relatedStands = getRelatedStands(stand);
-    const faqs = generateFAQ(stand).map((faq, i) => ({
-        ...faq,
-        question: t(`faqQ${i + 1}` as `faqQ${1 | 2 | 3 | 4 | 5}`, { name: stand.name }),
-    }));
+
+    // Build translated FAQ with templated answers
+    const faqs: { question: string; answer: string }[] = [
+        {
+            question: t("faqQ1", { name: stand.name }),
+            answer: t("faqA1", { name: stand.name, tierOverall: stand.tier.overall, tierPvp: stand.tier.pvp, tierPve: stand.tier.pve, meta }),
+        },
+        {
+            question: t("faqQ2", { name: stand.name }),
+            answer: stand.rarity === "Special"
+                ? t("faqA2Special", { name: stand.name, obtainMethod })
+                : t("faqA2Normal", { name: stand.name, obtainMethod }),
+        },
+        {
+            question: t("faqQ3", { name: stand.name }),
+            answer: t("faqA3", { name: stand.name, style: stand.recommendedStyles[0], sub: stand.recommendedSubs[0] }),
+        },
+        {
+            question: t("faqQ4", { name: stand.name }),
+            answer: stand.counters.length > 0
+                ? (stand.counteredBy.length > 0
+                    ? t("faqA4WithCountersAndStruggle", {
+                        name: stand.name,
+                        counters: stand.counters.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(" / "),
+                        counteredBy: stand.counteredBy.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(" / "),
+                    })
+                    : t("faqA4WithCountersOnly", {
+                        name: stand.name,
+                        counters: stand.counters.map(id => standsData.find(s => s.id === id)?.name).filter(Boolean).join(" / "),
+                    }))
+                : t("faqA4None", { name: stand.name, strength: (strengths[0] || "").toLowerCase() }),
+        },
+    ];
+
+    const evChain = getEvolutionChain(stand.id);
+    if (evChain && evChain.length > 1) {
+        const chainNames = evChain.map(s => s!.name).join(" → ");
+        const isFirst = stand.obtainMethod.startsWith("Evolve");
+        faqs.push({
+            question: t("faqQ5", { name: stand.name }),
+            answer: isFirst
+                ? t("faqA5First", { name: stand.name, chain: chainNames })
+                : t("faqA5Last", { name: stand.name, chain: chainNames }),
+        });
+    }
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -203,7 +221,13 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                             {t("detailOverviewTitle")}
                         </h2>
                         <p className="text-muted leading-relaxed">
-                            The public official Trello is used here for move names and obtainment notes. On this site, {stand.name} is grouped under the local <strong className="text-white">{stand.rarity}</strong> label, obtained primarily via <strong className="text-white">{stand.obtainMethod}</strong>, and currently placed at <strong className="text-accent-blue">{stand.tier.overall} Tier</strong> in the planner dataset.
+                            {t.rich("overviewParagraph", {
+                                name: stand.name,
+                                rarity: stand.rarity,
+                                obtainMethod,
+                                tier: stand.tier.overall,
+                                strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                            })}
                         </p>
                     </section>
 
@@ -262,7 +286,7 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                     <section>
                         <h2 className="text-2xl font-bold text-white mb-4">{t("detailMovesTitle")}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            {stand.moves.map((move) => (
+                            {localizedMoves.map((move) => (
                                 <div key={move.name} className="bg-surface border border-border rounded-lg p-4">
                                     <div className="flex justify-between items-start mb-2">
                                         <span className="font-bold text-white">{move.name}</span>
@@ -278,12 +302,11 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                     <section>
                         <h2 className="text-2xl font-bold text-white mb-4">{t("detailHowToGetTitle", { name: stand.name })}</h2>
                         <p className="text-muted leading-relaxed">
-                            {stand.name} is obtained via <strong className="text-white">{stand.obtainMethod}</strong>.
-                            {stand.rarity === 'Special' ? (
-                                <> This is listed on the site as an evolution-only Stand. Follow the relevant official quest or evolution path instead of relying on a normal Arrow roll.</>
-                            ) : (
-                                <> The public Trello confirms the obtainment method, but it does not publish exact drop percentages on this page.</>
-                            )}
+                            {t.rich(stand.rarity === "Special" ? "howToGetSpecial" : "howToGetNormal", {
+                                name: stand.name,
+                                obtainMethod,
+                                strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                            })}
                         </p>
                     </section>
 
@@ -338,7 +361,12 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                                 <Sword className="h-5 w-5 text-accent-blue" /> {t("detailRecommendedPvpTitle")}
                             </h3>
                             <p className="text-muted mb-4">
-                                Our local planner currently pairs {stand.name} with <strong className="text-white capitalize">{stand.recommendedStyles[0]}</strong> and <strong className="text-white capitalize">{stand.recommendedSubs[0]}</strong>. This is a site recommendation, not an official balance callout.
+                                {t.rich("bestPvpDescription", {
+                                    name: stand.name,
+                                    style: stand.recommendedStyles[0],
+                                    sub: stand.recommendedSubs[0],
+                                    strong: (chunks) => <strong className="text-white capitalize">{chunks}</strong>,
+                                })}
                             </p>
                             <div className="flex flex-wrap gap-3">
                                 <Link href={`/build-planner?stand=${stand.id}&style=${stand.recommendedStyles[0]}&sub=${stand.recommendedSubs[0]}&mode=pvp`} className="text-sm font-bold text-accent-blue hover:text-white transition-colors border border-accent-blue/30 px-4 py-2 rounded-lg hover:bg-accent-blue/10">
@@ -354,23 +382,59 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">{stand.name} Stat Breakdown</h2>
+                        <h2 className="text-2xl font-bold text-white mb-4">{t("detailStatBreakdownTitle", { name: stand.name })}</h2>
                         <div className="bg-surface border border-border rounded-xl p-6 text-sm text-muted leading-relaxed space-y-3">
                             <p>
-                                {stand.name} scores <strong className="text-white">{stand.scores.damage}/10</strong> in Damage and <strong className="text-white">{stand.scores.combo}/10</strong> in Combo potential.
-                                {stand.scores.damage >= 8 ? ` This puts it among the hardest-hitting Stands in Bizarre Lineage, capable of deleting opponents in short combo windows.` : stand.scores.damage >= 6 ? ` This is solid mid-range damage — enough to trade effectively but not enough to one-combo most opponents.` : ` The lower damage means ${stand.name} relies more on utility, CC, or sustain to win fights rather than raw burst.`}
+                                {t.rich("statBreakdownP1Intro", {
+                                    name: stand.name,
+                                    damage: stand.scores.damage,
+                                    combo: stand.scores.combo,
+                                    strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                                })}
+                                {" "}
+                                {stand.scores.damage >= 8
+                                    ? t("statDamageHigh")
+                                    : stand.scores.damage >= 6
+                                        ? t("statDamageMid")
+                                        : t("statDamageLow", { name: stand.name })}
                             </p>
                             <p>
-                                For crowd control, {stand.name} sits at <strong className="text-white">{stand.scores.cc}/10</strong> CC with <strong className="text-white">{stand.scores.aoe}/10</strong> AoE coverage.
-                                {stand.scores.cc >= 8 ? ` The high CC rating means this Stand can lock opponents down reliably — critical for setting up combos or peeling for teammates in group fights.` : stand.scores.cc >= 5 ? ` The moderate CC gives you some control tools but you may need to rely on your fighting style for additional stun or grab options.` : ` Limited CC means you need to rely on prediction and positioning rather than lockdown. Pairing with a CC-heavy fighting style like Kendo helps compensate.`}
+                                {t.rich("statBreakdownP2Intro", {
+                                    name: stand.name,
+                                    cc: stand.scores.cc,
+                                    aoe: stand.scores.aoe,
+                                    strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                                })}
+                                {" "}
+                                {stand.scores.cc >= 8
+                                    ? t("statCcHigh")
+                                    : stand.scores.cc >= 5
+                                        ? t("statCcMid")
+                                        : t("statCcLow")}
                             </p>
                             <p>
-                                Mobility is rated <strong className="text-white">{stand.scores.mobility}/10</strong> and Sustain <strong className="text-white">{stand.scores.sustain}/10</strong>.
-                                {stand.scores.mobility >= 8 ? ` High mobility makes ${stand.name} excellent at chasing down opponents or disengaging from unfavorable fights.` : stand.scores.mobility <= 4 ? ` The low mobility is ${stand.name}'s biggest weakness — you need to commit to fights carefully since escaping is difficult.` : ` Average mobility means you can reposition but won't outrun dedicated speed Stands like Made in Heaven.`}
-                                {stand.scores.sustain >= 7 ? ` Strong sustain lets you win extended trades and stay in fights longer than most opponents expect.` : ` Consider pairing with Vampire sub-ability if you need more survivability in longer fights.`}
+                                {t.rich("statBreakdownP3Intro", {
+                                    mobility: stand.scores.mobility,
+                                    sustain: stand.scores.sustain,
+                                    strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                                })}
+                                {" "}
+                                {stand.scores.mobility >= 8
+                                    ? t("statMobilityHigh", { name: stand.name })
+                                    : stand.scores.mobility <= 4
+                                        ? t("statMobilityLow", { name: stand.name })
+                                        : t("statMobilityMid")}
+                                {stand.scores.sustain >= 7 ? t("statSustainHigh") : t("statSustainOther")}
                             </p>
                             <p>
-                                {stand.name} is classified as <strong className="text-white">{stand.rarity}</strong> rarity and requires <strong className="text-white">{stand.awakening.required} Conjuration</strong> for Stand Awakening. {stand.awakening.required >= 120 ? `The higher awakening threshold means you need more combat experience before unlocking the full potential of this Stand.` : `The relatively low awakening requirement lets you access the awakened moveset earlier than many other Stands.`}
+                                {t.rich("statBreakdownP4Intro", {
+                                    name: stand.name,
+                                    rarity: stand.rarity,
+                                    awakening: stand.awakening.required,
+                                    strong: (chunks) => <strong className="text-white">{chunks}</strong>,
+                                })}
+                                {" "}
+                                {stand.awakening.required >= 120 ? t("statAwakeningHigh") : t("statAwakeningLow")}
                             </p>
                         </div>
                     </section>
@@ -382,26 +446,46 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                                 <span className="text-red-400 font-bold">&times;</span>
                                 <span>
                                     {stand.scores.mobility <= 4
-                                        ? `Trying to chase opponents without a gap closer. ${stand.name} has ${stand.scores.mobility}/10 mobility — you lose chases against faster Stands. Use your CC to force fights on your terms instead.`
+                                        ? t("mistake1MobLow", { name: stand.name, mobility: stand.scores.mobility })
                                         : stand.scores.damage >= 9
-                                            ? `Over-relying on raw damage and forgetting to block or dodge. ${stand.name} hits hard but can get punished if you play too aggressively without confirming hits first.`
-                                            : `Picking ${stand.name} without testing the recommended ${stand.recommendedStyles[0]} pairing first. The planner suggests it for a reason — it covers ${stand.name}'s gaps in ${stand.scores.cc < 5 ? 'crowd control' : stand.scores.mobility < 5 ? 'mobility' : 'sustain'}.`}
+                                            ? t("mistake1DmgHigh", { name: stand.name })
+                                            : t("mistake1Default", {
+                                                name: stand.name,
+                                                style: stand.recommendedStyles[0],
+                                                gap: stand.scores.cc < 5
+                                                    ? t("mistakeGapCC")
+                                                    : stand.scores.mobility < 5
+                                                        ? t("mistakeGapMobility")
+                                                        : t("mistakeGapSustain"),
+                                            })}
                                 </span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
                                 <span>
                                     {stand.counteredBy.length > 0
-                                        ? `Queueing into ${standsData.find(s => s.id === stand.counteredBy[0])?.name || 'your counters'} without a plan. ${stand.name} struggles in this matchup — ${stand.scores.mobility >= 7 ? 'use your mobility to disengage and wait for cooldowns' : 'bait their key abilities before committing to a combo'}.`
-                                        : `Ignoring your Stand Awakening. ${stand.name} needs ${stand.awakening.required} Conjuration to awaken — grind this early because the awakened moveset significantly changes how you play.`}
+                                        ? (stand.scores.mobility >= 7
+                                            ? t("mistake2HasCountersHighMob", {
+                                                name: stand.name,
+                                                firstCounter: standsData.find(s => s.id === stand.counteredBy[0])?.name || stand.counteredBy[0],
+                                            })
+                                            : t("mistake2HasCountersLowMob", {
+                                                name: stand.name,
+                                                firstCounter: standsData.find(s => s.id === stand.counteredBy[0])?.name || stand.counteredBy[0],
+                                            }))
+                                        : t("mistake2NoCounters", { name: stand.name, awakening: stand.awakening.required })}
                                 </span>
                             </li>
                             <li className="flex items-start gap-2">
                                 <span className="text-red-400 font-bold">&times;</span>
                                 <span>
                                     {stand.tier.pvp !== stand.tier.pve
-                                        ? `Using your PvP build for PvE (or vice versa). ${stand.name} is rated ${stand.tier.pvp} in PvP but ${stand.tier.pve} in PvE — these are different contexts that may call for different style and sub-ability pairings.`
-                                        : `Skipping the Build Planner entirely. Even if you know ${stand.name} well, testing different style and sub combos in the planner can reveal setups you haven't considered.`}
+                                        ? t("mistake3DiffTiers", {
+                                            name: stand.name,
+                                            pvpTier: stand.tier.pvp,
+                                            pveTier: stand.tier.pve,
+                                        })
+                                        : t("mistake3SameTiers", { name: stand.name })}
                                 </span>
                             </li>
                         </ul>
@@ -564,13 +648,13 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                         <div className="mb-4">
                             <h4 className="text-sm font-bold text-green-400 mb-2 uppercase tracking-wide">{t("detailStrengths")}</h4>
                             <ul className="text-sm text-muted space-y-1 list-disc list-inside">
-                                {stand.strengths.map(s => <li key={s}>{s}</li>)}
+                                {strengths.map(s => <li key={s}>{s}</li>)}
                             </ul>
                         </div>
                         <div>
                             <h4 className="text-sm font-bold text-red-400 mb-2 uppercase tracking-wide">{t("detailWeaknesses")}</h4>
                             <ul className="text-sm text-muted space-y-1 list-disc list-inside">
-                                {stand.weaknesses.map(w => <li key={w}>{w}</li>)}
+                                {weaknesses.map(w => <li key={w}>{w}</li>)}
                             </ul>
                         </div>
                     </div>

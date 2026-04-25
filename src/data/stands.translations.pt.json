@@ -1,0 +1,339 @@
+{
+    "whitesnake": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em controle com fortes ferramentas de disrupção.",
+        "strengths": [
+            "Cadeia de controle forte",
+            "Disc Extraction pode virar duelos apertados",
+            "AoE forte"
+        ],
+        "weaknesses": [
+            "Mobilidade baixa",
+            "Sofre contra Stands de velocidade"
+        ],
+        "moveEffects": {
+            "Sweep Kick": "Chute rasteiro poderoso, empurra o oponente para trás",
+            "Revolver": "Tiro rápido de revólver",
+            "Disc Throw": "Joga 3 discos flamejantes que queimam ao impactar",
+            "Acid Rupture": "Líquido ácido torna o chão perigoso, faz o oponente dormir",
+            "Disc Extraction": "Rouba o Stand do oponente por ~6 segundos"
+        }
+    },
+    "made-in-heaven": {
+        "obtainMethod": "Evoluir C-Moon",
+        "meta": "Stand de evolução focado em mobilidade com fortes ferramentas de perseguição e desengajamento.",
+        "strengths": [
+            "Mobilidade muito alta",
+            "Difícil de prender quando bufado"
+        ],
+        "weaknesses": [
+            "Squishy",
+            "Requer setup"
+        ],
+        "moveEffects": {
+            "Infinite Pursuit": "Dash punch em combo de teletransporte multi-hit. Tem follow-up.",
+            "Heaven's Wrath": "Dash em alta velocidade através do oponente",
+            "Knife Massacre": "Invoca facas do alto. Pressione X de novo para empalar e girar combo.",
+            "Light Speed": "Dash em alta velocidade rumo ao oponente",
+            "Acceleration": "Acelera o tempo gradualmente, aumentando velocidade continuamente"
+        }
+    },
+    "star-platinum": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "All-rounder com moveset direto.",
+        "strengths": [
+            "Burst single-target alto",
+            "Time Stop cria follow-ups confiáveis"
+        ],
+        "weaknesses": [
+            "AoE baixo",
+            "Neutro previsível"
+        ],
+        "moveEffects": {
+            "Star Finger": "Corte circular de dedo, atordoa brevemente",
+            "Inhale": "Puxa o oponente com sucção e o slama",
+            "Skull Crusher": "Agarra, gira, joga no ar e dá uppercut",
+            "Harpoon": "Joga arpão de pesca, aplica sangramento por ~3 segundos",
+            "Time Stop": "Para o tempo por ~5 segundos"
+        }
+    },
+    "the-world": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em burst com fortes janelas de punição.",
+        "strengths": [
+            "Dano base muito alto",
+            "Janela longa de Time Stop"
+        ],
+        "weaknesses": [
+            "Cooldowns altos",
+            "Vulnerável após TS errado"
+        ],
+        "moveEffects": {
+            "Hard Right": "Soco poderoso que empurra o oponente",
+            "Encirclement": "Teletransporta para o oponente e ataca com facas invocadas",
+            "Knives": "Invoca e joga facas com força total",
+            "Timestop": "Para o tempo por ~6 segundos",
+            "Kick Volley": "Uppercut em chutes rápidos, afasta o oponente"
+        }
+    },
+    "killer-queen": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em AoE que o site favorece mais para farm do que duelos.",
+        "strengths": [
+            "Forte negação de área",
+            "Útil para farming PvE"
+        ],
+        "weaknesses": [
+            "Combos lentos",
+            "Sofre rushdown facilmente"
+        ],
+        "moveEffects": {
+            "Primary Bomb": "Agarra o oponente e planta bomba, depois detona. Pressione R duas vezes.",
+            "Sheer Heart Attack": "Implanta drone de tracking automático que explode no contato",
+            "Stray Cat": "Atira bolha de tracking invisível que explode no impacto",
+            "Bomb Bounce": "Planta bomba no oponente, detona repetidamente, atordoa",
+            "Learn To Be Tough": "Agarra e bate a cabeça do oponente no chão repetidamente"
+        }
+    },
+    "crazy-diamond": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em utility com healing e ferramentas de duelo.",
+        "passive": "Rage Mode: quando recebe muito dano, dano causado aumenta em ~15%",
+        "strengths": [
+            "Forte acesso a healing",
+            "Forte potencial de combo se Rock Trap conectar"
+        ],
+        "weaknesses": [
+            "Baixo alcance",
+            "Difícil ganhar neutro"
+        ],
+        "moveEffects": {
+            "Heavy Punch": "Soco pesado poderoso, pressione R de novo para puxar o inimigo de volta com pequeno heal",
+            "Bearing Shot": "Atira 2 esferas de prata letais",
+            "Heal Mode": "Ativa modo de restauração, cura tudo que acerta. Variante de curto alcance: agarra oponente e bate no chão repetidamente",
+            "Wall Smash": "Levanta pedaço do chão para empurrar oponente contra parede de pedra. Variante heal restaura o chão em parede",
+            "Pulverizer": "Slam no chão, restaura pedras no oponente para imobilizá-lo"
+        }
+    },
+    "king-crimson": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em duelo com burst e reposicionamento.",
+        "strengths": [
+            "Time Erase permite engage/disengage livre",
+            "Burst alto"
+        ],
+        "weaknesses": [
+            "Ferramentas limitadas para PvE farming",
+            "Teto de skill alto"
+        ],
+        "moveEffects": {
+            "Chop": "Golpe descendente poderoso",
+            "Impale": "Slash diagonal, time erase atrás do oponente, empala e slama. Pressione Z duas vezes.",
+            "Time Erase": "Torna-se intangível, reposiciona livremente, ataca de ângulo inesperado",
+            "Epitaph": "Vê 10s no futuro, contra-ataca por trás com soco forte",
+            "Eye Gouge": "Cega o oponente por ~4 segundos"
+        }
+    },
+    "c-moon": {
+        "obtainMethod": "Evoluir Whitesnake",
+        "meta": "Stand de evolução focado em gravidade e passo de progressão para Made in Heaven.",
+        "strengths": [
+            "Auto-combo potencial com Gravity Barrier",
+            "Dano alto de bleed"
+        ],
+        "weaknesses": [
+            "Hitboxes esquisitos",
+            "Erros punidos"
+        ],
+        "moveEffects": {
+            "Graviton Reversal": "Soco que afasta, gravidade puxa de volta para segundo slam",
+            "Rock Barrage": "Levanta pedaços do chão e lança no oponente, atordoa",
+            "Gravity Crusher": "Aplica gravidade pesada no oponente, atordoa",
+            "Gravity Barrier": "Slam no chão, onda de gravidade levanta e slama oponentes",
+            "Piercing Blows": "Dois hits potencializados por gravidade, empurram oponente"
+        }
+    },
+    "weather-report": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand pesado em AoE frequentemente usado nas recomendações PvE do site.",
+        "strengths": [
+            "AoE de tela inteira",
+            "Forte clearing de missões",
+            "CC do Heavy Weather"
+        ],
+        "weaknesses": [
+            "Dano single-target baixo",
+            "Golpes ranged têm windup longo"
+        ],
+        "moveEffects": {
+            "Howling Blitz": "Explosão de raio que empurra oponente. Se acertar, pressione R de novo para dash em traje de astronauta, agarra e eletrocuta. Traje dá +altura de pulo e ~22% de defesa",
+            "Charged Vault": "Carga com poder climático, agarra oponente e slama com raio",
+            "Frog Downpour": "Invoca sapos venenosos do céu, dano em inimigos próximos",
+            "Heavy Weather": "Arco-íris transforma inimigos em caracóis, atordoa por ~3s. Pode segurar.",
+            "Ice Nova": "Slam no chão, gelo se espalha em 4 direções, atordoa oponentes"
+        }
+    },
+    "anubis": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em melee, performa melhor em duelos próximos do que em lutas em mundo aberto.",
+        "strengths": [
+            "Output de dano melee muito alto",
+            "Cadeias de combo rápidas",
+            "Ataques M1 customizados"
+        ],
+        "weaknesses": [
+            "Zero opções ranged",
+            "Sem AoE",
+            "Sofre em lutas em grupo"
+        ],
+        "moveEffects": {
+            "Rend": "Slash giratório, atinge todos ao redor",
+            "Dice Cut": "Dash slice, follow-up com slash diagonal em slam slash, atordoa",
+            "Cursed Severance": "Slash extra-poderoso, atordoa oponente. Se acertar, pressione X de novo para atacar de novo cortando o oponente",
+            "Flash Strike": "Slashes em alta velocidade com múltiplos follow-ups invisíveis"
+        }
+    },
+    "golden-experience": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand de utility balanceado com fortes mecânicas de heal e reflexão.",
+        "strengths": [
+            "Sustain por self-healing",
+            "Kit versátil",
+            "Sapo reflete dano de volta para atacantes"
+        ],
+        "weaknesses": [
+            "Dano bruto abaixo da média",
+            "Startup lento no Z"
+        ],
+        "moveEffects": {
+            "Soul Strike": "Soco carregado que tira a alma do corpo por ~2s",
+            "Restoration": "Quebra pedaço do chão para criar item de cura",
+            "Root Strike": "Uppercut em raízes perseguidoras que esfaqueiam o oponente",
+            "Overgrowth": "Invoca uma árvore que cura o usuário",
+            "Frog": "Invoca sapo que reflete dano para atacante por ~7-8s"
+        }
+    },
+    "magicians-red": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Opção de farm com menor compromisso para contas novas.",
+        "strengths": [
+            "Cobertura AoE alta",
+            "Útil para grinding de quests",
+            "Etiqueta de raridade local mais baixa"
+        ],
+        "weaknesses": [
+            "Golpes lentos",
+            "Sem ferramentas de mobilidade",
+            "Fraco contra rushdown"
+        ],
+        "moveEffects": {
+            "Flamethrower": "Sopro de fogo que queima inimigos por ~2 segundos",
+            "Life Sensor": "Bússola de fogo que revela entidades próximas e atira bolas de fogo",
+            "Crossfire Hurricane": "Atira cruz de fogo que cria zona de chama AoE no impacto",
+            "Ignition Burst": "Slam no chão, 4 colunas de chama erupcionam e arrastam oponente através delas"
+        }
+    },
+    "purple-haze": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Stand focado em dano de alto risco com pressão de veneno.",
+        "passive": "Idle Rage: quando recebe muito dano, Purple Haze enlouquece e ataca todos próximos incluindo o usuário. Poisoning Bulbs: ataques baseados em bulbs aplicam poison DoT no contato.",
+        "strengths": [
+            "Dano single-target muito alto",
+            "Negação de área com veneno",
+            "Ameaçador em duelos próximos"
+        ],
+        "weaknesses": [
+            "Idle Rage pode machucar o usuário",
+            "Mobilidade baixa",
+            "Veneno pode atingir aliados"
+        ],
+        "moveEffects": {
+            "Bulb Punch": "Quebra bulb venenoso nos punhos, auto-trackeia oponente próximo",
+            "Fury Strike": "Soco no estômago em soco de bulb, envenena brevemente",
+            "Infection Frenzy": "Agarra, slama no chão, ataca com socos venenosos, chuta para longe",
+            "Infectious Bulb": "Atira 3 bulbs venenosos que se espalham no impacto",
+            "Bulb Smash": "Smash no chão, envenena área ao redor"
+        }
+    },
+    "the-hand": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Opção de burst de curto alcance construída ao redor do Erasure Pull.",
+        "strengths": [
+            "Ataques que ignoram defesa",
+            "Erasure Pull é gap-closer",
+            "Etiqueta de raridade local mais baixa"
+        ],
+        "weaknesses": [
+            "Alcance curto na maioria dos golpes",
+            "Sem sustain",
+            "Combos previsíveis"
+        ],
+        "moveEffects": {
+            "Hard Left": "Soco esquerdo poderoso, empurra oponente",
+            "Erasure Swipe": "Swipe carregado que atordoa; totalmente carregado pode apagar da existência",
+            "Erasure Pull": "Apaga espaço entre usuário e oponente, força-o em sua direção",
+            "Erasure Launch": "Apaga espaço no ar, lança usuário para cima como estilingue"
+        }
+    },
+    "stone-free": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "All-rounder flexível nas notas do planejador do site.",
+        "strengths": [
+            "Versátil em todos os alcances",
+            "String Trap fornece CC confiável",
+            "Boa mobilidade"
+        ],
+        "weaknesses": [
+            "Kit balanceado sem uma especialidade extrema",
+            "Sem golpe de burst marcante"
+        ],
+        "moveEffects": {
+            "Sting Punch": "Soco poderoso envolto em fios",
+            "Dropkick": "Envolve oponente com fios, depois dropkick",
+            "String Trap": "Coloca fio embaixo da terra, prende inimigos por ~2s",
+            "Spiralling Thread": "Agarra com fios, gira no ar, slama no chão",
+            "String Bandage": "Costura feridas com fios para se curar"
+        }
+    },
+    "the-world-high-voltage": {
+        "obtainMethod": "Evoluir The World",
+        "meta": "Stand de evolução com fortes opções de engage e escape.",
+        "strengths": [
+            "Time Stop cria aberturas muito fortes",
+            "Forte mistura de ranged e melee",
+            "Smoke bomb para escape e stealth"
+        ],
+        "weaknesses": [
+            "Baseado em evolução e maior compromisso para montar",
+            "Evolução requerida",
+            "Teto de skill alto"
+        ],
+        "moveEffects": {
+            "Spin Kick": "Stand gira e chuta oponente",
+            "Revolver Barrage": "Atira 4 tiros de revólver simultaneamente, atordoa",
+            "Knives": "Joga facas letais, atordoa oponente",
+            "Time Stop": "Para o tempo por ~5 segundos",
+            "Gunpowder Smoke Bomb": "Joga bomba de fumaça, usuário e stand ficam invisíveis na fumaça"
+        }
+    },
+    "red-hot-chili-pepper": {
+        "obtainMethod": "Stand Arrow",
+        "meta": "Opção early-game que normalmente é substituída depois.",
+        "strengths": [
+            "Flash dá mobilidade útil",
+            "Etiqueta de raridade local mais baixa",
+            "Bom para upar Conjuration cedo"
+        ],
+        "weaknesses": [
+            "Output de dano baixo",
+            "Cai abruptamente após early game",
+            "Sem dano sustentado"
+        ],
+        "moveEffects": {
+            "Thunder God": "Slam de trovão no chão, cria zona AoE elétrica",
+            "Flash": "Teletransporta para frente com rastro elétrico de dano",
+            "Pinky Slash": "Slash duplo elétrico de mindinho, atordoa oponente",
+            "Electrical Surge": "Combo elétrico de poder total, atordoa oponente"
+        }
+    }
+}
