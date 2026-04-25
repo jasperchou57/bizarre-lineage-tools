@@ -1,43 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Link } from "@/i18n/navigation";
+import { useState, useEffect, useRef } from "react";
 import { Database, Download, Trash2, ArrowRightLeft, Target, Shield, Zap, Upload } from "lucide-react";
-import { useRef } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { trackEvent } from "@/lib/analytics";
 import standsData from "@/data/stands.json";
 
 export default function VaultPage() {
+    const t = useTranslations("Vault");
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [vault, setVault] = useLocalStorage<any[]>("bl-vault", []);
     const [selectedForCompare, setSelectedForCompare] = useState<string[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    // Need to ensure we're rendering on client to avoid hydration mismatch with localStorage
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => {
         setIsMounted(true);
-        trackEvent('vault_open', { builds_count: vault.length });
+        trackEvent("vault_open", { builds_count: vault.length });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (!isMounted) return null;
 
     const handleDelete = (id: string) => {
-        if (confirm("Delete this build?")) {
-            setVault(vault.filter(b => b.id !== id));
-            setSelectedForCompare(selectedForCompare.filter(sel => sel !== id));
+        if (confirm(t("deleteConfirm"))) {
+            setVault(vault.filter((b) => b.id !== id));
+            setSelectedForCompare(selectedForCompare.filter((sel) => sel !== id));
         }
     };
 
     const handleExport = () => {
-        trackEvent('vault_export', { builds_count: vault.length });
+        trackEvent("vault_export", { builds_count: vault.length });
         const blob = new Blob([JSON.stringify(vault, null, 2)], { type: "application/json" });
         const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
-        a.download = `bizarre_lineage_vault_${new Date().toISOString().split('T')[0]}.json`;
+        a.download = `bizarre_lineage_vault_${new Date().toISOString().split("T")[0]}.json`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -53,22 +53,20 @@ export default function VaultPage() {
             try {
                 const importedData = JSON.parse(event.target?.result as string);
                 if (Array.isArray(importedData)) {
-                    // Simple merge: keep existing, add new if ID doesn't exist
-                    const existingIds = new Set(vault.map(b => b.id));
-                    const newBuilds = importedData.filter(b => !existingIds.has(b.id));
+                    const existingIds = new Set(vault.map((b) => b.id));
+                    const newBuilds = importedData.filter((b) => !existingIds.has(b.id));
                     if (newBuilds.length > 0) {
                         setVault([...vault, ...newBuilds]);
-                        alert(`Successfully imported ${newBuilds.length} builds!`);
+                        alert(t("importedSuccess", { count: newBuilds.length }));
                     } else {
-                        alert("No new builds found in the imported file.");
+                        alert(t("importedNoneNew"));
                     }
                 } else {
-                    alert("Invalid backup file format.");
+                    alert(t("importedInvalid"));
                 }
             } catch {
-                alert("Failed to parse the backup file.");
+                alert(t("importedFailParse"));
             }
-            // Reset input
             if (fileInputRef.current) fileInputRef.current.value = "";
         };
         reader.readAsText(file);
@@ -76,7 +74,7 @@ export default function VaultPage() {
 
     const toggleCompare = (id: string) => {
         if (selectedForCompare.includes(id)) {
-            setSelectedForCompare(selectedForCompare.filter(sel => sel !== id));
+            setSelectedForCompare(selectedForCompare.filter((sel) => sel !== id));
         } else {
             if (selectedForCompare.length < 2) {
                 setSelectedForCompare([...selectedForCompare, id]);
@@ -90,11 +88,9 @@ export default function VaultPage() {
                 <div>
                     <h1 className="text-4xl font-heading font-extrabold text-white flex items-center gap-3">
                         <Database className="h-8 w-8 text-accent-blue" />
-                        Your Vault
+                        {t("yourVault")}
                     </h1>
-                    <p className="text-muted mt-2">
-                        {vault.length} stored builds. Data is saved locally in this browser.
-                    </p>
+                    <p className="text-muted mt-2">{t("subtitle", { count: vault.length })}</p>
                 </div>
 
                 <div className="flex gap-4">
@@ -103,7 +99,7 @@ export default function VaultPage() {
                             href={`/compare?a=${selectedForCompare[0]}&b=${selectedForCompare[1]}`}
                             className="px-6 py-2 bg-accent-indigo rounded-lg text-white font-bold flex items-center gap-2 shadow-[0_0_15px_rgba(99,102,241,0.4)] animate-pulse"
                         >
-                            <ArrowRightLeft className="h-4 w-4" /> Compare Selected
+                            <ArrowRightLeft className="h-4 w-4" /> {t("compareSelected")}
                         </Link>
                     )}
                     <button
@@ -111,7 +107,7 @@ export default function VaultPage() {
                         disabled={vault.length === 0}
                         className="px-6 py-2 bg-surface border border-white/10 rounded-lg text-white font-medium flex items-center gap-2 hover:bg-white/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Download className="h-4 w-4" /> Export Backup
+                        <Download className="h-4 w-4" /> {t("exportBackup")}
                     </button>
 
                     <input
@@ -125,7 +121,7 @@ export default function VaultPage() {
                         onClick={() => fileInputRef.current?.click()}
                         className="px-6 py-2 bg-surface border border-white/10 rounded-lg text-white font-medium flex items-center gap-2 hover:bg-white/5 transition-colors"
                     >
-                        <Upload className="h-4 w-4" /> Import Backup
+                        <Upload className="h-4 w-4" /> {t("importBackup")}
                     </button>
                 </div>
             </div>
@@ -133,28 +129,29 @@ export default function VaultPage() {
             {vault.length === 0 ? (
                 <div className="bg-surface border border-border rounded-xl p-12 text-center">
                     <Database className="h-16 w-16 text-muted mx-auto mb-4 opacity-50" />
-                    <h2 className="text-2xl font-bold text-white mb-2">Vault is Empty</h2>
-                    <p className="text-muted mb-6">Create and save planner builds to store them here.</p>
+                    <h2 className="text-2xl font-bold text-white mb-2">{t("emptyTitle")}</h2>
+                    <p className="text-muted mb-6">{t("emptyBody")}</p>
                     <Link href="/build-planner" className="px-6 py-3 bg-accent-blue rounded-lg text-white font-bold inline-block hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all">
-                        Open Build Planner
+                        {t("emptyCta")}
                     </Link>
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {vault.map(build => {
-                        const standName = standsData.find(s => s.id === build.stand)?.name || build.stand;
+                    {vault.map((build) => {
+                        const standName = standsData.find((s) => s.id === build.stand)?.name || build.stand;
                         const isSelected = selectedForCompare.includes(build.id);
 
                         return (
                             <div
                                 key={build.id}
-                                className={`bg-surface border rounded-xl p-6 transition-all ${isSelected ? 'border-accent-indigo shadow-[0_0_20px_rgba(99,102,241,0.2)]' : 'border-border hover:border-white/20'
-                                    }`}
+                                className={`bg-surface border rounded-xl p-6 transition-all ${isSelected ? "border-accent-indigo shadow-[0_0_20px_rgba(99,102,241,0.2)]" : "border-border hover:border-white/20"}`}
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <h3 className="text-xl font-bold text-white mb-1">{build.name}</h3>
-                                        <p className="text-xs text-muted">Profile: {build.patchVersion} | Saved: {new Date(build.createdAt).toLocaleDateString()}</p>
+                                        <p className="text-xs text-muted">
+                                            {t("buildSavedLabel", { version: build.patchVersion, date: new Date(build.createdAt).toLocaleDateString() })}
+                                        </p>
                                     </div>
                                     <button
                                         onClick={() => handleDelete(build.id)}
@@ -172,15 +169,15 @@ export default function VaultPage() {
 
                                 <div className="grid grid-cols-2 gap-y-2 mb-6">
                                     <div className="text-xs text-muted flex items-center justify-between pr-4">
-                                        <span className="flex items-center gap-1"><Target className="h-3 w-3" /> PvP</span>
+                                        <span className="flex items-center gap-1"><Target className="h-3 w-3" /> {t("scorePvp")}</span>
                                         <strong className="text-white">{build.scores.pvp}</strong>
                                     </div>
                                     <div className="text-xs text-muted flex items-center justify-between pr-4">
-                                        <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> PvE</span>
+                                        <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> {t("scorePve")}</span>
                                         <strong className="text-white">{build.scores.pve}</strong>
                                     </div>
                                     <div className="text-xs text-muted flex items-center justify-between pr-4">
-                                        <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> Surv</span>
+                                        <span className="flex items-center gap-1"><Shield className="h-3 w-3" /> {t("scoreSurvival")}</span>
                                         <strong className="text-white">{build.scores.survival}</strong>
                                     </div>
                                 </div>
@@ -190,16 +187,13 @@ export default function VaultPage() {
                                         href={`/build-planner?stand=${build.stand}&style=${build.style}&sub=${build.sub}`}
                                         className="flex-1 py-2 text-center text-sm font-medium border border-white/10 rounded-lg text-white hover:bg-white/5 transition-colors"
                                     >
-                                        Load
+                                        {t("loadBtn")}
                                     </Link>
                                     <button
                                         onClick={() => toggleCompare(build.id)}
-                                        className={`flex-1 py-2 text-center text-sm font-bold rounded-lg border transition-colors ${isSelected
-                                            ? 'bg-accent-indigo text-white border-accent-indigo'
-                                            : 'bg-transparent border-white/10 text-muted hover:text-white'
-                                            }`}
+                                        className={`flex-1 py-2 text-center text-sm font-bold rounded-lg border transition-colors ${isSelected ? "bg-accent-indigo text-white border-accent-indigo" : "bg-transparent border-white/10 text-muted hover:text-white"}`}
                                     >
-                                        {isSelected ? 'Selected' : 'Compare'}
+                                        {isSelected ? t("selectedBtn") : t("compareBtn")}
                                     </button>
                                 </div>
                             </div>
