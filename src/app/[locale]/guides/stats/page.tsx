@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, BarChart3, Heart, Zap, Shield, Sword, Flame, Sparkles } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
@@ -134,27 +134,28 @@ const faqItems = [
     },
 ];
 
-export default function StatsGuidePage() {
+export default async function StatsGuidePage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
-            {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-muted mb-8">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Guides</span>
+                <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Stats</span>
+                <span className="text-white">{t("statsBreadcrumb")}</span>
             </div>
 
-            {/* Hero */}
             <div className="flex items-center gap-4 mb-8">
                 <BarChart3 className="h-12 w-12 text-accent-blue" />
-                <h1 className="text-4xl font-heading font-extrabold text-white m-0">Bizarre Lineage Stats Guide</h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white m-0">{t("stats.heroTitle")}</h1>
             </div>
 
-            <p className="text-xl text-muted leading-relaxed mb-10">
-                Stats are the foundation of every build in Bizarre Lineage. This guide explains what each stat does, how the public stat definitions map to gameplay, and which site-maintained presets can serve as a practical starting point.
-            </p>
+            <p className="text-xl text-muted leading-relaxed mb-10">{t("statsIntro")}</p>
 
             {/* What Each Stat Does */}
             <div className="prose prose-invert max-w-none">

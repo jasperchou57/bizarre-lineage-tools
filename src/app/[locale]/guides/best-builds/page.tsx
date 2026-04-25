@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Wrench, Sword, Activity, Shield, Zap, Users } from "lucide-react";
 import { withCanonical } from "@/lib/metadata";
@@ -205,27 +205,28 @@ const faqItems = [
     },
 ];
 
-export default function BestBuildsPage() {
+export default async function BestBuildsPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
-            {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-muted mb-8">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Guides</span>
+                <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Best Builds</span>
+                <span className="text-white">{t("bestBuildsBreadcrumb")}</span>
             </div>
 
-            {/* Hero */}
             <div className="flex items-center gap-4 mb-8">
                 <Wrench className="h-12 w-12 text-accent-indigo" />
-                <h1 className="text-4xl font-heading font-extrabold text-white m-0">Best Builds in Bizarre Lineage</h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white m-0">{t("bestBuilds.heroTitle")}</h1>
             </div>
 
-            <p className="text-xl text-muted leading-relaxed mb-4">
-                These are site-maintained community build ideas for different playstyles. They are not official rankings or patch notes. Each build links directly to the <Link href="/build-planner" className="text-accent-blue hover:underline">Build Planner</Link> so you can customize the local estimates further.
-            </p>
+            <p className="text-xl text-muted leading-relaxed mb-4">{t("bestBuildsIntro")}</p>
 
             <p className="text-sm text-muted mb-10">
                 Looking for individual Stand rankings instead? Check the <Link href="/tier-list" className="text-accent-blue hover:underline">full Tier List</Link> for the site&apos;s PvP, PvE, and overall ranking view.

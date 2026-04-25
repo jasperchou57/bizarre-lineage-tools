@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ChevronRight, Dice6, Gem, Crown, Star, Sparkles, CircleDot } from "lucide-react";
 import standsData from "@/data/stands.json";
@@ -113,27 +113,28 @@ const faqItems = [
     },
 ];
 
-export default function StandChancesPage() {
+export default async function StandChancesPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
+    const t = await getTranslations({ locale, namespace: "Guides" });
+    const tCommon = await getTranslations({ locale, namespace: "Common" });
+
     return (
         <div className="container mx-auto px-4 py-8 max-w-4xl">
-            {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-sm text-muted mb-8">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="hover:text-white transition-colors">{tCommon("breadcrumbHome")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Guides</span>
+                <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white">Stand Chances</span>
+                <span className="text-white">{t("standChancesBreadcrumb")}</span>
             </div>
 
-            {/* Hero */}
             <div className="flex items-center gap-4 mb-8">
                 <Dice6 className="h-12 w-12 text-accent-indigo" />
-                <h1 className="text-4xl font-heading font-extrabold text-white m-0">Stand Chances & Rarity Guide</h1>
+                <h1 className="text-4xl font-heading font-extrabold text-white m-0">{t("standChances.heroTitle")}</h1>
             </div>
 
-            <p className="text-xl text-muted leading-relaxed mb-10">
-                The public official Trello confirms how to obtain Stand Arrows and documents evolution paths, but it does not publish a full official percentage table for every Stand. This page uses local site labels to group Stands while calling out what is and is not officially documented.
-            </p>
+            <p className="text-xl text-muted leading-relaxed mb-10">{t("standChancesIntro")}</p>
 
             <div className="bg-surface border border-border rounded-xl p-6 mb-10">
                 <p className="text-sm text-muted leading-relaxed">
