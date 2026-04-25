@@ -1,0 +1,178 @@
+{
+    "Stand Arrow": {
+        "effect": "Concede um Stand aleatório quando usada. O item fundamental para conseguir um Stand.",
+        "sources": ["Spawns no chão", "Common / Rare / Legendary Chests", "Códigos"]
+    },
+    "Lucky Arrow": {
+        "effect": "Garante uma skin aleatória no seu Stand atual.",
+        "sources": ["Prestige Shop", "Lojas de Raid", "Legendary Chests"]
+    },
+    "Stone Mask": {
+        "effect": "Rejeitar sua humanidade transforma você em Vampiro (sub-habilidade).",
+        "sources": ["Loja", "Common / Rare / Legendary Chests"]
+    },
+    "Stat Point Essence": {
+        "effect": "Reseta seus pontos de stat ao ser usado.",
+        "sources": ["Prestige Shop", "Loja do Rahaj", "Robux Shop"]
+    },
+    "Stand Skin Essence": {
+        "effect": "Dá ao seu Stand atual uma skin aleatória ao ser usado.",
+        "sources": ["Prestige Shop", "Robux Shop", "Conquistas"]
+    },
+    "Stand Stat Essence": {
+        "effect": "Reroleia os stats do seu Stand ao ser usado.",
+        "sources": ["Prestige Shop", "Robux Shop"]
+    },
+    "Stand Personality Essence": {
+        "effect": "Reroleia a Personality do seu Stand ao ser usado.",
+        "sources": ["Prestige Shop", "Robux Shop"]
+    },
+    "Stand Conjuration Essence": {
+        "effect": "Maxa a Conjuration do seu Stand equipado ao ser usado.",
+        "sources": ["Prestige Shop", "Loja do Rahaj", "Robux Shop"]
+    },
+    "Custom Clothing Essence": {
+        "effect": "Permite usar a roupa do seu avatar do Roblox no jogo ao ser usado.",
+        "sources": ["Robux Shop"]
+    },
+    "Dio's Diary": {
+        "effect": "Item de quest usado na linha de quest do Pucci.",
+        "sources": ["Legendary Chest", "Drop de DIO Raid"]
+    },
+    "Red Stone of Aja": {
+        "effect": "Concede chance dobrada de skin Legendary (stack), 2x Conjuration (stack), +1% de chance de spawn de Lucky Arrow por portador no servidor (stack), e armazenamento infinito de Stand.",
+        "sources": ["Robux Shop"]
+    },
+    "Common Chest": {
+        "effect": "Drop básico de itens, materiais e pouco Cash.",
+        "sources": ["Recompensas de missão", "Drops de raid"]
+    },
+    "Rare Chest": {
+        "effect": "Drop de materiais médios, Stand Arrows e ocasionalmente itens raros.",
+        "sources": ["Recompensas de missão", "Drops de raid"]
+    },
+    "Legendary Chest": {
+        "effect": "Drop de itens de alto valor incluindo Lucky Arrows, Stone Masks, Dio's Diary e Imperfect Aja.",
+        "sources": ["Recompensas de missão", "Drops de raid"]
+    },
+    "Plank Skateboard": {
+        "effect": "Skate básico de montaria. Necessário para conseguir o Skateboard upgrade.",
+        "sources": ["Crafte com Gupta", "Quest da Zuleima (área dos ladrões)"]
+    },
+    "Skateboard": {
+        "effect": "Skate upgrade com mais velocidade.",
+        "sources": ["Linha de quest do Yuto Horigome na Academia (requer Plank Skateboard equipado)"]
+    },
+    "Motorcycle": {
+        "effect": "Montaria premium rápida.",
+        "sources": ["Starter Pack (Robux Shop)"]
+    },
+    "Stop Sign": {
+        "effect": "Arma cega com combo de M1.",
+        "sources": ["Loja da DIO Raid"]
+    },
+    "Shadow Axe": {
+        "effect": "Arma de cleaving com combo de M1.",
+        "sources": ["Loja da DIO Raid"]
+    },
+    "Odachi": {
+        "effect": "Espada de lâmina longa. Ataque crítico forte.",
+        "sources": ["Drop do Miyamoto (chance 0.5–1%)"]
+    },
+    "Katana": {
+        "effect": "Espada padrão com combo de M1 e ataque crítico.",
+        "sources": ["Derrote inimigos Samurai"]
+    },
+    "Hammer": {
+        "effect": "Arma pesada de duas mãos.",
+        "sources": ["Linha de quest do Mafia Boss (Dedequann perto da Academia)"]
+    },
+    "Shovel": {
+        "effect": "Arma improvisada com combo de M1 e ataque crítico.",
+        "sources": ["Cultist Leaders", "Elite Mafia Members"]
+    },
+    "Luck & Pluck": {
+        "effect": "Arma especial obtida na linha de quest do Bruford.",
+        "sources": ["Quest do Bruford (praia a nordeste do Bus Stop 17)"]
+    },
+    "Fabric": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Bronze Fragments": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Acid": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Leather": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Sapphire": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Ruby": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Opal": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Bones": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Silver Fragments": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Gold Fragments": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Gold Coins": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Lost Spirit": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Vampire Fang": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Dio's Bone": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests"]
+    },
+    "Cosmic Radiation": {
+        "effect": "Material de craft usado com Gupta.",
+        "sources": ["Common / Rare / Legendary Chests", "Derrote Miyamoto"]
+    },
+    "Meteor Fragments": {
+        "effect": "Material de craft de alto nível usado com Gupta.",
+        "sources": ["Legendary Chest"]
+    },
+    "Imperfect Aja": {
+        "effect": "Material de craft de alto nível usado com Gupta.",
+        "sources": ["Legendary Chest"]
+    },
+    "Maigot Recipe": {
+        "effect": "Item de quest — pegue com Mr. Rengatei (não pule o diálogo) e entregue para Tonio Trussardi.",
+        "sources": ["NPC Mr. Rengatei (linha de quest)"]
+    },
+    "Burner Phone": {
+        "effect": "Item de quest usado em uma linha de quest da máfia.",
+        "sources": ["Drops da máfia"]
+    },
+    "Manga Manuscripts": {
+        "effect": "Item de quest/colecionável (fonte incerta no Trello).",
+        "sources": ["Veja no jogo"]
+    }
+}

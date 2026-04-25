@@ -1,0 +1,34 @@
+{
+    "sources": {
+        "Money Store (Rahaj)": "Money Store (Rahaj)",
+        "Tutorial Reward": "Награда за туториал",
+        "Prestige Shop": "Prestige Shop",
+        "Side Quest Traits": "Трейты сайд-квестов",
+        "Gang Wars": "Gang Wars",
+        "Jotaro Raid Shop": "Шоп Jotaro Raid",
+        "Avdol Raid Shop": "Шоп Avdol Raid",
+        "Kira Raid Shop": "Шоп Kira Raid",
+        "DIO Raid Shop": "Шоп DIO Raid"
+    },
+    "sourceNotes": {
+        "Money Store (Rahaj)": "Покупается в Rahaj's Shop в Морио.",
+        "Side Quest Traits": "Даются за выполнение конкретных квестов сайд-квест NPC.",
+        "raidShop": "Trello не документирует эффекты трейтов — только их стоимость. Проверяйте в игре."
+    },
+    "effects": {
+        "The Fever": "Победа над игроком крадёт 10% его характеристик на 20 секунд (кулдаун 10 сек).",
+        "Hustle Bones": "Все получаемые деньги увеличены на +5%.",
+        "Curve and Light": "Снижает кулдаун Stand Awakening на 10%.",
+        "I'm in Your Area": "Враги в близком радиусе наносят на 8% меньше урона и получают на 8% больше от вас.",
+        "Journeyman": "+5% к опыту.",
+        "Bloodlust": "После получения удара ваш HP быстро падает до 5%. Пока активен — +100% пробивания, +50% урона и lifesteal.",
+        "The Heirophant": "Получаете -15% физического урона, но +15% урона от резки.",
+        "Retribution": "Атаки в спину накладывают Bleed и lifesteal.",
+        "The Magician": "Уклонение и попадание атакой даёт нокбэк и +100% урона.",
+        "The Fool": "Будучи рагдоллнутым, вы получаете больше шкалы уклонения.",
+        "The High Priestess": "Поза даёт больше хила и регенерации Power.",
+        "Gardener": "Все источники хила теперь действуют 10 секунд. Хилит на 10% больше в целом.",
+        "Internal Conjuration": "Когда Стенд не призван, получаете 10% к урону и защите.",
+        "Commanding Presence": "Другие участники банды получают +5% к урону и защите, стак до 30% глобально."
+    }
+}

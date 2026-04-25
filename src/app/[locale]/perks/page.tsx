@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronRight, Sparkles, Info } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { getPerkTranslations } from "@/data/locale-data";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -108,7 +109,20 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "Perks" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
+    const perkTrans = getPerkTranslations(locale);
     const totalPerks = PERK_SECTIONS.reduce((sum, s) => sum + s.perks.length, 0);
+
+    const localizeSource = (label: string) => perkTrans?.sources?.[label as keyof typeof perkTrans.sources] ?? label;
+    const localizeNote = (label: string, fallback?: string) => {
+        if (!perkTrans?.sourceNotes) return fallback;
+        if (label.includes("Raid Shop")) return perkTrans.sourceNotes.raidShop ?? fallback;
+        const map = perkTrans.sourceNotes as Record<string, string | undefined>;
+        return map[label] ?? fallback;
+    };
+    const localizeEffect = (perkName: string, fallback?: string) => {
+        const map = perkTrans?.effects as Record<string, string> | undefined;
+        return map?.[perkName] ?? fallback;
+    };
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -146,36 +160,43 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
                 </div>
             </div>
 
-            {PERK_SECTIONS.map((section) => (
-                <section key={section.sourceLabel} className="mb-10">
-                    <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
-                        <Sparkles className="h-5 w-5 text-accent-blue" /> {section.sourceLabel}
-                    </h2>
-                    {section.sourceNote && (
-                        <p className="text-sm text-muted mb-4">{section.sourceNote}</p>
-                    )}
-                    <div className="space-y-3">
-                        {section.perks.map((perk) => (
-                            <div key={perk.name} className="bg-surface border border-border rounded-xl p-5">
-                                <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
-                                    <h3 className="font-bold text-white">
-                                        {perk.name}
-                                        {perk.npc && <span className="text-muted font-normal text-sm ml-2">({perk.npc})</span>}
-                                    </h3>
-                                    {perk.cost && (
-                                        <span className="text-xs text-accent-blue font-mono font-bold">{perk.cost}</span>
-                                    )}
-                                </div>
-                                {perk.effect ? (
-                                    <p className="text-sm text-muted">{perk.effect}</p>
-                                ) : (
-                                    <p className="text-sm text-muted italic">{t("effectNotDocumented")}</p>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            ))}
+            {PERK_SECTIONS.map((section) => {
+                const sectionLabel = localizeSource(section.sourceLabel);
+                const sectionNote = localizeNote(section.sourceLabel, section.sourceNote);
+                return (
+                    <section key={section.sourceLabel} className="mb-10">
+                        <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                            <Sparkles className="h-5 w-5 text-accent-blue" /> {sectionLabel}
+                        </h2>
+                        {sectionNote && (
+                            <p className="text-sm text-muted mb-4">{sectionNote}</p>
+                        )}
+                        <div className="space-y-3">
+                            {section.perks.map((perk) => {
+                                const effect = localizeEffect(perk.name, perk.effect);
+                                return (
+                                    <div key={perk.name} className="bg-surface border border-border rounded-xl p-5">
+                                        <div className="flex items-center justify-between mb-2 gap-3 flex-wrap">
+                                            <h3 className="font-bold text-white">
+                                                {perk.name}
+                                                {perk.npc && <span className="text-muted font-normal text-sm ml-2">({perk.npc})</span>}
+                                            </h3>
+                                            {perk.cost && (
+                                                <span className="text-xs text-accent-blue font-mono font-bold">{perk.cost}</span>
+                                            )}
+                                        </div>
+                                        {effect ? (
+                                            <p className="text-sm text-muted">{effect}</p>
+                                        ) : (
+                                            <p className="text-sm text-muted italic">{t("effectNotDocumented")}</p>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </section>
+                );
+            })}
 
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4">{t("sourceTitle")}</h2>

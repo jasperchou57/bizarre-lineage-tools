@@ -1,0 +1,178 @@
+{
+    "Stand Arrow": {
+        "effect": "Даёт случайный Стенд при использовании. Базовый предмет для получения Стенда.",
+        "sources": ["Спавны на земле", "Common / Rare / Legendary Chest", "Коды"]
+    },
+    "Lucky Arrow": {
+        "effect": "Гарантирует случайный скин для текущего Стенда.",
+        "sources": ["Prestige Shop", "Шопы рейдов", "Legendary Chest"]
+    },
+    "Stone Mask": {
+        "effect": "Отказ от человечности превращает в Вампира (суб-способность).",
+        "sources": ["Магазин", "Common / Rare / Legendary Chest"]
+    },
+    "Stat Point Essence": {
+        "effect": "Сбрасывает очки характеристик при использовании.",
+        "sources": ["Prestige Shop", "Шоп Rahaj", "Robux Shop"]
+    },
+    "Stand Skin Essence": {
+        "effect": "Даёт текущему Стенду случайный скин при использовании.",
+        "sources": ["Prestige Shop", "Robux Shop", "Достижения"]
+    },
+    "Stand Stat Essence": {
+        "effect": "Перебрасывает характеристики Стенда при использовании.",
+        "sources": ["Prestige Shop", "Robux Shop"]
+    },
+    "Stand Personality Essence": {
+        "effect": "Перебрасывает Personality Стенда при использовании.",
+        "sources": ["Prestige Shop", "Robux Shop"]
+    },
+    "Stand Conjuration Essence": {
+        "effect": "Максит Conjuration текущего Стенда при использовании.",
+        "sources": ["Prestige Shop", "Шоп Rahaj", "Robux Shop"]
+    },
+    "Custom Clothing Essence": {
+        "effect": "Позволяет использовать одежду вашего аватара Roblox в игре при применении.",
+        "sources": ["Robux Shop"]
+    },
+    "Dio's Diary": {
+        "effect": "Квестовый предмет в линейке Pucci.",
+        "sources": ["Legendary Chest", "Дроп с DIO Raid"]
+    },
+    "Red Stone of Aja": {
+        "effect": "Даёт удвоенный шанс Legendary скинов (стак), 2x Conjuration (стак), +1% спавна Lucky Arrow на каждого носителя на сервере (стак) и бесконечное хранилище Стендов.",
+        "sources": ["Robux Shop"]
+    },
+    "Common Chest": {
+        "effect": "Дропает базовые предметы, материалы и немного Cash.",
+        "sources": ["Награды миссий", "Дропы рейдов"]
+    },
+    "Rare Chest": {
+        "effect": "Дропает материалы среднего уровня, Stand Arrow и иногда редкие предметы.",
+        "sources": ["Награды миссий", "Дропы рейдов"]
+    },
+    "Legendary Chest": {
+        "effect": "Дропает ценные предметы: Lucky Arrow, Stone Mask, Dio's Diary и Imperfect Aja.",
+        "sources": ["Награды миссий", "Дропы рейдов"]
+    },
+    "Plank Skateboard": {
+        "effect": "Базовый скейтборд-маунт. Нужен для получения улучшенного Skateboard.",
+        "sources": ["Крафт у Gupta", "Квест Zuleima (район воров)"]
+    },
+    "Skateboard": {
+        "effect": "Улучшенный скейтборд-маунт с большей скоростью.",
+        "sources": ["Линейка квестов Yuto Horigome в спортзале (требуется Plank Skateboard)"]
+    },
+    "Motorcycle": {
+        "effect": "Премиум быстрый маунт.",
+        "sources": ["Starter Pack (Robux Shop)"]
+    },
+    "Stop Sign": {
+        "effect": "Тупое оружие с M1-комбо.",
+        "sources": ["Шоп DIO Raid"]
+    },
+    "Shadow Axe": {
+        "effect": "Рубящее оружие с M1-комбо.",
+        "sources": ["Шоп DIO Raid"]
+    },
+    "Odachi": {
+        "effect": "Длинноклинковый меч. Сильный критический удар.",
+        "sources": ["Дроп с Miyamoto (0.5–1% шанс)"]
+    },
+    "Katana": {
+        "effect": "Стандартный меч с M1-комбо и крит-ударом.",
+        "sources": ["Победа над врагами Samurai"]
+    },
+    "Hammer": {
+        "effect": "Тяжёлое двуручное оружие.",
+        "sources": ["Линейка Mafia Boss (Dedequann у спортзала)"]
+    },
+    "Shovel": {
+        "effect": "Импровизированное оружие с M1-комбо и крит-ударом.",
+        "sources": ["Cultist Leaders", "Elite Mafia Members"]
+    },
+    "Luck & Pluck": {
+        "effect": "Особое оружие из линейки Bruford.",
+        "sources": ["Квест Bruford (пляж к северо-востоку от Bus Stop 17)"]
+    },
+    "Fabric": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Bronze Fragments": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Acid": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Leather": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Sapphire": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Ruby": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Opal": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Bones": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Silver Fragments": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Gold Fragments": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Gold Coins": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Lost Spirit": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Vampire Fang": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Dio's Bone": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest"]
+    },
+    "Cosmic Radiation": {
+        "effect": "Материал крафта у Gupta.",
+        "sources": ["Common / Rare / Legendary Chest", "Победа над Miyamoto"]
+    },
+    "Meteor Fragments": {
+        "effect": "Материал крафта высокого уровня у Gupta.",
+        "sources": ["Legendary Chest"]
+    },
+    "Imperfect Aja": {
+        "effect": "Материал крафта высокого уровня у Gupta.",
+        "sources": ["Legendary Chest"]
+    },
+    "Maigot Recipe": {
+        "effect": "Квестовый предмет — получите от Mr. Rengatei (не пропускайте диалог) и отдайте Tonio Trussardi.",
+        "sources": ["NPC Mr. Rengatei (квестовая линейка)"]
+    },
+    "Burner Phone": {
+        "effect": "Квестовый предмет в мафиозной линейке.",
+        "sources": ["Дропы мафии"]
+    },
+    "Manga Manuscripts": {
+        "effect": "Квестовый/коллекционный предмет (источник на Trello не уточнён).",
+        "sources": ["Смотрите в игре"]
+    }
+}

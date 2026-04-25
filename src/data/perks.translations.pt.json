@@ -1,0 +1,34 @@
+{
+    "sources": {
+        "Money Store (Rahaj)": "Money Store (Rahaj)",
+        "Tutorial Reward": "Recompensa do Tutorial",
+        "Prestige Shop": "Prestige Shop",
+        "Side Quest Traits": "Traits de Side Quest",
+        "Gang Wars": "Gang Wars",
+        "Jotaro Raid Shop": "Loja da Jotaro Raid",
+        "Avdol Raid Shop": "Loja da Avdol Raid",
+        "Kira Raid Shop": "Loja da Kira Raid",
+        "DIO Raid Shop": "Loja da DIO Raid"
+    },
+    "sourceNotes": {
+        "Money Store (Rahaj)": "Comprável da Rahaj's Shop em Morioh.",
+        "Side Quest Traits": "Concedido ao completar quests específicas de NPCs de side quest.",
+        "raidShop": "O Trello não documenta os efeitos do trait — apenas o custo. Verifique no jogo."
+    },
+    "effects": {
+        "The Fever": "Derrotar um jogador rouba 10% dos atributos dele por 20 segundos (cooldown de 10s).",
+        "Hustle Bones": "Todo dinheiro ganho é aumentado em +5%.",
+        "Curve and Light": "Reduz cooldown do Stand Awakening em 10%.",
+        "I'm in Your Area": "Inimigos em curto alcance causam 8% menos dano e recebem 8% mais dano de você.",
+        "Journeyman": "+5% de boost de experiência.",
+        "Bloodlust": "Após ser atingido, seu HP drena rapidamente para 5%. Enquanto ativo ganha +100% de penetração, +50% de dano e lifesteal.",
+        "The Heirophant": "Recebe -15% de dano Físico mas +15% de dano de Corte.",
+        "Retribution": "Backstabs aplicam o efeito Bleed e lifesteal.",
+        "The Magician": "Esquivar e então acertar um ataque faz o ataque dar knockback e 100% mais dano.",
+        "The Fool": "Ser ragdollado concede mais barra de esquiva.",
+        "The High Priestess": "Posar concede mais cura e regeneração de power.",
+        "Gardener": "Todas as fontes de cura agora curam ao longo de 10 segundos. Cura 10% mais no total.",
+        "Internal Conjuration": "Enquanto seu Stand não está invocado, ganha 10% de Dano e Defesa.",
+        "Commanding Presence": "Outros membros da gang ganham 5% de dano e defesa, stackando até 30% globalmente."
+    }
+}

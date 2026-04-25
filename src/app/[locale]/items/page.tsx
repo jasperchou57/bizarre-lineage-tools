@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ChevronRight, Star, ArrowRight, ExternalLink } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { getItemTranslation } from "@/data/locale-data";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -224,6 +225,9 @@ export default async function ItemsPage({ params }: { params: Promise<{ locale: 
                     <div className="space-y-3">
                         {category.items.map((item) => {
                             const media = ITEM_IMAGES[item.name];
+                            const itemT = getItemTranslation(locale, item.name);
+                            const effect = itemT?.effect ?? item.effect;
+                            const sources = itemT?.sources ?? item.sources;
                             return (
                                 <div key={item.name} className="bg-surface border border-border rounded-xl p-5 flex gap-4">
                                     {media && (
@@ -238,11 +242,11 @@ export default async function ItemsPage({ params }: { params: Promise<{ locale: 
                                                 {item.rarity}
                                             </span>
                                         </div>
-                                        <p className="text-sm text-muted mb-3">{item.effect}</p>
+                                        <p className="text-sm text-muted mb-3">{effect}</p>
                                         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                                             <div>
                                                 <span className="text-xs text-muted">{t("obtainedFrom")} </span>
-                                                <span className="text-xs text-white">{item.sources.join(" · ")}</span>
+                                                <span className="text-xs text-white">{sources.join(" · ")}</span>
                                             </div>
                                             {media && (
                                                 <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-accent-blue hover:text-white transition-colors">
