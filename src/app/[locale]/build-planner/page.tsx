@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Sword, Activity, Target, Shield, Navigation, Save, Database, Download, AlertTriangle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { trackEvent } from "@/lib/analytics";
 import standsData from "@/data/stands.json";
@@ -12,6 +13,7 @@ import subsData from "@/data/sub-abilities.json";
 type Scores = { pvp: number; pve: number; survival: number; mobility: number; cost: number };
 
 function BuildPlannerClient() {
+    const t = useTranslations("BuildPlanner");
     const searchParams = useSearchParams();
     const initialStand = searchParams.get("stand") || "";
     const initialStyle = searchParams.get("style") || "";
@@ -200,7 +202,7 @@ function BuildPlannerClient() {
 
                     {/* Stand Selection */}
                     <div className="bg-surface border border-border rounded-xl p-6">
-                        <h2 className="text-lg font-bold text-white mb-4">1. Select Stand</h2>
+                        <h2 className="text-lg font-bold text-white mb-4">{t("step1Title")}</h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                             {standsData.map(s => (
                                 <button
@@ -219,7 +221,7 @@ function BuildPlannerClient() {
 
                     {/* Style Selection */}
                     <div className={`bg-surface border border-border rounded-xl p-6 transition-opacity ${!selectedStand ? 'opacity-50 pointer-events-none' : ''}`}>
-                        <h2 className="text-lg font-bold text-white mb-4">2. Select Fighting Style</h2>
+                        <h2 className="text-lg font-bold text-white mb-4">{t("step2Title")}</h2>
                         <div className="grid grid-cols-2 gap-3">
                             {stylesData.map(s => (
                                 <button
@@ -238,7 +240,7 @@ function BuildPlannerClient() {
 
                     {/* Sub-Ability Selection */}
                     <div className={`bg-surface border border-border rounded-xl p-6 transition-opacity ${!selectedStand ? 'opacity-50 pointer-events-none' : ''}`}>
-                        <h2 className="text-lg font-bold text-white mb-4">3. Select Sub-Ability</h2>
+                        <h2 className="text-lg font-bold text-white mb-4">{t("step3Title")}</h2>
                         <div className="grid grid-cols-2 gap-3">
                             {subsData.map(s => (
                                 <button
@@ -263,13 +265,13 @@ function BuildPlannerClient() {
 
                         {/* Score Header */}
                         <div className="flex justify-between items-center mb-6 pb-6 border-b border-white/5">
-                            <h2 className="text-2xl font-bold text-white">Build Summary</h2>
+                            <h2 className="text-2xl font-bold text-white">{t("buildSummary")}</h2>
                             {standObj && (
                                 <button
                                     onClick={handleSave}
                                     className="px-4 py-2 bg-gradient-to-r from-accent-blue to-accent-indigo text-white text-sm font-bold rounded-lg hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all flex items-center gap-2"
                                 >
-                                    <Save className="h-4 w-4" /> Save to Vault
+                                    <Save className="h-4 w-4" /> {t("saveToVault")}
                                 </button>
                             )}
                         </div>
@@ -277,7 +279,7 @@ function BuildPlannerClient() {
                         {!standObj ? (
                             <div className="py-12 text-center text-muted">
                                 <Target className="h-12 w-12 mx-auto mb-4 opacity-20" />
-                                <p>Select a Stand to view its planner estimate.</p>
+                                <p>{t("emptyStateText")}</p>
                             </div>
                         ) : (
                             <div className="space-y-8">
@@ -290,15 +292,15 @@ function BuildPlannerClient() {
 
                                 {/* 5-Dimension Radar/Bars */}
                                 <div>
-                                    <h3 className="text-sm font-bold text-muted uppercase tracking-wider mb-4 font-mono">Performance Scores</h3>
+                                    <h3 className="text-sm font-bold text-muted uppercase tracking-wider mb-4 font-mono">{t("performanceScoresLabel")}</h3>
                                     <div className="space-y-4">
-                                        <ScoreBar label="PvP Effectiveness" value={scores.pvp} delta={deltas.pvp} icon={<Sword className="h-4 w-4" />} color="bg-accent-blue" />
-                                        <ScoreBar label="PvE / Grinding" value={scores.pve} delta={deltas.pve} icon={<Activity className="h-4 w-4" />} color="bg-accent-indigo" />
-                                        <ScoreBar label="Survival" value={scores.survival} delta={deltas.survival} icon={<Shield className="h-4 w-4" />} color="bg-green-500" />
-                                        <ScoreBar label="Mobility" value={scores.mobility} delta={deltas.mobility} icon={<Navigation className="h-4 w-4" />} color="bg-purple-500" />
-                                        <ScoreBar label="Accessibility (Cost)" value={scores.cost} delta={deltas.cost} icon={<Database className="h-4 w-4" />} color="bg-orange-500" />
+                                        <ScoreBar label={t("scorePvp")} value={scores.pvp} delta={deltas.pvp} icon={<Sword className="h-4 w-4" />} color="bg-accent-blue" topLabel={t("topLocalPlannerScore")} />
+                                        <ScoreBar label={t("scorePve")} value={scores.pve} delta={deltas.pve} icon={<Activity className="h-4 w-4" />} color="bg-accent-indigo" topLabel={t("topLocalPlannerScore")} />
+                                        <ScoreBar label={t("scoreSurvival")} value={scores.survival} delta={deltas.survival} icon={<Shield className="h-4 w-4" />} color="bg-green-500" topLabel={t("topLocalPlannerScore")} />
+                                        <ScoreBar label={t("scoreMobility")} value={scores.mobility} delta={deltas.mobility} icon={<Navigation className="h-4 w-4" />} color="bg-purple-500" topLabel={t("topLocalPlannerScore")} />
+                                        <ScoreBar label={t("scoreAccessibility")} value={scores.cost} delta={deltas.cost} icon={<Database className="h-4 w-4" />} color="bg-orange-500" topLabel={t("topLocalPlannerScore")} />
                                     </div>
-                                    <p className="text-xs text-center text-muted mt-4 opacity-70">Planner estimates are derived from local site data and weighting rules, not official balance values.</p>
+                                    <p className="text-xs text-center text-muted mt-4 opacity-70">{t("plannerDisclaimer")}</p>
                                 </div>
 
                                 {/* Weakness Detection Panel */}
@@ -322,12 +324,12 @@ function BuildPlannerClient() {
                                     return (
                                         <div className={`text-center p-4 rounded-lg border ${gradeColor}`}>
                                             <div className="text-3xl font-heading font-black">{grade}</div>
-                                            <div className="text-xs mt-1 opacity-80">Build Grade</div>
+                                            <div className="text-xs mt-1 opacity-80">{t("buildGradeLabel")}</div>
                                             {incomplete && (
-                                                <p className="text-xs mt-2 text-yellow-400">Your build is incomplete — {!selectedStyle ? 'add a Fighting Style' : 'add a Sub-Ability'} to unlock its full potential.</p>
+                                                <p className="text-xs mt-2 text-yellow-400">{!selectedStyle ? t("incompleteAddStyle") : t("incompleteAddSub")}</p>
                                             )}
                                             {!incomplete && maxScore < 8 && (
-                                                <p className="text-xs mt-2">Try a different {scores.pvp < scores.pve ? 'style' : 'sub-ability'} to push this build higher.</p>
+                                                <p className="text-xs mt-2">{scores.pvp < scores.pve ? t("tryDifferentStyle") : t("tryDifferentSub")}</p>
                                             )}
                                         </div>
                                     );
@@ -336,21 +338,20 @@ function BuildPlannerClient() {
                                 {/* 1-Step Upgrade */}
                                 {oneStepUpgrade && (
                                     <div className="bg-accent-blue/10 border border-accent-blue/30 rounded-lg p-4">
-                                        <h4 className="text-sm font-bold text-accent-blue mb-1">1-Step Optimization Guide</h4>
+                                        <h4 className="text-sm font-bold text-accent-blue mb-1">{t("oneStepGuideTitle")}</h4>
                                         <p className="text-sm text-white/90">{oneStepUpgrade}</p>
                                     </div>
                                 )}
 
-                                {/* Flow guidance: Planner → Vault → Compare */}
                                 <div className="space-y-2 pt-4 border-t border-white/5">
-                                    <p className="text-xs text-muted text-center mb-2">Don&apos;t lose this build — save it and compare later.</p>
+                                    <p className="text-xs text-muted text-center mb-2">{t("saveBuildHint")}</p>
                                     <div className="flex gap-2">
                                         <a href="/vault" className="flex-1 text-center px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-muted hover:text-white hover:border-accent-blue/30 transition-colors">
-                                            View Vault ({vault.length} saved)
+                                            {t("viewVaultBtn", { count: vault.length })}
                                         </a>
                                         {vault.length >= 2 && (
                                             <a href={`/compare?a=${vault[vault.length - 1]?.id}&b=${vault[vault.length - 2]?.id}`} className="flex-1 text-center px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-xs text-muted hover:text-white hover:border-accent-indigo/30 transition-colors">
-                                                Compare Last 2 Builds
+                                                {t("compareLastTwoBtn")}
                                             </a>
                                         )}
                                     </div>
@@ -364,7 +365,7 @@ function BuildPlannerClient() {
     );
 }
 
-function ScoreBar({ label, value, delta, icon, color }: { label: string, value: number, delta?: number, icon: React.ReactNode, color: string }) {
+function ScoreBar({ label, value, delta, icon, color, topLabel }: { label: string, value: number, delta?: number, icon: React.ReactNode, color: string, topLabel?: string }) {
     return (
         <div>
             <div className="flex justify-between text-sm mb-1">
@@ -388,7 +389,7 @@ function ScoreBar({ label, value, delta, icon, color }: { label: string, value: 
                 )}
             </div>
             {value >= 10 && (
-                <p className="text-[10px] text-accent-blue font-bold text-right mt-1">TOP LOCAL PLANNER SCORE</p>
+                <p className="text-[10px] text-accent-blue font-bold text-right mt-1">{topLabel ?? "TOP LOCAL PLANNER SCORE"}</p>
             )}
         </div>
     );
