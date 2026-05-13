@@ -104,30 +104,6 @@ function HomeContent({
                 </div>
 
                 <div className="px-4 w-full flex flex-col items-center">
-                    <div className="w-full mb-16">
-                        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
-                            <div>
-                                <h2 className="text-2xl font-heading font-bold text-white">{t("latestGameUpdatesTitle")}</h2>
-                                <p className="text-sm text-muted mt-1">{t("latestGameUpdatesSub")}</p>
-                            </div>
-                            <Link href="/updates" className="inline-flex items-center gap-2 text-sm font-bold text-accent-blue hover:text-white transition-colors">
-                                {t("latestNewsLink")}
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
-                        </div>
-                        <GameUpdatesList
-                            updates={latestGameUpdates}
-                            labels={{
-                                officialBadge: t("updateOfficialBadge"),
-                                communityBadge: t("updateCommunityBadge"),
-                                latestBadge: t("updateLatestBadge"),
-                                moreLabel: (count) => t("updatesMore", { count }),
-                                sourcePrefix: t("updateSourcePrefix"),
-                                latestNewsLabel: t("latestNewsLink"),
-                            }}
-                        />
-                    </div>
-
                     <div className="w-full max-w-2xl space-y-6 mb-16">
                         <div className="relative group">
                             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -264,6 +240,30 @@ function HomeContent({
                                 </Link>
                             ))}
                         </div>
+                    </div>
+
+                    <div id="latest-updates" className="w-full mb-16">
+                        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+                            <div>
+                                <h2 className="text-2xl font-heading font-bold text-white">{t("latestGameUpdatesTitle")}</h2>
+                                <p className="text-sm text-muted mt-1">{t("latestGameUpdatesSub")}</p>
+                            </div>
+                            <Link href="/updates" className="inline-flex items-center gap-2 text-sm font-bold text-accent-blue hover:text-white transition-colors">
+                                {t("latestNewsLink")}
+                                <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                        <GameUpdatesList
+                            updates={latestGameUpdates}
+                            labels={{
+                                officialBadge: t("updateOfficialBadge"),
+                                communityBadge: t("updateCommunityBadge"),
+                                latestBadge: t("updateLatestBadge"),
+                                moreLabel: (count) => t("updatesMore", { count }),
+                                sourcePrefix: t("updateSourcePrefix"),
+                                latestNewsLabel: t("latestNewsLink"),
+                            }}
+                        />
                     </div>
 
                     <div className="w-full max-w-3xl mb-16">
