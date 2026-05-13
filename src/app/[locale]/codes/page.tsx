@@ -1,29 +1,9 @@
 import { Metadata } from "next";
-import { ChevronRight, Gift, Check, Clock, HelpCircle } from "lucide-react";
+import { ChevronRight, Gift, Check, Clock, HelpCircle, ShieldCheck, Users } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { ACTIVE_CODES, CODE_LAST_CHECKED, CODE_SOURCES, communityReportedCodeCount, officialCodeCount } from "@/data/codes";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
-
-const ACTIVE_CODES = [
-    { code: "Delay1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "Delay2", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "Delay3", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "Update1", reward: "3 Stand Arrows + 5,000 Cash", source: "Update 1 Release" },
-    { code: "BizarreLineage1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "LikeTheGameForMore1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "FavoriteTheGame1", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "Update2=2027", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "250kLikes", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "500kLikes", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-    { code: "750LikesforNextCode", reward: "Free Rewards (check in-game)", source: "Official Trello" },
-];
-
-const EXPIRED_CODES: { code: string; reward: string }[] = [
-    { code: "30kLikes", reward: "1 Stat Point Essence" },
-    { code: "100kLikes", reward: "1 Stat Point Essence + Rare Chest" },
-    { code: "shutdownwoops", reward: "Stand Stat Essence" },
-    { code: "1week", reward: "Stand Personality Essence" },
-];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
@@ -39,7 +19,6 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "Codes" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
-    const lastVerified = "April 20, 2026";
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -88,8 +67,32 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
             </div>
 
             <p className="text-sm text-muted mb-8 flex items-center gap-2">
-                <Clock className="h-4 w-4" /> {t("lastVerified", { date: lastVerified })}
+                <Clock className="h-4 w-4" /> {t("lastVerified", { date: CODE_LAST_CHECKED })}
             </p>
+
+            <section className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="bg-surface border border-border rounded-xl p-4">
+                    <div className="text-2xl font-bold text-white">{ACTIVE_CODES.length}</div>
+                    <div className="text-xs text-muted">{t("trackedCount")}</div>
+                </div>
+                <div className="bg-surface border border-green-500/20 rounded-xl p-4">
+                    <div className="flex items-center gap-2 text-green-400 text-2xl font-bold">
+                        <ShieldCheck className="h-5 w-5" /> {officialCodeCount}
+                    </div>
+                    <div className="text-xs text-muted">{t("officialCount")}</div>
+                </div>
+                <div className="bg-surface border border-yellow-500/20 rounded-xl p-4">
+                    <div className="flex items-center gap-2 text-yellow-400 text-2xl font-bold">
+                        <Users className="h-5 w-5" /> {communityReportedCodeCount}
+                    </div>
+                    <div className="text-xs text-muted">{t("communityCount")}</div>
+                </div>
+            </section>
+
+            <section className="mb-12 bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-5">
+                <h2 className="text-lg font-bold text-white mb-2">{t("verificationTitle")}</h2>
+                <p className="text-sm text-muted leading-relaxed">{t("verificationBody")}</p>
+            </section>
 
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
@@ -97,12 +100,22 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
                 </h2>
                 <div className="space-y-3">
                     {ACTIVE_CODES.map((item) => (
-                        <div key={item.code} className="bg-surface border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                            <div className="flex items-center gap-3">
+                        <div key={item.code} className="bg-surface border border-border rounded-lg p-4 flex flex-col gap-3">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div className="flex items-center gap-3 flex-wrap">
                                 <code className="bg-accent-blue/10 text-accent-blue border border-accent-blue/20 px-3 py-1.5 rounded font-mono font-bold text-sm">!code {item.code}</code>
-                                <span className="text-xs text-green-400 font-bold uppercase">{t("activeBadge")}</span>
+                                    <span className="text-xs text-green-400 font-bold uppercase">{t("activeBadge")}</span>
+                                    <span className={`text-xs font-bold px-2 py-1 rounded-full border ${item.confidence === "official-trello" ? "text-green-400 bg-green-400/10 border-green-400/20" : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20"}`}>
+                                        {item.confidence === "official-trello" ? t("officialBadge") : t("communityBadge")}
+                                    </span>
+                                </div>
+                                <div className="text-sm text-muted">{item.reward}</div>
                             </div>
-                            <div className="text-sm text-muted">{item.reward}</div>
+                            <div className="text-xs text-muted leading-relaxed">
+                                <span className="text-white/80">{item.sourceLabel}</span>
+                                {item.requires && <span> · {item.requires}</span>}
+                                <span> · {item.note}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -134,28 +147,23 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
                 </div>
             </section>
 
-            {EXPIRED_CODES.length > 0 && (
-                <section className="mb-12">
-                    <h2 className="text-2xl font-bold text-white mb-4">{t("expiredTitle")}</h2>
-                    <div className="space-y-2">
-                        {EXPIRED_CODES.map((item) => (
-                            <div key={item.code} className="bg-surface/50 border border-white/5 rounded-lg p-3 flex items-center justify-between opacity-60">
-                                <code className="font-mono text-sm text-muted line-through">{item.code}</code>
-                                <span className="text-xs text-red-400">{t("expiredBadge")}</span>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            )}
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold text-white mb-4">{t("expiredTitle")}</h2>
+                <div className="bg-surface/50 border border-white/5 rounded-lg p-4 text-sm text-muted">
+                    {t("expiredEmpty")}
+                </div>
+            </section>
 
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4">{t("sourcesTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6">
                     <p className="text-muted text-sm mb-4">{t("sourcesIntro")}</p>
                     <div className="flex flex-wrap gap-3">
-                        <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceTrello")}</a>
+                        <a href={CODE_SOURCES.trello} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceTrello")}</a>
                         <a href="https://discord.gg/bizarrelineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceDiscord")}</a>
-                        <a href="https://www.roblox.com/games/14890802310/Bizarre-Lineage" target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceRoblox")}</a>
+                        <a href={CODE_SOURCES.roblox} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceRoblox")}</a>
+                        <a href={CODE_SOURCES.proGameGuides} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourcePgg")}</a>
+                        <a href={CODE_SOURCES.gamesRadar} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white hover:border-accent-blue/50 transition-colors">{t("sourceGamesRadar")}</a>
                     </div>
                 </div>
             </section>

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
-import { Search, Target, ArrowRight, Zap, Gift, ChevronDown } from "lucide-react";
+import { Search, Target, ArrowRight, Zap, Gift, ChevronDown, Info, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { ACTIVE_CODES, communityReportedCodeCount, officialCodeCount } from "@/data/codes";
 import standsData from "@/data/stands.json";
 import { withCanonical } from "@/lib/metadata";
 
@@ -65,6 +66,8 @@ function HomeContent({
 }) {
     const t = useTranslations("Home");
     const trendingStands = standsData.slice(0, 3);
+    const latestCodes = ACTIVE_CODES.slice(0, 5);
+    const metaWatchItems = ["TWOH", "True MIH", "SCR", "SPTW", "Death 13", "Planet Waves", "Diver Down", "Silver Chariot"];
 
     return (
         <>
@@ -85,6 +88,16 @@ function HomeContent({
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">{t("heroTitleLead")}</span> {t("heroTitleRest")}
                         </h1>
                         <p className="text-lg md:text-xl text-muted text-balance mx-auto">{t("heroSubtitle")}</p>
+                    </div>
+                </div>
+
+                <div className="w-full px-4 mb-10">
+                    <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-5 flex flex-col sm:flex-row gap-4 sm:items-center">
+                        <Info className="h-6 w-6 text-accent-blue shrink-0" />
+                        <div className="flex-1">
+                            <h2 className="text-base font-bold text-white mb-1">{t("updateBannerTitle")}</h2>
+                            <p className="text-sm text-muted leading-relaxed">{t("updateBannerBody")}</p>
+                        </div>
                     </div>
                 </div>
 
@@ -134,6 +147,50 @@ function HomeContent({
                             </div>
                             <ArrowRight className="h-5 w-5 text-muted group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />
                         </Link>
+                    </div>
+
+                    <div className="w-full max-w-4xl mb-16 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <section className="bg-surface border border-border rounded-xl p-5">
+                            <div className="flex items-start justify-between gap-4 mb-4">
+                                <div>
+                                    <h2 className="text-lg font-bold text-white">{t("latestCodesTitle")}</h2>
+                                    <p className="text-xs text-muted mt-1">{t("latestCodesSub")}</p>
+                                </div>
+                                <Link href="/codes" className="text-xs font-bold text-accent-blue hover:text-white transition-colors">
+                                    {t("latestCodesTotal", { count: ACTIVE_CODES.length })}
+                                </Link>
+                            </div>
+                            <div className="space-y-2">
+                                {latestCodes.map((item) => (
+                                    <div key={item.code} className="flex items-center justify-between gap-3 bg-background/40 border border-white/5 rounded-lg px-3 py-2">
+                                        <code className="text-sm font-mono font-bold text-white">!code {item.code}</code>
+                                        <span className={`text-[11px] font-bold px-2 py-1 rounded-full border ${item.confidence === "official-trello" ? "text-green-400 bg-green-400/10 border-green-400/20" : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20"}`}>
+                                            {item.confidence === "official-trello" ? t("sourceTrelloShort") : t("sourceCommunityShort")}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+
+                        <section className="bg-surface border border-border rounded-xl p-5">
+                            <div className="flex items-start gap-3 mb-4">
+                                <ShieldCheck className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                                <div>
+                                    <h2 className="text-lg font-bold text-white">{t("metaWatchTitle")}</h2>
+                                    <p className="text-xs text-muted mt-1">{t("metaWatchSub")}</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {metaWatchItems.map((item) => (
+                                    <span key={item} className="px-2.5 py-1 text-xs font-medium text-muted bg-background/50 border border-white/5 rounded-full">
+                                        {item}
+                                    </span>
+                                ))}
+                            </div>
+                            <div className="mt-4 text-xs text-muted">
+                                {t("codeStatsLine", { official: officialCodeCount, community: communityReportedCodeCount })}
+                            </div>
+                        </section>
                     </div>
 
                     <div className="w-full max-w-3xl mb-16">
