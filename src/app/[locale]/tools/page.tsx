@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BarChart3, ChevronRight, ClipboardList, Gift, GitCompare, LayoutGrid, ShieldCheck, Vault, Wrench } from "lucide-react";
+import { BarChart3, ChevronRight, ClipboardList, Gift, GitCompare, LayoutGrid, Newspaper, ShieldCheck, Vault, Wrench } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
@@ -21,6 +21,7 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
 
     const cards = [
         { title: t("plannerTitle"), desc: t("plannerDesc"), href: "/build-planner", icon: <Wrench className="h-7 w-7 text-accent-blue" />, tag: t("primaryTag") },
+        { title: t("updatesTitle"), desc: t("updatesDesc"), href: "/updates", icon: <Newspaper className="h-7 w-7 text-orange-300" />, tag: t("updatedTag") },
         { title: t("codesTitle"), desc: t("codesDesc"), href: "/codes", icon: <Gift className="h-7 w-7 text-yellow-400" />, tag: t("updatedTag") },
         { title: t("tierTitle"), desc: t("tierDesc"), href: "/tier-list", icon: <BarChart3 className="h-7 w-7 text-accent-indigo" />, tag: t("watchTag") },
         { title: t("compareTitle"), desc: t("compareDesc"), href: "/compare", icon: <GitCompare className="h-7 w-7 text-green-400" />, tag: t("plannerTag") },
