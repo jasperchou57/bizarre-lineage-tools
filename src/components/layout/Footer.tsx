@@ -6,6 +6,7 @@ export function Footer() {
 
     const links = [
         { href: "/tools", label: t("tools") },
+        { href: "/updates", label: t("updates") },
         { href: "/skins", label: t("skins") },
         { href: "/items", label: t("items") },
         { href: "/world-events", label: t("worldEvents") },

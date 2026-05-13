@@ -16,6 +16,7 @@ export function Navbar() {
         { href: "/raids", label: t("raids") },
         { href: "/guides", label: t("guides") },
         { href: "/codes", label: t("codes") },
+        { href: "/updates", label: t("updates") },
         { href: "/tools", label: t("tools") },
         { href: "/vault", label: t("vault") },
     ] as const;

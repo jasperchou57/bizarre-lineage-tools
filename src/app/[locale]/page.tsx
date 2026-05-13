@@ -5,6 +5,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ACTIVE_CODES, communityReportedCodeCount, officialCodeCount } from "@/data/codes";
+import { latestGameUpdates } from "@/data/updates";
+import { GameUpdatesList } from "@/components/GameUpdatesList";
 import standsData from "@/data/stands.json";
 import { withCanonical } from "@/lib/metadata";
 
@@ -136,7 +138,7 @@ function HomeContent({
                         </div>
                     </div>
 
-                    <div className="w-full max-w-2xl mb-16">
+                    <div className="w-full max-w-2xl mb-10">
                         <Link href="/codes" className="flex items-center justify-between p-5 bg-gradient-to-br from-surface to-[#1a1a1a] border border-border rounded-xl hover:border-yellow-500/40 group transition-all">
                             <div className="flex items-center gap-3">
                                 <Gift className="h-5 w-5 text-yellow-400/70" />
@@ -147,6 +149,30 @@ function HomeContent({
                             </div>
                             <ArrowRight className="h-5 w-5 text-muted group-hover:text-yellow-400 group-hover:translate-x-1 transition-all" />
                         </Link>
+                    </div>
+
+                    <div id="latest-updates" className="w-full max-w-4xl mb-16">
+                        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+                            <div>
+                                <h2 className="text-2xl font-heading font-bold text-white">{t("latestGameUpdatesTitle")}</h2>
+                                <p className="text-sm text-muted mt-1">{t("latestGameUpdatesSub")}</p>
+                            </div>
+                            <Link href="/updates" className="inline-flex items-center gap-2 text-sm font-bold text-accent-blue hover:text-white transition-colors">
+                                {t("latestNewsLink")}
+                                <ArrowRight className="h-4 w-4" />
+                            </Link>
+                        </div>
+                        <GameUpdatesList
+                            updates={latestGameUpdates}
+                            labels={{
+                                officialBadge: t("updateOfficialBadge"),
+                                communityBadge: t("updateCommunityBadge"),
+                                latestBadge: t("updateLatestBadge"),
+                                moreLabel: (count) => t("updatesMore", { count }),
+                                sourcePrefix: t("updateSourcePrefix"),
+                                latestNewsLabel: t("latestNewsLink"),
+                            }}
+                        />
                     </div>
 
                     <div className="w-full max-w-4xl mb-16 grid grid-cols-1 lg:grid-cols-2 gap-6">
