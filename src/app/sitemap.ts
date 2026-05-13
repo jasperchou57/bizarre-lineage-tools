@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         entry("/", { lastModified: now, changeFrequency: "daily", priority: 1.0 }),
         entry("/tier-list", { lastModified: now, changeFrequency: "weekly", priority: 0.9 }),
         entry("/build-planner", { lastModified: now, changeFrequency: "monthly", priority: 0.9 }),
+        entry("/tools", { lastModified: now, changeFrequency: "weekly", priority: 0.9 }),
         entry("/stands", { lastModified: now, changeFrequency: "weekly", priority: 0.8 }),
         entry("/codes", { lastModified: now, changeFrequency: "daily", priority: 0.8 }),
         entry("/fighting-styles", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),

@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { MobileNav } from "./MobileNav";
 
 export function Navbar() {
     const t = useTranslations("Navbar");
@@ -15,6 +16,7 @@ export function Navbar() {
         { href: "/raids", label: t("raids") },
         { href: "/guides", label: t("guides") },
         { href: "/codes", label: t("codes") },
+        { href: "/tools", label: t("tools") },
         { href: "/vault", label: t("vault") },
     ] as const;
 
@@ -26,18 +28,19 @@ export function Navbar() {
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-blue to-accent-indigo">Bizarre Lineage</span> Wiki
                     </span>
                 </Link>
-                <div className="hidden md:flex items-center gap-6">
+                <div className="hidden lg:flex items-center gap-4">
                     {items.map((item) => (
                         <Link key={item.href} href={item.href} className="text-sm font-medium text-muted hover:text-white transition-colors">
                             {item.label}
                         </Link>
                     ))}
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <LanguageSwitcher />
-                    <Link href="/build-planner" className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] transition-all">
+                    <Link href="/build-planner" className="hidden sm:inline-flex px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-accent-blue to-accent-indigo rounded-lg shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] transition-all">
                         {t("openPlanner")}
                     </Link>
+                    <MobileNav items={items} menuLabel={t("menuLabel")} />
                 </div>
             </div>
         </nav>
