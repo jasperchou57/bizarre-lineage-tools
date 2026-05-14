@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ChevronRight, Target, Shield } from "lucide-react";
+import { ChevronRight, Target, Shield, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getSubsData } from "@/data/locale-data";
@@ -32,6 +32,11 @@ export default async function SubAbilitiesDirectory({ params }: { params: Promis
             </div>
             <p className="text-lg text-muted mb-12 max-w-2xl">{t("heroIntro")}</p>
 
+            <div className="bg-accent-indigo/5 border border-accent-indigo/20 rounded-xl p-4 mb-10 flex gap-3 text-sm text-muted">
+                <ShieldCheck className="h-5 w-5 text-accent-indigo shrink-0 mt-0.5" />
+                <p>{t("sourceBoundary")}</p>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {subsData.map((sub) => (
                     <Link
@@ -50,14 +55,14 @@ export default async function SubAbilitiesDirectory({ params }: { params: Promis
 
                         <div className="p-6">
                             <div className="mb-6 p-3 bg-background rounded-lg border border-white/5">
-                                <h3 className="text-xs font-bold text-muted uppercase tracking-widest mb-1.5">Passive</h3>
+                                <h3 className="text-xs font-bold text-muted uppercase tracking-widest mb-1.5">{t("cardPassive")}</h3>
                                 <p className="text-sm text-white">{sub.passive}</p>
                             </div>
 
                             <div className="space-y-3">
                                 <div>
                                     <div className="flex justify-between text-xs mb-1">
-                                        <span className="text-muted flex items-center gap-1.5"><Target className="h-3 w-3" /> PvP Value</span>
+                                        <span className="text-muted flex items-center gap-1.5"><Target className="h-3 w-3" /> {t("cardPvpValue")}</span>
                                         <span className="text-white font-mono font-bold">{sub.scores.pvp}</span>
                                     </div>
                                     <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">
@@ -66,7 +71,7 @@ export default async function SubAbilitiesDirectory({ params }: { params: Promis
                                 </div>
                                 <div>
                                     <div className="flex justify-between text-xs mb-1">
-                                        <span className="text-muted flex items-center gap-1.5"><Shield className="h-3 w-3" /> Survival</span>
+                                        <span className="text-muted flex items-center gap-1.5"><Shield className="h-3 w-3" /> {t("cardSurvival")}</span>
                                         <span className="text-white font-mono font-bold">{sub.scores.survival}</span>
                                     </div>
                                     <div className="w-full bg-background rounded-full h-1.5 overflow-hidden">

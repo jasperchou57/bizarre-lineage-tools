@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, ExternalLink, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import stylesDataEn from "@/data/fighting-styles.json";
 import { getStylesData } from "@/data/locale-data";
+import { FIGHTING_STYLE_SOURCE_LINKS } from "@/data/official-sources";
 import { withCanonical } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -32,6 +33,7 @@ export default async function StyleDetailPage({ params }: { params: Promise<{ lo
     const stylesData = getStylesData(locale);
     const style = stylesData.find((s) => s.id === slug);
     if (!style) notFound();
+    const officialSource = FIGHTING_STYLE_SOURCE_LINKS[style.id as keyof typeof FIGHTING_STYLE_SOURCE_LINKS];
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -47,7 +49,17 @@ export default async function StyleDetailPage({ params }: { params: Promise<{ lo
                 <div className="lg:col-span-2 space-y-8">
                     <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white">{style.name}</h1>
                     <p className="text-xl text-muted leading-relaxed">{style.summary}</p>
-                    <p className="text-sm text-muted leading-relaxed">{t("detailDisclaimer")}</p>
+                    <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-4 flex gap-3 text-sm text-muted">
+                        <ShieldCheck className="h-5 w-5 text-accent-blue shrink-0 mt-0.5" />
+                        <div>
+                            <p className="mb-2">{t("detailDisclaimer")}</p>
+                            {officialSource && (
+                                <a href={officialSource} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors">
+                                    {tCommon("officialCard")} <ExternalLink className="h-3 w-3" />
+                                </a>
+                            )}
+                        </div>
+                    </div>
 
                     <div className="bg-surface border border-border rounded-xl overflow-hidden">
                         <div className="bg-white/5 border-b border-white/5 px-6 py-4">

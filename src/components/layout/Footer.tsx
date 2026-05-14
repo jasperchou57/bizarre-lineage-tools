@@ -12,6 +12,7 @@ export function Footer() {
         { href: "/world-events", label: t("worldEvents") },
         { href: "/perks", label: t("perks") },
         { href: "/trello", label: t("trello") },
+        { href: "/sources", label: t("sources") },
         { href: "/guides/awakening", label: t("awakening") },
         { href: "/guides/night-vampire", label: t("nightVampire") },
         { href: "/guides/leveling", label: t("leveling") },

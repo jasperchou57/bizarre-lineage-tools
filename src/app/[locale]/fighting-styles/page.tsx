@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ChevronRight, Activity, Zap } from "lucide-react";
+import { ChevronRight, Activity, ShieldCheck, Zap } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getStylesData } from "@/data/locale-data";
@@ -31,6 +31,11 @@ export default async function FightingStylesDirectory({ params }: { params: Prom
                 </div>
             </div>
             <p className="text-lg text-muted mb-12 max-w-2xl">{t("heroIntro")}</p>
+
+            <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-4 mb-10 flex gap-3 text-sm text-muted">
+                <ShieldCheck className="h-5 w-5 text-accent-blue shrink-0 mt-0.5" />
+                <p>{t("sourceBoundary")}</p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {stylesData.map((style) => (

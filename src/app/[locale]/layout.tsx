@@ -24,8 +24,8 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
-    title: "Bizarre Lineage Wiki - Codes, Tools & Best Builds (May 2026)",
-    description: "The ultimate Bizarre Lineage wiki and tools hub. Track 15 source-labeled codes, official Trello data, Stand builds, and Update 1 watchlist notes for May 2026.",
+    title: "Bizarre Lineage Wiki - Official Sources, Codes & Planner Tools (May 2026)",
+    description: "Source-labeled Bizarre Lineage wiki and tools hub. Track official Trello codes, official Roblox/Trello data, site-maintained planner builds, and Update 1 watchlist notes for May 2026.",
 };
 
 export default async function LocaleLayout({

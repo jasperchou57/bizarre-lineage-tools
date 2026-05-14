@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle } from "lucide-react";
+import { Target, Shield, Sword, Navigation, Activity, ChevronRight, ArrowRight, Zap, HelpCircle, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import standsData from "@/data/stands.json";
@@ -210,6 +210,16 @@ export default async function StandPage({ params }: { params: Promise<{ locale: 
                 >
                     {t("detailOpenPlanner")} <ChevronRight className="h-4 w-4" />
                 </Link>
+            </div>
+
+            <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-4 mb-10 flex gap-3 text-sm text-muted">
+                <ShieldCheck className="h-5 w-5 text-accent-blue shrink-0 mt-0.5" />
+                <div>
+                    <p className="text-white font-medium mb-1">Source note</p>
+                    <p>
+                        Move names, rarity labels, and obtainment notes are checked against the public official Trello where available. Tier placement, scores, counters, recommended styles, and planner recommendations are site-maintained data, not official developer balance values. See the <Link href="/sources" className="text-accent-blue hover:text-white transition-colors">source standards</Link>.
+                    </p>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

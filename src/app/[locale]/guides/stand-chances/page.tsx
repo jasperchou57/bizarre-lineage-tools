@@ -101,7 +101,7 @@ const faqItems = [
     },
     {
         question: "What are the Stand Arrow drop rates?",
-        answer: "The public official Trello does not publish exact Stand Arrow drop-rate percentages. Any percentages on this site should be treated as local, non-official notes.",
+        answer: "The public official Trello does not publish exact Stand Arrow drop-rate percentages. This page does not provide a percentage table unless an official source or dated in-game testing supports it.",
     },
     {
         question: "Can I get Made in Heaven from the Stand Arrow?",
@@ -144,7 +144,7 @@ export default async function StandChancesPage({ params }: { params: Promise<{ l
             </div>
 
             {/* Rarity Tiers Overview */}
-            <h2 className="text-2xl font-bold text-white mb-6">Rarity Tiers & Drop Rates</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">Rarity Labels & Official Limits</h2>
 
             <div className="space-y-4 mb-12">
                 {rarityTiers.map((tier) => (
@@ -205,7 +205,7 @@ export default async function StandChancesPage({ params }: { params: Promise<{ l
             </div>
 
             {/* Tips for Rolling */}
-            <h2 className="text-2xl font-bold text-white mb-6">How to Improve Your Odds</h2>
+            <h2 className="text-2xl font-bold text-white mb-6">Official Acquisition Notes</h2>
 
             <div className="space-y-4 mb-12">
                 {tips.map((tip) => (
@@ -216,15 +216,15 @@ export default async function StandChancesPage({ params }: { params: Promise<{ l
                 ))}
             </div>
 
-            {/* Best Stands Worth Chasing */}
-            <h2 className="text-2xl font-bold text-white mb-4">Best Stands Worth Chasing</h2>
+            {/* Site planner shortcuts */}
+            <h2 className="text-2xl font-bold text-white mb-4">Site Planner Stands Worth Checking</h2>
             <p className="text-muted mb-6">
-                This section is based on the site&apos;s local planner data, not on official patch notes. Use it as a browsing shortcut rather than a confirmed drop-value ranking.
+                This section is based on the site&apos;s local planner data, not on official patch notes. Use it as a browsing shortcut rather than a confirmed drop-value or drop-rate ranking.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
                 <div className="bg-surface border border-border rounded-xl p-6">
-                    <h3 className="text-sm font-bold text-accent-indigo uppercase tracking-wide mb-3">Best for PvP</h3>
+                    <h3 className="text-sm font-bold text-accent-indigo uppercase tracking-wide mb-3">Planner PvP Picks</h3>
                     <ul className="space-y-2">
                         {standsData.filter(s => s.tier.pvp === "S+" || s.tier.pvp === "S").slice(0, 4).map(s => (
                             <li key={s.id}>
@@ -236,7 +236,7 @@ export default async function StandChancesPage({ params }: { params: Promise<{ l
                     </ul>
                 </div>
                 <div className="bg-surface border border-border rounded-xl p-6">
-                    <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-3">Best for PvE</h3>
+                    <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-3">Planner PvE Picks</h3>
                     <ul className="space-y-2">
                         {standsData.filter(s => s.tier.pve === "S+" || s.tier.pve === "S").slice(0, 4).map(s => (
                             <li key={s.id}>

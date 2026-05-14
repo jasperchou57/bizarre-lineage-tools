@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle, Zap, Moon } from "lucide-react";
+import { ChevronRight, BookOpen, BarChart3, Dice6, Wrench, TrendingUp, ArrowUpCircle, Zap, Moon, Sparkles, ShieldCheck } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { withCanonical } from "@/lib/metadata";
 
@@ -20,6 +20,8 @@ export default async function GuidesIndexPage({ params }: { params: Promise<{ lo
     const tCommon = await getTranslations({ locale, namespace: "Common" });
 
     const guides = [
+        { titleKey: "cardBeginnerTitle", descKey: "cardBeginnerDesc", href: "/guides/beginner", icon: <ShieldCheck className="h-8 w-8 text-green-400" />, tag: "officialTag", tagColor: "bg-green-500/20 text-green-400" },
+        { titleKey: "cardMadeInHeavenTitle", descKey: "cardMadeInHeavenDesc", href: "/guides/how-to-get-made-in-heaven", icon: <Sparkles className="h-8 w-8 text-purple-400" />, tag: "officialTag", tagColor: "bg-green-500/20 text-green-400" },
         { titleKey: "cardStatsTitle", descKey: "cardStatsDesc", href: "/guides/stats", icon: <BarChart3 className="h-8 w-8 text-accent-blue" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
         { titleKey: "cardStandChancesTitle", descKey: "cardStandChancesDesc", href: "/guides/stand-chances", icon: <Dice6 className="h-8 w-8 text-accent-indigo" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
         { titleKey: "cardBestBuildsTitle", descKey: "cardBestBuildsDesc", href: "/guides/best-builds", icon: <Wrench className="h-8 w-8 text-purple-400" />, tag: "newTag", tagColor: "bg-green-500/20 text-green-400" },
@@ -55,16 +57,16 @@ export default async function GuidesIndexPage({ params }: { params: Promise<{ lo
                         <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
                                 <h2 className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">
-                                    {t(guide.titleKey as "cardStatsTitle" | "cardStandChancesTitle" | "cardBestBuildsTitle" | "cardAwakeningTitle" | "cardNightVampireTitle" | "cardLevelingTitle" | "cardPrestigeTitle")}
+                                    {t(guide.titleKey as "cardBeginnerTitle" | "cardMadeInHeavenTitle" | "cardStatsTitle" | "cardStandChancesTitle" | "cardBestBuildsTitle" | "cardAwakeningTitle" | "cardNightVampireTitle" | "cardLevelingTitle" | "cardPrestigeTitle")}
                                 </h2>
                                 {guide.tag && (
                                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${guide.tagColor}`}>
-                                        {t(guide.tag as "newTag")}
+                                        {t(guide.tag as "newTag" | "officialTag")}
                                     </span>
                                 )}
                             </div>
                             <p className="text-sm text-muted">
-                                {t(guide.descKey as "cardStatsDesc" | "cardStandChancesDesc" | "cardBestBuildsDesc" | "cardAwakeningDesc" | "cardNightVampireDesc" | "cardLevelingDesc" | "cardPrestigeDesc")}
+                                {t(guide.descKey as "cardBeginnerDesc" | "cardMadeInHeavenDesc" | "cardStatsDesc" | "cardStandChancesDesc" | "cardBestBuildsDesc" | "cardAwakeningDesc" | "cardNightVampireDesc" | "cardLevelingDesc" | "cardPrestigeDesc")}
                             </p>
                         </div>
                         <ChevronRight className="h-5 w-5 text-muted group-hover:text-accent-blue shrink-0 transition-colors" />

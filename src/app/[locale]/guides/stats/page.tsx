@@ -178,9 +178,9 @@ export default async function StatsGuidePage({ params }: { params: Promise<{ loc
                 ))}
             </div>
 
-            {/* Best Stat Presets */}
+            {/* Site-maintained stat presets */}
             <div className="prose prose-invert max-w-none">
-                <h2 className="text-2xl font-bold text-white mb-2">Best Stat Presets</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">Site-Maintained Stat Presets</h2>
                 <p className="text-muted mb-6">
                     These are site-maintained starting points built around the local planner dataset. Pick one as a baseline, then adjust based on your Stand. You can always <Link href="/build-planner" className="text-accent-blue hover:underline">open the Build Planner</Link> to compare the same setup in the planner.
                 </p>
@@ -216,7 +216,7 @@ export default async function StatsGuidePage({ params }: { params: Promise<{ loc
 
                         <p className="text-muted text-sm leading-relaxed mb-3">{preset.description}</p>
                         <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-xs text-muted">Best with:</span>
+                            <span className="text-xs text-muted">Planner fit:</span>
                             {preset.bestFor.map((stand) => (
                                 <span key={stand} className="text-xs bg-white/5 border border-white/10 px-2 py-1 rounded text-white">{stand}</span>
                             ))}
@@ -266,8 +266,8 @@ export default async function StatsGuidePage({ params }: { params: Promise<{ loc
                     <span className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">View Tier List →</span>
                 </Link>
                 <Link href="/guides/best-builds" className="block bg-surface border border-border rounded-xl p-6 hover:border-accent-blue/50 transition-all group">
-                    <span className="text-sm text-muted uppercase tracking-widest block mb-1">Complete Setups</span>
-                    <span className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">Best Builds Guide →</span>
+                    <span className="text-sm text-muted uppercase tracking-widest block mb-1">Planner Setups</span>
+                    <span className="text-lg font-bold text-white group-hover:text-accent-blue transition-colors">Build Ideas Guide →</span>
                 </Link>
                 <Link href="/guides/leveling" className="block bg-surface border border-border rounded-xl p-6 hover:border-accent-blue/50 transition-all group">
                     <span className="text-sm text-muted uppercase tracking-widest block mb-1">Level Faster</span>

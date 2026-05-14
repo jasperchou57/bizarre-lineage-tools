@@ -1,17 +1,34 @@
 import type { Metadata } from "next";
-import { ChevronRight, Moon, Skull, Heart, Shield } from "lucide-react";
+import { AlertTriangle, ArrowRight, CheckCircle2, ChevronRight, ExternalLink, Moon, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { NIGHT_VAMPIRE_UNCONFIRMED, OFFICIAL_DATA_LAST_CHECKED, OFFICIAL_LINKS, VAMPIRE_CONFIRMED_FACTS, VAMPIRE_MOVES } from "@/data/official-sources";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: "Guides" });
+export async function generateMetadata(): Promise<Metadata> {
     return withCanonical({
-        title: t("nightVampire.metaTitle"),
-        description: t("nightVampire.metaDescription"),
+        title: "Night Vampire / Vampire Facts | Bizarre Lineage Official Source Check",
+        description: "A source-checked Bizarre Lineage Vampire page: Stone Mask, Elder Vampire, Vampire passive, official Vampire moves, and what is not publicly confirmed about Night Vampire.",
     }, "/guides/night-vampire");
 }
+
+const relatedPages = [
+    {
+        title: "Vampire Sub-Ability",
+        body: "Read the site's Vampire reference page with planner boundaries.",
+        href: "/sub-abilities/vampire",
+    },
+    {
+        title: "Sub-Abilities",
+        body: "Compare Hamon, Vampire, and Cyborg with source notes.",
+        href: "/sub-abilities",
+    },
+    {
+        title: "Source Standards",
+        body: "How this site separates official facts from planner notes.",
+        href: "/sources",
+    },
+] as const;
 
 export default async function NightVampireGuidePage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
@@ -19,31 +36,18 @@ export default async function NightVampireGuidePage({ params }: { params: Promis
     const t = await getTranslations({ locale, namespace: "Guides" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
 
-    const abilities = [
-        { key: "G", cooldown: "8s", name: t("nightVampire.ability1Name"), type: t("nightVampire.ability1Type"), description: t("nightVampire.ability1Desc") },
-        { key: "H", cooldown: "12s", name: t("nightVampire.ability2Name"), type: t("nightVampire.ability2Type"), description: t("nightVampire.ability2Desc") },
-        { key: "J", cooldown: "15s", name: t("nightVampire.ability3Name"), type: t("nightVampire.ability3Type"), description: t("nightVampire.ability3Desc") },
-        { key: "V", cooldown: "30s", name: t("nightVampire.ability4Name"), type: t("nightVampire.ability4Type"), description: t("nightVampire.ability4Desc") },
-    ];
-    const pairings = [
-        { stand: "The World", standId: "the-world", reason: t("nightVampire.pairing1Reason"), tier: "S+" },
-        { stand: "King Crimson", standId: "king-crimson", reason: t("nightVampire.pairing2Reason"), tier: "S" },
-        { stand: "Star Platinum", standId: "star-platinum", reason: t("nightVampire.pairing3Reason"), tier: "S" },
-        { stand: "Whitesnake", standId: "whitesnake", reason: t("nightVampire.pairing4Reason"), tier: "A" },
-    ];
-
     const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
             { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: SITE_URL },
             { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: `${SITE_URL}/guides` },
-            { "@type": "ListItem", position: 3, name: t("nightVampire.breadcrumbCurrent"), item: `${SITE_URL}/guides/night-vampire` },
+            { "@type": "ListItem", position: 3, name: "Night Vampire", item: `${SITE_URL}/guides/night-vampire` },
         ],
     };
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <div className="container mx-auto px-4 py-8 max-w-5xl">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">
@@ -51,139 +55,101 @@ export default async function NightVampireGuidePage({ params }: { params: Promis
                 <ChevronRight className="h-4 w-4" />
                 <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white" aria-current="page">{t("nightVampire.breadcrumbCurrent")}</span>
+                <span className="text-white" aria-current="page">Night Vampire</span>
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
                 <Moon className="h-12 w-12 text-purple-400" />
-                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">{t("nightVampire.heroTitle")}</h1>
+                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">Night Vampire / Vampire Source Check</h1>
             </div>
-            <p className="text-lg text-muted mb-10 leading-relaxed">{t("nightVampire.intro")}</p>
+            <p className="text-lg text-muted leading-relaxed max-w-3xl mb-3">
+                This page no longer presents Night Vampire upgrade steps as fact. The public official Trello confirms base Vampire, Stone Mask, Elder Vampire, and Vampire moves; it does not currently confirm a separate Night Vampire upgrade route in the checked public cards.
+            </p>
+            <p className="text-sm text-muted mb-10">Official data checked: {OFFICIAL_DATA_LAST_CHECKED}</p>
 
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.howToTitle")}</h2>
-                <div className="bg-surface border border-border rounded-xl p-6 space-y-4">
-                    {([1, 2, 3] as const).map((n) => (
-                        <div key={n} className="flex items-start gap-4">
-                            <div className="bg-purple-500/10 text-purple-400 rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold shrink-0">{n}</div>
-                            <div>
-                                <h3 className="font-bold text-white">{t(`nightVampire.howStep${n}Title` as `nightVampire.howStep${1 | 2 | 3}Title`)}</h3>
-                                <p className="text-sm text-muted">{t(`nightVampire.howStep${n}Body` as `nightVampire.howStep${1 | 2 | 3}Body`)}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+            <section className="mb-12 bg-purple-500/5 border border-purple-500/20 rounded-xl p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Short answer</h2>
+                <p className="text-sm md:text-base text-muted leading-relaxed">
+                    Officially, the public Trello confirms <strong className="text-white">Vampire</strong>, not a complete public <strong className="text-white">Night Vampire</strong> upgrade guide. To become Vampire, the public Stone Mask card says to use <strong className="text-white">Stone Mask</strong>; to unlock Vampire abilities, the public Vampire card points to <strong className="text-white">Elder Vampire</strong> in <strong className="text-white">Dio&apos;s Chapel</strong>.
+                </p>
             </section>
 
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.prosConsTitle")}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-surface border border-border rounded-xl p-5">
-                        <h3 className="text-sm font-bold text-green-400 uppercase tracking-wide mb-3 flex items-center gap-2">
-                            <Heart className="h-4 w-4" /> {t("nightVampire.strengthsLabel")}
-                        </h3>
-                        <ul className="text-sm text-muted space-y-2">
-                            {([1, 2, 3, 4, 5] as const).map((n) => (
-                                <li key={n}>{t(`nightVampire.strength${n}` as `nightVampire.strength${1 | 2 | 3 | 4 | 5}`)}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="bg-surface border border-border rounded-xl p-5">
-                        <h3 className="text-sm font-bold text-red-400 uppercase tracking-wide mb-3 flex items-center gap-2">
-                            <Skull className="h-4 w-4" /> {t("nightVampire.weaknessesLabel")}
-                        </h3>
-                        <ul className="text-sm text-muted space-y-2">
-                            {([1, 2, 3, 4, 5] as const).map((n) => (
-                                <li key={n}>{t(`nightVampire.weakness${n}` as `nightVampire.weakness${1 | 2 | 3 | 4 | 5}`)}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.abilitiesTitle")}</h2>
-                <div className="space-y-3">
-                    {abilities.map((ability) => (
-                        <div key={ability.name} className="bg-surface border border-border rounded-lg p-4">
-                            <div className="flex items-center justify-between mb-2">
-                                <div className="flex items-center gap-3">
-                                    <span className="font-bold text-white">{ability.name}</span>
-                                    <span className="bg-white/5 border border-white/10 rounded px-2 text-xs font-mono text-muted">{t("nightVampire.abilityKeyLabel")} {ability.key}</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-xs text-muted capitalize">{ability.type}</span>
-                                    <span className="text-xs text-accent-blue">{ability.cooldown}</span>
-                                </div>
-                            </div>
-                            <p className="text-sm text-muted">{ability.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.videoTitle")}</h2>
-                <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/EJu0Ltw3WGU"
-                        title="How to Farm Night Vampire - Bizarre Lineage"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        loading="lazy"
-                        className="w-full h-full"
-                    />
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-accent-blue" /> {t("nightVampire.pairingsTitle")}
-                </h2>
-                <div className="space-y-3">
-                    {pairings.map((pairing) => (
-                        <Link key={pairing.stand} href={`/stands/${pairing.standId}`} className="block bg-surface border border-border rounded-xl p-5 hover:border-accent-blue/50 transition-colors group">
-                            <div className="flex items-center justify-between mb-2">
-                                <h3 className="font-bold text-white group-hover:text-accent-blue transition-colors">{pairing.stand}</h3>
-                                <span className="px-2 py-1 text-xs font-mono font-bold rounded-full bg-accent-blue/10 text-accent-blue border border-accent-blue/20">{pairing.tier}</span>
-                            </div>
-                            <p className="text-sm text-muted">{pairing.reason}</p>
-                        </Link>
-                    ))}
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.faqTitle")}</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">Officially confirmed Vampire facts</h2>
                 <div className="space-y-4">
-                    {([1, 2, 3] as const).map((n) => (
-                        <details key={n} className="group bg-surface border border-border rounded-xl overflow-hidden">
-                            <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-                                <span className="font-medium text-white pr-4">{t(`nightVampire.faqQ${n}` as `nightVampire.faqQ${1 | 2 | 3}`)}</span>
-                                <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
-                            </summary>
-                            <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
-                                {t(`nightVampire.faqA${n}` as `nightVampire.faqA${1 | 2 | 3}`)}
+                    {VAMPIRE_CONFIRMED_FACTS.map((fact) => (
+                        <article key={fact.title} className="bg-surface border border-border rounded-xl p-5">
+                            <div className="flex items-start gap-3">
+                                <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                                <div>
+                                    <h3 className="font-bold text-white mb-1">{fact.title}</h3>
+                                    <p className="text-sm text-muted leading-relaxed mb-3">{fact.body}</p>
+                                    <a href={fact.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors">
+                                        Source: {fact.sourceLabel} <ExternalLink className="h-3 w-3" />
+                                    </a>
+                                </div>
                             </div>
-                        </details>
+                        </article>
                     ))}
+                </div>
+            </section>
+
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold text-white mb-4">Official Vampire moves listed publicly</h2>
+                <p className="text-sm text-muted mb-4">The public Vampire Trello card lists these named moves and descriptions. It does not publish separate Night Vampire-only keybinds or cooldowns in the checked public card.</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {VAMPIRE_MOVES.map((move) => (
+                        <article key={move.name} className="bg-surface border border-border rounded-xl p-5">
+                            <h3 className="font-bold text-white mb-2">{move.name}</h3>
+                            <p className="text-sm text-muted leading-relaxed">{move.body}</p>
+                        </article>
+                    ))}
+                </div>
+                <a href={OFFICIAL_LINKS.vampire} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors mt-4">
+                    Source: Official Trello Vampire card <ExternalLink className="h-3 w-3" />
+                </a>
+            </section>
+
+            <section className="mb-12 bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-6">
+                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-yellow-400" /> Not publicly confirmed
+                </h2>
+                <ul className="space-y-2 text-sm text-muted">
+                    {NIGHT_VAMPIRE_UNCONFIRMED.map((item) => (
+                        <li key={item}>{item}</li>
+                    ))}
+                </ul>
+            </section>
+
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold text-white mb-4">Official source shortcuts</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <a href={OFFICIAL_LINKS.stoneMask} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-lg p-4 hover:border-purple-400/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-purple-400 transition-colors flex items-center gap-1">Stone Mask <ExternalLink className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">Official item card for Vampire entry.</div>
+                    </a>
+                    <a href={OFFICIAL_LINKS.vampire} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">Vampire <ExternalLink className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">Official Sub Ability card and move names.</div>
+                    </a>
+                    <a href={OFFICIAL_LINKS.elderVampire} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-lg p-4 hover:border-green-500/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-green-400 transition-colors flex items-center gap-1">Elder Vampire <ExternalLink className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">Official NPC location card.</div>
+                    </a>
                 </div>
             </section>
 
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">{t("nightVampire.relatedTitle")}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Link href="/sub-abilities/vampire" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("nightVampire.relatedVampireSub")}</div>
-                        <div className="text-xs text-muted mt-1">{t("nightVampire.relatedVampireSubBody")}</div>
-                    </Link>
-                    <Link href="/sub-abilities/hamon" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("nightVampire.relatedHamonSub")}</div>
-                        <div className="text-xs text-muted mt-1">{t("nightVampire.relatedHamonSubBody")}</div>
-                    </Link>
+                <h2 className="text-2xl font-bold text-white mb-4">Where to go next</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {relatedPages.map((page) => (
+                        <Link key={page.href} href={page.href} className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                            <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center justify-between gap-2">
+                                {page.title} {page.href === "/sources" ? <ShieldCheck className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+                            </div>
+                            <div className="text-xs text-muted mt-1">{page.body}</div>
+                        </Link>
+                    ))}
                 </div>
             </section>
         </div>

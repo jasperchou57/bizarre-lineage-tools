@@ -17,7 +17,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const popularLinks = [
     { label: "Whitesnake Build Guide", href: "/stands/whitesnake" },
-    { label: "Made in Heaven Guide", href: "/stands/made-in-heaven" },
+    { label: "How to Get Made in Heaven", href: "/guides/how-to-get-made-in-heaven" },
+    { label: "Beginner Guide", href: "/guides/beginner" },
     { label: "Best PvP Stands", href: "/tier-list" },
     { label: "The World High Voltage", href: "/stands/the-world-high-voltage" },
     { label: "Star Platinum vs The World", href: "/stands/star-platinum" },
@@ -30,6 +31,7 @@ const popularLinks = [
     { label: "Stats Guide", href: "/guides/stats" },
     { label: "Stand Chances & Rarity", href: "/guides/stand-chances" },
     { label: "Best Builds", href: "/guides/best-builds" },
+    { label: "Source Standards", href: "/sources" },
     { label: "All Stand Tier Rankings", href: "/tier-list" },
 ] as const;
 
@@ -289,7 +291,7 @@ function HomeContent({
                                 width="100%"
                                 height="100%"
                                 src="https://www.youtube.com/embed/LnyDuoPfC18"
-                                title="The Ultimate Beginner's Guide to Bizarre Lineage"
+                                title="Beginner Guide to Bizarre Lineage"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowFullScreen

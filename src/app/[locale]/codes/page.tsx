@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { ChevronRight, Gift, Check, Clock, HelpCircle, ShieldCheck, Users } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ACTIVE_CODES, CODE_LAST_CHECKED, CODE_SOURCES, communityReportedCodeCount, officialCodeCount } from "@/data/codes";
+import { ACTIVE_CODES, CODE_LAST_CHECKED, CODE_SOURCES, COMMUNITY_CODE_WATCHLIST, communityReportedCodeCount, officialCodeCount, trackedCodeCount } from "@/data/codes";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -72,7 +72,7 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
 
             <section className="mb-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="bg-surface border border-border rounded-xl p-4">
-                    <div className="text-2xl font-bold text-white">{ACTIVE_CODES.length}</div>
+                    <div className="text-2xl font-bold text-white">{trackedCodeCount}</div>
                     <div className="text-xs text-muted">{t("trackedCount")}</div>
                 </div>
                 <div className="bg-surface border border-green-500/20 rounded-xl p-4">
@@ -108,6 +108,33 @@ export default async function CodesPage({ params }: { params: Promise<{ locale: 
                                     <span className={`text-xs font-bold px-2 py-1 rounded-full border ${item.confidence === "official-trello" ? "text-green-400 bg-green-400/10 border-green-400/20" : "text-yellow-400 bg-yellow-400/10 border-yellow-400/20"}`}>
                                         {item.confidence === "official-trello" ? t("officialBadge") : t("communityBadge")}
                                     </span>
+                                </div>
+                                <div className="text-sm text-muted">{item.reward}</div>
+                            </div>
+                            <div className="text-xs text-muted leading-relaxed">
+                                <span className="text-white/80">{item.sourceLabel}</span>
+                                {item.requires && <span> · {item.requires}</span>}
+                                <span> · {item.note}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                    <Users className="h-5 w-5 text-yellow-400" /> {t("watchlistTitle", { count: COMMUNITY_CODE_WATCHLIST.length })}
+                </h2>
+                <div className="bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-5 mb-4">
+                    <p className="text-sm text-muted leading-relaxed">{t("watchlistBody")}</p>
+                </div>
+                <div className="space-y-3">
+                    {COMMUNITY_CODE_WATCHLIST.map((item) => (
+                        <div key={item.code} className="bg-surface border border-yellow-500/20 rounded-lg p-4 flex flex-col gap-3">
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div className="flex items-center gap-3 flex-wrap">
+                                    <code className="bg-yellow-400/10 text-yellow-400 border border-yellow-400/20 px-3 py-1.5 rounded font-mono font-bold text-sm">!code {item.code}</code>
+                                    <span className="text-xs text-yellow-400 font-bold uppercase">{t("watchlistBadge")}</span>
                                 </div>
                                 <div className="text-sm text-muted">{item.reward}</div>
                             </div>

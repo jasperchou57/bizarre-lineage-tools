@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChevronRight, Target, Shield, Zap, Navigation, Activity } from "lucide-react";
+import { ChevronRight, Target, Shield, Zap, Navigation, Activity, ExternalLink, ShieldCheck } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import subsDataEn from "@/data/sub-abilities.json";
 import { getSubsData } from "@/data/locale-data";
+import { SUB_ABILITY_SOURCE_LINKS } from "@/data/official-sources";
 import { withCanonical } from "@/lib/metadata";
 
 export function generateStaticParams() {
@@ -32,6 +33,7 @@ export default async function SubAbilityDetailPage({ params }: { params: Promise
     const subsData = getSubsData(locale);
     const sub = subsData.find((s) => s.id === slug);
     if (!sub) notFound();
+    const officialSource = SUB_ABILITY_SOURCE_LINKS[sub.id as keyof typeof SUB_ABILITY_SOURCE_LINKS];
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -51,7 +53,17 @@ export default async function SubAbilityDetailPage({ params }: { params: Promise
                         </span>
                         <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-4">{sub.name}</h1>
                         <p className="text-xl text-muted leading-relaxed">{sub.summary}</p>
-                        <p className="text-sm text-muted leading-relaxed mt-3">{t("detailDisclaimer")}</p>
+                        <div className="bg-accent-indigo/5 border border-accent-indigo/20 rounded-xl p-4 mt-4 flex gap-3 text-sm text-muted">
+                            <ShieldCheck className="h-5 w-5 text-accent-indigo shrink-0 mt-0.5" />
+                            <div>
+                                <p className="mb-2">{t("detailDisclaimer")}</p>
+                                {officialSource && (
+                                    <a href={officialSource} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors">
+                                        {tCommon("officialCard")} <ExternalLink className="h-3 w-3" />
+                                    </a>
+                                )}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="bg-surface border border-accent-blue/30 rounded-xl overflow-hidden relative shadow-[0_0_30px_rgba(59,130,246,0.05)]">

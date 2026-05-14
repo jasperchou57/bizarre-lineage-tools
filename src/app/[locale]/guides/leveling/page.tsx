@@ -72,7 +72,7 @@ export default async function LevelingGuidePage({ params }: { params: Promise<{ 
                         width="100%"
                         height="100%"
                         src="https://www.youtube.com/embed/LnyDuoPfC18"
-                        title="Ultimate Beginner Leveling Guide - Bizarre Lineage"
+                        title="Beginner Leveling Guide - Bizarre Lineage"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen

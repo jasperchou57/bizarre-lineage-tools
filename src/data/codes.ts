@@ -9,7 +9,7 @@ export type BizarreCode = {
     requires?: string;
 };
 
-export const CODE_LAST_CHECKED = "May 13, 2026";
+export const CODE_LAST_CHECKED = "May 14, 2026";
 
 export const CODE_SOURCES = {
     trello: "https://trello.com/c/5p9hzQJD/97-codes",
@@ -18,7 +18,7 @@ export const CODE_SOURCES = {
     gamesRadar: "https://www.gamesradar.com/games/action/bizarre-lineage-codes/",
 } as const;
 
-export const ACTIVE_CODES: BizarreCode[] = [
+export const COMMUNITY_CODE_WATCHLIST: BizarreCode[] = [
     {
         code: "Delay1",
         reward: "Free rewards",
@@ -107,6 +107,9 @@ export const ACTIVE_CODES: BizarreCode[] = [
         note: "Reported by multiple May 2026 code trackers; verify in-game if rewards changed.",
         requires: "Level 10 reported",
     },
+];
+
+export const OFFICIAL_CODES: BizarreCode[] = [
     {
         code: "30kLikes",
         reward: "1 Stat Point Essence",
@@ -141,5 +144,8 @@ export const ACTIVE_CODES: BizarreCode[] = [
     },
 ];
 
-export const officialCodeCount = ACTIVE_CODES.filter((code) => code.confidence === "official-trello").length;
-export const communityReportedCodeCount = ACTIVE_CODES.length - officialCodeCount;
+export const ACTIVE_CODES = OFFICIAL_CODES;
+
+export const officialCodeCount = OFFICIAL_CODES.length;
+export const communityReportedCodeCount = COMMUNITY_CODE_WATCHLIST.length;
+export const trackedCodeCount = officialCodeCount + communityReportedCodeCount;

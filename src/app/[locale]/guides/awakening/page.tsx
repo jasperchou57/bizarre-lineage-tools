@@ -1,39 +1,63 @@
 import type { Metadata } from "next";
-import { ChevronRight, Zap, AlertTriangle } from "lucide-react";
+import { ArrowRight, AlertTriangle, CheckCircle2, ChevronRight, ExternalLink, ShieldCheck, Zap } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { AWAKENING_CONFIRMED_FACTS, AWAKENING_UNCONFIRMED, OFFICIAL_DATA_LAST_CHECKED, OFFICIAL_LINKS } from "@/data/official-sources";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const { locale } = await params;
-    const t = await getTranslations({ locale, namespace: "Guides" });
+export async function generateMetadata(): Promise<Metadata> {
     return withCanonical({
-        title: t("awakening.metaTitle"),
-        description: t("awakening.metaDescription"),
+        title: "Bizarre Lineage Awakening Guide | Official Trello Facts",
+        description: "Officially confirmed Bizarre Lineage awakening facts from the public Trello: Inner World, gym mat entry, Level 50, Stand Conjuration 100, and unconfirmed gaps.",
     }, "/guides/awakening");
 }
+
+const awakeningSteps = [
+    {
+        title: "Reach the public requirement",
+        body: "The official Inner World card lists Level 50 and Stand Conjuration 100 as the requirement for the awakening option.",
+        sourceUrl: OFFICIAL_LINKS.innerWorld,
+    },
+    {
+        title: "Use the gym mat to enter Inner World",
+        body: "The official Inner World card says the gym mat lets you enter Inner World.",
+        sourceUrl: OFFICIAL_LINKS.innerWorld,
+    },
+    {
+        title: "Talk to the Inner World clone",
+        body: "The card says the clone offers multiple choices, including the awakening-related option.",
+        sourceUrl: OFFICIAL_LINKS.innerWorld,
+    },
+    {
+        title: "Choose 'I want to surpass my limits'",
+        body: "The official card says this option makes you fight yourself with the awakening of your Stand and unlocks awakening.",
+        sourceUrl: OFFICIAL_LINKS.innerWorld,
+    },
+] as const;
+
+const relatedPages = [
+    {
+        title: "Beginner Guide",
+        body: "Official controls, Stand Arrow, Lucky Arrow, Prestige, and World Events.",
+        href: "/guides/beginner",
+    },
+    {
+        title: "Stats Guide",
+        body: "Official stat roles plus clearly labeled site-maintained presets.",
+        href: "/guides/stats",
+    },
+    {
+        title: "Build Planner",
+        body: "Planner scores are local estimates, not official balance values.",
+        href: "/build-planner",
+    },
+] as const;
 
 export default async function AwakeningGuidePage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "Guides" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
-    const rich = { strong: (chunks: React.ReactNode) => <strong className="text-white">{chunks}</strong> };
-
-    const steps = [1, 2, 3, 4, 5].map((n) => ({
-        step: n,
-        title: t(`awakening.step${n}Title` as `awakening.step${1 | 2 | 3 | 4 | 5}Title`),
-        description: t(`awakening.step${n}Body` as `awakening.step${1 | 2 | 3 | 4 | 5}Body`),
-        tip: t(`awakening.step${n}Tip` as `awakening.step${1 | 2 | 3 | 4 | 5}Tip`),
-    }));
-
-    const bosses = [1, 2, 3].map((n) => ({
-        name: t(`awakening.boss${n}Name` as `awakening.boss${1 | 2 | 3}Name`),
-        difficulty: t(`awakening.boss${n}Difficulty` as `awakening.boss${1 | 2 | 3}Difficulty`),
-        hp: t(`awakening.boss${n}Hp` as `awakening.boss${1 | 2 | 3}Hp`),
-        tip: t(`awakening.boss${n}Tip` as `awakening.boss${1 | 2 | 3}Tip`),
-        difficultyKey: n === 1 ? "medium" : n === 2 ? "hard" : "veryHard",
-    }));
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -41,12 +65,12 @@ export default async function AwakeningGuidePage({ params }: { params: Promise<{
         itemListElement: [
             { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: SITE_URL },
             { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: `${SITE_URL}/guides` },
-            { "@type": "ListItem", position: 3, name: t("awakening.breadcrumbCurrent"), item: `${SITE_URL}/guides/awakening` },
+            { "@type": "ListItem", position: 3, name: "Awakening", item: `${SITE_URL}/guides/awakening` },
         ],
     };
 
     return (
-        <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <div className="container mx-auto px-4 py-8 max-w-5xl">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
             <nav className="flex items-center gap-2 text-sm text-muted mb-8" aria-label="Breadcrumb">
@@ -54,136 +78,107 @@ export default async function AwakeningGuidePage({ params }: { params: Promise<{
                 <ChevronRight className="h-4 w-4" />
                 <Link href="/guides" className="hover:text-white transition-colors">{t("breadcrumbCurrent")}</Link>
                 <ChevronRight className="h-4 w-4" />
-                <span className="text-white" aria-current="page">{t("awakening.breadcrumbCurrent")}</span>
+                <span className="text-white" aria-current="page">Awakening</span>
             </nav>
 
             <div className="flex items-center gap-4 mb-4">
                 <Zap className="h-12 w-12 text-yellow-400" />
-                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">{t("awakening.heroTitle")}</h1>
+                <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white m-0">Bizarre Lineage Awakening Guide</h1>
             </div>
-            <p className="text-lg text-muted mb-10 leading-relaxed">{t("awakening.intro")}</p>
+            <p className="text-lg text-muted leading-relaxed max-w-3xl mb-3">
+                This page now only presents awakening facts that are visible on the public official Trello. Boss HP, fastest routes, and best-Stand strategy are kept out unless a source supports them.
+            </p>
+            <p className="text-sm text-muted mb-10">Official data checked: {OFFICIAL_DATA_LAST_CHECKED}</p>
 
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.reqTitle")}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="bg-surface border border-border rounded-xl p-5 text-center">
-                        <div className="text-3xl font-bold text-accent-blue mb-1">50</div>
-                        <div className="text-sm text-muted">{t("awakening.reqLevelLabel")}</div>
-                    </div>
-                    <div className="bg-surface border border-border rounded-xl p-5 text-center">
-                        <div className="text-3xl font-bold text-accent-indigo mb-1">100</div>
-                        <div className="text-sm text-muted">{t("awakening.reqConjurationLabel")}</div>
-                    </div>
-                    <div className="bg-surface border border-border rounded-xl p-5 text-center">
-                        <div className="text-3xl font-bold text-yellow-400 mb-1">3</div>
-                        <div className="text-sm text-muted">{t("awakening.reqBossesLabel")}</div>
-                    </div>
-                </div>
+            <section className="mb-12 bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-6">
+                <h2 className="text-2xl font-bold text-white mb-4">Short answer</h2>
+                <p className="text-sm md:text-base text-muted leading-relaxed">
+                    The official Trello says awakening is handled through <strong className="text-white">Inner World</strong>. Enter from the <strong className="text-white">gym mat</strong>, meet the public requirement of <strong className="text-white">Level 50</strong> and <strong className="text-white">Stand Conjuration 100</strong>, then choose <strong className="text-white">&quot;I want to surpass my limits&quot;</strong> from the Inner World clone.
+                </p>
             </section>
 
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-6">{t("awakening.stepsTitle")}</h2>
+                <h2 className="text-2xl font-bold text-white mb-6">Officially confirmed facts</h2>
                 <div className="space-y-4">
-                    {steps.map((step) => (
-                        <div key={step.step} className="bg-surface border border-border rounded-xl p-6">
-                            <div className="flex items-start gap-4">
-                                <div className="bg-accent-blue/10 text-accent-blue rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
-                                    {step.step}
-                                </div>
-                                <div className="flex-1">
-                                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                                    <p className="text-sm text-muted mb-3">{step.description}</p>
-                                    <div className="bg-yellow-400/5 border border-yellow-400/20 rounded-lg p-3 flex items-start gap-2">
-                                        <AlertTriangle className="h-4 w-4 text-yellow-400 shrink-0 mt-0.5" />
-                                        <span className="text-xs text-yellow-400/80">{step.tip}</span>
-                                    </div>
+                    {AWAKENING_CONFIRMED_FACTS.map((fact) => (
+                        <article key={fact.title} className="bg-surface border border-border rounded-xl p-5">
+                            <div className="flex items-start gap-3">
+                                <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 shrink-0" />
+                                <div>
+                                    <h3 className="font-bold text-white mb-1">{fact.title}</h3>
+                                    <p className="text-sm text-muted leading-relaxed mb-3">{fact.body}</p>
+                                    <a href={fact.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors">
+                                        Source: {fact.sourceLabel} <ExternalLink className="h-3 w-3" />
+                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     ))}
                 </div>
             </section>
 
             <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.bossesTitle")}</h2>
-                <div className="space-y-4">
-                    {bosses.map((boss) => (
-                        <div key={boss.name} className="bg-surface border border-border rounded-xl p-5">
-                            <div className="flex items-center justify-between mb-2">
-                                <h3 className="font-bold text-white">{boss.name}</h3>
-                                <span className={`text-xs font-bold px-2 py-1 rounded-full ${boss.difficultyKey === "veryHard" ? "bg-red-500/20 text-red-400" : boss.difficultyKey === "hard" ? "bg-orange-500/20 text-orange-400" : "bg-yellow-500/20 text-yellow-400"}`}>
-                                    {boss.difficulty}
+                <h2 className="text-2xl font-bold text-white mb-6">Official route, without unsupported extras</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {awakeningSteps.map((step, index) => (
+                        <article key={step.title} className="bg-surface border border-border rounded-xl p-5">
+                            <div className="flex items-start gap-3">
+                                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-yellow-400/10 text-sm font-bold text-yellow-400 border border-yellow-400/20">
+                                    {index + 1}
                                 </span>
+                                <div>
+                                    <h3 className="font-bold text-white mb-1">{step.title}</h3>
+                                    <p className="text-sm text-muted leading-relaxed mb-3">{step.body}</p>
+                                    <a href={step.sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs font-medium text-accent-blue hover:text-white transition-colors">
+                                        Source: Official Trello Inner World card <ExternalLink className="h-3 w-3" />
+                                    </a>
+                                </div>
                             </div>
-                            <p className="text-sm text-muted mb-2">{t("awakening.bossHpLabel")} {boss.hp}</p>
-                            <p className="text-sm text-muted">{boss.tip}</p>
-                        </div>
+                        </article>
                     ))}
                 </div>
             </section>
 
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.videoTitle")}</h2>
-                <div className="bg-surface border border-border rounded-xl overflow-hidden aspect-video">
-                    <iframe
-                        width="100%"
-                        height="100%"
-                        src="https://www.youtube.com/embed/n21tqQKtKA4"
-                        title="How to Get Stand Awakening - Bizarre Lineage"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                        loading="lazy"
-                        className="w-full h-full"
-                    />
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.bestStandsTitle")}</h2>
-                <div className="bg-surface border border-border rounded-xl p-6 text-sm text-muted leading-relaxed space-y-3">
-                    <p>{t.rich("awakening.bestStands1", rich)}</p>
-                    <p>{t.rich("awakening.bestStands2", rich)}</p>
-                    <p>{t.rich("awakening.bestStands3", rich)}</p>
-                </div>
-            </section>
-
-            <section className="mb-12">
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.faqTitle")}</h2>
-                <div className="space-y-4">
-                    {([1, 2, 3] as const).map((n) => (
-                        <details key={n} className="group bg-surface border border-border rounded-xl overflow-hidden">
-                            <summary className="flex items-center justify-between p-5 cursor-pointer list-none">
-                                <span className="font-medium text-white pr-4">{t(`awakening.faqQ${n}` as `awakening.faqQ${1 | 2 | 3}`)}</span>
-                                <ChevronRight className="h-5 w-5 text-muted flex-shrink-0 group-open:rotate-90 transition-transform" />
-                            </summary>
-                            <div className="px-5 pb-5 text-sm text-muted leading-relaxed">
-                                {t(`awakening.faqA${n}` as `awakening.faqA${1 | 2 | 3}`)}
-                            </div>
-                        </details>
+            <section className="mb-12 bg-yellow-500/5 border border-yellow-500/20 rounded-xl p-6">
+                <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-yellow-400" /> Not publicly confirmed
+                </h2>
+                <ul className="space-y-2 text-sm text-muted">
+                    {AWAKENING_UNCONFIRMED.map((item) => (
+                        <li key={item}>{item}</li>
                     ))}
+                </ul>
+            </section>
+
+            <section className="mb-12">
+                <h2 className="text-2xl font-bold text-white mb-4">Official source shortcuts</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <a href={OFFICIAL_LINKS.innerWorld} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-lg p-4 hover:border-yellow-400/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-yellow-400 transition-colors flex items-center gap-1">Inner World <ExternalLink className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">Official awakening requirement and route entry.</div>
+                    </a>
+                    <a href={OFFICIAL_LINKS.conjuringStand} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center gap-1">Conjuring Your Stand <ExternalLink className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">Official ways to build Stand Conjuration.</div>
+                    </a>
+                    <Link href="/sources" className="bg-surface border border-border rounded-lg p-4 hover:border-green-500/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-green-400 transition-colors flex items-center gap-1">Source Standards <ShieldCheck className="h-3 w-3" /></div>
+                        <div className="text-xs text-muted mt-1">How this site separates official facts from planner notes.</div>
+                    </Link>
                 </div>
             </section>
 
             <section>
-                <h2 className="text-2xl font-bold text-white mb-4">{t("awakening.relatedTitle")}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Link href="/guides/leveling" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("awakening.relatedLevelingTitle")}</div>
-                        <div className="text-xs text-muted mt-1">{t("awakening.relatedLevelingSub")}</div>
-                    </Link>
-                    <Link href="/guides/prestige" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("awakening.relatedPrestigeTitle")}</div>
-                        <div className="text-xs text-muted mt-1">{t("awakening.relatedPrestigeSub")}</div>
-                    </Link>
-                    <Link href="/raids" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("awakening.relatedRaidsTitle")}</div>
-                        <div className="text-xs text-muted mt-1">{t("awakening.relatedRaidsSub")}</div>
-                    </Link>
-                    <Link href="/tier-list" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
-                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("awakening.relatedTierListTitle")}</div>
-                        <div className="text-xs text-muted mt-1">{t("awakening.relatedTierListSub")}</div>
-                    </Link>
+                <h2 className="text-2xl font-bold text-white mb-4">Where to go next</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {relatedPages.map((page) => (
+                        <Link key={page.href} href={page.href} className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                            <div className="font-bold text-white group-hover:text-accent-blue transition-colors flex items-center justify-between gap-2">
+                                {page.title} <ArrowRight className="h-4 w-4" />
+                            </div>
+                            <div className="text-xs text-muted mt-1">{page.body}</div>
+                        </Link>
+                    ))}
                 </div>
             </section>
         </div>

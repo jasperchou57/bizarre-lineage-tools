@@ -20,7 +20,6 @@ interface Build {
     sub: { id: string; name: string };
     description: string;
     strengths: string[];
-    statFocus: string;
 }
 
 interface BuildCategory {
@@ -45,7 +44,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A popular PvP-focused setup in this site's planner. Time Erase supports resets and repositioning, Boxing extends punish windows after successful reads, and Vampire adds sustain in longer trades.",
                 strengths: ["Time Erase supports safe re-engages", "Counter windows convert well into Boxing follow-ups", "Vampire sustain helps in longer trades"],
-                statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
                 name: "The Speed Demon",
@@ -54,7 +52,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A mobility-heavy setup built around Made in Heaven's movement tools. Acceleration helps you pressure or disengage quickly, Kendo adds a clean follow-up option, and Vampire helps smooth out extended skirmishes.",
                 strengths: ["Very high movement ceiling", "Comfortable hit-and-run pressure", "Kendo follow-ups punish overcommits"],
-                statFocus: "20% Health, 30% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
             {
                 name: "The CC Machine",
@@ -63,7 +60,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A control-oriented setup that this site tags as a strong PvP option. Disc Extraction and Acid Rupture create disruption windows, while Boxing and Hamon give you a straightforward follow-up plan.",
                 strengths: ["Multiple disruption tools", "Works across mid and close range", "Hamon helps sustain pressure"],
-                statFocus: "25% Health, 30% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
     },
@@ -80,7 +76,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A PvE-oriented farming suggestion built around wide-area pressure. Weather Report covers groups well, Karate adds another AoE layer, and Hamon is used here as a simple damage-focused support pick.",
                 strengths: ["Good area coverage", "Crowd-control friendly move set", "Comfortable for mission clearing"],
-                statFocus: "20% Health, 40% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
                 name: "The Budget Farmer",
@@ -89,7 +84,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A lower-commitment farming suggestion for earlier accounts in the site's planner. Magician's Red provides AoE options, Boxing gives a simple close-range backup, and Hamon keeps the setup straightforward.",
                 strengths: ["Accessible move kit", "Crossfire Hurricane adds AoE reach", "Straightforward damage-focused support"],
-                statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
                 name: "The Solo Boss Killer",
@@ -98,7 +92,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A single-target focused suggestion for players who like burst windows. Time Stop creates setup space for Knives and Kick Volley, Boxing covers downtime, and Vampire adds sustain between openings.",
                 strengths: ["Strong burst windows", "Time Stop creates reliable setup space", "Vampire helps in longer solo attempts"],
-                statFocus: "20% Health, 30% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
     },
@@ -115,7 +108,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A common beginner recommendation on this site. Star Platinum has a readable move kit, Boxing is straightforward to pilot, and Hamon keeps the setup simple while you learn core timing.",
                 strengths: ["Easy-to-read combo routes", "Time Stop offers a reset tool", "Comfortable across different activities"],
-                statFocus: "25% Health, 35% Destructive Power, 20% Destructive Energy, 10% Power, 10% Strength",
             },
             {
                 name: "The Unkillable Healer",
@@ -124,7 +116,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A forgiving setup built around Crazy Diamond's healing tools. Boxing adds easy follow-ups, and Hamon keeps the build simple for players still learning spacing and timing.",
                 strengths: ["Healing helps cover mistakes", "Rock Trap can start follow-ups", "Useful for steady, patient play"],
-                statFocus: "30% Health, 25% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
     },
@@ -141,7 +132,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A high-risk burst suggestion for players who want explosive punish windows. Time Stop opens a large combo route, Karate adds a heavy follow-up, and Vampire partially offsets the fragile profile.",
                 strengths: ["Explosive burst if the opener lands", "Kick Volley converts Time Stop windows well", "Vampire softens the sustain tradeoff"],
-                statFocus: "10% Health, 40% Destructive Power, 25% Destructive Energy, 15% Power, 10% Strength",
             },
             {
                 name: "The Bleed Assassin",
@@ -150,7 +140,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "hamon", name: "Hamon" },
                 description: "A melee-focused glass-cannon suggestion. Anubis rewards close-range commitment, Kendo keeps the setup aggressive, and Hamon is used here as a direct damage support pick.",
                 strengths: ["Strong melee pressure", "Flash Strike can chain into close follow-ups", "Rewards committed sword-range play"],
-                statFocus: "15% Health, 35% Destructive Power, 15% Destructive Energy, 10% Power, 25% Weapon",
             },
         ],
     },
@@ -167,7 +156,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A sustain-heavy setup for slower fights. Crazy Diamond and Vampire both add survivability tools, while Boxing gives the build a simple combo structure.",
                 strengths: ["Multiple sustain sources", "Rock Trap can force respect", "Fits patient, attrition-focused play"],
-                statFocus: "30% Health, 20% Destructive Power, 15% Destructive Energy, 25% Power, 10% Strength",
             },
             {
                 name: "The Iron Fortress",
@@ -176,7 +164,6 @@ const categories: BuildCategory[] = [
                 sub: { id: "vampire", name: "Vampire" },
                 description: "A balanced sustain suggestion built around Stone Free's utility. String Trap and ranged thread pressure help control pace, while Vampire supports longer fights.",
                 strengths: ["Good mix of utility and sustain", "Trap tools help peel rushers", "Can pressure from more than one range"],
-                statFocus: "30% Health, 25% Destructive Power, 20% Destructive Energy, 15% Power, 10% Strength",
             },
         ],
     },
@@ -275,10 +262,10 @@ export default async function BestBuildsPage({ params }: { params: Promise<{ loc
                                             </ul>
                                         </div>
 
-                                        {/* Stat Focus */}
+                                        {/* Planner data boundary */}
                                         <div className="bg-background/50 rounded-lg p-3 border border-white/5 mb-4">
-                                            <span className="text-xs font-bold text-muted uppercase tracking-wide">Recommended Stats: </span>
-                                            <span className="text-sm text-white font-mono">{build.statFocus}</span>
+                                            <span className="text-xs font-bold text-muted uppercase tracking-wide">Data boundary: </span>
+                                            <span className="text-sm text-white">Build pairing is site-maintained planner guidance, not an official stat allocation or developer recommendation.</span>
                                         </div>
 
                                         {/* CTA */}
@@ -358,7 +345,7 @@ export default async function BestBuildsPage({ params }: { params: Promise<{ loc
                     </Link>
                     <Link href="/guides/stand-chances" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
                         <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Stand Chances</div>
-                        <div className="text-xs text-muted mt-1">Drop rates and rarity breakdown</div>
+                        <div className="text-xs text-muted mt-1">Official limits and rarity labels</div>
                     </Link>
                     <Link href="/tier-list" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
                         <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Tier List</div>
