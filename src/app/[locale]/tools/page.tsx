@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BarChart3, ChevronRight, ClipboardList, Gift, GitCompare, LayoutGrid, Newspaper, ShieldCheck, Vault, Wrench } from "lucide-react";
+import { BarChart3, ChevronRight, ClipboardList, Gem, Gift, GitCompare, Keyboard, LayoutGrid, MapPin, Newspaper, ShieldCheck, Sparkles, UsersRound, Vault, Wrench } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
@@ -27,6 +27,14 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
         { title: t("compareTitle"), desc: t("compareDesc"), href: "/compare", icon: <GitCompare className="h-7 w-7 text-green-400" />, tag: t("plannerTag") },
         { title: t("vaultTitle"), desc: t("vaultDesc"), href: "/vault", icon: <Vault className="h-7 w-7 text-purple-400" />, tag: t("localTag") },
         { title: t("databaseTitle"), desc: t("databaseDesc"), href: "/stands", icon: <LayoutGrid className="h-7 w-7 text-white" />, tag: t("referenceTag") },
+    ] as const;
+
+    const referenceLinks = [
+        { title: "Controls", desc: "Official Roblox + Trello keybinds.", href: "/controls", icon: <Keyboard className="h-5 w-5 text-accent-blue" /> },
+        { title: "Personalities", desc: "Official Trello personality effects.", href: "/personalities", icon: <Sparkles className="h-5 w-5 text-purple-300" /> },
+        { title: "Accessories", desc: "63 official Trello accessory cards.", href: "/accessories", icon: <Gem className="h-5 w-5 text-yellow-300" /> },
+        { title: "Locations", desc: "Official map and region cards.", href: "/locations", icon: <MapPin className="h-5 w-5 text-green-400" /> },
+        { title: "NPCs", desc: "Main, important, and side quest NPCs.", href: "/npcs", icon: <UsersRound className="h-5 w-5 text-white" /> },
     ] as const;
 
     const breadcrumbSchema = {
@@ -89,6 +97,19 @@ export default async function ToolsPage({ params }: { params: Promise<{ locale: 
                     <h2 className="text-lg font-bold text-white group-hover:text-accent-indigo transition-colors">{t("trelloTitle")}</h2>
                     <p className="text-sm text-muted mt-2">{t("trelloDesc")}</p>
                 </Link>
+            </section>
+
+            <section className="mt-12">
+                <h2 className="text-2xl font-bold text-white mb-4">Official Reference Additions</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                    {referenceLinks.map((link) => (
+                        <Link key={link.href} href={link.href} className="bg-surface border border-border rounded-xl p-4 hover:border-accent-blue/50 transition-colors group">
+                            <div className="mb-3">{link.icon}</div>
+                            <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{link.title}</div>
+                            <p className="text-xs text-muted mt-1 leading-relaxed">{link.desc}</p>
+                        </Link>
+                    ))}
+                </div>
             </section>
         </div>
     );

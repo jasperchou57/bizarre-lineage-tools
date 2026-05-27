@@ -87,6 +87,15 @@ export default async function TrelloPage({ params }: { params: Promise<{ locale:
                             <div className="text-xs text-muted">{t("robloxSub")}</div>
                         </div>
                     </a>
+                    <a href="https://www.roblox.com/communities/33161040/Bizarre-Collective" target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-xl p-5 hover:border-yellow-500/50 transition-colors group flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-yellow-500/10 flex items-center justify-center shrink-0">
+                            <span className="text-yellow-300 font-bold text-lg">G</span>
+                        </div>
+                        <div>
+                            <div className="font-bold text-white group-hover:text-yellow-300 transition-colors flex items-center gap-1">Roblox Group <ExternalLink className="h-3 w-3" /></div>
+                            <div className="text-xs text-muted">Bizarre Collective community linked from official Trello.</div>
+                        </div>
+                    </a>
                 </div>
             </section>
 

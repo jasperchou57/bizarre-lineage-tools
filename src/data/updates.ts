@@ -12,9 +12,25 @@ export type GameUpdate = {
     tags: string[];
 };
 
-export const UPDATES_LAST_CHECKED = "May 13, 2026";
+export const UPDATES_LAST_CHECKED = "May 27, 2026";
 
 export const GAME_UPDATES: GameUpdate[] = [
+    {
+        id: "official-source-recheck-may-27",
+        title: "Official Source Recheck",
+        displayDate: "May 27, 2026",
+        dateTime: "2026-05-27T00:00:00.000Z",
+        confidence: "official",
+        sourceLabel: "Roblox API + Official Trello",
+        sourceUrl: "https://trello.com/b/wtzgwqIf/official-bizarre-lineage-%E2%9E%B5",
+        summary: "Roblox still shows Update 1 and the 750k likes code target. The public official Trello board has no public card activity after May 10, 2026, and the official Codes card still lists four codes.",
+        tags: [
+            "No public Update 2 signal found",
+            "Official Codes card still lists 4 codes",
+            "Roblox description still says 750k likes code target",
+            "Public Trello card activity unchanged after May 10",
+        ],
+    },
     {
         id: "official-trello-activity-may-10",
         title: "Official Trello Board Activity",

@@ -93,6 +93,30 @@ export default async function SourcesPage({ params }: { params: Promise<{ locale
                         </div>
                         <p className="text-xs text-muted mt-2">Used for cards, labels, obtainment notes, progression notes, item cards, and NPC locations.</p>
                     </a>
+                    <a href={OFFICIAL_LINKS.keybinds} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-xl p-5 hover:border-accent-indigo/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-indigo transition-colors flex items-center gap-2">
+                            Official Keybinds Card <ExternalLink className="h-4 w-4" />
+                        </div>
+                        <p className="text-xs text-muted mt-2">Used for inventory, slide, mount, weapon, and Eagle Vision keybinds.</p>
+                    </a>
+                    <a href={OFFICIAL_LINKS.traits} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-xl p-5 hover:border-purple-400/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-purple-300 transition-colors flex items-center gap-2">
+                            Official Traits Card <ExternalLink className="h-4 w-4" />
+                        </div>
+                        <p className="text-xs text-muted mt-2">Used for Perks and Traits effect text.</p>
+                    </a>
+                    <a href={OFFICIAL_LINKS.personalities} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-xl p-5 hover:border-yellow-400/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-yellow-300 transition-colors flex items-center gap-2">
+                            Official Personalities Card <ExternalLink className="h-4 w-4" />
+                        </div>
+                        <p className="text-xs text-muted mt-2">Used for Stand Personality tiers and effect text.</p>
+                    </a>
+                    <a href={OFFICIAL_LINKS.trelloGameLinks} target="_blank" rel="noopener noreferrer" className="bg-surface border border-border rounded-xl p-5 hover:border-green-500/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-green-400 transition-colors flex items-center gap-2">
+                            Official Links Card <ExternalLink className="h-4 w-4" />
+                        </div>
+                        <p className="text-xs text-muted mt-2">Used for the Roblox group and official Discord links.</p>
+                    </a>
                 </div>
             </section>
 
@@ -122,6 +146,10 @@ export default async function SourcesPage({ params }: { params: Promise<{ locale
                     <Link href="/trello" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
                         <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Official Trello</div>
                         <div className="text-xs text-muted mt-1">Direct links to the public board and official cards.</div>
+                    </Link>
+                    <Link href="/controls" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-blue transition-colors">Controls</div>
+                        <div className="text-xs text-muted mt-1">Official Roblox and Trello keybinds.</div>
                     </Link>
                 </div>
             </section>

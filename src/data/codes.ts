@@ -9,7 +9,7 @@ export type BizarreCode = {
     requires?: string;
 };
 
-export const CODE_LAST_CHECKED = "May 14, 2026";
+export const CODE_LAST_CHECKED = "May 27, 2026";
 
 export const CODE_SOURCES = {
     trello: "https://trello.com/c/5p9hzQJD/97-codes",

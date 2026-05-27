@@ -1,10 +1,16 @@
-export const OFFICIAL_DATA_LAST_CHECKED = "May 14, 2026";
+export const OFFICIAL_DATA_LAST_CHECKED = "May 27, 2026";
 
 export const OFFICIAL_LINKS = {
     robloxGame: "https://www.roblox.com/games/14890802310/Bizarre-Lineage",
     robloxGameApi: "https://games.roblox.com/v1/games?universeIds=5130394318",
     trelloBoard: "https://trello.com/b/wtzgwqIf/official-bizarre-lineage-%E2%9E%B5",
     trelloCodes: "https://trello.com/c/5p9hzQJD/97-codes",
+    trelloGameLinks: "https://trello.com/c/mZbDMock/103-game-discord-links",
+    keybinds: "https://trello.com/c/amGuLqFm/101-keybinds",
+    traits: "https://trello.com/c/qR0xwimj/143-untitled",
+    personalities: "https://trello.com/c/Sy86yPet/251-untitled",
+    robloxGroup: "https://www.roblox.com/communities/33161040/Bizarre-Collective",
+    officialDiscord: "https://discord.gg/bizarrelineage",
     standArrow: "https://trello.com/c/cgs8T2ym/40-stand-arrow",
     luckyArrow: "https://trello.com/c/GkaiurWp/41-lucky-arrow",
     stoneMask: "https://trello.com/c/LU6kjpH5/253-stone-mask",
@@ -80,8 +86,8 @@ export const BEGINNER_CONFIRMED_FACTS = [
     },
     {
         title: "Basic controls are documented on Roblox",
-        body: "The Roblox description lists TAB for Stand summon, M1/M2 for melee and critical attacks, E/R/Z/X/C/V for Stand skills, 1/2/3/4 for other skills, Q dash, F block, G evasive, H awaken or ultimate, W+W sprint, and M menu.",
-        sourceLabel: "Roblox game page",
+        body: "The Roblox description lists TAB for Stand summon, M1/M2 for melee and critical attacks, E/R/Z/X/C/V for Stand skills, 1/2/3/4 for other skills, Q dash, F block, G evasive, H awaken or ultimate, W+W sprint, and M menu. The official Trello Keybinds card adds Inventory, Slide, Mount, Equip Weapon, and Eagle Vision inputs.",
+        sourceLabel: "Roblox game page + official Trello Keybinds card",
         sourceUrl: OFFICIAL_LINKS.robloxGame,
     },
     {
@@ -107,6 +113,12 @@ export const BEGINNER_CONFIRMED_FACTS = [
         body: "The official World Events card says World Events are limited-time, server-wide activities and spawn every 20 minutes. The public card names Graveyard Uprising and Deathmatch.",
         sourceLabel: "Official Trello World Events card",
         sourceUrl: OFFICIAL_LINKS.worldEvents,
+    },
+    {
+        title: "Official community links are listed on Trello",
+        body: "The public Trello Game Discord & Links card lists the Roblox game page, Bizarre Collective Roblox group, and official Discord invite.",
+        sourceLabel: "Official Trello Game Discord & Links card",
+        sourceUrl: OFFICIAL_LINKS.trelloGameLinks,
     },
 ];
 

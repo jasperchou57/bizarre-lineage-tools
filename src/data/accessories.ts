@@ -1,0 +1,77 @@
+export type AccessoryRarity = "Common" | "Uncommon" | "Rare" | "Legendary" | "Mythical";
+
+export type OfficialAccessory = {
+    name: string;
+    rarity: AccessoryRarity;
+    sourceUrl: string;
+};
+
+export const ACCESSORIES_SOURCE_URL = "https://trello.com/b/wtzgwqIf/official-bizarre-lineage-%E2%9E%B5";
+
+export const OFFICIAL_ACCESSORIES: OfficialAccessory[] = [
+    { name: "Mask", rarity: "Common", sourceUrl: "https://trello.com/c/ElXPJCOg/71-mask" },
+    { name: "Shades", rarity: "Common", sourceUrl: "https://trello.com/c/HgByZZvo/72-shades" },
+    { name: "Arm Wraps", rarity: "Common", sourceUrl: "https://trello.com/c/wnirRCYk/73-arm-wraps" },
+    { name: "White Jacket", rarity: "Common", sourceUrl: "https://trello.com/c/XfdruaRl/74-white-jacket" },
+    { name: "Black Jacket", rarity: "Common", sourceUrl: "https://trello.com/c/Htn749gr/75-black-jacket" },
+    { name: "Grey Jacket", rarity: "Common", sourceUrl: "https://trello.com/c/qSxxLAqE/80-grey-jacket" },
+    { name: "Eye patch", rarity: "Common", sourceUrl: "https://trello.com/c/ZM0h7R1t/76-eye-patch" },
+    { name: "Balaclava", rarity: "Common", sourceUrl: "https://trello.com/c/s062On0Q/77-balaclava" },
+    { name: "Simple Cape", rarity: "Common", sourceUrl: "https://trello.com/c/N8KHz6JO/78-simple-cape" },
+    { name: "Plain White Scarf", rarity: "Common", sourceUrl: "https://trello.com/c/fvXiMEE1/79-plain-white-scarf" },
+    { name: "White Belt", rarity: "Common", sourceUrl: "https://trello.com/c/0sZhaEg0/81-white-belt" },
+    { name: "Yellow Belt", rarity: "Common", sourceUrl: "https://trello.com/c/dymzr92y/82-yellow-belt" },
+    { name: "Orange Belt", rarity: "Common", sourceUrl: "https://trello.com/c/w2wyiWGp/83-orange-belt" },
+    { name: "Green Belt", rarity: "Common", sourceUrl: "https://trello.com/c/7Jfib6qe/84-green-belt" },
+    { name: "Blue Belt", rarity: "Common", sourceUrl: "https://trello.com/c/9PHRJAM0/85-blue-belt" },
+    { name: "Purple Belt", rarity: "Common", sourceUrl: "https://trello.com/c/rpuFG9Dw/86-purple-belt" },
+    { name: "Red Belt", rarity: "Common", sourceUrl: "https://trello.com/c/8oqOfSPj/87-red-belt" },
+    { name: "Biker Chain", rarity: "Uncommon", sourceUrl: "https://trello.com/c/xOipnNbc/88-biker-chain" },
+    { name: "Head Goggles", rarity: "Uncommon", sourceUrl: "https://trello.com/c/u0d1omuk/89-head-goggles" },
+    { name: "Face Goggles", rarity: "Uncommon", sourceUrl: "https://trello.com/c/Kg0Dpbc4/95-face-goggles" },
+    { name: "Baseball Cap", rarity: "Uncommon", sourceUrl: "https://trello.com/c/BRhndP2F/90-baseball-cap" },
+    { name: "Red Topcoat", rarity: "Uncommon", sourceUrl: "https://trello.com/c/Ef3JUPYd/91-red-topcoat" },
+    { name: "Grey Topcoat", rarity: "Uncommon", sourceUrl: "https://trello.com/c/ESoOsvWB/92-grey-topcoat" },
+    { name: "White Topcoat", rarity: "Uncommon", sourceUrl: "https://trello.com/c/qBXaj0aa/96-white-topcoat" },
+    { name: "Bandage Mask", rarity: "Uncommon", sourceUrl: "https://trello.com/c/LiC74xU2/93-bandage-mask" },
+    { name: "Gold Crown", rarity: "Uncommon", sourceUrl: "https://trello.com/c/XmjH1VL0/94-gold-crown" },
+    { name: "Brown Belt", rarity: "Uncommon", sourceUrl: "https://trello.com/c/hC4UXue6/97-brown-belt" },
+    { name: "Dark Cowl", rarity: "Rare", sourceUrl: "https://trello.com/c/Gtq4U20Z/98-dark-cowl" },
+    { name: "Full Bandage Mask", rarity: "Rare", sourceUrl: "https://trello.com/c/ftsre2dt/99-full-bandage-mask" },
+    { name: "White Ripped Jacket", rarity: "Rare", sourceUrl: "https://trello.com/c/SSpbywIi/100-white-ripped-jacket" },
+    { name: "Black Ripped Jacket", rarity: "Rare", sourceUrl: "https://trello.com/c/R3aDUzYo/104-black-ripped-jacket" },
+    { name: "Crimson Ripped Jacket", rarity: "Rare", sourceUrl: "https://trello.com/c/yhC8LyGg/108-crimson-ripped-jacket" },
+    { name: "Green Ripped Jacket", rarity: "Rare", sourceUrl: "https://trello.com/c/CEwrKvpx/111-green-ripped-jacket" },
+    { name: "Fighter Hand Wraps", rarity: "Rare", sourceUrl: "https://trello.com/c/IrS5Q4W6/101-fighter-hand-wraps" },
+    { name: "Cultist Hood", rarity: "Rare", sourceUrl: "https://trello.com/c/si20f9DN/102-cultist-hood" },
+    { name: "Cultist Howl", rarity: "Rare", sourceUrl: "https://trello.com/c/OPc8rLNv/103-cultist-howl" },
+    { name: "Fancy White Scarf", rarity: "Rare", sourceUrl: "https://trello.com/c/TLPLYwG9/105-fancy-white-scarf" },
+    { name: "Ruby Earrings", rarity: "Rare", sourceUrl: "https://trello.com/c/pXQVj2Zp/106-ruby-earrings" },
+    { name: "Ushanka", rarity: "Rare", sourceUrl: "https://trello.com/c/g1rzEoqd/107-ushanka" },
+    { name: "Oni Beads", rarity: "Rare", sourceUrl: "https://trello.com/c/5PKEREeN/109-oni-beads" },
+    { name: "Pink Choker", rarity: "Rare", sourceUrl: "https://trello.com/c/aPRCLsgh/110-pink-choker" },
+    { name: "Straw Hat", rarity: "Rare", sourceUrl: "https://trello.com/c/dfTNZG8T/112-straw-hat" },
+    { name: "Chef's Hat", rarity: "Rare", sourceUrl: "https://trello.com/c/FV3kQdyH/113-chefs-hat" },
+    { name: "Black Belt", rarity: "Rare", sourceUrl: "https://trello.com/c/Zkag97rp/114-black-belt" },
+    { name: "Jotaro's Hat", rarity: "Legendary", sourceUrl: "https://trello.com/c/IKRsjsds/115-jotaros-hat" },
+    { name: "Jotaro's coat", rarity: "Legendary", sourceUrl: "https://trello.com/c/mBB0PY9N/116-jotaros-coat" },
+    { name: "Chain Arm Wraps", rarity: "Legendary", sourceUrl: "https://trello.com/c/QA1mu1nN/36-chain-arm-wraps" },
+    { name: "Strawberry Tie", rarity: "Legendary", sourceUrl: "https://trello.com/c/rpxTZZLF/148-strawberry-tie" },
+    { name: "Kira's Coat", rarity: "Legendary", sourceUrl: "https://trello.com/c/Uqx5AUEa/37-kiras-coat" },
+    { name: "Roundabout Cape", rarity: "Legendary", sourceUrl: "https://trello.com/c/PWvrA57S/120-roundabout-cape" },
+    { name: "Sailor Hat", rarity: "Legendary", sourceUrl: "https://trello.com/c/dTl11Ojq/121-sailor-hat" },
+    { name: "White Overcoat", rarity: "Legendary", sourceUrl: "https://trello.com/c/u92xkIxP/122-white-overcoat" },
+    { name: "Black Overcoat", rarity: "Legendary", sourceUrl: "https://trello.com/c/YWKREluj/124-black-overcoat" },
+    { name: "Crimson Overcoat", rarity: "Legendary", sourceUrl: "https://trello.com/c/jdLnjZAF/125-crimson-overcoat" },
+    { name: "Safari Hat", rarity: "Legendary", sourceUrl: "https://trello.com/c/xRHhWE7z/123-safari-hat" },
+    { name: "American Flag Cape", rarity: "Legendary", sourceUrl: "https://trello.com/c/3JyiCaIb/126-american-flag-cape" },
+    { name: "Heart Headband", rarity: "Mythical", sourceUrl: "https://trello.com/c/BNdcBcap/127-heart-headband" },
+    { name: "Prime Jotaro's Hat", rarity: "Mythical", sourceUrl: "https://trello.com/c/bZPTwyyt/167-prime-jotaros-hat" },
+    { name: "Prime Jotaro's Coat", rarity: "Mythical", sourceUrl: "https://trello.com/c/mGdKP6Z4/166-prime-jotaros-coat" },
+    { name: "Crucifix Pendant", rarity: "Mythical", sourceUrl: "https://trello.com/c/eg6m57nA/168-crucifix-pendant" },
+    { name: "The Bosses Watch", rarity: "Mythical", sourceUrl: "https://trello.com/c/nbXPIo8w/169-the-bosses-watch" },
+    { name: "Skull Tie", rarity: "Mythical", sourceUrl: "https://trello.com/c/owHmmr1s/38-skull-tie" },
+    { name: "Double Belt", rarity: "Mythical", sourceUrl: "https://trello.com/c/1dq5mzDs/39-double-belt" },
+];
+
+export const ACCESSORY_RARITIES: AccessoryRarity[] = ["Common", "Uncommon", "Rare", "Legendary", "Mythical"];

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { ChevronRight, Sparkles, Info } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { OFFICIAL_DATA_LAST_CHECKED } from "@/data/official-sources";
+import { OFFICIAL_PERK_SECTIONS, TRAITS_SOURCE_URL } from "@/data/perks";
 import { getPerkTranslations } from "@/data/locale-data";
 import { withCanonical, SITE_URL } from "@/lib/metadata";
 
@@ -15,102 +17,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }, "/perks");
 }
 
-type Perk = {
-    name: string;
-    effect?: string;
-    cost?: string;
-    npc?: string;
-};
-
-type PerkSection = {
-    sourceLabel: string;
-    sourceNote?: string;
-    perks: Perk[];
-};
-
-const PERK_SECTIONS: PerkSection[] = [
-    {
-        sourceLabel: "Money Store (Rahaj)",
-        sourceNote: "Purchasable from Rahaj's Shop in Morioh.",
-        perks: [
-            { name: "The Fever", effect: "Defeating a player steals 10% of their stats for 20 seconds (10s cooldown)." },
-            { name: "Hustle Bones", effect: "All money gained is increased by +5%." },
-            { name: "Curve and Light", effect: "Reduce Stand Awakening cooldown by 10%." },
-            { name: "I'm in Your Area", effect: "Enemies at close range deal 8% less damage and take 8% more damage from you." },
-        ],
-    },
-    {
-        sourceLabel: "Tutorial Reward",
-        perks: [
-            { name: "Journeyman", effect: "+5% experience boost." },
-        ],
-    },
-    {
-        sourceLabel: "Prestige Shop",
-        perks: [
-            { name: "Bloodlust", effect: "After being hit, your HP rapidly drains to 5%. While active gain +100% penetration, +50% damage, and lifesteal." },
-        ],
-    },
-    {
-        sourceLabel: "Side Quest Traits",
-        sourceNote: "Granted by completing specific side-quest NPC quests.",
-        perks: [
-            { name: "The Heirophant", npc: "Kakyoin", effect: "Take -15% Physical damage but take +15% Slash damage." },
-            { name: "Retribution", effect: "Backstab attacks apply the Bleed status effect and lifesteal." },
-            { name: "The Magician", npc: "Geordie Greep", effect: "Evading and then landing an attack makes the attack deal knockback and 100% more damage." },
-            { name: "The Fool", npc: "Shozuki", effect: "Being ragdolled grants you more evasive bar." },
-            { name: "The High Priestess", npc: "Rose", effect: "Posing grants more healing and power regeneration." },
-            { name: "Gardener", effect: "All healing sources are now done over 10 seconds. Heal 10% more overall." },
-            { name: "Internal Conjuration", npc: "Kaiser", effect: "While your Stand is not summoned, gain 10% Damage and Defense." },
-        ],
-    },
-    {
-        sourceLabel: "Gang Wars",
-        perks: [
-            { name: "Commanding Presence", effect: "Other gang members gain 5% damage and defense, stacking up to 30% globally." },
-        ],
-    },
-    {
-        sourceLabel: "Jotaro Raid Shop",
-        sourceNote: "Trello does not document the trait effects — only their cost. Verify in-game.",
-        perks: [
-            { name: "Grappler Trait", cost: "~360 Jotaro Tokens" },
-            { name: "Intimidation Trait", cost: "~368 Jotaro Tokens" },
-        ],
-    },
-    {
-        sourceLabel: "Avdol Raid Shop",
-        sourceNote: "Trello does not document the trait effects — only their cost. Verify in-game.",
-        perks: [
-            { name: "Conjurer Trait", cost: "~242 Avdol Tokens" },
-            { name: "King of Flames Trait", cost: "~980 Avdol Tokens" },
-        ],
-    },
-    {
-        sourceLabel: "Kira Raid Shop",
-        sourceNote: "Trello does not document the trait effects — only their cost. Verify in-game.",
-        perks: [
-            { name: "A Quiet Life", cost: "~392 Kira Tokens" },
-            { name: "Serial Killer", cost: "~436 Kira Tokens" },
-        ],
-    },
-    {
-        sourceLabel: "DIO Raid Shop",
-        sourceNote: "Trello does not document the trait effects — only their cost. Verify in-game.",
-        perks: [
-            { name: "The Godfather Trait", cost: "~412 DIO Tokens" },
-            { name: "Emperor of Time Trait", cost: "~420 DIO Tokens" },
-        ],
-    },
-];
-
 export default async function PerksPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
     setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: "Perks" });
     const tCommon = await getTranslations({ locale, namespace: "Common" });
     const perkTrans = getPerkTranslations(locale);
-    const totalPerks = PERK_SECTIONS.reduce((sum, s) => sum + s.perks.length, 0);
+    const totalPerks = OFFICIAL_PERK_SECTIONS.reduce((sum, s) => sum + s.perks.length, 0);
 
     const localizeSource = (label: string) => perkTrans?.sources?.[label as keyof typeof perkTrans.sources] ?? label;
     const localizeNote = (label: string, fallback?: string) => {
@@ -151,6 +64,7 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
                 </div>
             </div>
             <p className="text-lg text-muted mb-6 leading-relaxed">{t("heroIntro", { count: totalPerks })}</p>
+            <p className="text-sm text-muted mb-8">Official data checked: {OFFICIAL_DATA_LAST_CHECKED}</p>
 
             <div className="bg-accent-blue/5 border border-accent-blue/20 rounded-xl p-4 mb-10 flex gap-3 text-sm text-muted">
                 <Info className="h-5 w-5 text-accent-blue shrink-0 mt-0.5" />
@@ -160,7 +74,7 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
                 </div>
             </div>
 
-            {PERK_SECTIONS.map((section) => {
+            {OFFICIAL_PERK_SECTIONS.map((section) => {
                 const sectionLabel = localizeSource(section.sourceLabel);
                 const sectionNote = localizeNote(section.sourceLabel, section.sourceNote);
                 return (
@@ -201,7 +115,7 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
             <section className="mb-12">
                 <h2 className="text-2xl font-bold text-white mb-4">{t("sourceTitle")}</h2>
                 <div className="bg-surface border border-border rounded-xl p-6 text-sm text-muted">
-                    <p>{t("sourceBody")} <a href="https://trello.com/b/wtzgwqIf" target="_blank" rel="noopener noreferrer" className="text-accent-blue hover:text-white transition-colors underline underline-offset-2">trello.com/b/wtzgwqIf</a>.</p>
+                    <p>{t("sourceBody")} <a href={TRAITS_SOURCE_URL} target="_blank" rel="noopener noreferrer" className="text-accent-blue hover:text-white transition-colors underline underline-offset-2">Official Traits card</a>.</p>
                 </div>
             </section>
 
@@ -215,6 +129,10 @@ export default async function PerksPage({ params }: { params: Promise<{ locale: 
                     <Link href="/build-planner" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-blue/50 transition-colors group">
                         <div className="font-bold text-white group-hover:text-accent-blue transition-colors">{t("relatedBuildPlannerTitle")}</div>
                         <div className="text-xs text-muted mt-1">{t("relatedBuildPlannerSub")}</div>
+                    </Link>
+                    <Link href="/personalities" className="bg-surface border border-border rounded-lg p-4 hover:border-accent-indigo/50 transition-colors group">
+                        <div className="font-bold text-white group-hover:text-accent-indigo transition-colors">Personalities</div>
+                        <div className="text-xs text-muted mt-1">Official Trello personality effects</div>
                     </Link>
                 </div>
             </section>
