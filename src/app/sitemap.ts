@@ -64,6 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         entry("/guides/awakening", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
         entry("/guides/night-vampire", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
         entry("/about", { lastModified: now, changeFrequency: "yearly", priority: 0.3 }),
+        entry("/contact", { lastModified: now, changeFrequency: "yearly", priority: 0.3 }),
         entry("/privacy", { lastModified: now, changeFrequency: "yearly", priority: 0.2 }),
         entry("/terms", { lastModified: now, changeFrequency: "yearly", priority: 0.2 }),
     ];

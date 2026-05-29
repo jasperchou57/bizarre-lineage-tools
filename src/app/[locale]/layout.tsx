@@ -7,13 +7,8 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { AdsterraBanner468x60 } from "@/components/ads/AdsterraBanner468x60";
-import { AdsterraNativeBanner } from "@/components/ads/AdsterraNativeBanner";
-import { MachineTranslatedBanner } from "@/components/layout/MachineTranslatedBanner";
 import { SITE_URL } from "@/lib/metadata";
 import { routing } from "@/i18n/routing";
-
-const ADS_ENABLED = process.env.NODE_ENV === "production";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -60,12 +55,9 @@ export default async function LocaleLayout({
             <body className="font-sans antialiased text-white min-h-screen flex flex-col bg-background">
                 <NextIntlClientProvider>
                     <Navbar />
-                    {ADS_ENABLED && <AdsterraBanner468x60 />}
-                    {locale !== routing.defaultLocale && <MachineTranslatedBanner />}
                     <main className="flex-1 w-full mx-auto flex flex-col">
                         {children}
                     </main>
-                    {ADS_ENABLED && <AdsterraNativeBanner />}
                     <Footer />
                 </NextIntlClientProvider>
             </body>

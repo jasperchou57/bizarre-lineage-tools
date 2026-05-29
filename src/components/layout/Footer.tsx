@@ -22,6 +22,7 @@ export function Footer() {
         { href: "/guides/night-vampire", label: t("nightVampire") },
         { href: "/guides/leveling", label: t("leveling") },
         { href: "/about", label: t("about") },
+        { href: "/contact", label: t("contact") },
         { href: "/privacy", label: t("privacy") },
         { href: "/terms", label: t("terms") },
     ] as const;
