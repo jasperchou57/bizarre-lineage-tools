@@ -163,8 +163,8 @@ export default function TierListPage() {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         itemListElement: [
-            { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: "https://www.bizarrelineage.com" },
-            { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: "https://www.bizarrelineage.com/tier-list" },
+            { "@type": "ListItem", position: 1, name: tCommon("breadcrumbHome"), item: "https://bizarrelineage.com" },
+            { "@type": "ListItem", position: 2, name: t("breadcrumbCurrent"), item: "https://bizarrelineage.com/tier-list" },
         ],
     };
 

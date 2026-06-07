@@ -5,7 +5,7 @@ import subsData from "@/data/sub-abilities.json";
 import raidsData from "@/data/raids.json";
 import { routing } from "@/i18n/routing";
 
-const BASE_URL = "https://www.bizarrelineage.com";
+const BASE_URL = "https://bizarrelineage.com";
 
 function buildAlternates(path: string): Record<string, string> {
     const alternates: Record<string, string> = {};
