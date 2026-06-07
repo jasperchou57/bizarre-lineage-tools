@@ -580,7 +580,7 @@
         "bestBuildsBreadcrumb": "Build Ideas"
     },
     "WorldEvents": {
-        "metaTitle": "Bizarre Lineage World Events (May 2026) — Official Trello Listing",
+        "metaTitle": "Bizarre Lineage World Events — Official Trello Listing",
         "metaDescription": "The latest official Bizarre Lineage World Events listing. The public Trello currently names Graveyard Uprising and Deathmatch, with world events spawning every 20 minutes.",
         "breadcrumbCurrent": "World Events",
         "heroTitle": "Bizarre Lineage World Events",
@@ -656,8 +656,8 @@
         "exploreCodes": "Active Codes"
     },
     "Codes": {
-        "metaTitle": "Bizarre Lineage Codes (May 2026) | {count} Official Codes",
-        "metaDescription": "Bizarre Lineage codes for May 2026, with official Trello-listed codes separated from community-reported watchlist entries.",
+        "metaTitle": "Bizarre Lineage Codes | {count} Official Codes",
+        "metaDescription": "Bizarre Lineage codes with official Trello-listed codes separated from community-reported watchlist entries.",
         "breadcrumbCurrent": "Codes",
         "heroTitle": "Bizarre Lineage Codes",
         "lastVerified": "Last checked: {date} · official Trello codes card and Roblox page",
@@ -981,7 +981,7 @@
         "updatesTitle": "Latest Updates",
         "updatesDesc": "Read official Roblox and Trello signals first, with community reports clearly marked.",
         "codesTitle": "Source-Labeled Codes",
-        "codesDesc": "Track 15 May 2026 codes with official Trello-listed entries separated from community-reported Update 1 codes.",
+        "codesDesc": "Track official and watchlist codes with official Trello-listed entries separated from community-reported Update 1 codes.",
         "tierTitle": "Stand Tier List",
         "tierDesc": "Review the current site-maintained ranking while Update 1 stands stay in the verification watchlist.",
         "compareTitle": "Build Compare",

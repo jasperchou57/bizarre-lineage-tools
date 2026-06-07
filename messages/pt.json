@@ -580,7 +580,7 @@
         "bestBuildsBreadcrumb": "Build Ideas"
     },
     "WorldEvents": {
-        "metaTitle": "Eventos Mundiais de Bizarre Lineage (Maio 2026) — Listagem do Trello Oficial",
+        "metaTitle": "Eventos Mundiais de Bizarre Lineage — Listagem do Trello Oficial",
         "metaDescription": "A listagem oficial mais recente dos Eventos Mundiais de Bizarre Lineage. O Trello público atualmente nomeia Graveyard Uprising e Deathmatch, com eventos spawnando a cada 20 minutos.",
         "breadcrumbCurrent": "Eventos Mundiais",
         "heroTitle": "Eventos Mundiais de Bizarre Lineage",
@@ -656,8 +656,8 @@
         "exploreCodes": "Códigos Ativos"
     },
     "Codes": {
-        "metaTitle": "Bizarre Lineage Codes (May 2026) | {count} Official Codes",
-        "metaDescription": "Bizarre Lineage codes for May 2026, with official Trello-listed codes separated from community-reported watchlist entries.",
+        "metaTitle": "Códigos de Bizarre Lineage | {count} códigos oficiais",
+        "metaDescription": "Códigos de Bizarre Lineage com códigos listados no Trello oficial separados de entradas reportadas pela comunidade.",
         "breadcrumbCurrent": "Códigos",
         "heroTitle": "Códigos de Bizarre Lineage",
         "lastVerified": "Last checked: {date} · official Trello codes card and Roblox page",
@@ -981,7 +981,7 @@
         "updatesTitle": "Últimas Atualizações",
         "updatesDesc": "Sinais oficiais do Roblox e Trello primeiro, com relatos da comunidade marcados separadamente.",
         "codesTitle": "Códigos com fontes",
-        "codesDesc": "Acompanhe 15 códigos de maio de 2026, separando entradas do Trello oficial dos códigos Update 1 reportados pela comunidade.",
+        "codesDesc": "Acompanhe códigos oficiais e em observação, separando entradas do Trello oficial dos códigos Update 1 reportados pela comunidade.",
         "tierTitle": "Tier List de Stands",
         "tierDesc": "Revise o ranking mantido pelo site enquanto os Stands do Update 1 ficam em verificação.",
         "compareTitle": "Comparar Builds",

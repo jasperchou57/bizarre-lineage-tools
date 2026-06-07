@@ -580,7 +580,7 @@
         "bestBuildsBreadcrumb": "Build Ideas"
     },
     "WorldEvents": {
-        "metaTitle": "Мировые события Bizarre Lineage (май 2026) — официальный Trello",
+        "metaTitle": "Мировые события Bizarre Lineage — официальный Trello",
         "metaDescription": "Актуальный список мировых событий Bizarre Lineage. Сейчас на публичном Trello — Graveyard Uprising и Deathmatch, события спавнятся каждые 20 минут.",
         "breadcrumbCurrent": "Мировые события",
         "heroTitle": "Мировые события Bizarre Lineage",
@@ -656,8 +656,8 @@
         "exploreCodes": "Активные коды"
     },
     "Codes": {
-        "metaTitle": "Bizarre Lineage Codes (May 2026) | {count} Official Codes",
-        "metaDescription": "Bizarre Lineage codes for May 2026, with official Trello-listed codes separated from community-reported watchlist entries.",
+        "metaTitle": "Коды Bizarre Lineage | {count} официальных кодов",
+        "metaDescription": "Коды Bizarre Lineage: официальные коды из Trello отделены от записей, о которых сообщает сообщество.",
         "breadcrumbCurrent": "Коды",
         "heroTitle": "Коды Bizarre Lineage",
         "lastVerified": "Last checked: {date} · official Trello codes card and Roblox page",
@@ -981,7 +981,7 @@
         "updatesTitle": "Последние обновления",
         "updatesDesc": "Сначала официальные сигналы Roblox и Trello, а отчёты сообщества помечены отдельно.",
         "codesTitle": "Коды с метками источников",
-        "codesDesc": "Отслеживайте 15 кодов за май 2026: официальные коды Trello отдельно от кодов Update 1, о которых сообщает сообщество.",
+        "codesDesc": "Отслеживайте официальные коды и список наблюдения: официальные коды Trello отдельно от кодов Update 1, о которых сообщает сообщество.",
         "tierTitle": "Тир-лист Стендов",
         "tierDesc": "Смотрите текущий рейтинг сайта, пока Стенды Update 1 остаются в списке на проверку.",
         "compareTitle": "Сравнение билдов",

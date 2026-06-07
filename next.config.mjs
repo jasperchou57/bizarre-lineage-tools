@@ -4,7 +4,9 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     images: {
+        unoptimized: true,
         remotePatterns: [
             {
                 protocol: 'https',
@@ -12,35 +14,6 @@ const nextConfig = {
                 pathname: '/1/cards/**',
             },
         ],
-    },
-    async redirects() {
-        return [
-            {
-                source: '/bizare-lineage',
-                destination: '/',
-                permanent: true,
-            },
-            {
-                source: '/bizzare-lineage',
-                destination: '/',
-                permanent: true,
-            },
-            {
-                source: '/bizare-lineage-tier-list',
-                destination: '/tier-list',
-                permanent: true,
-            },
-            {
-                source: '/bizzare-lineage-tier-list',
-                destination: '/tier-list',
-                permanent: true,
-            },
-            {
-                source: '/stands/gold-experience',
-                destination: '/stands/golden-experience',
-                permanent: true,
-            },
-        ];
     },
 };
 

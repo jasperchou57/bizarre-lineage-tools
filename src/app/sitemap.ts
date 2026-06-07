@@ -18,73 +18,68 @@ function buildAlternates(path: string): Record<string, string> {
     return alternates;
 }
 
-function entry(path: string, options: { changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>; priority: number; lastModified?: Date }): MetadataRoute.Sitemap[number] {
+function entry(path: string): MetadataRoute.Sitemap[number] {
     const url = `${BASE_URL}${path === "/" ? "" : path}` || `${BASE_URL}/`;
     return {
         url,
-        lastModified: options.lastModified ?? new Date(),
-        changeFrequency: options.changeFrequency,
-        priority: options.priority,
         alternates: { languages: buildAlternates(path) },
     };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const now = new Date();
-
     const staticRoutes: MetadataRoute.Sitemap = [
-        entry("/", { lastModified: now, changeFrequency: "daily", priority: 1.0 }),
-        entry("/tier-list", { lastModified: now, changeFrequency: "weekly", priority: 0.9 }),
-        entry("/build-planner", { lastModified: now, changeFrequency: "monthly", priority: 0.9 }),
-        entry("/tools", { lastModified: now, changeFrequency: "weekly", priority: 0.9 }),
-        entry("/updates", { lastModified: now, changeFrequency: "daily", priority: 0.8 }),
-        entry("/sources", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/controls", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/personalities", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/accessories", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/locations", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/npcs", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/stands", { lastModified: now, changeFrequency: "weekly", priority: 0.8 }),
-        entry("/codes", { lastModified: now, changeFrequency: "daily", priority: 0.8 }),
-        entry("/fighting-styles", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/sub-abilities", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/guides/leveling", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/guides/prestige", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/guides", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/guides/beginner", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/guides/how-to-get-made-in-heaven", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/guides/stats", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/guides/stand-chances", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/guides/best-builds", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/skins", { lastModified: now, changeFrequency: "weekly", priority: 0.8 }),
-        entry("/items", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/world-events", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/trello", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/perks", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/guides/awakening", { lastModified: now, changeFrequency: "monthly", priority: 0.8 }),
-        entry("/guides/night-vampire", { lastModified: now, changeFrequency: "monthly", priority: 0.7 }),
-        entry("/about", { lastModified: now, changeFrequency: "yearly", priority: 0.3 }),
-        entry("/contact", { lastModified: now, changeFrequency: "yearly", priority: 0.3 }),
-        entry("/privacy", { lastModified: now, changeFrequency: "yearly", priority: 0.2 }),
-        entry("/terms", { lastModified: now, changeFrequency: "yearly", priority: 0.2 }),
+        entry("/"),
+        entry("/tier-list"),
+        entry("/build-planner"),
+        entry("/tools"),
+        entry("/updates"),
+        entry("/sources"),
+        entry("/controls"),
+        entry("/personalities"),
+        entry("/accessories"),
+        entry("/locations"),
+        entry("/npcs"),
+        entry("/stands"),
+        entry("/codes"),
+        entry("/fighting-styles"),
+        entry("/sub-abilities"),
+        entry("/guides/leveling"),
+        entry("/guides/prestige"),
+        entry("/guides"),
+        entry("/guides/beginner"),
+        entry("/guides/how-to-get-made-in-heaven"),
+        entry("/guides/stats"),
+        entry("/guides/stand-chances"),
+        entry("/guides/best-builds"),
+        entry("/skins"),
+        entry("/items"),
+        entry("/world-events"),
+        entry("/trello"),
+        entry("/perks"),
+        entry("/guides/awakening"),
+        entry("/guides/night-vampire"),
+        entry("/about"),
+        entry("/contact"),
+        entry("/privacy"),
+        entry("/terms"),
     ];
 
     const standRoutes: MetadataRoute.Sitemap = standsData.map((stand) =>
-        entry(`/stands/${stand.id}`, { lastModified: now, changeFrequency: "weekly", priority: 0.8 }),
+        entry(`/stands/${stand.id}`),
     );
 
     const styleRoutes: MetadataRoute.Sitemap = stylesData.map((style) =>
-        entry(`/fighting-styles/${style.id}`, { lastModified: now, changeFrequency: "monthly", priority: 0.6 }),
+        entry(`/fighting-styles/${style.id}`),
     );
 
     const subRoutes: MetadataRoute.Sitemap = subsData.map((sub) =>
-        entry(`/sub-abilities/${sub.id}`, { lastModified: now, changeFrequency: "monthly", priority: 0.6 }),
+        entry(`/sub-abilities/${sub.id}`),
     );
 
     const raidRoutes: MetadataRoute.Sitemap = [
-        entry("/raids", { lastModified: now, changeFrequency: "weekly", priority: 0.8 }),
+        entry("/raids"),
         ...raidsData.map((raid) =>
-            entry(`/raids/${raid.id}`, { lastModified: now, changeFrequency: "weekly", priority: 0.7 }),
+            entry(`/raids/${raid.id}`),
         ),
     ];
 

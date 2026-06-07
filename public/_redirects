@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects
+/bizare-lineage / 301
+/bizare-lineage/ / 301
+/bizzare-lineage / 301
+/bizzare-lineage/ / 301
+/bizare-lineage-tier-list /tier-list 301
+/bizare-lineage-tier-list/ /tier-list 301
+/bizzare-lineage-tier-list /tier-list 301
+/bizzare-lineage-tier-list/ /tier-list 301
+/stands/gold-experience /stands/golden-experience 301
+/stands/gold-experience/ /stands/golden-experience 301

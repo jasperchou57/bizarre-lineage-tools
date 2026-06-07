@@ -45,13 +45,19 @@ npm run build      # production build + static export
 
 ## Deployment
 
-Optimized for [Vercel](https://vercel.com):
+Optimized for Cloudflare Pages static export:
+
+- Framework preset: `Next.js (Static HTML Export)`
+- Build command: `npm run build`
+- Build output directory: `out`
+- Redirects: `public/_redirects`
+
+Direct upload deploy:
 
 ```bash
-npx vercel --prod
+npm run build
+npx wrangler pages deploy out --project-name bizarre-lineage-tools --branch main
 ```
-
-Or push to `main` with Vercel GitHub integration for auto-deploy.
 
 ## SEO Features
 
