@@ -48,15 +48,17 @@ export function MobileNav({
                                 </div>
                                 <div className="space-y-2">
                                     {gameItems.map((game) => (
-                                        <div key={game.href} className="rounded-lg bg-background/45 p-2">
+                                        <div key={game.href} className="relative rounded-lg bg-background/45 p-2">
                                             <Link
                                                 href={game.href}
+                                                aria-label={`Open ${game.label}`}
                                                 onClick={() => setOpen(false)}
-                                                className="block px-1 py-1 text-sm font-bold text-white hover:text-accent-blue transition-colors"
-                                            >
+                                                className="absolute inset-0 z-10 rounded-lg"
+                                            />
+                                            <div className="relative z-20 pointer-events-none px-1 py-1 text-sm font-bold text-white">
                                                 {game.label}
-                                            </Link>
-                                            <div className="mt-1 flex flex-wrap gap-1.5">
+                                            </div>
+                                            <div className="relative z-30 mt-1 flex flex-wrap gap-1.5">
                                                 {game.links.map((link) => (
                                                     <Link
                                                         key={`${game.href}-${link.href}-${link.label}`}

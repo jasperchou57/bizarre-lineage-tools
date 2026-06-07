@@ -59,9 +59,10 @@ export function Navbar() {
                     <div className="relative group">
                         <button
                             type="button"
-                            className="inline-flex h-10 items-center gap-1 rounded-lg px-3 text-sm font-semibold text-muted transition-colors hover:bg-white/5 hover:text-white"
+                            className="inline-flex h-10 items-center gap-2 rounded-lg border border-accent-indigo/35 bg-accent-indigo/15 px-3 text-sm font-bold text-white shadow-[0_0_18px_rgba(99,102,241,0.18)] transition-colors hover:border-accent-blue/60 hover:bg-accent-blue/20"
                             aria-haspopup="true"
                         >
+                            <Gamepad2 className="h-4 w-4 text-accent-blue" />
                             {t("games")}
                             <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
                         </button>
@@ -78,13 +79,20 @@ export function Navbar() {
                                     </div>
                                     <div className="grid grid-cols-2 gap-3">
                                         {gameItems.map((game) => (
-                                            <div key={game.href} className="rounded-xl border border-white/10 bg-white/[0.035] p-4 transition-colors hover:border-accent-blue/40 hover:bg-white/[0.055]">
-                                                <Link href={game.href} className="group/link inline-flex items-center gap-2 text-base font-bold text-white hover:text-accent-blue transition-colors">
-                                                    {game.label}
-                                                    <span className="transition-transform group-hover/link:translate-x-1">→</span>
-                                                </Link>
-                                                <p className="mt-2 min-h-10 text-xs leading-5 text-muted">{game.description}</p>
-                                                <div className="mt-4 flex flex-wrap gap-2">
+                                            <div key={game.href} className="group/card relative rounded-xl border border-white/10 bg-white/[0.035] p-4 transition-colors hover:border-accent-blue/40 hover:bg-white/[0.055]">
+                                                <Link
+                                                    href={game.href}
+                                                    aria-label={`Open ${game.label}`}
+                                                    className="absolute inset-0 z-10 rounded-xl"
+                                                />
+                                                <div className="relative z-20 pointer-events-none">
+                                                    <div className="inline-flex items-center gap-2 text-base font-bold text-white transition-colors group-hover/card:text-accent-blue">
+                                                        {game.label}
+                                                        <span className="transition-transform group-hover/card:translate-x-1">→</span>
+                                                    </div>
+                                                    <p className="mt-2 min-h-10 text-xs leading-5 text-muted">{game.description}</p>
+                                                </div>
+                                                <div className="relative z-30 mt-4 flex flex-wrap gap-2">
                                                     {game.links.map((link) => (
                                                         <Link
                                                             key={`${game.href}-${link.href}-${link.label}`}
