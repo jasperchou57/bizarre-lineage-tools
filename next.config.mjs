@@ -13,6 +13,36 @@ const nextConfig = {
                 hostname: 'trello.com',
                 pathname: '/1/cards/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'tr.rbxcdn.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 't0.rbxcdn.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 't3.rbxcdn.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 't4.rbxcdn.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 't5.rbxcdn.com',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 't6.rbxcdn.com',
+                pathname: '/**',
+            },
         ],
     },
 };

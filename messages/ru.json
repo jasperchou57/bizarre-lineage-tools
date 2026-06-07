@@ -920,6 +920,13 @@
         "detailQuickActiveCodes": "Активные коды"
     },
     "Navbar": {
+        "games": "Games",
+        "quickMenu": "Быстрое меню",
+        "openAnyGameHub": "Откройте любой игровой hub",
+        "openAnyGameHubBody": "Сначала wiki и коды. Остальное в один клик.",
+        "wiki": "Wiki",
+        "releaseDate": "Релиз",
+        "officialLinks": "Links",
         "buildPlanner": "Планировщик билдов",
         "tierList": "Тир-лист",
         "stands": "Стенды",
@@ -931,6 +938,7 @@
         "codes": "Коды",
         "updates": "Обновления",
         "tools": "Инструменты",
+        "vvUltimatum": "VV Ultimatum",
         "vault": "Хранилище",
         "openPlanner": "Открыть планировщик",
         "menuLabel": "Открыть меню навигации",

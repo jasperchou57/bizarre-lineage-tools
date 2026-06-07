@@ -920,6 +920,13 @@
         "detailQuickActiveCodes": "Active Codes"
     },
     "Navbar": {
+        "games": "Games",
+        "quickMenu": "Quick menu",
+        "openAnyGameHub": "Open any game hub",
+        "openAnyGameHubBody": "Wiki and codes first. The rest stays one click away.",
+        "wiki": "Wiki",
+        "releaseDate": "Release",
+        "officialLinks": "Links",
         "buildPlanner": "Build Planner",
         "tierList": "Tier List",
         "stands": "Stands",
@@ -931,6 +938,7 @@
         "codes": "Codes",
         "updates": "Updates",
         "tools": "Tools",
+        "vvUltimatum": "VV Ultimatum",
         "vault": "Vault",
         "openPlanner": "Open Planner",
         "menuLabel": "Open navigation menu",

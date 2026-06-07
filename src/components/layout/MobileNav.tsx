@@ -9,7 +9,21 @@ type MobileNavItem = {
     label: string;
 };
 
-export function MobileNav({ items, menuLabel }: { items: readonly MobileNavItem[]; menuLabel: string }) {
+type MobileGameItem = MobileNavItem & {
+    links: readonly MobileNavItem[];
+};
+
+export function MobileNav({
+    items,
+    gameItems,
+    gamesLabel,
+    menuLabel,
+}: {
+    items: readonly MobileNavItem[];
+    gameItems?: readonly MobileGameItem[];
+    gamesLabel?: string;
+    menuLabel: string;
+}) {
     const [open, setOpen] = useState(false);
 
     return (
@@ -25,8 +39,40 @@ export function MobileNav({ items, menuLabel }: { items: readonly MobileNavItem[
             </button>
 
             {open && (
-                <div className="absolute right-0 top-12 w-64 rounded-xl border border-border bg-surface p-2 shadow-2xl">
+                <div className="absolute right-0 top-12 w-72 rounded-xl border border-border bg-surface p-2 shadow-2xl">
                     <div className="grid grid-cols-1">
+                        {gameItems && (
+                            <div className="mb-2 rounded-lg border border-white/10 bg-white/[0.03] p-2">
+                                <div className="px-2 pb-2 text-xs font-bold uppercase tracking-wide text-accent-blue">
+                                    {gamesLabel}
+                                </div>
+                                <div className="space-y-2">
+                                    {gameItems.map((game) => (
+                                        <div key={game.href} className="rounded-lg bg-background/45 p-2">
+                                            <Link
+                                                href={game.href}
+                                                onClick={() => setOpen(false)}
+                                                className="block px-1 py-1 text-sm font-bold text-white hover:text-accent-blue transition-colors"
+                                            >
+                                                {game.label}
+                                            </Link>
+                                            <div className="mt-1 flex flex-wrap gap-1.5">
+                                                {game.links.map((link) => (
+                                                    <Link
+                                                        key={`${game.href}-${link.href}-${link.label}`}
+                                                        href={link.href}
+                                                        onClick={() => setOpen(false)}
+                                                        className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-xs font-medium text-muted hover:text-white transition-colors"
+                                                    >
+                                                        {link.label}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                         {items.map((item) => (
                             <Link
                                 key={item.href}

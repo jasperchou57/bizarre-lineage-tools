@@ -920,6 +920,13 @@
         "detailQuickActiveCodes": "Códigos Ativos"
     },
     "Navbar": {
+        "games": "Games",
+        "quickMenu": "Menu rápido",
+        "openAnyGameHub": "Abra qualquer hub de jogo",
+        "openAnyGameHubBody": "Wiki e códigos primeiro. O resto fica a um clique.",
+        "wiki": "Wiki",
+        "releaseDate": "Lançamento",
+        "officialLinks": "Links",
         "buildPlanner": "Planejador de Builds",
         "tierList": "Tier List",
         "stands": "Stands",
@@ -931,6 +938,7 @@
         "codes": "Códigos",
         "updates": "Atualizações",
         "tools": "Ferramentas",
+        "vvUltimatum": "VV Ultimatum",
         "vault": "Cofre",
         "openPlanner": "Abrir planejador",
         "menuLabel": "Abrir menu de navegação",
