@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run build:default-locale",
+    "build:default-locale": "cp out/en.html out/index.html && cp out/en.txt out/index.txt && cp -R out/en/* out/",
     "start": "next start",
     "lint": "next lint"
   },
